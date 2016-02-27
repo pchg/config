@@ -1,0 +1,423 @@
+
+menu "Aide" folder {
+  prog    "Info" - /bin/sh -c "x-terminal-emulator  -T \"Info\" -e sh -c \"info\""
+  prog    "KDE Help Center" /usr/share/pixmaps/khelpcenter.xpm /bin/sh -c "/usr/bin/khelpcenter"
+  prog    "TeXdoctk" - /bin/sh -c "/usr/bin/texdoctk"
+  prog    "Xman" - /bin/sh -c "xman"
+  prog    "yelp" - /bin/sh -c "/usr/bin/yelp"
+}
+menu "Applications" folder {
+menu "Accessibilité" folder {
+  prog    "Xmag" - /bin/sh -c "xmag"
+}
+menu "Bureautique" folder {
+  prog    "AbiWord Word Processor" /usr/share/pixmaps/abiword.xpm /bin/sh -c "/usr/bin/abiword"
+  prog    "gnumeric" /usr/share/pixmaps/gnome-gnumeric.xpm /bin/sh -c "/usr/bin/gnumeric"
+  prog    "kdissert" /usr/share/pixmaps/kdissert.xpm /bin/sh -c "/usr/bin/kdissert"
+  prog    "KSpread" /usr/share/pixmaps/kspread.xpm /bin/sh -c "/usr/bin/kspread"
+  prog    "OpenOffice.org Calc" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-calc.xpm /bin/sh -c "/usr/bin/oocalc"
+  prog    "OpenOffice.org Impress" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-impress.xpm /bin/sh -c "/usr/bin/ooimpress"
+  prog    "OpenOffice.org Writer" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-writer.xpm /bin/sh -c "/usr/bin/oowriter"
+  prog    "Vym" /usr/share/vym/icons/vym.xpm /bin/sh -c "/usr/bin/vym"
+}
+menu "Dessin et image" folder {
+  prog    "Blender (full screen)" /usr/share/pixmaps/blender.xpm /bin/sh -c "/usr/bin/blender"
+  prog    "Blender (windowed)" /usr/share/pixmaps/blender.xpm /bin/sh -c "/usr/bin/blender -w"
+  prog    "Geeqie" /usr/share/pixmaps/geeqie.xpm /bin/sh -c "/usr/bin/geeqie-standard"
+  prog    "GNOME Screenshot Tool" - /bin/sh -c "/usr/bin/gnome-panel-screenshot"
+  prog    "GPS Correlate" - /bin/sh -c "/usr/bin/gpscorrelate-gui"
+  prog    "Hugin" - /bin/sh -c "/usr/bin/hugin"
+  prog    "ImageMagick" /usr/share/pixmaps/display.xpm /bin/sh -c "/usr/bin/display logo:"
+  prog    "Inkscape" /usr/share/pixmaps/inkscape.xpm /bin/sh -c "/usr/bin/inkscape"
+  prog    "ivview" - /bin/sh -c "/usr/bin/ivview"
+  prog    "Misfit Model 3d" - /bin/sh -c "/usr/bin/mm3d"
+  prog    "OpenOffice.org Draw" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-draw.xpm /bin/sh -c "/usr/bin/oodraw"
+  prog    "SceneViewer" - /bin/sh -c "/usr/bin/SceneViewer"
+  prog    "Scribus (stable)" /usr/share/pixmaps/scribus.xpm /bin/sh -c "/usr/bin/scribus"
+  prog    "The GIMP" /usr/share/pixmaps/gimp.xpm /bin/sh -c "/usr/bin/gimp"
+  prog    "whitedune vrml editor" /usr/share/pixmaps/whitedune.xpm /bin/sh -c "/usr/bin/whitedune"
+  prog    "Wings3D polygon mesh modeller" /usr/share/icons/wings3d.xpm /bin/sh -c "/usr/bin/wings3d -noshell -noinput -detached"
+  prog    "xfig" /usr/share/pixmaps/xfig32x32.xpm /bin/sh -c "/usr/bin/xfig"
+  prog    "Xpaint" - /bin/sh -c "/usr/bin/xpaint"
+  prog    "XSane" /usr/share/pixmaps/xsane.xpm /bin/sh -c "/usr/bin/xsane"
+  prog    "X Window Snapshot" - /bin/sh -c "xwd | xwud"
+}
+menu "Éditeurs" folder {
+  prog    "Conglomerate XML editor" /usr/share/pixmaps/conglomerate_icon.xpm /bin/sh -c "/usr/bin/conglomerate"
+  prog    "Emacs 22 (text)" /usr/share/emacs/22.2/etc/images/icons/emacs_32.xpm /bin/sh -c "x-terminal-emulator  -T \"Emacs 22 (text)\" -e sh -c \"/usr/bin/emacs22 -nw\""
+  prog    "Emacs 22 (X11)" /usr/share/emacs/22.2/etc/images/icons/emacs_32.xpm /bin/sh -c "/usr/bin/emacs22"
+  prog    "Emacs 23 (text)" /usr/share/emacs/23.2/etc/images/icons/hicolor/32x32/apps/emacs.xpm /bin/sh -c "x-terminal-emulator  -T \"Emacs 23 (text)\" -e sh -c \"/usr/bin/emacs23 -nw\""
+  prog    "Emacs 23 (X11)" /usr/share/emacs/23.2/etc/images/icons/hicolor/32x32/apps/emacs.xpm /bin/sh -c "/usr/bin/emacs23"
+  prog    "Gedit" /usr/share/pixmaps/gedit-icon.xpm /bin/sh -c "/usr/bin/gedit"
+  prog    "Gobby" /usr/share/pixmaps/gobby.xpm /bin/sh -c "/usr/bin/gobby"
+  prog    "GVIM" /usr/share/pixmaps/vim-32.xpm /bin/sh -c "/usr/bin/vim.gtk -g -f"
+  prog    "Nano" /usr/share/nano/nano-menu.xpm /bin/sh -c "x-terminal-emulator  -T \"Nano\" -e sh -c \"/bin/nano\""
+  prog    "NEdit" /usr/share/pixmaps/Nedit.xpm /bin/sh -c "nedit"
+  prog    "PDFEdit" - /bin/sh -c "/usr/bin/pdfedit"
+  prog    "scite" /usr/share/scite/Sci32M.xpm /bin/sh -c "/usr/bin/scite"
+  prog    "Textedit" - /bin/sh -c "/usr/bin/textedit"
+  prog    "Xedit" - /bin/sh -c "xedit"
+  prog    "xournal" - /bin/sh -c "/usr/bin/xournal"
+}
+menu "Éducatif" folder {
+  prog    "Calculs" /usr/share/pixmaps/abuledu-calculs.png /bin/sh -c "calculs"
+  prog    "GNU Solfege" /usr/share/solfege/graphics/solfege.xpm /bin/sh -c "/usr/bin/solfege"
+}
+menu "Émulateurs" folder {
+  prog    "Qemulator" qemulator.xpm /bin/sh -c "/usr/bin/qemulator"
+  prog    "Qemu Launcher" /usr/share/pixmaps/qemu-launcher-32x32.xpm /bin/sh -c "/usr/bin/qemu-launcher"
+  prog    "VirtualBox OSE" /usr/share/pixmaps/virtualbox-ose.xpm /bin/sh -c "/usr/bin/virtualbox"
+}
+menu "Émulateurs de terminaux" folder {
+  prog    "clusterssh" /usr/share/pixmaps/clusterssh-32x32.xpm /bin/sh -c "/usr/bin/cssh"
+  prog    "Command Tool" - /bin/sh -c "/usr/bin/cmdtool"
+  prog    "Gnome Terminal" /usr/share/pixmaps/gnome-terminal.xpm /bin/sh -c "/usr/bin/gnome-terminal"
+  prog    "Shell Tool" - /bin/sh -c "/usr/bin/shelltool"
+  prog    "XTerm" /usr/share/pixmaps/xterm-color_32x32.xpm /bin/sh -c "xterm"
+  prog    "X-Terminal as root (GKsu)" /usr/share/pixmaps/gksu-debian.xpm /bin/sh -c "/usr/bin/gksu -u root /usr/bin/x-terminal-emulator"
+  prog    "XTerm (Unicode)" /usr/share/pixmaps/xterm-color_32x32.xpm /bin/sh -c "uxterm"
+}
+menu "Gestion de données" folder {
+  prog    "DataManager" - /bin/sh -c "DataManager"
+  prog    "Gnome Catalog" /usr/share/gnomecatalog/pixmaps/gcatalog.xpm /bin/sh -c "gnomecatalog"
+  prog    "Knoda" - /bin/sh -c "/usr/bin/knoda"
+  prog    "MDB Viewer" /usr/share/pixmaps/gmdb2.xpm /bin/sh -c "/usr/bin/gmdb2"
+  prog    "Mergeant database admin tool GUI" mergeant.xpm /bin/sh -c "/usr/bin/mergeant"
+  prog    "OpenOffice.org Base" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-base.xpm /bin/sh -c "/usr/bin/oobase"
+  prog    "pgAdmin III" /usr/share/pixmaps/pgadmin3.xpm /bin/sh -c "/usr/bin/pgadmin3"
+  prog    "pgDesigner" - /bin/sh -c "/usr/bin/pgdesigner"
+  prog    "Postgres Forms (pfm)" - /bin/sh -c "/usr/bin/pfm"
+  prog    "TOra" /usr/share/icons/hicolor/32x32/apps/tora.xpm /bin/sh -c "/usr/bin/tora"
+}
+menu "Gestion de fichiers" folder {
+  prog    "Baobab" /usr/share/pixmaps/baobab.xpm /bin/sh -c "/usr/bin/baobab"
+  prog    "Brasero" - /bin/sh -c "/usr/bin/brasero"
+  prog    "File-Roller" /usr/share/pixmaps/file-roller.xpm /bin/sh -c "/usr/bin/file-roller"
+  prog    "Gentoo" - /bin/sh -c "gentoo"
+  prog    "GNOME Search Tool" /usr/share/pixmaps/gsearchtool.xpm /bin/sh -c "/usr/bin/gnome-search-tool"
+  prog    "Katapult" - /bin/sh -c "katapult"
+  prog    "Komparator4" - /bin/sh -c "/usr/bin/komparator4"
+  prog    "mc" /usr/share/pixmaps/mc.xpm /bin/sh -c "x-terminal-emulator  -T \"mc\" -e sh -c \"/usr/bin/mc\""
+  prog    "Nautilus" /usr/share/pixmaps/nautilus.xpm /bin/sh -c "/usr/bin/nautilus"
+  prog    "Thunar" - /bin/sh -c "/usr/bin/thunar"
+  prog    "Unison 2.32.52 (GTK)" /usr/share/pixmaps/unison-gtk.xpm /bin/sh -c "/usr/bin/unison-2.32.52-gtk"
+  prog    "xdiskusage" - /bin/sh -c "xdiskusage"
+  prog    "X file manager" /usr/share/pixmaps/xfm_icon.xpm /bin/sh -c "/usr/bin/xfm"
+  prog    "xnc" /usr/share/pixmaps/xnc.xpm /bin/sh -c "/usr/bin/xnc"
+}
+menu "Gestion de projets" folder {
+  prog    "Planner" /usr/share/pixmaps/gnome-planner.xpm /bin/sh -c "/usr/bin/planner"
+}
+menu "Interpréteurs de commandes" folder {
+  prog    "Bash" - /bin/sh -c "x-terminal-emulator  -T \"Bash\" -e sh -c \"/bin/bash --login\""
+  prog    "Dash" - /bin/sh -c "x-terminal-emulator  -T \"Dash\" -e sh -c \"/bin/dash -i\""
+  prog    "Python (v2.4)" /usr/share/pixmaps/python2.4.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v2.4)\" -e sh -c \"/usr/bin/python2.4\""
+  prog    "Python (v2.5)" /usr/share/pixmaps/python2.5.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v2.5)\" -e sh -c \"/usr/bin/python2.5\""
+  prog    "Sh" - /bin/sh -c "x-terminal-emulator  -T \"Sh\" -e sh -c \"/bin/sh --login\""
+}
+menu "Langue écrite" folder {
+  prog    "GNOME Dictionary" /usr/share/pixmaps/gdict.xpm /bin/sh -c "/usr/bin/gnome-dictionary"
+}
+menu "Lecteurs" folder {
+  prog    "Evince" /usr/share/pixmaps/evince.xpm /bin/sh -c "/usr/bin/evince"
+  prog    "Eye of GNOME" /usr/share/pixmaps/gnome-eog.xpm /bin/sh -c "/usr/bin/eog"
+  prog    "gThumb Image Viewer" /usr/share/pixmaps/gthumb.xpm /bin/sh -c "/usr/bin/gthumb"
+  prog    "GV" /usr/share/pixmaps/mini-gv.xpm /bin/sh -c "/usr/bin/gv"
+  prog    "KGhostView" /usr/share/pixmaps/kghostview.xpm /bin/sh -c "/usr/bin/kghostview"
+  prog    "MPlayer" /usr/share/pixmaps/mplayer.xpm /bin/sh -c "/usr/bin/gmplayer"
+  prog    "Wordview" - /bin/sh -c "/usr/bin/wordview"
+  prog    "Xditview" - /bin/sh -c "xditview"
+  prog    "XDvi" - /bin/sh -c "/usr/bin/xdvi"
+  prog    "XLess" - /bin/sh -c "xless /usr/share/doc/xless/xless.help"
+  prog    "Xpdf" /usr/share/pixmaps/xpdf.xpm /bin/sh -c "/usr/bin/xpdf"
+}
+menu "Matériel nomade" folder {
+  prog    "JPilot" /usr/share/pixmaps/jpilot.xpm /bin/sh -c "/usr/bin/jpilot"
+}
+menu "Outils" folder {
+  prog    "gnometab" - /bin/sh -c "/usr/bin/gnometab"
+  prog    "gTweakUI Galeon" - /bin/sh -c "/usr/bin/gtweakui-galeon"
+  prog    "gTweakUI Menus" - /bin/sh -c "/usr/bin/gtweakui-menus"
+  prog    "gTweakUI Nautilus" - /bin/sh -c "/usr/bin/gtweakui-nautilus"
+  prog    "gTweakUI Session" - /bin/sh -c "/usr/bin/gtweakui-session"
+}
+menu "Programmation" folder {
+  prog    "BeanShell (text)" - /bin/sh -c "x-terminal-emulator  -T \"BeanShell (text)\" -e sh -c \"/usr/bin/bsh\""
+  prog    "BeanShell (windowed)" - /bin/sh -c "/usr/bin/xbsh"
+  prog    "Boa Constructor" /usr/share/pixmaps/boa-constructor.xpm /bin/sh -c "/usr/bin/boa-constructor"
+  prog    "Data Display Debugger" - /bin/sh -c "/usr/bin/ddd"
+  prog    "eric" /usr/share/pixmaps/eric.xpm /bin/sh -c "/usr/bin/eric"
+  prog    "Erlang Shell" /usr/share/pixmaps/erlang.xpm /bin/sh -c "x-terminal-emulator  -T \"Erlang Shell\" -e sh -c \"/usr/bin/erl\""
+  prog    "Gambas2" /usr/share/pixmaps/gambas2.xpm /bin/sh -c "/usr/bin/gambas2.gambas"
+  prog    "GDB" - /bin/sh -c "x-terminal-emulator  -T \"GDB\" -e sh -c \"/usr/bin/gdb\""
+  prog    "Geany" /usr/share/pixmaps/geany.xpm /bin/sh -c "/usr/bin/geany"
+  prog    "gphpedit" /usr/share/pixmaps/gphpedit.xpm /bin/sh -c "/usr/bin/gphpedit"
+  prog    "IDLE (Python IDE)" /usr/share/pixmaps/idle.xpm /bin/sh -c "/usr/bin/idle -n"
+  prog    "IDLE (Python v2.6)" /usr/share/pixmaps/python2.6.xpm /bin/sh -c "/usr/bin/idle-python2.6 -n"
+  prog    "KDevelop" /usr/share/pixmaps/kdevelop.xpm /bin/sh -c "/usr/bin/kdevelop"
+  prog    "Kiki" /usr/share/pixmaps/kiki.xpm /bin/sh -c "/usr/bin/kiki"
+  prog    "Meld" - /bin/sh -c "/usr/bin/meld"
+  prog    "PythonCard codeEditor" - /bin/sh -c "/usr/bin/codeEditor"
+  prog    "PythonCard findfiles" - /bin/sh -c "/usr/bin/findfiles"
+  prog    "PythonCard resourceEditor" - /bin/sh -c "/usr/bin/resourceEditor"
+  prog    "Python (v2.6)" /usr/share/pixmaps/python2.6.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v2.6)\" -e sh -c \"/usr/bin/python2.6\""
+  prog    "Python (v3.0)" /usr/share/pixmaps/python3.0.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v3.0)\" -e sh -c \"/usr/bin/python3.0\""
+  prog    "Qt3 Assistant" - /bin/sh -c "/usr/bin/assistant-qt3"
+  prog    "Qt Assistant" - /bin/sh -c "/usr/bin/assistant-qt4"
+  prog    "Qt Designer" - /bin/sh -c "/usr/bin/designer-qt4"
+  prog    "Qt Linguist" - /bin/sh -c "/usr/bin/linguist-qt4"
+  prog    "Ruby (irb1.8)" - /bin/sh -c "x-terminal-emulator  -T \"Ruby (irb1.8)\" -e sh -c \"/usr/bin/irb1.8\""
+  prog    "SPE" /usr/share/pixmaps/spe.xpm /bin/sh -c "/usr/bin/spe"
+  prog    "Sun Java 6 Web Start" /usr/share/pixmaps/sun-java6.xpm /bin/sh -c "/usr/lib/jvm/java-6-sun-1.6.0.22/bin/javaws -viewer"
+  prog    "SVN Workbench" /usr/share/svn-workbench/wb.xpm /bin/sh -c "/usr/bin/svn-workbench"
+  prog    "Tclsh8.4" - /bin/sh -c "x-terminal-emulator  -T \"Tclsh8.4\" -e sh -c \"/usr/bin/tclsh8.4\""
+  prog    "Tclsh8.5" - /bin/sh -c "x-terminal-emulator  -T \"Tclsh8.5\" -e sh -c \"/usr/bin/tclsh8.5\""
+  prog    "TkWish8.4" - /bin/sh -c "x-terminal-emulator -e /usr/bin/wish8.4"
+  prog    "TkWish8.5" - /bin/sh -c "x-terminal-emulator -e /usr/bin/wish8.5"
+  prog    "winpdb" /usr/share/pixmaps/winpdb.xpm /bin/sh -c "/usr/bin/winpdb"
+  prog    "WxGlade" /usr/share/pixmaps/wxglade.xpm /bin/sh -c "/usr/bin/wxglade"
+}
+menu "Réseau" folder {
+menu "Communication" folder {
+  prog    "Ekiga" /usr/share/pixmaps/ekiga.xpm /bin/sh -c "/usr/bin/ekiga"
+  prog    "Evolution" /usr/share/pixmaps/evolution.xpm /bin/sh -c "/usr/bin/evolution"
+  prog    "Icedove Mail" /usr/share/pixmaps/icedove.xpm /bin/sh -c "icedove"
+  prog    "Manhole Twisted Client" - /bin/sh -c "/usr/bin/manhole"
+  prog    "Mutt" /usr/share/pixmaps/mutt.xpm /bin/sh -c "x-terminal-emulator  -T \"Mutt\" -e sh -c \"/usr/bin/mutt\""
+  prog    "Pidgin" /usr/share/pixmaps/pidgin-menu.xpm /bin/sh -c "/usr/bin/pidgin"
+  prog    "PuTTY" /usr/share/pixmaps/putty.xpm /bin/sh -c "/usr/bin/putty"
+  prog    "Remmina" - /bin/sh -c "/usr/bin/remmina"
+  prog    "Telnet" - /bin/sh -c "x-terminal-emulator  -T \"Telnet\" -e sh -c \"/usr/bin/telnet\""
+  prog    "Terminal Server Client" /usr/share/pixmaps/tsclient.xpm /bin/sh -c "/usr/bin/tsclient -f"
+  prog    "Twisted Application Generator" - /bin/sh -c "/usr/bin/tkmktap"
+  prog    "Twisted SSH Client" - /bin/sh -c "/usr/bin/tkconch"
+  prog    "Vinagre" - /bin/sh -c "vinagre"
+  prog    "weechat-curses" /usr/share/pixmaps/weechat.xpm /bin/sh -c "x-terminal-emulator  -T \"weechat-curses\" -e sh -c \"/usr/bin/weechat-curses\""
+  prog    "Xbiff" - /bin/sh -c "xbiff"
+  prog    "xtightvncviewer" - /bin/sh -c "/usr/bin/xtightvncviewer"
+}
+menu "Flux d'informations" folder {
+  prog    "Liferea" /usr/share/liferea/pixmaps/liferea.xpm /bin/sh -c "/usr/bin/liferea"
+}
+  prog    "GnomeICU" /usr/share/pixmaps/gnomeicu.xpm /bin/sh -c "/usr/bin/gnomeicu"
+menu "Navigateurs web" folder {
+  prog    "Epiphany web browser" - /bin/sh -c "/usr/bin/epiphany-browser"
+  prog    "Iceweasel" /usr/share/pixmaps/iceweasel.xpm /bin/sh -c "iceweasel"
+  prog    "Lynx-cur" - /bin/sh -c "x-terminal-emulator  -T \"Lynx-cur\" -e sh -c \"lynx\""
+  prog    "w3m" - /bin/sh -c "x-terminal-emulator  -T \"w3m\" -e sh -c \"/usr/bin/w3m /usr/share/doc/w3m/MANUAL.html\""
+}
+menu "Transfert de fichiers" folder {
+  prog    "FileRunner" /usr/share/pixmaps/filerunner.xpm /bin/sh -c "/usr/bin/fr"
+  prog    "FileZilla" /usr/share/pixmaps/filezilla.xpm /bin/sh -c "/usr/bin/filezilla"
+}
+  prog    "VRweb VRML browser" - /bin/sh -c "/usr/bin/vrweb"
+  prog    "xSMBrowser" /usr/share/pixmaps/xsmbrowser-mini.xpm /bin/sh -c "/usr/bin/xsmbrowser"
+}
+menu "Sciences" folder {
+menu "Analyse de données" folder {
+  prog    "GNU R" - /bin/sh -c "x-terminal-emulator  -T \"GNU R\" -e sh -c \"/usr/bin/R\""
+  prog    "Imview" - /bin/sh -c "/usr/bin/imview"
+  prog    "LabPlot" /usr/share/pixmaps/labplot.xpm /bin/sh -c "/usr/bin/labplot"
+  prog    "PyXPlot" /usr/share/pixmaps/pyxplot.xpm /bin/sh -c "x-terminal-emulator  -T \"PyXPlot\" -e sh -c \"/usr/bin/pyxplot\""
+  prog    "QtiPlot" /usr/share/pixmaps/qtiplot.xpm /bin/sh -c "/usr/bin/qtiplot"
+}
+  prog    "Earth3D" /usr/share/pixmaps/earth.xpm /bin/sh -c "/usr/bin/earth3d"
+menu "Ingénierie" folder {
+  prog    "Dia" /usr/share/pixmaps/dia_menu.xpm /bin/sh -c "/usr/bin/dia-normal"
+  prog    "MayaVi2" - /bin/sh -c "/usr/bin/mayavi2"
+  prog    "QCad" /usr/share/pixmaps/qcad.xpm /bin/sh -c "/usr/bin/qcad"
+}
+menu "Mathématiques" folder {
+  prog    "Bc" - /bin/sh -c "x-terminal-emulator  -T \"Bc\" -e sh -c \"/usr/bin/bc\""
+  prog    "Dc" - /bin/sh -c "x-terminal-emulator  -T \"Dc\" -e sh -c \"/usr/bin/dc\""
+  prog    "Gnuplot" - /bin/sh -c "x-terminal-emulator  -T \"Gnuplot\" -e sh -c \"/usr/bin/gnuplot\""
+  prog    "Grace" /usr/share/pixmaps/grace-menu.xpm /bin/sh -c "/usr/bin/xmgrace"
+  prog    "Grace6 preview" /usr/share/pixmaps/grace6-menu.xpm /bin/sh -c "/usr/bin/xmgrace6"
+  prog    "Octave (3.0)" - /bin/sh -c "x-terminal-emulator  -T \"Octave (3.0)\" -e sh -c \"/usr/bin/octave-3.0.1\""
+  prog    "Octave (3.2)" - /bin/sh -c "x-terminal-emulator  -T \"Octave (3.2)\" -e sh -c \"/usr/bin/octave-3.2.4\""
+  prog    "OpenOffice.org Math" /usr/share/icons/hicolor/32x32/apps/openofficeorg3-math.xpm /bin/sh -c "/usr/bin/oomath"
+  prog    "qgfe" - /bin/sh -c "/usr/bin/qgfe"
+  prog    "QtOctave" - /bin/sh -c "/usr/bin/qtoctave"
+  prog    "RKWard" - /bin/sh -c "/usr/bin/rkward"
+  prog    "RLPlot" - /bin/sh -c "rlplot"
+  prog    "Units" - /bin/sh -c "x-terminal-emulator  -T \"Units\" -e sh -c \"units\""
+  prog    "Xcalc" - /bin/sh -c "xcalc"
+}
+menu "Sciences de la terre" folder {
+  prog    "Google Earth" /usr/share/pixmaps/googleearth.xpm /bin/sh -c "/usr/bin/googleearth"
+  prog    "Gosmore" - /bin/sh -c "/usr/bin/gosmore"
+  prog    "GPSMan" - /bin/sh -c "/usr/bin/gpsman"
+  prog    "GRASS GIS" /usr/share/icons/grass64.xpm /bin/sh -c "x-terminal-emulator  -T \"GRASS GIS\" -e sh -c \"/usr/bin/grass\""
+  prog    "Mapnik Viewer" - /bin/sh -c "/usr/bin/mapnik-viewer"
+  prog    "merkaartor" /usr/share/pixmaps/merkaartor.xpm /bin/sh -c "/usr/bin/merkaartor"
+  prog    "OpenJUMP" - /bin/sh -c "/usr/bin/openjump"
+  prog    "QLandkarteGT" /usr/share/pixmaps/qlandkartegt.xpm /bin/sh -c "/usr/bin/qlandkartegt"
+  prog    "Quantum GIS" /usr/share/pixmaps/qgis-icon.xpm /bin/sh -c "/usr/bin/qgis"
+  prog    "saga" /usr/share/pixmaps/saga_icon_32.xpm /bin/sh -c "/usr/bin/saga_gui"
+  prog    "thuban" - /bin/sh -c "/usr/bin/thuban"
+  prog    "Viking" /usr/share/pixmaps/viking.xpm /bin/sh -c "/usr/bin/viking"
+  prog    "xgps" - /bin/sh -c "/usr/bin/xgps"
+}
+}
+menu "Son et musique" folder {
+  prog    "Alsamixergui" /usr/share/pixmaps/alsamixergui.xpm /bin/sh -c "/usr/bin/alsamixergui"
+  prog    "AlsaPlayer" - /bin/sh -c "/usr/bin/alsaplayer -i gtk2"
+  prog    "Audacity" /usr/share/pixmaps/audacity32.xpm /bin/sh -c "/usr/bin/audacity"
+  prog    "cplay" - /bin/sh -c "x-terminal-emulator  -T \"cplay\" -e sh -c \"/usr/bin/cplay\""
+  prog    "Echomixer" - /bin/sh -c "/usr/bin/echomixer"
+  prog    "Envy24 control" - /bin/sh -c "/usr/bin/envy24control"
+  prog    "gmix (Gnome 2.0 Mixer)" /usr/share/pixmaps/gnome-mixer.xpm /bin/sh -c "/usr/bin/gnome-volume-control"
+  prog    "GNOME ALSA Mixer" /usr/share/pixmaps/gnome-alsamixer/gnome-alsamixer-icon.xpm /bin/sh -c "/usr/bin/gnome-alsamixer"
+  prog    "grecord (GNOME 2.0 Recorder)" /usr/share/pixmaps/gnome-grecord.xpm /bin/sh -c "/usr/bin/gnome-sound-recorder"
+  prog    "HDSPConf" - /bin/sh -c "/usr/bin/hdspconf"
+  prog    "HDSPMixer" - /bin/sh -c "/usr/bin/hdspmixer"
+  prog    "Hydrogen" /usr/share/pixmaps/h2-icon.xpm /bin/sh -c "/usr/bin/hydrogen"
+  prog    "JACK Control" /usr/share/pixmaps/qjackctl.xpm /bin/sh -c "/usr/bin/qjackctl"
+  prog    "moc" - /bin/sh -c "x-terminal-emulator  -T \"moc\" -e sh -c \"/usr/bin/mocp\""
+  prog    "MusE" /usr/share/pixmaps/muse.xpm /bin/sh -c "/usr/bin/muse"
+  prog    "Rmedigicontrol" - /bin/sh -c "/usr/bin/rmedigicontrol"
+  prog    "Sound Juicer" /usr/share/pixmaps/sound-juicer.xpm /bin/sh -c "/usr/bin/sound-juicer"
+  prog    "TiMidity++" /usr/share/pixmaps/timidity.xpm /bin/sh -c "timidity -ia"
+  prog    "tuxguitar" - /bin/sh -c "/usr/bin/tuxguitar"
+  prog    "winsound" - /bin/sh -c "/usr/bin/winsound"
+  prog    "xfmedia" - /bin/sh -c "/usr/bin/xfmedia"
+}
+menu "Système" folder {
+menu "Administration" folder {
+  prog    "Aptitude (terminal)" - /bin/sh -c "x-terminal-emulator  -T \"Aptitude (terminal)\" -e sh -c \"/usr/bin/aptitude-curses\""
+  prog    "Compiz Fusion Icon" /usr/share/pixmaps/fusion-icon.xpm /bin/sh -c "/usr/bin/fusion-icon"
+  prog    "Debian Task selector" - /bin/sh -c "x-terminal-emulator  -T \"Debian Task selector\" -e sh -c \"su-to-root -c tasksel\""
+  prog    "Editres" - /bin/sh -c "editres"
+  prog    "Gnome Control Center" /usr/share/pixmaps/control-center2.xpm /bin/sh -c "/usr/bin/gnome-control-center"
+  prog    "GNOME partition editor" /usr/share/pixmaps/gparted.xpm /bin/sh -c "su-to-root -X -c /usr/sbin/gparted"
+  prog    "Network Admin" /usr/share/gnome-system-tools/pixmaps/network.xpm /bin/sh -c "/usr/bin/network-admin"
+  prog    "ODBCConfig" - /bin/sh -c "ODBCConfig"
+  prog    "odbctest" - /bin/sh -c "odbctest"
+  prog    "OpenJDK Java 6 Console" /usr/share/pixmaps/openjdk-6.xpm /bin/sh -c "/usr/lib/jvm/java-6-openjdk/bin/jconsole"
+  prog    "OpenJDK Java 6 Policy Tool" /usr/share/pixmaps/openjdk-6.xpm /bin/sh -c "/usr/lib/jvm/java-6-openjdk/bin/policytool"
+  prog    "Property Editor" - /bin/sh -c "/usr/bin/props"
+  prog    "QtConfig" - /bin/sh -c "/usr/bin/qtconfig-qt4"
+  prog    "Reportbug" - /bin/sh -c "x-terminal-emulator  -T \"Reportbug\" -e sh -c \"/usr/bin/reportbug --exit-prompt\""
+  prog    "Reportbug (GTK+)" - /bin/sh -c "/usr/bin/reportbug --exit-prompt --ui gtk2"
+  prog    "Services Admin" /usr/share/gnome-system-tools/pixmaps/services.xpm /bin/sh -c "/usr/bin/services-admin"
+  prog    "Shares Admin" /usr/share/gnome-system-tools/pixmaps/shares.xpm /bin/sh -c "/usr/bin/shares-admin"
+  prog    "Sun Java 6 Plugin Control Panel" /usr/share/pixmaps/sun-java6.xpm /bin/sh -c "/usr/lib/jvm/java-6-sun-1.6.0.22/bin/ControlPanel"
+  prog    "System Information" /usr/share/pixmaps/hardinfo.xpm /bin/sh -c "/usr/bin/hardinfo"
+  prog    "Teleport" - /bin/sh -c "/usr/bin/teleport"
+  prog    "TeXconfig" - /bin/sh -c "x-terminal-emulator  -T \"TeXconfig\" -e sh -c \"/usr/bin/texconfig\""
+  prog    "Time Admin" /usr/share/gnome-system-tools/pixmaps/time.xpm /bin/sh -c "/usr/bin/time-admin"
+  prog    "User accounts Admin" /usr/share/gnome-system-tools/pixmaps/users.xpm /bin/sh -c "/usr/bin/users-admin"
+  prog    "Xclipboard" - /bin/sh -c "xclipboard"
+  prog    "Xfontsel" - /bin/sh -c "xfontsel"
+  prog    "Xkill" - /bin/sh -c "xkill"
+  prog    "Xrefresh" - /bin/sh -c "xrefresh"
+}
+menu "Gestionnaires de paquets" folder {
+  prog    "Synaptic Package Manager" /usr/share/synaptic/pixmaps/synaptic_32x32.xpm /bin/sh -c "/usr/bin/su-to-root -X -c /usr/sbin/synaptic"
+}
+menu "Matériel" folder {
+  prog    "Xvidtune" - /bin/sh -c "xvidtune"
+}
+menu "Paramétrage de la langue" folder {
+  prog    "Belarusian environment" - /bin/sh -c "x-terminal-emulator  -T \"Belarusian environment\" -e sh -c \"/usr/bin/set-language-env -l be\""
+  prog    "Bulgarian environment" - /bin/sh -c "x-terminal-emulator  -T \"Bulgarian environment\" -e sh -c \"/usr/bin/set-language-env -l bg\""
+  prog    "Catalan environment" - /bin/sh -c "x-terminal-emulator  -T \"Catalan environment\" -e sh -c \"/usr/bin/set-language-env -l ca\""
+  prog    "Danish environment" - /bin/sh -c "x-terminal-emulator  -T \"Danish environment\" -e sh -c \"/usr/bin/set-language-env -l da\""
+  prog    "French environment" - /bin/sh -c "x-terminal-emulator  -T \"French environment\" -e sh -c \"/usr/bin/set-language-env -l fr\""
+  prog    "German environment" - /bin/sh -c "x-terminal-emulator  -T \"German environment\" -e sh -c \"/usr/bin/set-language-env -l de\""
+  prog    "Japanese environment" - /bin/sh -c "x-terminal-emulator  -T \"Japanese environment\" -e sh -c \"/usr/bin/set-language-env -l ja\""
+  prog    "Korean environment" - /bin/sh -c "x-terminal-emulator  -T \"Korean environment\" -e sh -c \"/usr/bin/set-language-env -l ko\""
+  prog    "Lithuanian environment" - /bin/sh -c "x-terminal-emulator  -T \"Lithuanian environment\" -e sh -c \"/usr/bin/set-language-env -l lt\""
+  prog    "Macedonian environment" - /bin/sh -c "x-terminal-emulator  -T \"Macedonian environment\" -e sh -c \"/usr/bin/set-language-env -l mk\""
+  prog    "Native Language Environment" - /bin/sh -c "/usr/bin/tklanguage"
+  prog    "Native Language Environment - remove" - /bin/sh -c "x-terminal-emulator  -T \"Native Language Environment - remove\" -e sh -c \"/usr/bin/set-language-env -r\""
+  prog    "Polish environment" - /bin/sh -c "x-terminal-emulator  -T \"Polish environment\" -e sh -c \"/usr/bin/set-language-env -l pl\""
+  prog    "Russian environment" - /bin/sh -c "x-terminal-emulator  -T \"Russian environment\" -e sh -c \"/usr/bin/set-language-env -l ru\""
+  prog    "Serbian environment" - /bin/sh -c "x-terminal-emulator  -T \"Serbian environment\" -e sh -c \"/usr/bin/set-language-env -l sr\""
+  prog    "Spanish environment" - /bin/sh -c "x-terminal-emulator  -T \"Spanish environment\" -e sh -c \"/usr/bin/set-language-env -l es\""
+  prog    "Thai environment" - /bin/sh -c "x-terminal-emulator  -T \"Thai environment\" -e sh -c \"/usr/bin/set-language-env -l th\""
+  prog    "Turkish environment" - /bin/sh -c "x-terminal-emulator  -T \"Turkish environment\" -e sh -c \"/usr/bin/set-language-env -l tr\""
+  prog    "Ukrainian environment" - /bin/sh -c "x-terminal-emulator  -T \"Ukrainian environment\" -e sh -c \"/usr/bin/set-language-env -l uk\""
+}
+menu "Sécurité" folder {
+  prog    "Seahorse" /usr/share/pixmaps/seahorse.xpm /bin/sh -c "/usr/bin/seahorse"
+  prog    "Sun Java 6 Policy Tool" /usr/share/pixmaps/sun-java6.xpm /bin/sh -c "/usr/lib/jvm/java-6-sun-1.6.0.22/bin/policytool"
+}
+menu "Surveillance" folder {
+  prog    "Conky" - /bin/sh -c "x-terminal-emulator  -T \"Conky\" -e sh -c \"/usr/bin/conky\""
+  prog    "GNOME Log Viewer" /usr/share/pixmaps/gnome-system-log.xpm /bin/sh -c "/usr/bin/gnome-system-log"
+  prog    "GNOME system monitor" - /bin/sh -c "/usr/bin/gnome-system-monitor"
+  prog    "htop" - /bin/sh -c "x-terminal-emulator  -T \"htop\" -e sh -c \"/usr/bin/htop\""
+  prog    "Pstree" /usr/share/pixmaps/pstree16.xpm /bin/sh -c "x-terminal-emulator  -T \"Pstree\" -e sh -c \"/usr/bin/pstree.x11\""
+  prog    "Sun Java 6 VisualVM" /usr/share/pixmaps/sun-java6.xpm /bin/sh -c "/usr/lib/jvm/java-6-sun-1.6.0.22/bin/jvisualvm"
+  prog    "Top" - /bin/sh -c "x-terminal-emulator  -T \"Top\" -e sh -c \"/usr/bin/top\""
+  prog    "Xconsole" - /bin/sh -c "xconsole -file /dev/xconsole"
+  prog    "Xev" - /bin/sh -c "x-terminal-emulator -e xev"
+  prog    "Xload" - /bin/sh -c "xload"
+}
+}
+menu "Vidéo" folder {
+  prog    "luvcview" - /bin/sh -c "/usr/bin/luvcview"
+  prog    "Totem" /usr/share/pixmaps/totem.xpm /bin/sh -c "/usr/bin/totem"
+  prog    "VLC media player" /usr/share/icons/hicolor/32x32/apps/vlc.xpm /bin/sh -c "/usr/bin/qvlc"
+}
+}
+menu "Écran" folder {
+menu "Veille" folder {
+  prog    "Activate ScreenSaver (Next)" - /bin/sh -c "/usr/bin/xscreensaver-command -next"
+  prog    "Activate ScreenSaver (Previous)" - /bin/sh -c "/usr/bin/xscreensaver-command -prev"
+  prog    "Activate ScreenSaver (Random)" - /bin/sh -c "/usr/bin/xscreensaver-command -activate"
+  prog    "Demo Screen Hacks" - /bin/sh -c "/usr/bin/xscreensaver-command -demo"
+  prog    "Disable XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver-command -exit"
+  prog    "Enable XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver"
+  prog    "Reinitialize XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver-command -restart"
+  prog    "ScreenSaver Preferences" - /bin/sh -c "/usr/bin/xscreensaver-command -prefs"
+}
+menu "Verrouillage" folder {
+  prog    "Lock Screen (XScreenSaver)" - /bin/sh -c "/usr/bin/xscreensaver-command -lock"
+}
+}
+menu "gCAD3D" folder {
+  prog    "gCAD3D" /home/pierre/gCAD3D/gCAD3D.xpm /bin/sh -c "/home/pierre/gCAD3D/gCAD3D"
+  prog    "gCAD3D_unInstall" /home/pierre/gCAD3D/unInstall.xpm /bin/sh -c "/home/pierre/gCAD3D/gCAD3D_unInstall"
+}
+menu "Gestionnaires de fenêtres" folder {
+  restart "IceWM" /usr/share/icewm/icons/icewm_16x16.xpm /bin/sh -c "/usr/bin/icewm"
+  restart "Openbox" /usr/share/pixmaps/openbox.xpm /bin/sh -c "/usr/bin/openbox"
+  restart "Twm" - /bin/sh -c "twm"
+}
+menu "Jeux" folder {
+menu "Casse-tête" folder {
+  prog    "tictactoe" - /bin/sh -c "/usr/games/tictactoe"
+}
+menu "Chute de blocs" folder {
+  prog    "Tetris game for GPE" /usr/share/pixmaps/gpe-tetris.xpm /bin/sh -c "/usr/games/gpe-tetris"
+}
+menu "Jouets" folder {
+  prog    "Oclock" - /bin/sh -c "oclock"
+  prog    "Xclock (analog)" - /bin/sh -c "xclock -analog"
+  prog    "Xclock (digital)" - /bin/sh -c "xclock -digital -update 1"
+  prog    "Xeyes" - /bin/sh -c "xeyes"
+  prog    "Xlogo" - /bin/sh -c "xlogo"
+}
+menu "Stratégie" folder {
+  prog    "Freeciv client (GTK version)" civclient.xpm /bin/sh -c "/usr/games/freeciv-gtk2"
+  prog    "Freeciv server" civserver.xpm /bin/sh -c "x-terminal-emulator  -T \"Freeciv server\" -e sh -c \"/usr/games/freeciv-server\""
+}
+}
+menu "Sciences" folder {
+menu "Geography" folder {
+  prog    "Earth3D" /usr/share/pixmaps/earth.xpm /bin/sh -c "/usr/bin/earth3d"
+  prog    "Gosmore" - /bin/sh -c "/usr/bin/gosmore"
+  prog    "GPSMan" - /bin/sh -c "/usr/bin/gpsman"
+  prog    "Grace6 preview" /usr/share/pixmaps/grace6-menu.xpm /bin/sh -c "/usr/bin/xmgrace6"
+  prog    "GRASS GIS" /usr/share/icons/grass64.xpm /bin/sh -c "x-terminal-emulator  -T \"GRASS GIS\" -e sh -c \"/usr/bin/grass\""
+  prog    "merkaartor" /usr/share/pixmaps/merkaartor.xpm /bin/sh -c "/usr/bin/merkaartor"
+  prog    "OpenJUMP" - /bin/sh -c "/usr/bin/openjump"
+  prog    "pgAdmin III" /usr/share/pixmaps/pgadmin3.xpm /bin/sh -c "/usr/bin/pgadmin3"
+  prog    "Quantum GIS" /usr/share/pixmaps/qgis-icon.xpm /bin/sh -c "/usr/bin/qgis"
+  prog    "thuban" - /bin/sh -c "/usr/bin/thuban"
+  prog    "Viking" /usr/share/pixmaps/viking.xpm /bin/sh -c "/usr/bin/viking"
+  prog    "xgps" - /bin/sh -c "/usr/bin/xgps"
+}
+}

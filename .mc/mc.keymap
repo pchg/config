@@ -1,0 +1,5 @@
+[panel]
+PanelSortOrderByName  = ctrl-f3
+PanelSortOrderByExt   = ctrl-f4
+PanelSortOrderBySize  = ctrl-f6
+PanelSortOrderByMTime = ctrl-f5

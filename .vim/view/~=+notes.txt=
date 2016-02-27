@@ -1,0 +1,303 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal foldcolumn=5
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=nroql2
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal infercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=8
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'off'
+setlocal syntax=off
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+1,5749fold
+5750,5753fold
+5754,6437fold
+6521,6536fold
+6538,6580fold
+6582,6598fold
+6600,6625fold
+6438,6626fold
+6627,7381fold
+7382,7392fold
+7393,7410fold
+7436,7483fold
+7411,7496fold
+7497,7660fold
+7661,7795fold
+7796,7828fold
+7829,7859fold
+7860,8176fold
+8177,8223fold
+8224,8291fold
+8292,8512fold
+8513,8597fold
+8598,8646fold
+8647,8797fold
+8799,8799fold
+8798,8814fold
+8815,9236fold
+9237,9274fold
+9275,9305fold
+9306,9359fold
+9360,9392fold
+9393,9503fold
+9504,9596fold
+9597,9830fold
+9832,9924fold
+9934,9973fold
+9925,9974fold
+9975,10194fold
+10195,10272fold
+10273,10440fold
+10441,10590fold
+10591,10595fold
+10596,10680fold
+10681,10961fold
+10962,11051fold
+11052,11065fold
+11066,11071fold
+11072,11114fold
+11115,11118fold
+11119,11415fold
+11416,11581fold
+11582,12185fold
+12186,12194fold
+12195,12755fold
+12756,12758fold
+12759,13351fold
+13352,13452fold
+13453,13457fold
+13459,13541fold
+13458,13579fold
+13580,13595fold
+13596,13608fold
+13609,13667fold
+13668,13843fold
+13844,14192fold
+14193,14204fold
+14205,14234fold
+14235,14254fold
+14255,14297fold
+14298,14392fold
+14393,14398fold
+14399,14435fold
+14436,14691fold
+14692,14696fold
+14758,15854fold
+14697,15855fold
+15856,15859fold
+15860,15869fold
+15870,15896fold
+15897,15927fold
+15928,15935fold
+15936,15992fold
+15993,16100fold
+16101,16105fold
+16106,16129fold
+16130,16281fold
+16283,16345fold
+16346,16377fold
+16378,16566fold
+16567,16629fold
+16630,16635fold
+16638,16714fold
+16715,17371fold
+17372,17396fold
+17397,17403fold
+17404,17440fold
+17441,17507fold
+17508,17514fold
+17515,17868fold
+17869,17931fold
+17932,19252fold
+19253,19281fold
+19282,24486fold
+24487,24496fold
+24497,24534fold
+24535,24561fold
+24562,24585fold
+24586,24781fold
+24782,24785fold
+24786,24808fold
+24809,24816fold
+24817,24823fold
+24824,24863fold
+24864,24874fold
+24875,24893fold
+24894,24970fold
+24971,24980fold
+24982,24986fold
+24987,24992fold
+24993,25206fold
+25208,25211fold
+25212,25228fold
+25320,25328fold
+25415,25422fold
+25557,29665fold
+29666,29669fold
+25229,29741fold
+29896,30868fold
+31076,31101fold
+31195,31198fold
+30871,31260fold
+29834,31268fold
+31400,31403fold
+31404,31986fold
+31989,32654fold
+29758,32662fold
+29744,32662fold
+1
+normal zo
+5754
+normal zo
+6627
+normal zo
+7497
+normal zo
+7860
+normal zo
+8224
+normal zo
+8513
+normal zo
+9504
+normal zo
+11052
+normal zo
+11119
+normal zo
+11582
+normal zo
+12195
+normal zo
+12759
+normal zo
+13352
+normal zo
+13458
+normal zo
+13458
+normal zo
+14436
+normal zo
+15870
+normal zo
+16130
+normal zo
+17515
+normal zo
+17932
+normal zo
+19282
+normal zo
+25229
+normal zo
+25557
+normal zo
+25229
+normal zo
+29744
+normal zo
+29758
+normal zo
+31989
+normal zc
+29758
+normal zo
+29744
+normal zo
+let s:l = 11353 - ((4 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+11353
+normal! 0102l
+lcd ~/
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

@@ -1,0 +1,1672 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal foldcolumn=5
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=marker
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal infercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=8
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+6
+normal zc
+37
+normal zo
+37
+normal zc
+4765
+normal zo
+4765
+normal zc
+5272
+normal zc
+5334
+normal zc
+5351
+normal zc
+5747
+normal zo
+5750
+normal zo
+6412
+normal zo
+6435
+normal zo
+6412
+normal zo
+7379
+normal zo
+7408
+normal zo
+7658
+normal zo
+7658
+normal zo
+7826
+normal zo
+8174
+normal zo
+8221
+normal zo
+8289
+normal zo
+8595
+normal zo
+8795
+normal zo
+8920
+normal zo
+9234
+normal zo
+9303
+normal zo
+9390
+normal zo
+9594
+normal zo
+9922
+normal zo
+10192
+normal zo
+10438
+normal zo
+10593
+normal zo
+10959
+normal zo
+11063
+normal zo
+11112
+normal zo
+11183
+normal zo
+11347
+normal zo
+11371
+normal zo
+11646
+normal zo
+11724
+normal zo
+11963
+normal zo
+12141
+normal zo
+12229
+normal zo
+12516
+normal zo
+12725
+normal zo
+13321
+normal zo
+13427
+normal zo
+13565
+normal zo
+13813
+normal zo
+14174
+normal zo
+14224
+normal zo
+14405
+normal zo
+14666
+normal zo
+15905
+normal zo
+16100
+normal zo
+16138
+normal zo
+16207
+normal zo
+16252
+normal zo
+16317
+normal zo
+16347
+normal zo
+16539
+normal zo
+16599
+normal zo
+16608
+normal zo
+16636
+normal zo
+16599
+normal zo
+17344
+normal zo
+17484
+normal zo
+17901
+normal zo
+19222
+normal zo
+19251
+normal zo
+20521
+normal zo
+20818
+normal zo
+20946
+normal zo
+23572
+normal zo
+23720
+normal zo
+19251
+normal zo
+24555
+normal zo
+24833
+normal zo
+24863
+normal zo
+24951
+normal zo
+24962
+normal zo
+25198
+normal zo
+25526
+normal zo
+25198
+normal zo
+29713
+normal zo
+29727
+normal zo
+29803
+normal zo
+29865
+normal zo
+30840
+normal zo
+29803
+normal zo
+31373
+normal zo
+31958
+normal zo
+31961
+normal zo
+32562
+normal zo
+31958
+normal zo
+29727
+normal zo
+29713
+normal zo
+24555
+normal zo
+7658
+normal zo
+32708
+normal zo
+32708
+normal zo
+32708
+normal zo
+32708
+normal zo
+32708
+normal zo
+32709
+normal zo
+32758
+normal zo
+32709
+normal zo
+32708
+normal zo
+32841
+normal zo
+32708
+normal zo
+32708
+normal zo
+32708
+normal zo
+32708
+normal zo
+5750
+normal zc
+6412
+normal zo
+6435
+normal zo
+6412
+normal zc
+6628
+normal zo
+7378
+normal zo
+7407
+normal zo
+7657
+normal zo
+7657
+normal zo
+7825
+normal zo
+8173
+normal zo
+8220
+normal zo
+8288
+normal zo
+8594
+normal zo
+8794
+normal zo
+8919
+normal zo
+9233
+normal zo
+9302
+normal zo
+9389
+normal zo
+9593
+normal zo
+9921
+normal zo
+10191
+normal zo
+10437
+normal zo
+10592
+normal zo
+10958
+normal zo
+11062
+normal zo
+11111
+normal zo
+11182
+normal zo
+11346
+normal zo
+11370
+normal zo
+11645
+normal zo
+11723
+normal zo
+11962
+normal zo
+12140
+normal zo
+12228
+normal zo
+12515
+normal zo
+12724
+normal zo
+13320
+normal zo
+13426
+normal zo
+13564
+normal zo
+13812
+normal zo
+14173
+normal zo
+14223
+normal zo
+14404
+normal zo
+14665
+normal zo
+15904
+normal zo
+16099
+normal zo
+16137
+normal zo
+16206
+normal zo
+16251
+normal zo
+16316
+normal zo
+16346
+normal zo
+16538
+normal zo
+16598
+normal zo
+16607
+normal zo
+16635
+normal zo
+16598
+normal zo
+17343
+normal zo
+17483
+normal zo
+17900
+normal zo
+19221
+normal zo
+19250
+normal zo
+20520
+normal zo
+20817
+normal zo
+20945
+normal zo
+23571
+normal zo
+23719
+normal zo
+19250
+normal zo
+24554
+normal zo
+24832
+normal zo
+24862
+normal zo
+24950
+normal zo
+24961
+normal zo
+25197
+normal zo
+25525
+normal zo
+25197
+normal zo
+29712
+normal zo
+29726
+normal zo
+29802
+normal zo
+29864
+normal zo
+30839
+normal zo
+29802
+normal zo
+31372
+normal zo
+31957
+normal zo
+31960
+normal zo
+32561
+normal zo
+31957
+normal zo
+29726
+normal zo
+29712
+normal zo
+24554
+normal zo
+7657
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32708
+normal zo
+32757
+normal zo
+32708
+normal zo
+32707
+normal zo
+32840
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+6628
+normal zc
+7378
+normal zc
+7389
+normal zo
+7407
+normal zo
+7657
+normal zo
+7657
+normal zo
+7825
+normal zo
+8173
+normal zo
+8220
+normal zo
+8288
+normal zo
+8594
+normal zo
+8794
+normal zo
+8919
+normal zo
+9233
+normal zo
+9302
+normal zo
+9389
+normal zo
+9593
+normal zo
+9921
+normal zo
+10191
+normal zo
+10437
+normal zo
+10592
+normal zo
+10958
+normal zo
+11062
+normal zo
+11111
+normal zo
+11182
+normal zo
+11346
+normal zo
+11370
+normal zo
+11645
+normal zo
+11723
+normal zo
+11962
+normal zo
+12140
+normal zo
+12228
+normal zo
+12515
+normal zo
+12724
+normal zo
+13320
+normal zo
+13426
+normal zo
+13564
+normal zo
+13812
+normal zo
+14173
+normal zo
+14223
+normal zo
+14404
+normal zo
+14665
+normal zo
+15904
+normal zo
+16099
+normal zo
+16137
+normal zo
+16206
+normal zo
+16251
+normal zo
+16316
+normal zo
+16346
+normal zo
+16538
+normal zo
+16598
+normal zo
+16607
+normal zo
+16635
+normal zo
+16598
+normal zo
+17343
+normal zo
+17483
+normal zo
+17900
+normal zo
+19221
+normal zo
+19250
+normal zo
+20520
+normal zo
+20817
+normal zo
+20945
+normal zo
+23571
+normal zo
+23719
+normal zo
+19250
+normal zo
+24554
+normal zo
+24832
+normal zo
+24862
+normal zo
+24950
+normal zo
+24961
+normal zo
+25197
+normal zo
+25525
+normal zo
+25197
+normal zo
+29712
+normal zo
+29726
+normal zo
+29802
+normal zo
+29864
+normal zo
+30839
+normal zo
+29802
+normal zo
+31372
+normal zo
+31957
+normal zo
+31960
+normal zo
+32561
+normal zo
+31957
+normal zo
+29726
+normal zo
+29712
+normal zo
+24554
+normal zo
+7657
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32708
+normal zo
+32757
+normal zo
+32708
+normal zo
+32707
+normal zo
+32840
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+32707
+normal zo
+7389
+normal zc
+7407
+normal zo
+7492
+normal zo
+7657
+normal zo
+7792
+normal zo
+7825
+normal zo
+7856
+normal zo
+8173
+normal zo
+8220
+normal zo
+8288
+normal zo
+8509
+normal zo
+8594
+normal zo
+8643
+normal zo
+8795
+normal zo
+8812
+normal zo
+8919
+normal zo
+8812
+normal zo
+9233
+normal zo
+9271
+normal zo
+9302
+normal zo
+9356
+normal zo
+9391
+normal zo
+9502
+normal zo
+9596
+normal zo
+9830
+normal zo
+9924
+normal zo
+9974
+normal zo
+10195
+normal zo
+10273
+normal zo
+10443
+normal zo
+10593
+normal zo
+10599
+normal zo
+10684
+normal zo
+10965
+normal zo
+11055
+normal zo
+11070
+normal zo
+11076
+normal zo
+11119
+normal zo
+11123
+normal zo
+11190
+normal zo
+11354
+normal zo
+11378
+normal zo
+11653
+normal zo
+11731
+normal zo
+11970
+normal zo
+12148
+normal zo
+12236
+normal zo
+12523
+normal zo
+11123
+normal zo
+12732
+normal zo
+12735
+normal zo
+13329
+normal zo
+13430
+normal zo
+13435
+normal zo
+13557
+normal zo
+13574
+normal zo
+13587
+normal zo
+13823
+normal zo
+14172
+normal zo
+14184
+normal zo
+14214
+normal zo
+14235
+normal zo
+14278
+normal zo
+14417
+normal zo
+14673
+normal zo
+14679
+normal zo
+15838
+normal zo
+15919
+normal zo
+15976
+normal zo
+16114
+normal zo
+16152
+normal zo
+16221
+normal zo
+15976
+normal zo
+16267
+normal zo
+16332
+normal zo
+16362
+normal zo
+16551
+normal zo
+16554
+normal zo
+16551
+normal zo
+16614
+normal zo
+16623
+normal zo
+16651
+normal zo
+16614
+normal zo
+17356
+normal zo
+17360
+normal zo
+17356
+normal zo
+17500
+normal zo
+17853
+normal zo
+17918
+normal zo
+19239
+normal zo
+19268
+normal zo
+20538
+normal zo
+20835
+normal zo
+20963
+normal zo
+23589
+normal zo
+23737
+normal zo
+19268
+normal zo
+24473
+normal zo
+24573
+normal zo
+24796
+normal zo
+24810
+normal zo
+24851
+normal zo
+24862
+normal zo
+24881
+normal zo
+24958
+normal zo
+24970
+normal zo
+24975
+normal zo
+24982
+normal zo
+25196
+normal zo
+25219
+normal zo
+25310
+normal zo
+25547
+normal zo
+29656
+normal zo
+25219
+normal zo
+29733
+normal zo
+29736
+normal zo
+29750
+normal zo
+29826
+normal zo
+29888
+normal zo
+30863
+normal zo
+31067
+normal zo
+31185
+normal zo
+30863
+normal zo
+29826
+normal zo
+29750
+normal zo
+31394
+normal zo
+31398
+normal zo
+31983
+normal zo
+31986
+normal zo
+32110
+normal zo
+31986
+normal zo
+32217
+normal zo
+32427
+normal zo
+32586
+normal zo
+32732
+normal zo
+32732
+normal zo
+32732
+normal zo
+32732
+normal zo
+32732
+normal zo
+32733
+normal zo
+32782
+normal zo
+32733
+normal zo
+32732
+normal zo
+32865
+normal zo
+32732
+normal zo
+32732
+normal zo
+32732
+normal zo
+32732
+normal zo
+32427
+normal zo
+31983
+normal zo
+29736
+normal zo
+7407
+normal zo
+7492
+normal zc
+7657
+normal zo
+7792
+normal zc
+7825
+normal zo
+7856
+normal zc
+8173
+normal zo
+8220
+normal zc
+8288
+normal zo
+8509
+normal zc
+8594
+normal zo
+8643
+normal zc
+8795
+normal zo
+8812
+normal zo
+8919
+normal zo
+8812
+normal zc
+9233
+normal zo
+9271
+normal zc
+9302
+normal zo
+9356
+normal zc
+9391
+normal zo
+9502
+normal zc
+9596
+normal zo
+9830
+normal zc
+9924
+normal zo
+9974
+normal zc
+10195
+normal zo
+10273
+normal zc
+10443
+normal zo
+10593
+normal zc
+10599
+normal zo
+10684
+normal zc
+10965
+normal zo
+11055
+normal zc
+11070
+normal zo
+11076
+normal zc
+11119
+normal zo
+11123
+normal zo
+11190
+normal zo
+11354
+normal zo
+11378
+normal zo
+11653
+normal zo
+11731
+normal zo
+11970
+normal zo
+12148
+normal zo
+12236
+normal zo
+12523
+normal zo
+11123
+normal zc
+12732
+normal zo
+12735
+normal zc
+13329
+normal zo
+13430
+normal zc
+13435
+normal zo
+13557
+normal zc
+13574
+normal zo
+13587
+normal zc
+13823
+normal zo
+14172
+normal zc
+14184
+normal zo
+14214
+normal zc
+14235
+normal zo
+14278
+normal zc
+14417
+normal zo
+14673
+normal zc
+14679
+normal zo
+15838
+normal zc
+15919
+normal zo
+15976
+normal zo
+16114
+normal zo
+16152
+normal zo
+16221
+normal zo
+15976
+normal zc
+16267
+normal zo
+16332
+normal zc
+16362
+normal zo
+16551
+normal zo
+16554
+normal zo
+16551
+normal zc
+16614
+normal zo
+16623
+normal zo
+16651
+normal zo
+16614
+normal zo
+17356
+normal zo
+17360
+normal zo
+17356
+normal zc
+17500
+normal zo
+17853
+normal zc
+17918
+normal zo
+19239
+normal zc
+19268
+normal zo
+20538
+normal zo
+20835
+normal zo
+20963
+normal zo
+23589
+normal zo
+23737
+normal zo
+19268
+normal zo
+24473
+normal zc
+24573
+normal zo
+24796
+normal zc
+24804
+normal zo
+24812
+normal zo
+24853
+normal zo
+24864
+normal zo
+24883
+normal zo
+24960
+normal zo
+24972
+normal zo
+24977
+normal zo
+24984
+normal zo
+25198
+normal zo
+25221
+normal zo
+25312
+normal zo
+25549
+normal zo
+29658
+normal zo
+25221
+normal zo
+29735
+normal zo
+29738
+normal zo
+29752
+normal zo
+29828
+normal zo
+29890
+normal zo
+30865
+normal zo
+31069
+normal zo
+31187
+normal zo
+30865
+normal zo
+29828
+normal zo
+29752
+normal zo
+31396
+normal zo
+31400
+normal zo
+31985
+normal zo
+31988
+normal zo
+32112
+normal zo
+31988
+normal zo
+32219
+normal zo
+32429
+normal zo
+32588
+normal zo
+32734
+normal zo
+32734
+normal zo
+32734
+normal zo
+32734
+normal zo
+32734
+normal zo
+32735
+normal zo
+32784
+normal zo
+32735
+normal zo
+32734
+normal zo
+32867
+normal zo
+32734
+normal zo
+32734
+normal zo
+32734
+normal zo
+32734
+normal zo
+32429
+normal zo
+31985
+normal zo
+29738
+normal zo
+24804
+normal zo
+24812
+normal zc
+24853
+normal zo
+24864
+normal zc
+24883
+normal zo
+24960
+normal zc
+24972
+normal zo
+24977
+normal zc
+24984
+normal zo
+25198
+normal zc
+25221
+normal zo
+25312
+normal zo
+25549
+normal zo
+29658
+normal zo
+25221
+normal zo
+29735
+normal zc
+29738
+normal zo
+29752
+normal zo
+29828
+normal zo
+29890
+normal zc
+30860
+normal zo
+31064
+normal zc
+31182
+normal zc
+30860
+normal zc
+29828
+normal zo
+29752
+normal zo
+31391
+normal zc
+31395
+normal zo
+31666
+normal zc
+31707
+normal zo
+31948
+normal zc
+31961
+normal zc
+31980
+normal zo
+31983
+normal zo
+32107
+normal zo
+31983
+normal zo
+32214
+normal zo
+32424
+normal zo
+32583
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32424
+normal zo
+31980
+normal zo
+31395
+normal zo
+31980
+normal zo
+31983
+normal zo
+32107
+normal zc
+31983
+normal zc
+32214
+normal zc
+32424
+normal zo
+32464
+normal zo
+32583
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32464
+normal zc
+32493
+normal zo
+32583
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32493
+normal zc
+32525
+normal zo
+32583
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32525
+normal zc
+32556
+normal zo
+32583
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32556
+normal zc
+32583
+normal zc
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32730
+normal zo
+32779
+normal zo
+32730
+normal zo
+32729
+normal zo
+32862
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32729
+normal zo
+32424
+normal zc
+32730
+normal zo
+32779
+normal zo
+32862
+normal zo
+32779
+normal zc
+32861
+normal zo
+32730
+normal zo
+32859
+normal zo
+31980
+normal zo
+32837
+normal zo
+32859
+normal zo
+32837
+normal zc
+32859
+normal zo
+32917
+normal zo
+32926
+normal zo
+32917
+normal zo
+29738
+normal zo
+let s:l = 33020 - ((6 * winheight(0) + 8) / 16)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+33020
+normal! 0285l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

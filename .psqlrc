@@ -1,0 +1,16 @@
+\set PAGER 'less -nS'
+
+--mon prompt d'avant:
+--\set PROMPT1 '--%M %/%R%# \n'
+
+--mon prompt en suivant les instruction de la formation DBA1 de Dalibo:
+\set PROMPT1 '%n@%/%R%# '
+
+SET search_path TO pierre, public;
+--\timing
+\set ON_ERROR_ROLLBACK 'on'
+\pset fieldsep ','
+
+--le mode étendu automatique, c'est trocoule:
+\x auto
+

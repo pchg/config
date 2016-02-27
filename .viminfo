@@ -1,0 +1,4004 @@
+# Ce fichier viminfo a été généré par Vim 7.4.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Dernier motif de recherche  :
+~MSle0~/s pour les conn
+
+# Dernier motif de recherche Substitue  :
+~MSle0&fichier
+
+# Dernières chaînes de substitution :
+$file_in
+
+# Historique ligne de commande (chronologie décroissante) :
+:q
+:%s/fichier/file_in/gc
+:qa!
+:q!
+:diffupdate
+:set foldmarker=[,]
+:set wrap
+:qa
+:n
+://www.diamocogroup.eu/fr/mentions-legales
+:w
+:set foldmarker={{{,}}}
+:set nowrap
+:set foldmarker=[[[MISSION,MISSION]]]
+:r !echo "_____________________________________" && date +\%d_\%m_\%Y__\%T | sed -e 's/\:/_/g' && acpi -i
+:set 
+:set syntax=sql
+:set syntax=rebol
+:'<,'>qa!
+:r !ls -trlha | tail -5
+:set syntax=none
+:'<,'>q
+:%s/_____________________________________GEOLLLIBRE/__GEOLLLIBRE/gc
+:%s/_____________________________________GEOLVIN/__GEOLVIN/gc
+:%s/_______________ENCOURS_______________GEOLVIN/_______________ENCOURS_______________GEOLVIN
+:%s/\\040/ /gc
+:nnoremap <4-LeftMouse> vip
+:enew
+:r tmp/beuffeur
+:e a
+:r b
+:w b
+:w a
+:e rien
+:w riendutoutdutout
+:w rien
+:r sdff
+:%s/dalibo_formations/dalibo\/formations/gc
+:r ffe
+:r uui
+:w rien_code_pour_seb
+:e
+:w aarchives_notes_2000_2xxx_perso_et_prof.txt2
+:set syntax
+:w aarchives_notes_2000_2xxx_perso_et_prof.txt1
+:w jjkk
+:e!
+:w rienrecup
+:r
+::qa!
+:w qsa
+:%s/ (/\t/gc
+:%s/_/\//gc
+:%s/"//gc
+:w qqsd
+:w qqs
+:%s/================================================================================/--================================================================================/gc
+:%s/================================================================================//gc
+:w! tet
+:w tet
+:e geolllibre/gll_routines.r
+:q*
+:w jkj
+:w ghg
+:%s/occurrences/occurrences_recup_depuis_dump/gc
+:r oo
+:later 1m
+:later 10m
+:later 20m
+:earlier 20m
+:earlier 5
+:undolist
+:earlier 3
+:earlier 1
+:later 1
+:earlier 1m
+:earlier 30m
+:s
+:set nowrapscan
+:set wrapscan
+:r /var/www/html/cgi-bin/template_footer.html
+:r /var/www/html/cgi-bin/template_header.html
+:r /var/www/html/cgi-bin/test03_script_rebol.cgi
+:w template_footer.html
+:w! template_header.html
+:w template_header.html
+:r zz
+://bepo.fr/wiki/Trucs_et_astuces#Je_voudrais_avoir_les_chiffres_en_acc.C3.A8s_direct
+:set cul
+:set lul
+:r tro
+: r
+:r tres
+:w 2015_06_16_bloomberg.com_news_articles_2015-06-15_mining-tycoon-timis-faces-investor-anger-after-company-implodes.txt
+:echo undotree()
+:q!!
+:%s/\\^A/ /gc
+:w nnotes.txt_____
+:r nnotes.txt___
+:set syntax=reb	
+://www.okmmetaldetectors.com/
+:%s/> //gc
+:%s/> >//gc
+:%s/> > //gc
+:%s/> > > //gc
+:%s/> > > > //gc
+:w kll
+://matinlibre.com/index.php/societe/item/1791-sit-in-hier-a-loffice-beninois-de-recherche-geologique-et-miniere
+:w!
+:w klk
+:undo
+:undo 2
+:ca
+:r nnotes.txt_eeepc
+:r trer
+://france3-regions.francetvinfo.fr/aquitaine/emissions/jt-local-1920-pays-basque
+:w trer
+::w
+:sq!
+:r er
+:r qet
+: il s'agit là d'un paramètre important dans un gisement. Dans le cas présent, le pendage du corps minéralisé et sa puissance font que le taux sera assez élevé. 
+:r tqe
+:e soutra_mining/rapport_brouillon.txt
+::
+:r tr
+:set nocuc
+:set nocul
+:set nolul
+:%s/\\uf0a7/*/gc
+:%s/\\u2013/-/gc
+:set cuc
+:%s/\\u2019/'/gc
+:r u
+:r nh
+:r rerrs
+:r cita
+:w ~usr_lib_cgi-bin_test02_script_rebol.cgi
+:w ~/usr/lib/cgi-bin/test02_script_rebol.cgi
+:set nofoldenable
+:wa
+:e aarchives_notes_2000_2xxx_perso_et_prof.txt
+:r kkj
+:set tabstop=8
+:set nocu
+: 
+:r toto
+:r dev/QCV/gra
+:%s/\\u2019//gc
+:r /home/pierre/QCV/tablesQCV.sql
+:r dev/QCV/creation.log
+:w camera_evopro_edit_parameters.r
+:r qq
+:r /tmp/Setting.txt
+:set foldmarker=[[[,]]]
+:W
+:.,.+3r
+:w zzzzzzzzzzzzaqqqqqqqqqqqqqqqqqqssssssssssssssss
+:set cul <cr>:set cuc
+:set cul :set cuc
+:set cul set cuc
+:set nocursorline
+:w qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqz
+:%s/\./,/gc
+:%s/./,/gc
+:%s/,/./gc
+:untab
+:tabNext
+:%s/écrit/affiche/gc
+:%s/{{{/{ { {/gc
+:ret
+:set expandtab
+:set foldclose=all
+:set foldclose=none
+:set foldmethod
+:%ret
+:%retab
+:retab
+:tab
+:set foldmarker=--{{{,--}}}
+:%s/\040/ /gc
+:%s
+:w sdfsfd
+:Q!
+:w rretr
+:w kkj
+:%s/self/var/gc
+:tabclose
+:tabs
+:s%/\t/    /gc
+:s%/\t\    /gc
+:e .vimrc
+://www.gestes-environnementaux.com/invasion-fourmi/
+:%s/font face=3D"arial" size=3D"3" color=3D"#521906"//gc
+:set foldcolumn=0
+:diffget
+:w qqqqqqqqqqqqqqqq
+:%s/\t//gc
+:%s/\tinstall//gc
+:w sqsqsq
+:w sqsq
+:set nocursorcolumn
+:w tttttttt
+:map ; <Home>i;<Esc><Down>
+:set syntax=red
+:map ; i;<Esc><Up>
+:map ; o;<Esc>
+:map <F3>  o#include
+:w kke
+:Q
+:sort
+:q!a
+:e README.md
+:d
+:%s/ / /gc
+:w kkkkkkkkkkkkkkk
+:set wr
+:r qsdf
+:set syntax=C
+:r apt-listchanges-tmpP8veqZ
+:r cit
+:w zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+:s/|/,/g
+:s/|/,/gc
+:s/  / /g
+:s/  / /gc
+:s/   / /gc
+:s/\|/,/gc
+
+# Historique chaîne de recherche (chronologie décroissante) :
+?/s pour les conn
+?/s pour la 
+?/fold
+?/tmp_im
+?/qsflkj
+? \<echo\>
+? fichier
+? \<fichier\>
+?/x_vga
+?/x_full
+?/x_fu
+?/postgre
+?/lot of the code is compatibl
+?/chev
+?/exec
+?/tail
+?/path
+?/PATH.*HO
+?/PATH
+?/fran
+?/angla
+?/famil
+?/convain
+?/df
+?/free\.fr
+? \<_____________________________________\>
+?/\<49160204100015
+? \<49160204100015\.\>
+??siège social
+? \<__________\*\*\*_JEANSUILA_\*\*\*__________\>
+?/zip 
+??zip c
+? \<_______________ENCOURS_______________DALIBO\>
+? \<_______________ENCOURS_______________AURAMINES\>
+??montpar
+?/sapo
+? \<Gilles_Lerouge\>
+??khartou
+?/AFX03134
+?/AFX3134
+??adi
+?/make
+?/pouet
+??CREATE SERVER file FOREIGN DATA WRAPPER
+?/echo "pou
+??FROM pg_statio_user_tables
+??head -3 tmp_xtract_structural_measurements_samples_sup_1gt
+? \<make\>
+??montparna
+??pg_upgra
+??m.*tail 
+??max
+?/recovery
+? \<archive_command\>
+?/backup
+?/backups
+?/clust
+? \<tar\>
+? \<generate_series\>
+??psql -.*"
+? \<call\>
+?/call
+??rebol
+??psql
+??apt inst
+??genera
+??-at
+??sixiè
+?/mémoire parta
+?/srcpost
+? \<cp\>
+? \<9334\>
+?/yank
+? \<Listez\>
+? \<srcpostgres\>
+?/pg_
+?/pg_ls
+? \<2016_01_17__18_59_07\>
+?/rebol
+?/free
+?/scre
+?/xrandr
+? \<00000001000000000000005B\>
+? \<000000010000000000000097\>
+?/preferenc
+?/543
+?/orac
+??2015_01_15__13_06_48
+?/aubié
+?/roubich
+??armelle
+??\| pg_rest
+??| pg_rest
+? \<t\>
+? \<terminator\>
+??krusader
+?/statist
+? \<statistiques\>
+? \<sql_string\>
+? \<2016_01_18__23_13_44\>
+? \<2016_01_18__23_11_41\>
+? \<2016_01_18__22_50_11\>
+? \<2015_07_30__21_52_58\>
+? \<_______________ENCOURS_______________tuto_nick_antonaccio_business_programming\>
+? \<2015_10_05__17_36_40\>
+? \<2016_01_17__20_48_35\>
+??\<_______________ENCOURS_______________tuto_nick_antonaccio_business_programming\>
+??dalibo
+? \<LDD\>
+?/dalibo
+? \<_______________ENCOURS_______________VIECOURANTE\>
+? \<18_01_2016__19_07_57\>
+? \<test02_script_rebol\.cgi\>
+?/cgi
+? \<réajustements\>
+?/monol
+?/analy
+? \<2015_09_29__21_19_40\>
+? \<_______________ENCOURS_______________BURKINA_SOUTRA_MINING\>
+? \<2015_11_08__23_37_28\>
+?/moh.*oua
+??mahame.*oua
+? \<teamviewer_quick_support\.sh\>
+? \<2016_01_15__23_04_45\>
+? \<base_cave\.dump\>
+? \<parse\>
+??delete from .*stock
+? \<\~postgres\>
+?/pg_restor
+?/| pg_rest
+?/| pg_rst
+? \<custom\>
+??base_cave.dum
+?/\t
+??cat.*eof
+? \<cat\>
+??cat.
+??foreach t table
+?/pass
+? \<2016_01_14__12_02_45\>
+? \<2016_01_14__22_07_43\>
+?/mac
+?/macboo
+??liq
+??sudmin
+? \<arrosé\>
+?/run_qu
+?/postgres
+??apt
+??febv
+?/thomas
+??thomas
+?/bootstrao
+?/zz_jessie_debootst
+?/zz_jessie_debootstrap_okz_4_OPERATIONNEL_YUNOHOST
+?/epoch
+? \<Date\>
+? \<Guide_Utilisateur_de_REBOL_Core\>
+?/d.co
+?/cona.re
+?/conna.re
+?/connaï
+?/déconnaï
+?/sébastien_duc
+?/freecom
+?/tmp_imports.orientation
+?/tmp_auramines_feb_march_sample_list_xlsx_01_main_list
+?/tmp_bv130613_gravi_results
+?/cme_db_mdb_assay
+?/tt_bdexplo_operation_active_autan
+?/tt_bdexplo_def_litho_code_value_fields_autan
+? \<translation\>
+?/translation
+??toudoux_dh_sampling_grades_datasource_979
+?/tmp_dh_collars_en_plus
+?/point
+??ERIC_LA
+?/UN BEAU JOUR
+??_______________ENCOURS_______________ORDRE_DONNÉES
+??tp-link
+?/17271
+?/23493
+?/xtian
+?/sqfdlk
+?/Philippe_Badin
+??seafile
+??pydio
+?/lougit
+?/In Gascony, where I li
+?/stackov
+?/wordpress
+? \<github\>
+??lougit
+??stack
+?/gandyn-mas
+?/tutotresc
+?/aquilenet
+??aquilenet
+?/mathieu_b
+?/5C:33:8E:D0:BF:42
+? _____________________________________GEOLLLIBRE
+?/e chanson qui sonne pour la pub
+? _____________________________________GEOLVIN
+??__geolvi
+? \<all\>
+?/all
+? \<case\>
+?/case
+?/func
+?/tina
+?/c-p
+? \<vip\>
+? \<CREATE\>
+? \<2016_01_11__11_51_24\>
+? \<2016_01_10__12_32_52\>
+??aïre
+? \<2016_01_07__17_37_56\>
+?/___
+?/informatiq
+?/informati
+?/interne
+?/servir
+??servir
+?/pradas
+??acppg
+? \<_______________ENCOURS_______________SERVEUR_LINUTOPCH_GEOLLLIBRE_ORG\>
+? \<_______________ENCOURS_______________GEOLLLIBRE\>
+? \<_______________ENCOURS_______________AMC\>
+? \<Céline_Charpiot_Zapolsky\>
+? \<Linagora\>
+??apt ins
+??bordeau
+??abul
+??prett
+? \<2016_01_07__17_32_42\>
+? \<2016_01_06__00_21_05\>
+? \<2016_01_07__08_08_31\>
+? \<Jérôme_Alba\>
+? \<_______________ENCOURS_______________ORDRE_DONNÉES\>
+?/pdftk.*pch_geol_rapport_2015_01
+? \<pdftk\>
+??mdftk
+? \<_______________ENCOURS_______________REBOL_RED\>
+?/2016_01_07
+??bv
+??qq_rien
+? \<2016_01_06__10_57_10\>
+?/ALTER TABLE.*SET SCHE
+??\\copy
+? \<2016_01_05__16_40_23\>
+?/2016_01_05_
+? \<2016_01_05__23_11_09\>
+? \<_______________ENCOURS_______________QCV\>
+?/qcv
+?/master
+? \<master\>
+?/ROLE master
+??CREATE ROLE
+? \<facturation\>
+? \<contrib\>
+? \<caviste\>
+? \<admindb\>
+? \<admin\>
+??e10
+? \<Le\>
+?/2345
+? \<pg_lsclusters\>
+? \<2016_01_05__12_07_44\>
+? \<2016_01_04__20_06_55\>
+?/ahmed
+? \<Eric_Lagassé\>
+? \<_______________ENCOURS_______________CONTACTS_&_COMMERCIAL\>
+?/contacts
+? \<_______________ENCOURS_______________GEOLVIN\>
+?/\<_______________ENCOURS_______________DALIBO\>
+? \<2016_01_03__19_36_24\>
+??passw
+? \<ROLE\>
+? \<2015_04_24__14_52_11\>
+??\<_______________ENCOURS_______________ORDRE_DONNÉES\>
+? \<2015_05_01__19_08_50\>
+? \<2015_05_03__11_40_02\>
+? \<geoprojet\>
+? \<2016_01_04__09_09_31\>
+??libread
+?/find.*lib
+?/find.*libre
+??libreadl
+? \<2016_01_04__07_57_03\>
+? \<2016_01_03__21_55_58\>
+??rsync
+?/create tab
+?/tp-link
+??\<TP-LINK\>
+?/tout le monde do
+? \<TP-LINK\>
+? \<PASSWORD\>
+? \<2015_12_23__10_59_00\>
+? \<2015_12_23__00_18_32\>
+? \<2015_12_29__19_24_11\>
+? \<_______________ENCOURS_______________GEOLPDA\>
+?/geoprojet
+?/elgaddi
+?/charpenti
+?/bollor
+??t 505571
+??call/outpu
+??log_mi
+? \<2015_12_23__17_41_21\>
+? \<2015_12_29__11_32_59\>
+?/btn "generate config
+? \<--localhost\>
+? \<2015_12_28__19_17_50\>
+??pegg
+? \<2015_07_10__18_37_45\>
+? \<alien\>
+?/alien
+? \<_______________ENCOURS_______________FREBOL\>
+?/frebol
+?/git clone
+? \<RESET\>
+??fîmes
+??alter role.*in databas
+?/alter role.*
+??alter role
+? \<work_mem\>
+?/alter
+? \<pg_db_role_setting\>
+??u10
+??own
+??UPDA
+? \<2015_12_22__21_55_12\>
+? \<2015_12_22__11_24_37\>
+?/__DALIBO
+? \<2015_12_21__22_50_12\>
+? \<2015_12_21__23_00_27\>
+? \<2015_12_20__09_59_45\>
+? \<2015_12_19__22_50_09\>
+??__DALIBO
+??2015_12_22_
+? \<2015_12_18__19_48_15\>
+? \<2015_12_18__16_26_09\>
+? \<2015_12_18__09_32_28\>
+? \<2015_12_17__09_14_34\>
+? \<2015_12_15__17_48_53\>
+? \<2015_12_14__21_40_40\>
+? \<2015_12_14__17_46_54\>
+? \<2015_12_05__20_15_37\>
+? \<2015_12_05__19_58_17\>
+? \<2015_12_05__19_56_57\>
+? \<2015_12_05__18_05_44\>
+? \<2015_12_05__18_01_54\>
+? \<2015_12_03__22_30_16\>
+? \<2015_12_03__22_48_03\>
+? \<2015_12_03__22_51_37\>
+? \<2015_12_03__22_03_50\>
+?/2015_11_16__11_09_4
+? \<2015_11_16__17_45_31\>
+? \<2015_11_16__16_25_26\>
+? \<2015_11_16__16_24_50\>
+? \<2015_11_16__17_24_40\>
+? \<2015_11_16__15_04_06\>
+? \<2015_11_16__14_52_13\>
+? \<2015_11_16__11_40_18\>
+? \<2015_11_16__11_09_45\>
+?/2015_11_16__16_24
+? \<15_11_16__16_24_50\>
+? \<2015_11_16__15_04_0l\>
+? \<_2015_11_16__17_45_31\>
+? \<_2015_11_16__17_24_40\>
+?/2015_11_16__16_25_
+?/2015_11_16__15_04
+? \<02015_11_16__16_25_26\>
+? \<22015_11_16__15_04_06\>
+? \<2015_11_15__22_29_42\>
+? \<2015_11_15__22_20_05\>
+? \<2015_11_15__21_58_17\>
+? \<2015_11_15__21_40_57\>
+? \<2015_11_12__08_09_01\>
+? \<2015_11_12__07_59_37\>
+? \<2015_11_10__21_36_28\>
+? \<2015_11_09__22_25_57\>
+? \<2015_11_09__21_20_29\>
+?/\<2015_11_07__22_25_05\>
+? \<2015_11_07__22_58_11\>
+? \<2015_11_07__22_25_05\>
+? \<2015_11_07__21_48_47\>
+? \<2015_11_03__13_54_04\>
+? \<2015_11_03__10_26_48\>
+? \<2015_11_03__07_28_09\>
+? \<2015_11_02__20_23_30\>
+? \<2015_11_02__20_17_23\>
+? \<2015_11_02__12_53_44\>
+? \<2015_11_02__10_36_42\>
+?/cave
+? \<2015_10_31__02_56_14\>
+? \<2015_10_31__02_58_14\>
+??2015_10_31
+? \<2015_10_23__11_20_20\>
+? \<2015_10_23__09_37_43\>
+? \<2015_10_22__22_11_17\>
+? \<2015_09_17__00_28_20\>
+? \<2015_09_16__09_14_47\>
+? \<2015_09_15__20_02_37\>
+? \<2015_09_15__10_13_33\>
+? \<2015_09_14__22_09_02\>
+?/\<2015_09_14__19_33_20\>
+? \<2015_09_14__19_33_20\>
+? \<2015_09_14__08_34_37\>
+? \<2015_09_13__21_39_05\>
+? \<2015_09_12__22_39_06\>
+? \<2015_09_04__08_30_04\>
+? \<2015_09_03__08_34_29\>
+? \<2015_08_30__13_03_07\>
+? \<29_08_2015__19_58_23\>
+?/_DALIBO
+? \<2015_12_14__18_06_03\>
+? \<2015_12_14__19_19_56\>
+?/2015_12_22_
+? \<__DALIBO\>
+??2015_12_22__
+? \<Dominique_Barres\>
+? \<2015_12_22__11_31_23\>
+?/BRN_904048_003343
+??WHERE TABL
+??srcpostg
+? \<2015_12_20__10_34_30\>
+??cominc
+??musesc
+? \<2015_05_30__17_21_24\>
+?/tuto_
+??console\.r
+?/phppgadmin
+? \<phppgadmin\>
+?/intercommun
+?/tva interco
+? \<ON_ERROR_ROLLBACK\>
+? dalibo_formations
+?/dalibo_formations
+? \<dalibo_formations\>
+??apt-get install.*own
+? \<substring\>
+?/evince
+??evince
+?/init.d
+?/init
+? \<sauvegarde_cluster_postgresql_9\.5\.bz2\>
+?/pg_dum
+? \<2015_11_17__18_21_33\>
+? \<2015_11_17__18_21_33\.\>
+?/lsb
+?/script
+? }}}
+??bag 
+? \<DETECTION\>
+? \<_______________ENCOURS_______________ORPAILLAGE\>
+?/reputation
+?/stacko
+??timin
+??29013
+??polo
+?/0469
+?/04 69
+?/37 26
+?/3726
+? \<2015_12_14__18_28_52\>
+? \<postgresql_9\.5\>
+?/iso.*860
+??diff
+? \<\.bashrc\>
+?/2015_12_08__16_01_25
+? \<2015_12_07__16_21_50\>
+? \<i386\>
+??apt-get inst
+??libXaw.so.7
+? \<git\>
+? \<2015_12_14__14_16_09\>
+??impô
+??linuxfr
+? \<view\>
+??\<write\> %
+? \<write\>
+?/btn 
+?/#Q
+?/view layou
+?/pourquoi nou
+?/mode
+??mes
+? \<iwconfig\>
+?/si je suis
+?/2015_08_05
+?/_GEOLVIN
+??_GEOLVIN
+? \<fuckture\>
+? \\040
+?/plug
+?/data_admin
+?/admin
+?/\.so\.5
+?/lib
+?/ld
+?/11\.
+?/psql
+?/to integer! trim pos
+? \<map-rebol-values\>
+? \<insert-query\>
+? \<flush-pending-data\>
+?/nenad
+?/left
+?/allows
+?/jpilo
+?/post
+?/__geolvin
+??__geolvin
+? \<informationComplementaire_1\>
+?/2015
+?/gel_
+?/bypassr
+?/BYPASSRLS
+?/emestr
+?/4.29
+?/:e 
+?/:e
+?/face_samples_grade_points
+?/20136
+?  (
+?/afx
+?/;
+?/file_in
+?/datasou
+? \<AFX03180\>
+? \<AFX03173\>
+?/312
+?/2015-11-03T09:29:47Z
+? \<2015\>
+?/2015-11-03T10:13:55Z
+?/2015-11-03T10
+?/om
+?/o
+?/request
+?/geolpd
+?/orux
+? _
+? "
+?/assay res
+?/PCh2015_0713
+?/_0549
+?/0549
+?/549
+?/PCh2015_0585
+?/PCh2015_0655
+?/PCh2015_0569
+?/PCh2015_0551
+?/PCh2015_0549
+?/PCh2010_0854
+?/PCh2013_0596
+?/PCh2013_0590
+?/PCh2013_0588
+?/PCh2013_0584
+?/PCh2015_0624
+? \<PCh2015_0585\>
+? \<PCh2015_0569\>
+? \<PCh2015_0551\>
+? \<field_observations\>
+?/field_observations
+?/\<field_observations_struct_measures\>
+? \<field_observations_struct_measures\>
+?/field_observations_struct_measures
+? \<NUMAUTO\>
+?/update\|delete\|insert
+?/\<PCh2014_0490\>
+? ================================================================================
+? \<PCh2015_0785\>
+? \<PCh2015_0829\>
+? \<PCh2014_0490\>
+?/,,,,,,,,,,,,
+?/,,,,
+? \<DBNAME\>
+? \<schema\>
+? \<SCHEMA\>
+? \<BINDIR\>
+? \<SQLDIR\>
+?/max_wa
+??poitime
+?/ATTENTION! field names 
+?/max
+?/max__
+??max_
+? \<max__timestamp_epoch_ms\>
+? \<get_bdexplo_max__timestamp_epoch_ms\>
+? \<get_bdexplo_max__id\>
+?/field names dif
+??get geol
+?/copy-
+?/open
+?/open\/direct
+?/wordp
+?/pad
+?/crypto
+?/a4
+?/flash
+?/booy
+?/moan
+?/maramp
+?/cassin
+?/daup
+?/massa
+?/kansu
+?/syf
+?/midd
+?/waterv
+?/Helena
+?/Ngaoundal
+?/http
+? \<--------------->\>
+?/power_sourcing_arrangement_or_relationship_between_mine_and_grid
+?/-
+?/\/
+?/ 
+?/geeq
+? occurrences
+?/occur
+?/drop
+?/alter table.*alter
+?/alter table.*numauto
+??facture_pchg_pdf_concatene_frais
+??pdftk.*fact
+?/8601
+??geek
+??freecom
+?/bechon
+??bechon
+?/2007_10_03_19_43
+?/2014_04_29__22_02_35
+? \<01_10_2013__13_04_46\>
+? \<tectri\>
+??tectri
+?/checkmy
+??chameau
+??roanne
+?/lincoln
+?/vautherin
+?/clerc
+?/chasseur de 
+? \<poele_mcz_vue_generale\>
+?/jpg
+??granule
+? \<____________________________________________________________________________\>
+??wms
+??pdftk
+? \<GAN\>
+??miehe
+??lerouge
+?/récoch
+?/gilbert
+? \<po_merle\>
+?/roussel
+?/lerouge
+??rapport_nou
+?/semofi
+??&copy; PC
+??saint.simon
+??maquis
+??callreco
+? \<ffmpeg\>
+?/ffmpeg -i video.avi -ar
+?/ffmp
+?/battit
+?/kanbo
+?/\\
+??sueno
+??MISSION
+??facture_pchg_pdf_concatene_frai
+??pdft.*facture_pc
+??pdftfacture_pc
+?/+353
+??le locl
+?/2013
+??ticle
+??octob
+?//
+??linuxf
+?/tutotrescouic
+? \<tutotrescouic\>
+?/cloar
+?/cigar lak
+??cigar
+? \<loumbou-loumbou\>
+??8601
+? \<Martap\>
+??alain
+??aloub
+??alou
+? \<mapproxy\>
+?/proxy
+??alter table.*alter.*
+??opid
+?/timi
+?/min
+?/\<Timis\>
+? \<_______________ENCOURS_______________GUYANE\>
+??munter
+? \<Munter!\>
+??pad
+??schroet
+? \<Timis\>
+?/uuid
+?/fstab
+?/données
+??durand
+? \<chevreuil\>
+??tva int
+??siret
+?/géologue EI
+??fer
+??ki
+??Leroux
+? \<_______________ENCOURS_______________AUCH_BERTHOL\>
+? \<bdexplo_intégrité_référentielle\>
+?/bruxell
+?/undo
+??struc
+?/stan
+?/[0-9])
+?/[0-9]
+?/[9-9]
+?/3)
+?/2)
+? \<2014_04_29__22_02_35\>
+?/tectr
+? \<_______________ENCOURS_______________\>
+?/cach
+?/apt-ca
+? \<_____________________________________COURSES\>
+??tesrat
+??qgis\|cache
+??qgis
+??cache
+??avro
+??2015-03-18_Archos
+??checkmytr
+?/prospecti
+? \<9f1hgiQytoI\>
+? \<youtu\.be\>
+??clif
+??cliff
+??retraite
+??retrait
+??Tempo Real
+??arrosé
+?/epargne
+? \<www\.caisse-epargne\.fr\>
+? \<Ecureuil\>
+??bruxe
+??kerdon
+? \<François_Kerdoncuff\.\>
+? \<PAS_MISSION\>
+??fluor
+? \<2015_10_04__15_10_19\>
+? \<Roanne\>
+? \<Séraphin\>
+??blign
+? \<to_address\>
+? \<migration\>
+? \<pollués\>
+??vautherin
+??marbre
+??gerdetec
+? \<geany-plugin-prettyprinter\>
+??Turt
+? \<Turt\>
+? \<Turt-\>
+?/\[ \^ \]
+?/[ ^ ]
+? \<Usability\>
+? \<Redirects\>
+? \<Security\>
+? \<Performance\>
+? \<Q+E!\>
+? \<Q&E!\>
+? \<QE!\>
+? \<UI\>
+? \<_______________TOUTDOUX______________\>
+? \<Argudo\>
+?/mission.*qgs
+??preparation
+??manu
+??frebol
+? \<leboncoin\.fr\>
+?/run_que.*opid
+??run_qu
+? \<2015_10_04__11_12_42\>
+? \<ménage\>
+?/2015_10_04
+?/  # root@autan: /var/www/html/cgi-bin        < 2015_10_04__11_14_56 >
+? \<ERRATUM\>
+?/tuto
+? \<test01_script_rebol\.cgi\>
+? \<mv\>
+?/autan
+?/decode
+? \<_______________ENCOURS_______________LINAGORA\>
+?/test.*_script_rebol\.cgi
+?/test_script_rebol
+? \<test_script_rebol\.cgi\>
+??page de tes
+? \<2015_10_04__10_59_46\>
+? \<__________ROUVRIR_VOLET_VIM__________\>
+? \<2015_07_24__19_50_15\>
+?/+LUD
+? \<LUD\>
+?/LUD
+? ]]]
+? \<Tags\>
+?/fréchet
+??gpx
+??gpz
+? \<TD\>
+? \<The\>
+? \<2015_10_01__22_28_34\>
+? \<_____________________________________AURAMINES\>
+??x	temp
+??dist-up
+??set
+? \<chown\>
+??sauveg
+??mk.*fs
+?/pierrechevaliergeologue_compte_resultat_fiscal_2014
+?/wms
+??wikip
+??ubuntu-desk
+??summit
+?/fré
+?/pdftk
+??ol_rapport_2015_01_soutra
+? \<Jésus-Christ\>
+? \<gll_geolpda_report_generator\.r\>
+? \<gll_geolpda_report_generator\>
+??gauthie
+??pdfima
+??linagor
+? \<smi\>
+??smi
+? \<_______________ENCOURS_______________AFREX\>
+? \<www\.experatoo\.com\>
+??nouvelle-fie
+??nouvelle fiè
+??nouvelle 
+? \<Consultant\>
+??crimo
+?/cloa
+??louis_18ans_crete_2014_decembre
+??apt-get.*-f
+?/2015_09_24__23_28_16
+?/Ã©
+? \<Orkidé\>
+??berthol
+?/kerdonc
+?/cat na
+?/cat
+??\<_______________ENCOURS_______________CONTACTS_COMMERCIAL\>
+? \<_______________ENCOURS_______________BENIN\>
+?/benin
+? \<_______________ENCOURS_______________CONTACTS_COMMERCIAL\>
+?/blender
+? \<Linagoro\>
+? \<N'Diaye\>
+??cloa
+? \<Raphaël\>
+? \<Saporiti\>
+??debacq
+??debax
+??Gautier
+??jourda
+??jourd
+??jourt
+? \<Ahmed\>
+? \<tel\>
+?/courant
+?/\<_______________ENCOURS_______________AUCH_BERTHOL\>
+? \<SOFRES\>
+?/saint-s
+?/saint-
+??bertho
+? \<2015_09_24__23_28_16\>
+? \<labriqueinternet_schemas\.pdf\>
+? \<_____________A_REPRENDRE_____________02_01_2014__14_15_57\>
+? \<Bechon\>
+??oa
+??argudo
+??xterm.*psql
+??MANU
+??paris
+? \<______JEANSUILA_INSTANT_PRÉSENT\>
+?/orpai
+?/_____.*orpailla
+?/orpailla
+? \<\*attentivement\*\>
+?/wrap
+?/search
+?/orpaill
+?/[[[
+? \<MISSION\>
+??gdaldem
+??apt-key
+??geolpda
+??evince.*sudan
+? \<Oslandia\>
+??Ci-joints les CV et copies des passe
+??callrecor
+??buisson
+? \<PRE\>
+??pre
+??sue
+? \<2015_09_21__11_07_28\>
+? \<2015_09_17__11_42_54\>
+?/sshfs
+? \<o\>
+?/foreach f video_sueno
+??mv 
+? \<postgresql\>
+? \<PostgreSQL\>
+? \<Imerys\>
+??mouton
+?/20_09_2015
+? \<2015_09_20__19_59_11\>
+??http.*pierremar.*pdf
+??http.*pierremar
+?/sue.o
+??/output
+??cmd
+?/arg
+?/\~
+?/~
+?/pchg
+?/word
+?/loimpr
+?/ooimp
+?/ppt
+?/power
+?/doc
+?/office
+?/visio
+?/import
+?/import re
+?/0\.57
+?/0\.5
+?/0.5
+?/bien
+? \<trajectoire\>
+? \<élançai\>
+? \<retour\>
+? \<estafilade\>
+? \<Bout\>
+? \<PCh2015_0791\>
+? \<generated\>
+?/img
+? \\^A
+?/{
+?/5
+?/10
+?/gll_creat
+?/wrapse
+?/cmd
+??afrex géos
+?/do %.*fre
+?/do %.*fred
+?/fred
+??dd
+?/carret
+?/incluron
+?/ne sera ob
+?/facturé pa
+?/avant le 
+??maille
+?/gpx
+?/condition
+?/devrait don
+? \<Incorporated\>
+?/page
+?/leur soin
+?/\[\|\]
+?/\[|\]
+?/[|]
+?/lat
+?/lon
+?/septem
+?/a fait l'objet
+??l'etat
+? \<2015_09_14__16_08_11\>
+? \<4935737055199\>
+?/déte
+?/infoterr
+?/berthol
+?/M\.
+?/insert.*operations
+? \<export\>
+??PATH
+?/2015_09_16
+??install
+??path
+? \<OSlandia\>
+?/détect
+??cay
+??pch_geo.*rappo.*2015
+??pch_g
+?/pierre_ch
+??assurance
+??licenci
+?/courante
+?/courante__
+?/vie
+? \<stabilisé\>
+??sores
+?/vallier
+?/boncoin
+?/paquetages_linutopch_install_2015_06_26__17_09_45
+?/paquetages
+??apt.*list
+?/backup_schema_cluster_postgresql_autan_9.4_2015_04_20_20h43
+?/auramine
+?/equirodi
+??sshf
+??boncoin
+?/michel
+??o de la ve
+?/git stat
+??qcv
+??chifi.*sauvgc
+? \<____________________________________\>
+? \<_______________________________________________________________________________\>
+??licenc
+?/Release-1.4.1
+? \<06\>
+? \<openmoko\>
+? \<cathédrale\>
+? \<ifconfig\>
+?/00\:24\:8c\:49\:3b\:e2
+??iker
+?/geostats
+??mu.*tail
+? \<multitail\>
+??multi.*tail
+??apt-get install .*tail
+??ssh-
+?/mission impossib
+?/mada
+??bonnemai
+?/dd2
+? \<populate_user_select\>
+?/len_destr
+?/len/len_destr
+? > 
+? > >
+? > > 
+? > > > 
+? > > > > 
+?/histor
+?/git
+?/naiz
+? \<rst\>
+? \<RST\>
+? \<TSR\>
+? \<Apatxi\>
+?/urls
+? \<2015_09_12__10_07_13\>
+?/xrand
+? \<Modeline\>
+? \<linutopch\>
+??Manufacturer: Logitech
+?/logitech
+??berna
+??___
+??__
+?/bernad
+?/berna
+? \<_____________A_REPRENDRE_____________URLs_À_ROUVRIR\>
+?/url
+??bernad
+? \<Christian_Rassis\>
+??christian
+? \<1440x900\>
+? \<1600x1200\>
+? \<OSlandia?\>
+? \<durandeux\>
+??winsw
+? \<_____________________________________________\>
+? \<___________________________________________________________________\>
+? \<________________________________________________________________\>
+? \<___________________________________________________________\>
+? \<____________________________________________________________\>
+?/suicid
+??boutin
+??QCV/creation.log
+? \<QCV\>
+? \<_______________ENCOURS_______________EFG\>
+? \<Parakou\>
+??tso
+? \<MgSO4\.\>
+??hag
+?/__orpail
+?/orpail
+?/\<_______________ENCOURS_______________GEOLLL
+?/encours__
+? \<__________\>
+?/\<_______________ENCOURS_______________\>
+?/boudri
+?/boutin
+??var.*back
+?/2015_05_1
+?/QCV\/creation.log
+?/QCV/creation.log
+?/f0:76:bc:18:6f:f1:25:ac:49:f5:00:df:a5:d9:c4:4e
+?/métau
+??cv.*louis
+?/recomma
+?/m 
+?/M 
+?/__
+?/à
+? \<Article\>
+?/\.\.
+?/:
+??:
+?/=>
+? \<Occurrences\>
+??condition
+?/paysage
+?/superf
+?/sensi
+?/formations
+?/nature
+?/risques
+?/patri
+?/popu
+?/aux mi
+?/qualité
+? \<principales\>
+?/principa
+? \<Phase\>
+? \<Année\>
+?/travaux
+? \<changé\>
+?/linutop2
+??linutop
+?/synergyc
+?/synerg
+??xrandr
+? \<_unlink_manpages\>
+?/remove_cli
+?/remove-cli
+?/x_
+?/or
+??verrou
+? \<setxkbmap\>
+? \<2015_09_04__11_59_10\>
+?/apt-get install curl
+??git clone
+? \<2015_09_04__08_28_58\>
+?/2015_09_04
+? \<sulfate\>
+? \<init\>
+?/"00:24:8c:49:3b:e2"
+? \<e2\>
+?/00:24:8c:49:3b:e2
+? \<adduser\>
+? \<useradd\>
+? \<Goldwaschen_1\>
+? \<Emmanuel_Gautier\>
+??jiraf
+? \<2015_09_03__11_09_37\>
+? \<2015_09_03__09_42_51\>
+? \<jirafeau\>
+? \<potier\>
+? \<granules\>
+??gauthi
+??electroma
+??électroma
+??metal
+??okm
+??hawk
+? \<Emmanuel_gauthier\>
+? \<Bénin\>
+??yunohost
+? \<SAINT_ETIENNE\>
+?/ssh-add
+?/ssh
+?/ssh.*autan
+??ssh
+??ssh_
+?/if error?
+??rapport_nouveau
+?/numrap
+?/201501
+?/st-etienne
+? \<PROGRAMME_POUR_ST_ETIENNE\>
+??http.*pierremari.*rappo
+??http.*pierremari.*fac
+??khla
+??qgs
+??pch_geol_rapport_2014_03_esperance_annexe_geolpda_report_pch_from_2014_02_03to2014
+??Report generated: geolpda_rep
+?/INSERT INTO public.operations
+??field_observations_2015_02_11__13_33_23.dump
+? \<_____________A_REPRENDRE_____________\>
+?/_____________A_REPRENDRE_____________
+?/durrut
+?/\<ATE\>
+?/pierre
+?/mvterre
+??mc.*geolp
+?/document.*intégralité
+?/?clause.*intégralité
+??clause
+??thuse
+??reproduit
+??fsck
+?/oowrite.*pch.*rappo
+??burkin
+?/procédure pour rentrer de crapahut
+??imaginer une telle application tournant sur un sma
+??michel
+??retour.*crapa
+??michka
+?/free.fr.*wemba
+??webmail.*free.fr
+??dhclien
+?/__________ROUVRIR_VOLET_VIM__________
+??dpkg-reconfigure
+??chifi.*sauvg
+??sauvg.*chifi
+?/sauvg_rsync
+?/1970725
+?/gigondan
+??galen
+?/geolllibre
+?/mysql
+?/osgeo
+??osgeo
+?/louis via
+??viallef
+??logo.*usb
+??open.*tect
+??recmin
+??dropbox
+?/smtp.*orange
+?/préoc
+?/apel
+?/présidente
+??githu.*geoll
+?/channel
+?/subhoriz
+??do\/args
+??insert into publ.*lic
+??confidentia
+??sedar
+??Company Search:  la mancha
+?/49160204100015
+??731Z
+?/2014_01_20__17_42_53
+? \<Abu\>
+? \<fenêtres\>
+??fenê
+??auto
+? \<www\.indiegogo\.com\>
+? \<_______________ENCOURS_______________FAC_ST_ETIENNE\>
+?/ker
+?/roy
+??roi
+??gau
+? \<ssh-add\>
+??gabo
+? \<émaux\.\>
+??postgr
+??postres
+? \<2015_05_24__20_13_27\>
+? \<kb\>
+? \<pierrechtux\>
+??arcadi
+??d'apprendre aux enfants les rudiments de la programmatio
+??cueillette de la poudre d'or dans les Pyrénées est connue de
+??brési
+??SELECT filename.*pchgeol
+??if error
+?/rapport_nouveau
+?/rapport_
+? \<2015_08_25__11_27_30\>
+? \<201501\>
+??mv
+?/http.*pierrema.*fac
+?/http.*pierrema
+??tond
+? \<pch_geol_rapport_2014_03_esperance_annexe_geolpda_report_pch_from_2014_02_03to2014_02_07\.odt\>
+?/'
+??kontoug
+? \<exploration\>
+??pincoc
+? \<_______________ENCOURS_______________MAGALIE_DYEVRE\>
+? \<agricole\>
+??iwcon
+??_______________ENCOURS_______________
+??^o 
+??urs.*af
+??urs
+? \<EXPATS\>
+?/mission.*:
+? \<ATE\>
+?/mission
+??0\.2
+??0\.28
+?/0\.29
+??0.2
+??mc .*geolpd
+??mc .*galax
+??80 + 100
+??paillo
+??66
+??anduf
+? \<pailloes\>
+?/Tibère et de Néron
+??mon rappor
+? \<rivorf\.php\>
+?/metal detect
+?/détecteur
+?/radar
+?/electrom
+??électrom
+?/quey
+?/que
+??ero
+??____
+??tount
+??toutn
+??cata
+??oo
+?/intrrogato
+?/\<_______________ENCOURS_______________BURKINA_SOUTRA_MINING\>
+? \<Christian\>
+??3%
+??3
+? \<2015_08_15__17_31_17\.\>
+? \<2015_08_15__17_31_17\>
+??mission
+? \<mature\>
+?/lescuy
+?/tel
+??oowrite.*pch.*rappo
+??oowrit
+??T.*7
+? \<TO7\>
+? \<2015_01_15__13_06_48\>
+? \<2015_03_14___________ROUVRIR\>
+? \<2015_02_10__15_27_02_ROUVRIR\>
+? \<dpkg-reconfigure\>
+? \<Djaito_Arcadius\>
+? \<Traoré\>
+?/arcadi
+??traor
+??souma
+?/lancer
+?/lancr
+??skipp
+?/debi
+?/red
+?/chifi.*sauvg
+? \<sauvg_rsync\>
+?/adi
+??1970725
+??crowd
+??imarc
+??eparg
+? \<KB\>
+??logo
+?/logo.*usb
+? \<2015_08_06__12_28_43\>
+?/logo
+??utm
+??taux
+?/alba
+? \<2015_07_29__11_06_03\>
+??alba
+?/_______BURKINA
+? \<_______________ENCOURS_______________SOUTRA_MINING\>
+?/_______________ENCOURS_______________BURKINA
+? \<_______________ENCOURS_______________BURKINA\>
+? \<horaires\>
+?/toubi
+??guez
+??gabon
+??g.*z
+? \<pierrechevaliergeol\>
+??dalib
+? \<______________JEANSUILA______________\>
+? \<_________\*\*\*__JEANSUILA_\*\*\*__________\>
+? \<\*\*\*\*\*\*\*\*______JEANSUILA_INSTANT_PRÉSENT\>
+? \<Relancer\>
+?/gandyn
+??githu
+? \<Dalibo\>
+??ce que de droi
+??vern
+??github
+??39
+? \<Tranchée\>
+?/III
+??ttr21
+?/^32
+??^30
+??^31
+?/31
+?/4365
+?/sondage
+?/^31
+?/^29
+?/^27
+?/^26
+?/^25
+?/25
+??24
+??26
+?/16
+??15
+??12
+??10
+??6
+??7
+? \\uf0a7
+? \\u2013
+? \\u2019
+??dropbo
+??smtp
+?/16703
+??tva intra
+??maison beheti
+? \<2015_07_30__15_08_29\>
+? \<2015_07_23__17_29_55\>
+??cv_marie_emmanu
+??postgres.*pdf
+??githu.*geolll
+??cayamb
+?/2015_07_29__
+??citri
+??kerdoncu
+??kerondcu
+??baronn
+? \<extrait_du_dossier_de_demande_des_permis_dexploitation_pg_es_31_aia_50\.pdf\>
+??clipb
+? \<propos\>
+? \<seule\>
+? \<yu\>
+??yu
+?/do\/args
+? \<environment\>
+??insert into publ
+??insrt into publ
+??geolllibre.*pad
+??mineli
+??confidential
+? \<BISHA\>
+??BISHA PHASE 2
+? \<plateautélé\>
+?/731Z
+?/bâch
+??Bert
+? \<no\>
+? \<2015_07_24__19_32_35\>
+??html.*utf
+? \<_______________ENCOURS_______________SMI\>
+? \<_____________A_REPRENDRE_____________2014_01_20__17_42_53\>
+? \<michka\>
+? \<mod_diff\>
+? \<KK\>
+?/get_bdexplo_max__id
+?/forw
+?/key
+?/zoom
+?/z
+? \<Échantillonnage\>
+? \<max_waypoint_name\>
+?/commi
+?/transactio
+??begin
+?/sql_
+?/tabut
+?/manifes
+?/lib.*sync
+?/longt
+? \<lat_min\>
+?/newli
+?/new.*opid
+?/new
+? \<dir_mount_oruxmaps_android\>
+? \<oruxmaps\>
+? \<1989\>
+??xset
+?/xset
+?/\\u
+? \<2014_08_27__16_33_32\>
+? \<2014_08_27__15_01_03\>
+? \<2014_08_27__17_55_25\>
+?/hiérar
+??2015_07_13__10_20_00
+??wri
+??gauth
+?/set.*key
+??setx.*key
+??gk
+?/fdisk
+??barr
+? \<2015_07_18__16_28_06\>
+??affich 
+?/\<_______________ENCOURS_______________AMC\>
+?/kerdon
+?/ni43
+??vms
+?/cadeau
+?/kdo
+?/marie
+?/massin
+? \<2015_07_16__14_52_20\>
+? \<_______________ENCOURS_______________SANGLIERS\>
+? \<Nicolas_Malroux\>
+?/mouchan
+?/_______________ENCOURS______________
+?/yunohost serv
+?/yunohost 
+?/yunophost 
+??2015_07_14__16_12_21
+?/\<_______________ENCOURS_______________SANGLIERS\>
+??sibelco
+??ac_dc_let_there_be_rock
+??\\pset
+??\pset
+??pset
+? \<au_point\>
+? \<youtube-dl\>
+?/BXsusJ787sU
+??overki
+? \<songs\.pg_dump\>
+?/sangl
+?/sanglie
+? \<2014_09_25__12_09_20\>
+? \<2014_09_25__11_59_08\>
+?/sangli
+?/mp3_as_from_youtube
+? \<2014_09_21__14_20_58\>
+?/sanglier
+?/_______________ENCOURS____
+? \<ateliers_jazz_blues\>
+? \<atelier_jazz_blues_tenareze\>
+??sygna
+? \<datcha\>
+?/Username for 'https
+?/tmp_sondages_prevus_maille_carree_80m
+? \<2015_07_10__14_45_41\>
+??ssh.*copy
+??apt-get install lib32z1 lib32ncurses5
+?/measured
+?/réserves mesu
+??ressources mesur
+?/09 75
+??2015_07_08__23_52_07
+??paquet
+??paqueter
+? \<frebol\>
+? \<pourchaque\>
+?/s this vacancy.  As you can see on my résumé, I am a geologist and a computer scientist, with most of my experience in mining exploration.  I have desig
+?/frankendeb
+?/9 75
+? \<Kerdoncuff\>
+?/centre
+?/insc
+?/voilà
+??vraime
+?/cette mass
+?/elle
+??seul un
+?/seule
+??quelques jo
+??quelque j
+?/relg
+?/conson
+??lit.*hôpital
+?/dpkg.*rebol.*deb
+? \<rebol-2\.7\.8\.4\.3-6\.deb\>
+? \<rebol\>
+? \<recup_presse_papier\>
+??recup_
+? \<trace\>
+? \<run_query\>
+??toggle
+?/iwcon
+??iwlis
+?/postul
+? \<180\>
+??jobs
+?/malaw
+??malaw
+?/postu
+?/charset
+??charset
+? \<2015_06_27__11_03_50\>
+? \<2015_06_27__19_52_31\>
+? \<tablesQCV\.sql\>
+? \<install-db\.sh\>
+? \<initdata\.sql\>
+? \<grantQCV\.sql\>
+? \<creation\.log\>
+? \<2015_06_27__10_59_58\>
+??reprends.*antid
+? \<2015_06_24__09_37_52\>
+? \<locate\>
+? \<2015_06_26__22_05_24\>
+??dd.*linutopo
+?/baika
+??etherp
+? \<Wordpress\>
+?/yunohost app
+? \<2015_06_04__09_37_05\>
+?/2015_06_04_
+? \<2015_06_04__18_20_33\>
+?/2015_
+? \<yunohost\>
+?/yunohost .*lis
+?/sdlkfj
+?/paquetages_linutopch_install
+? \<paquetages_linutopch\>
+?/geollli
+?/secrétariat astre
+??locale
+?/jobs4minin
+?/Energistic
+? \<Energistics\.\>
+??resqml
+??resq
+? \<Vincent_Blanchard\>
+? \<_______________ENCOURS_______________SUDMINE\>
+??for.*in.*{.*}
+??for.*in.*{
+? \<2015_06_25__22_29_52\>
+? \<install_on_debian_fr\>
+? \<2015_06_25__18_30_55\>
+?/apt-ge
+?/apt
+? \<reduc\>
+??galaxy
+? \<jessie\>
+??media
+? \<etc\>
+?/etc/fstab: static file system information.
+?/etc\/fsta
+?/e
+??scp
+? \<2015_06_24__22_07_36\>
+??2000
+??garrido
+? \<debootstrap\>
+??--arch
+?/m|
+??fuser
+?/mn
+? \<systemd\>
+? \<2015_06_20__22_20_08\>
+? \<2015_06_24__19_40_31\>
+? \<LC_ALL\>
+?/perl: warning: Setting locale failed.
+? \<2015_06_24__12_50_10\>
+??configur.*local
+??tchecopa
+?/\\u2019
+? \<u2019orientation\>
+?/locale
+??warning: Please check that your locale settings:
+?/2015_06_24
+??system installed successfully.
+??question géné
+?/shall we
+??iconv
+? \<2015_06_24__09_37_37\>
+? \<24_06_2015__09_35_12\>
+? \<psql\>
+?/for.*iconv
+??foreac.*iconv
+? \<iconv\>
+??8859
+?/?8859
+??fileconv
+? \<drop\>
+? \<CREATEROLE\>
+?/alter role
+?/SELECT \*
+??SELECT *
+??SELECT 
+?/mi-temp
+??32
+?/cauue
+??rmll
+?/clement.chevalier03
+??extractin
+??unpacking gr
+??mkfs
+? \<lunux\.\>
+?/skinny eleph
+??rsyn
+??franken
+??apt-get.*force
+??apt-get
+? \<178\.237\.19\.60\>
+??206
+?/paule.*gay
+? \<gui\>
+? \<GUI\>
+??bonnaf
+??stackover
+??wordbrow
+? \<2015_06_18__13_13_13\>
+? \<2015_06_17__22_18_55\>
+??journalc
+??journal
+??journ
+??walee
+??comment.*[
+? \<2015_06_16__08_46_05\>
+? \<baignoire\>
+??jirafe
+?/etc\/netw
+? \<Afrex\>
+? \<paquetages_durandeux_mintkc\>
+??paquetag
+??rebol*
+? \<2015_06_17__08_42_15\>
+??Ah ben en fait, c'était pas sur duran
+? \<multiboot\>
+?/durand
+??xrand
+??dpkg
+?/b
+?/mn	
+? \<chroot\>
+?/nonblo
+?/unblock
+?/onesid
+?/dpkg
+??pierremarieche.*html
+?/perf interr
+??nonblock
+?/nonblock
+??img sr
+??<html
+??nonbl
+??perf interru
+?/galen.*whit
+??wackenh
+?/\<UPDATE:
+?/\<UPDATE:\>
+? \<UPDATE\>
+??ev
+? \<TEST\>
+? \<2015_06_15__21_46_20\>
+? \<rule_variable_definition\>
+? \<2015_06_14__22_50_35\>
+? \<2015_03_14___________ROUVRI\>
+?/2015_04_22__
+??2015
+?/etienne
+?/1670399
+??viens.*éon
+?/compta
+??sygnat
+??largeron
+?/etien
+?/fac_st_
+?/Empl.*Tps.*vac
+?/Empl.*Tps.
+?/empl.*tps.*vac
+?/2015_01_20
+??dpkg.*reconfigu
+?/thru
+??capitaine
+??captainetr
+??carlan
+? \<2015_06_14__12_17_09\>
+??equiro
+??tuto.*parse
+??parse
+? \<12_06_2015__09_16_29\>
+? \<Seb\>
+??find.mtim
+?/lvm
+??linutopch-usr
+?/lvcr
+? \<Vincett\>
+? \<rule_range\>
+? \<nl\>
+??yunohost app
+??app
+??yunohost 
+??keyri
+? \<kload\>
+?/dpkg.*>
+??dpkg.*\>
+?/jouj
+??trousseau
+? \<varname\>
+?/ctst
+?/\<??\>\|print
+? \<??\>
+? \<data\>
+??american
+??echantillon\/chann
+? \<2015_05_05__22_01_51\>
+?/antonacc
+?/\<btn\>.*q
+??\<button\>.*q
+? \<button\>
+??palo
+?/tost
+??corch
+??yodelic
+??leon
+?/somethin.*titou
+?/Something else Titou
+??craton,
+?/sue.*vega
+??sangli
+? \<Abdelbaqi\>
+? \<milliards\>
+??kay
+?/Dumas
+?/energisti
+??erergis
+??201
+? \<_______________ENCOURS_______________RESQML\>
+?/RESQML
+??energisti
+??openid
+? \<OCR\>
+?/ocr
+??cuneifor
+??gpg
+? \<_____________________________________SUDMINE\>
+??stacko
+??030561BEDD45F6C3
+??1440
+??cauue
+??yunohost app ma
+??bonne nui
+??slapcat
+?/trousseau
+??ko
+??screen -
+??mdb
+??yunohost.or
+??yuno
+??report.*pdf
+??pdf
+??ask
+??kloa
+??slapc
+? \<ldap\>
+??jabber
+?/paquetages_
+??ldap
+?/ldap
+?/\<backup\>.ldif
+? \<backup\>
+??tty
+??toupeta
+??sauf si tu as
+?/geoll.*gith
+?/github.*geoll
+?/github
+?/adduser admin
+?/addus
+??ok
+??owncloud
+??default
+? \<postgis\>
+?/shid
+??403.*forbi
+??bab-nas
+??taravell
+?/mount.*bind
+?/pierr
+??galop
+?/2015_05_30__17_21_24
+? \<Sures\>
+? \<VMS\>
+? \<BRGM\>
+??sure
+?/BRGM
+?/mutass
+?/mutasi
+?/mutasei
+?/mutasim
+?/listing_programme_sondages_2012_03_26_marec_pour_implantation
+?/tmp_points_pour_gps
+?/tmp_sondages_prevus_longs_mont_ity
+??khlat
+? \<graph_clipbard\>
+?/graph_cl
+?/check.*[
+?/check
+?/toggle.*[
+?/toggle
+?/iw.*wlan.*meste
+?/mount.*iso.*
+?/linutopos.*iso
+??iso
+?/linutopos
+?/ETIENNE
+?/jobs4min
+??orpaill
+?/CREATE FUNCTION
+?/bash
+?/for.*find
+??grant data_admi
+??grant.*pierre
+??alter role.*pierre.*admin
+??alter role /* crea
+??alter role crea
+??damien
+?/mi-temps
+?/raising sk
+?/paul.*gay
+?/generate
+?/tavernie
+?/damien
+??html
+?/wacken
+??1670399
+?/siret
+?/167
+?/brother.*ppd
+?/empl.*vac.*tps
+?/carlan
+?/car
+??find.*mtim
+??lvcr
+?/owncl
+??kload
+??keyrin
+??troussea
+?/echantillon\/chann
+? \<scroller\>
+?/slider
+?/2015_05_05__22_01_51
+?/bon.*fils
+?/sue.*veg
+?/dumas
+??charpenti
+?/violay
+?/screen -
+?/githu.*geolll
+??geoll.*gith
+?/,
+?/lfs
+?/etc
+?/sdf
+? \.
+? .
+? ,
+? \<msg\>
+?/sang
+? \<copy\>
+?/boucl
+?/input
+?/écri
+? \<raboute\>
+? \<reduit_raboute\>
+? écrit
+?/écrit
+?/print
+?/??
+? \<autorefresh\>
+? \<auto-refresh\>
+?/auto
+? \<chkautorefresh\>
+?/chk
+?/chec
+? {{{
+?/?
+? \<BODY\>
+?/X
+?/prompt
+?/testtype character varying
+?/sttype    character varyi
+?/testt
+?/contri
+? \<KEY\>
+? \<personnes\>
+?/refere
+?/is is
+?/tab
+? \<noq\>
+?/tabs
+?/expand
+? \040
+?/[\|]
+? \<tmp_vim_block\>
+?/vim_blo
+?/} }
+?/{ {
+?/layou
+??value
+? \<TimeLapse\>
+??xxx
+??comments
+? \<tt\>
+? \<DEBUG\>
+? \<rest\>
+? \<rule_def\>
+?/empt
+? \<White\>
+? ;#################################################################
+? self
+? \<self\>
+?/ue
+?/eith
+? \<digit-decimalplace\>
+?/\<parse\>
+?/©
+?/parse
+? /\t/    /gc
+? /\t\    /gc
+???
+?/cursor
+?/html
+?/mount
+?/autof
+?/!
+? \<strong\>
+? font face=3D"arial" size=3D"3" color=3D"#521906"
+?/1\.1
+? \<coucou\>
+?/963
+?/1431
+? \<paste\>
+?/duran
+?/192
+?/"f3:f0:db:a3:3b:c5:3a:af:da:83:82:48:87:3b:d4"
+?/f3:f0:db:a3:3b:c5:3a:af:da:83:82:48:87:3b:d4
+?/_points
+?/collars_poin
+??vlc
+?/puls
+?/gobj
+? \t
+? \tinstall
+?/acpi
+?/bed
+?/lazer
+??f
+??funder
+?/ASHTON
+? \<eurgeols_list_asof_2014_09_16__11h\>
+?/\\pset
+?/eurgeols_list_as
+?/european_federation_geologists_members_201
+? \<european_federation_geologists_members_2015_05_28__20_35_51\>
+? \<2015_06_01__12_29_33\>
+? \<scp\>
+?/>.*latitu
+??paquets_au
+? \<european_federation_geologists_members\>
+??ipaddres
+?/barb
+?/guillard
+?/convent
+??fourni
+??Testard
+??2015_05_30
+??kirman
+? \<georem\.daf\>
+?/2015_05_30
+??test
+?/2015_05_24
+? \<2015_05_24__20_06_19\>
+? \<2015_05_22__20_01_53\>
+? \<2015_05_22__19_53_36\>
+?/Larseneur
+?/.*er
+?/*er
+? \<SMI_données_DAC\>
+? \<zip\>
+? \<_______________ENCOURS_______________Mouchan\>
+? \<2015_05_30__05_11_14\>
+? \<2015_05_28__20_35_51\>
+? \<Barbanson\>
+??girous
+??torres
+??gaut
+??berb
+?/ashton
+? \<efg_federation_europeenne_des_geologues\>
+? \<2012_09_17__09_23_41\>
+?/2012_09_17__09_23_41
+??karel
+?/17_05_2012__11_02_07
+?/2011
+? \<ign\>
+?/ign
+?/ana
+?/synergyc.*-
+?/syner.*-
+??synerg.*autan
+?/chown.*www
+?/ls.*\/var\/www
+??ls.*var\/www
+?/var\/www
+? \<HTML\>
+?/<Esc>
+?/begin
+?/beginn
+?/start
+?/linesta
+?/home
+?/<Home>
+?/macro
+??2015_05_2
+? \<_____________A_REPRENDRE_____________tuto_nick_antonaccio_business_programming\>
+?/2015_05_10__19_48_25
+?/# < 2015_05_19__13_29_20 >   pierre@eeepcmageia:~$ 
+?/ENCOUR
+?/_______
+??uuid
+??durandeux
+?/etc\/mtab rapidos: je retrouve
+?/linuxfr
+??cadastre.gouv.fr
+?/altavista
+?/someil
+?/someill
+?/someille
+?/nsomeille
+??genmas
+?/Destination.*Gatew
+?/Dest
+?/destination.*gatew
+??destination .*gatew
+? \<route\>
+??route del
+?/lvm\/linu
+??lvm-
+?/myip
+??whatsm
+?/chloro
+??roulet
+?/ssh-
+?/user@asus
+?/113769
+?/1137695
+?/1137
+?/ipretriever
+?/mailto:.*sub
+??LC_ALL
+??bouchin
+?/paradigm
+??gocad
+??append stack arg
+??forth
+? \<sed\>
+??2|
+??|2
+??musiclesson
+??cmci
+?/ssd
+??palmerda
+??palmer
+?/2015_05_08__01_30_37
+?/\<_______....................__________tuto_nick_antonaccio_business_programming\>
+?/\<______________.........______________tuto_nick_antonaccio_business_programming\>
+?/____.*reprendre.*__
+??2015_05_05__22_01_51
+??gravat
+??couffi
+? \<2015_05_09__00_09_57\>
+? \<2015_05_09__00_44_28\>
+??_______________ENCOURS____
+??2015_05_09__00_09_57
+? \<erreur\>
+? \<TABLE\>
+?/:map
+?/map
+?/attei
+? \<cours\>
+? \<Lecture\>
+? \<root\>
+?/col
+?/date
+?/_date
+?/date_
+?/fv1
+?/moyen
+?/xse
+?/run_
+?/run_cli
+?/clipb
+?/do_
+?/autore
+??22_08_2013__10_02_36
+??linutopch-home
+?/pch_geol_rapport_2013_03_fac_st_etienne_cours_geol_num
+?/pch_geol_rapport_2011_07_fac_st_etienne_cours_geol_num.pdf
+?/chevalier.*free.*cours
+??http.*free.*cours
+??filezi
+??pierre_chevali.*free.*cours
+??pierre_chevali.
+? \<fontconfig\>
+? \<fuse\>
+? \<libmpdec2\>
+? \<libnl\>
+? \<libpolkit\>
+? \<deferring\>
+?/Reloading system message bus config
+? \<libecal\>
+? \<libedata\>
+? \<libebook\>
+? \<libboost\>
+? \<libcloog\>
+? \<libfs6\>
+? \<libopencore\>
+? \<liblangtag\>
+? \<libpciaccess0\>
+? \<libwinpr\>
+? \<libmpfr4\>
+? \<liblocale\>
+? \<libfribidi0\>
+? \<libzvbi\>
+? \<libdconf1\>
+? \<libfontenc1\>
+? \<libvisual\>
+? \<libofa0\>
+? \<libsqlite3\>
+? \<liblwres90\>
+? \<libxkbcommon0\>
+? \<libsensors4\>
+?/Use of uninitialized value in join or string at /usr/sbin/pam-auth-update line 109, <STDIN> 
+? \<109\>
+? \<uninitialized\>
+?/use
+?/Paramétrage de libnl-genl-
+?/topping bluet
+?/avahi-daemon
+? \<Avahi\>
+?/par
+? \<libgstreamer0\>
+? \<libspandsp2\>
+?/returns true if the valu
+?/application
+?/jour
+?/le brgm et coge
+??var\/cache\/ap
+?/apt.*cach
+?/apt.*clea
+?/ity
+?/bumif
+? \<2014_04_01__01_08_40\>
+??pch_geol_rapport_2013_02_smi
+??Réception de : 16 http://ftp.fr.debian.org stable/non-free Sources [99.8 kB]   
+?/latex
+??pch_geol_rapport_2009_03_kamoeb_ganaet_executive_summary.pdf
+?/ntion: erreur lors de numér
+?/______________JEANSUILA______________2015_04_22__16_07_11
+??microsoft
+??geomfromwk
+?  
+??Abandon de tous les efforts pour rechercher une solution à ces dépendances
+? \<2015_05_06__23_46_55\>
+? \<2015_05_06__22_19_24\>
+? \<2015_05_06__22_50_15\>
+??for
+??#"q"
+? \<2015_05_05__23_24_00\>
+?/2010
+??2012
+??2013
+? \<2014\>
+? \<2010\>
+??ram
+? \<2015_01_27__23_41_47\>
+??errat
+?/201
+? \<2015_01_27__21_52_07\>
+? \<_______________ENCOURS_______________tuto_nick_antonaccio_business_programming\.\>
+? \<2015_01_26__22_59_51\>
+?/Le BRGM et COGEMA ont
+?/lamancharesources.com
+?/philippe_ve
+?/geosciml
+?/resq
+??resqlm
+??pg_dum
+??pg_restor
+? \<rejoin\>
+? \<control_sudoku\>
+?/control
+??sudok
+? \<marse\>
+?/mar
+? \<2015_05_04__19_46_41\>
+??\<_______________ENCOURS_______________SMI\>
+? \<7\>
+? \<6\>
+? \<3\>
+? \<1\>
+? \<5\>
+? \<4\>
+? \<2\>
+? \<SUBVVX\>
+? \<2015_03_14__16_55_41\>
+? \<2015_03_14__12_44_23\>
+? \<2015_03_14__12_17_59\>
+? \<2015_03_14__11_37_07\>
+? \<2015_03_14__10_33_27\>
+? \<2015_03_14__08_59_06\>
+?/h\|8
+? \<8\>
+? \<d\>
+? \<9\>
+?/4\|d
+? \<f\>
+? \<i\>
+? \<valid\>
+? \<grid\>
+? \<substr\>
+??substr
+? \<func\>
+?/1\|9\|3
+?/1\|9
+? \<g\>
+?/g\|7
+?/g
+? \<b\>
+?/x
+??lid
+? \<2015_05_03__13_30_53\>
+? \<LaTeX!\>
+??pch_geol_rapport_2009_03_kamoeb_ganaet_execut
+? \<pch_geol_rapport_2009_03_kamoeb_ganaet_execut\>
+??ital
+? \<txt_to_speak\>
+??Vérification de ce que les fichiers mentionnés dans le champ filename existent bel et
+? \<filename\>
+??filename
+? \<2014_08_09__04_12_39\>
+? \<2014_08_09__00_04_59\>
+? \<2014_08_08__18_12_44\>
+? \<2014_08_08__12_13_02\>
+? \<2014_08_08__10_20_42\>
+??2014_08_08
+? \<prophyrique\.\>
+? \<prophyry\>
+? \<Génératinos\>
+? \<TOUT_DOUX\>
+?/bricolag
+? \<TEL\>
+??\<2015_02_10__15_27_02_ROUVRIR\>
+??geosciml
+? \<_______________ENCOURS_______________MARBRE_GABON\>
+? \<rurale\>
+? \<__________ROUVRIR_VOLET_VIM__________2015_05_01__20_13_57\>
+? \<_______________ENCOURS_______________ORDRE_DONNÉES2015_05_01__21_36_03\>
+? \<201302\>
+? \<2015_05_01__22_32_41\>
+?/pchgeol_rapports\|rapport_
+?/État après insertion:..
+??État après insertion:..
+? |
+?   
+?    
+? \|
+? \<201307\>
+?//pchgeol_rapports\|rapport_
+??aarc
+??ntion: erreur lors de numér
+?/erreur lors de numéro
+? \<pch_geol_rapport_2013_04_smi_cr_mission_txt_annexes\.pdf'\>
+? \<______________JEANSUILA______________2015_04_22__16_07_11\>
+?/Projet Est-Simandou
+?/MI - Documentation base de do
+? \<2015_04_24__21_36_01\>
+? \<2015_04_24__19_49_35\>
+?/client.*fac
+? \<__________________________2015_04_24__19_11_30\>
+?/2015_04_24
+? \<2015_05_01__15_18_00\>
+? \<2015_04_18__22_53_18\>
+? \<2015_04_14__16_41_00\>
+? \<2015_04_14__10_01_27\>
+??_____
+?/2015_04_24_
+? \<2015_04_24__19_11_30\>
+??traitement de texte
+??libre
+? \<2015_04_02__12_15_16\>
+? \<2015_04_02__12_06_24\>
+? \<2015_04_02__12_02_43\>
+? \<2015_04_02__09_40_43\>
+??_______
+?/also
+??in the east
+?/air
+??burgei
+?/pdft
+?/\.733
+?/environmental and so
+?/environ
+??\.733
+??733
+? \<2015_04_29__12_36_34\>
+??pdft
+??afx
+? \<introduction\>
+??damie
+?/ht
+??scopin
+?/lot of ir
+??remain hi
+?/enviroso
+? \<2015_04_28__09_06_17\>
+??for a progra
+??\<_______________ENCOURS_______________AURAMINES2015_04_28__09_15_50\>
+? \<report_block_35_2program_txt_appendices\.pdf\>
+? \<_______________ENCOURS_______________AURAMINES2015_04_28__09_15_50\>
+? \<planner\>
+? \<PQ\>
+? \<SQ\>
+??SQ
+? \<evince\>
+?/muse
+??um m
+? \<2015_04_26__12_26_00\>
+??backup_cluster_postgresql_autan_9.4_2015_04_18_17h59.sql
+? \<topo_points_points\>
+?/geol_1m_sheet_
+?/landro
+??tgv
+?/landr
+?/set fold
+? \<oowriter\>
+?/:r
+? \<Simandou\>
+? \<fini\>
+? \<comments\>
+?/rondib
+?/rondi
+?/#get-de
+? \<NAT_PRINT\>
+?/Outputs a value followed by a newline.
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Registres :
+"0	LINE	0
+	#assainissement du nom (léger, à améliorer)
+""1	CHAR	0
+	
+	#
+"2	CHAR	0
+		# MARCHE PAS:
+	
+"3	CHAR	0
+		# DOES NOT WORK => what doesn't work is indented with a tab and 
+		# commented out
+	
+"4	CHAR	0
+	#	MARCHE PAS 
+	#	 $2: verbose option -v
+	#	 $1 et $2 may be swapped
+	
+"5	CHAR	0
+	#	MARCHE PAS => ce qui marche pas est indénté avec une tabulation
+	#	DOES NOT WORK => what doesn't work is indented with a tab
+	
+"6	CHAR	0
+	assainissement du nom (léger, à améliorer)
+	
+"7	CHAR	0
+	.pl -l -e .
+	
+"8	CHAR	0
+	
+	
+	
+"9	CHAR	0
+	
+	
+	# dans l'hôte GLL_BD_HOST, à partir d'un fichier csv 
+	# Tous champs en varchar pour le moment; TODO faudrait itérer pour 
+	# détecter les numériques, mais bof: faire ça plus tard, en python 
+	# par exemple, ou en Redbol
+	
+"a@	CHAR	0
+	�kIOH�kI�kI--OH�kd
+"b	CHAR	0
+	�kI# �kd[1~
+"u	CHAR	0
+	iQ�kb
+"-	CHAR	0
+	(dependancy...)
+
+# Marques dans le fichier :
+'0  69  0  ~/.lesshst
+'1  12  20  ~/heaume_pierre/developpt/postgresql/.git/COMMIT_EDITMSG
+'2  19586  30  ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+'3  1  0  ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+'4  44  35  ~/heaume_pierre/bin_scripts/reduc
+'5  109  0  ~/tutu
+'6  291  20  ~/.vimrc
+'7  1  0  ~/heaume_pierre/bin_scripts/rapports
+'8  8  140  ~/heaume_pierre/bin_scripts/rapport_nouveau
+'9  17  5  ~/heaume_pierre/scans_multifonction_brother/t/reduit_500/reduc
+
+# Liste de sauts (le plus récent en premier) :
+-'  69  0  ~/.lesshst
+-'  1  0  ~/.lesshst
+-'  12  20  ~/heaume_pierre/developpt/postgresql/.git/COMMIT_EDITMSG
+-'  1  0  ~/heaume_pierre/developpt/postgresql/.git/COMMIT_EDITMSG
+-'  19586  30  ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+-'  1756  25  ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+-'  1  0  ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+-'  44  35  ~/heaume_pierre/bin_scripts/reduc
+-'  9  85  ~/heaume_pierre/bin_scripts/reduc
+-'  109  0  ~/tutu
+-'  1  0  ~/tutu
+-'  291  20  ~/.vimrc
+-'  487  42  ~/.vimrc
+-'  311  32  ~/.vimrc
+-'  1  0  ~/heaume_pierre/bin_scripts/rapports
+-'  8  140  ~/heaume_pierre/bin_scripts/rapport_nouveau
+-'  1  0  ~/heaume_pierre/bin_scripts/rapport_nouveau
+-'  17  5  ~/heaume_pierre/scans_multifonction_brother/t/reduit_500/reduc
+-'  1  0  ~/heaume_pierre/scans_multifonction_brother/t/reduit_500/reduc
+-'  17  5  ~/heaume_pierre/scans_multifonction_brother/t/reduc
+-'  1  0  ~/heaume_pierre/scans_multifonction_brother/t/reduc
+-'  1  0  ~/heaume_pierre/scans_multifonction_brother/t/redu
+-'  51  0  ~/heaume_pierre/bin_scripts/reduc
+-'  1  0  ~/heaume_pierre/bin_scripts/reduc
+-'  13  26  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  1  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  87  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  40  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  46  4  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  29  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  38  64  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  37  46  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  30  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  11  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  23  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  12  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  21  20  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  32  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  33  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  39  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  47  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  56  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  67  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  84  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  9  6  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  4  74  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  40  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  13  26  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  1  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  87  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  40  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  46  4  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  29  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  38  64  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  37  46  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  30  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  11  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  23  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  12  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  21  20  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  32  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  33  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  39  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  47  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  56  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  67  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  84  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  9  6  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  4  74  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  40  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  13  26  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  1  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  87  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  40  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+-'  46  4  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  29  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  38  64  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  37  46  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  30  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  11  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  23  3  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  12  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  21  20  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  32  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  33  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  39  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  40  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  41  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  47  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+-'  56  0  ~/heaume_pierre/developpt/geolllibre/csv2sql
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/.lesshst
+	"	69	0
+
+> ~/heaume_pierre/developpt/postgresql/.git/COMMIT_EDITMSG
+	"	12	20
+	^	12	21
+	.	12	20
+	+	11	49
+	+	12	28
+	+	11	38
+	+	12	20
+
+> ~/heaume_pierre/developpt/postgresql/src/backend/po/fr.po
+	"	19586	30
+	^	19586	31
+	.	19586	30
+	+	19585	75
+	+	19586	30
+
+> ~/heaume_pierre/bin_scripts/reduc
+	"	44	35
+
+> ~/tutu
+	"	109	0
+	^	109	0
+	.	108	39
+	+	108	39
+
+> ~/.vimrc
+	"	291	20
+	^	472	22
+	.	420	0
+	+	326	16
+	+	490	0
+	+	423	65
+	+	424	7
+	+	424	26
+	+	425	0
+	+	424	25
+	+	424	0
+	+	502	114
+	+	491	10
+	+	502	3
+	+	493	0
+	+	494	0
+	+	495	0
+	+	496	0
+	+	492	0
+	+	497	0
+	+	498	0
+	+	499	0
+	+	500	0
+	+	501	0
+	+	502	0
+	+	421	0
+	+	421	159
+	+	482	0
+	+	482	0
+	+	482	0
+	+	478	0
+	+	480	0
+	+	478	0
+	+	480	0
+	+	478	0
+	+	479	6
+	+	406	0
+	+	425	0
+	+	435	69
+	+	466	0
+	+	466	106
+	+	466	0
+	+	466	0
+	+	466	0
+	+	466	106
+	+	436	0
+	+	437	0
+	+	438	0
+	+	439	0
+	+	440	0
+	+	441	0
+	+	442	0
+	+	443	0
+	+	444	0
+	+	445	0
+	+	446	0
+	+	447	0
+	+	448	0
+	+	449	0
+	+	450	0
+	+	451	0
+	+	452	0
+	+	453	0
+	+	454	0
+	+	455	0
+	+	456	0
+	+	458	59
+	+	458	50
+	+	463	28
+	+	458	0
+	+	458	10
+	+	458	23
+	+	466	0
+	+	466	0
+	+	466	0
+	+	461	0
+	+	459	0
+	+	466	0
+	+	467	0
+	+	459	0
+	+	458	94
+	+	463	10
+	+	461	26
+	+	459	0
+	+	463	10
+	+	463	28
+	+	464	0
+	+	462	0
+	+	462	0
+	+	460	30
+	+	458	1
+	+	461	24
+	+	463	10
+	+	461	22
+	+	420	44
+	+	418	0
+	+	420	0
+	+	419	0
+	+	417	0
+	+	419	0
+	+	420	0
+
+> ~/.gll_preferences
+	"	4	0
+	^	2	1
+	.	2	0
+	+	3	0
+	+	1	0
+	+	2	0
+
+> ~/heaume_pierre/bin_scripts/rapports
+	"	1	0
+
+> ~/heaume_pierre/bin_scripts/rapport_nouveau
+	"	8	140
+
+> ~/heaume_pierre/scans_multifonction_brother/t/reduit_500/reduc
+	"	17	5
+	^	17	6
+	.	17	5
+	+	17	5
+
+> ~/heaume_pierre/scans_multifonction_brother/t/reduc
+	"	17	5
+	^	17	6
+	.	17	5
+	+	17	5
+
+> ~/heaume_pierre/scans_multifonction_brother/t/redu
+	"	1	0
+
+> ~/heaume_pierre/developpt/geolllibre/csv2sql
+	"	13	26
+	^	87	0
+	.	30	0
+	+	15	66
+	+	24	0
+	+	15	135
+	+	4	97
+	+	16	79
+	+	16	95
+	+	18	65
+	+	19	81
+	+	20	54
+	+	24	0
+	+	21	20
+	+	10	12
+	+	24	20
+	+	24	25
+	+	30	67
+	+	30	59
+	+	28	0
+	+	38	0
+	+	37	1
+	+	38	19
+	+	38	19
+	+	38	19
+	+	39	0
+	+	38	69
+	+	40	0
+	+	38	8
+	+	16	77
+	+	30	0
+	+	10	67
+	+	12	0
+	+	10	3
+	+	12	2
+	+	12	2
+	+	12	0
+	+	13	0
+	+	12	1
+	+	13	1
+	+	12	65
+	+	12	2
+	+	11	15
+	+	12	13
+	+	27	0
+	+	30	2
+	+	12	2
+	+	13	2
+	+	25	30
+	+	12	0
+	+	24	0
+	+	13	0
+	+	21	19
+	+	11	16
+	+	31	0
+	+	38	24
+	+	37	89
+	+	38	65
+	+	29	0
+	+	32	0
+	+	33	0
+	+	39	0
+	+	40	0
+	+	41	0
+	+	46	0
+	+	47	0
+	+	56	0
+	+	67	0
+	+	29	0
+	+	3	67
+	+	4	31
+	+	6	0
+	+	4	67
+	+	5	1
+	+	6	67
+	+	7	47
+	+	7	47
+	+	16	21
+	+	16	69
+	+	17	0
+	+	18	63
+	+	19	16
+	+	19	63
+	+	20	19
+	+	20	19
+	+	6	66
+	+	7	40
+	+	7	72
+	+	8	43
+	+	8	72
+	+	30	0
+
+> ~/heaume_pierre/developpt/geolllibre/.git/COMMIT_EDITMSG
+	"	41	40
+	^	41	41
+	.	41	40
+	+	47	176
+	+	40	67
+	+	39	0
+	+	40	34
+	+	40	1
+	+	41	40
+
+> ~/heaume_pierre/bin_scripts/sanity.pl
+	"	68	2
+
+> ~/heaume_pierre/developpt/geolllibre/sql2csv
+	"	10	0
+	^	11	0
+	.	10	95
+	+	4	145
+	+	6	0
+	+	8	0
+	+	7	9
+	+	8	21
+	+	6	22
+	+	8	27
+	+	6	52
+	+	8	78
+	+	12	0
+	+	10	95
+
+> ~/heaume_pierre/bin_scripts/sql2csvpipeoocalc
+	"	6	44
+
+> ~/heaume_pierre/bin_scripts/sql2csv
+	"	5	19
+
+> ~/neo4j/cle/graphdb_17022016/composition_6000lines.csv
+	"	614	0
+
+> ~/.bashrc
+	"	163	69
+	^	163	70
+	.	165	0
+	+	8	0
+	+	10	0
+	+	251	61
+	+	249	0
+	+	250	17
+	+	250	18
+	+	251	0
+	+	250	38
+	+	93	14
+	+	164	204
+	+	163	71
+	+	164	0
+	+	165	0
+
+> ~/.pgpass
+	"	1	14
+	^	4	17
+	.	26	0
+	+	5	31
+	+	3	20
+	+	4	17
+	+	26	0
+
+> ~/heaume_pierre/developpt/geolllibre/gll_routines.r
+	"	3796	0
+	^	3796	0
+	.	2012	0
+	+	2012	0
+	+	2014	0
+	+	2012	0
+
+> ~/heaume_pierre/developpt/utils-libs/utils-strings.r
+	"	408	0
+
+> ~/heaume_pierre/developpt/utils-libs/utils-series.r
+	"	51	4
+
+> ~/heaume_pierre/developpt/utils-libs/utils-words.r
+	"	12	0
+
+> ~/heaume_pierre/developpt/utils-libs/utils-http.r
+	"	190	5
+
+> ~/heaume_pierre/developpt/utils-libs/README.md
+	"	13	56
+	^	11	258
+	.	9	115
+	+	9	115
+
+> ~/heaume_pierre/bin_scripts/paraviewgeo
+	"	1	0
+
+> ~/Dolibarr - Nouvelle adhésion.html
+	"	89	0
+
+> /tmp/nnotes.txt
+	"	68	0
+	.	1	6
+	+	1	6
+
+> ~/a
+	"	69	0
+	^	2	28
+	.	44	0
+	+	1673	83
+	+	1673	40
+	+	1673	100
+	+	1673	70
+	+	1673	56
+	+	1673	90
+	+	1673	63
+	+	1673	15
+	+	1673	14
+	+	1673	15
+	+	1673	76
+	+	1673	81
+	+	1673	69
+	+	1673	76
+	+	1673	15
+	+	1673	15
+	+	1673	78
+	+	1673	69
+	+	1673	47
+	+	1673	84
+	+	1673	97
+	+	1673	86
+	+	1673	94
+	+	1673	90
+	+	1673	101
+	+	1673	0
+	+	1673	91
+	+	1673	90
+	+	1673	94
+	+	1673	99
+	+	1673	91
+	+	1673	90
+	+	1673	99
+	+	1673	107
+	+	1673	100
+	+	1673	103
+	+	1673	91
+	+	1673	97
+	+	1673	96
+	+	1673	100
+	+	1673	93
+	+	1673	97
+	+	1673	99
+	+	1673	90
+	+	1673	97
+	+	1673	80
+	+	1673	124
+	+	1673	96
+	+	1673	105
+	+	1673	132
+	+	1673	89
+	+	1673	62
+	+	1673	57
+	+	1673	1
+	+	1673	1
+	+	1673	1
+	+	1673	1
+	+	1673	1
+	+	1673	1
+	+	1673	1
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	0
+	+	1673	1
+	+	1673	0
+	+	1673	0
+	+	1673	2
+	+	1673	1
+	+	1673	162
+	+	1672	0
+	+	57	0
+	+	1673	0
+	+	57	3
+	+	55	0
+	+	53	3
+	+	57	0
+	+	56	1
+	+	28	878
+	+	2	0
+	+	5	176
+	+	7	76
+	+	9	84
+	+	11	103
+	+	11	0
+	+	11	363
+	+	15	0
+	+	17	0
+	+	19	134
+	+	31	16
+	+	33	183
+	+	39	65
+	+	1	9
+	+	3	0
+	+	44	0
+
+> ~/b
+	"	318	0
+	^	54	0
+	.	2	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	7
+	+	1	0
+	+	1	0
+	+	125	0
+	+	134	0
+	+	143	0
+	+	152	0
+	+	161	0
+	+	1	0
+	+	106	0
+	+	1	0
+	+	109	0
+	+	119	0
+	+	128	0
+	+	137	0
+	+	146	0
+	+	155	0
+	+	1	0
+	+	1	124
+	+	1	124
+	+	106	123
+	+	116	125
+	+	117	0
+	+	125	124
+	+	134	124
+	+	143	124
+	+	152	124
+	+	1	65
+	+	1	0
+	+	1	0
+	+	1	3
+	+	103	3
+	+	67	0
+	+	66	4
+	+	66	0
+	+	64	1
+	+	66	0
+	+	1	0
+	+	138	33
+	+	114	101
+	+	114	228
+	+	1	34
+	+	52	3
+	+	2	0
+
+> ~/heaume_pierre/developpt/rebol/sources/Red/modules/view/backends/platform.red
+	"	497	0
+	^	497	0
+	.	487	44
+	+	14	0
+	+	387	0
+	+	395	0
+	+	426	0
+	+	438	0
+	+	442	0
+	+	446	0
+	+	450	0
+	+	454	0
+	+	458	0
+	+	461	0
+	+	464	0
+	+	467	0
+	+	472	0
+	+	471	2
+	+	473	0
+	+	472	17
+	+	478	24
+	+	483	35
+	+	496	1
+	+	483	34
+	+	485	42
+	+	486	44
+	+	484	28
+	+	487	44
+
+> ~/heaume_pierre/developpt/rebol/sources/Red/.git/MERGE_MSG
+	"	6	0
+	^	8	61
+	.	8	60
+	+	8	60
+
+> ~/emaux/pierrechevaliergeologue.sig
+	"	5	16
+	^	5	17
+	.	5	16
+	+	4	50
+	+	13	0
+	+	5	16
+
+> /etc/firebird/2.5/firebird.conf
+	"	828	0
+
+> ~/.local/share/applications/vlc.desktop
+	"	5	0
+	.	1	0
+	+	1	0
+
+> ~/heaume_pierre/bin_scripts/demarrage
+	"	38	0
+	^	19	70
+	.	19	69
+	+	39	0
+	+	2	0
+	+	7	0
+	+	37	17
+	+	39	0
+	+	3	0
+	+	6	0
+	+	37	34
+	+	38	0
+	+	37	51
+	+	19	0
+	+	18	0
+	+	19	69
+	+	28	0
+	+	19	69
+
+> ~/.psqlrc
+	"	14	45
+	^	14	46
+	.	14	45
+	+	10	6
+	+	12	17
+	+	10	1
+	+	2	31
+	+	9	21
+	+	2	20
+	+	9	70
+	+	9	23
+	+	2	0
+	+	2	31
+	+	9	0
+	+	9	0
+	+	9	23
+	+	9	0
+	+	2	0
+	+	9	0
+	+	2	0
+	+	7	0
+	+	7	0
+	+	4	0
+	+	10	0
+	+	5	0
+	+	6	0
+	+	9	0
+	+	7	25
+	+	7	0
+	+	15	0
+	+	14	45
+
+> /usr/share/vim/vim74/doc/help.txt
+	"	1	0
+
+> ~/.screenrc
+	"	20	0
+	^	20	0
+	.	18	34
+	+	16	17
+	+	18	34
+
+> /etc/cron.d/anacron
+	"	5	0
+
+> /etc/rc3.d/S03gdomap
+	"	12	0
+
+> /etc/rc3.d/S03ssh
+	"	81	7
+
+> /etc/rc3.d/S03anacron
+	"	18	0
+
+> /etc/rc3.d/S03speech-dispatcher
+	"	15	0
+
+> /etc/rc3.d/S04cron
+	"	19	0
+
+> /etc/rc3.d/S03atd
+	"	16	0
+
+> /etc/rc3.d/S04network-manager
+	"	15	0
+
+> /etc/rc3.d/S03irqbalance
+	"	16	0
+
+> /etc/rc3.d/S04wicd
+	"	18	7
+
+> /etc/rc3.d/S04lightdm
+	"	18	0
+
+> /etc/rc3.d/S03hddtemp
+	"	23	0
+
+> /etc/rc3.d/S03inetutils-inetd
+	"	13	0
+
+> /etc/rc3.d/S03postgresql_9.5
+	"	77	0
+
+> /etc/rc3.d/S06bootlogs
+	"	14	0
+
+> /etc/rc3.d/S04avahi-daemon
+	"	15	0
+
+> /etc/rc3.d/S01cgmanager
+	"	18	0
+
+> /etc/rc3.d/S04bluetooth
+	"	24	0
+
+> /etc/rc3.d/S03winbind
+	"	14	0
+
+> /etc/rc3.d/S01rsyslog
+	"	20	0
+
+> /etc/rc3.d/S03ntp
+	"	12	0
+
+> /etc/rc3.d/S16rmnologin
+	"	15	0
+
+> /etc/rc3.d/S03cgproxy
+	"	18	0
+
+> /etc/rc3.d/S05gdm3
+	"	17	0
+
+> /etc/rc3.d/S03autofs
+	"	1	0
+
+> /etc/rc3.d/S02apache2
+	"	1	0
+
+> /etc/rc3.d/S05saned
+	"	18	0
+
+> /etc/rc3.d/S05cups
+	"	19	0
+
+> /etc/rc3.d/S01motd
+	"	1	0
+
+> /etc/rc3.d/S04rsync
+	"	60	7
+
+> /etc/rc3.d/S01binfmt-support
+	"	13	0
+
+> /etc/rc3.d/S16rc.local
+	"	12	0
+
+> /etc/rc3.d/S03proftpd
+	"	18	0
+
+> /etc/wpa_supplicant/action_wpa.sh
+	"	10	0
+
+> /etc/ca-certificates/update.d/jks-keystore
+	"	45	0
+
+> /etc/xdg/xfce4/xinitrc
+	"	55	14
+
+> ~/index.html
+	"	120	22
+	^	31	54
+	.	112	0
+	+	12	0
+	+	14	66
+	+	14	132
+	+	14	190
+	+	16	273
+	+	3	0
+	+	4	0
+	+	5	0
+	+	9	0
+	+	8	0
+	+	11	117
+	+	11	116
+	+	11	169
+	+	11	231
+	+	11	289
+	+	12	0
+	+	17	44
+	+	21	0
+	+	24	0
+	+	25	0
+	+	26	0
+	+	27	82
+	+	27	81
+	+	27	139
+	+	27	194
+	+	27	259
+	+	27	331
+	+	28	0
+	+	22	0
+	+	16	273
+	+	17	44
+	+	16	182
+	+	31	0
+	+	17	49
+	+	17	82
+	+	18	0
+	+	17	127
+	+	32	0
+	+	33	0
+	+	34	0
+	+	61	0
+	+	62	0
+	+	60	0
+	+	61	0
+	+	63	0
+	+	64	0
+	+	65	0
+	+	67	0
+	+	68	0
+	+	69	0
+	+	71	0
+	+	73	0
+	+	74	0
+	+	75	0
+	+	76	0
+	+	77	0
+	+	78	0
+	+	79	0
+	+	80	0
+	+	81	0
+	+	82	0
+	+	83	0
+	+	86	0
+	+	88	0
+	+	89	0
+	+	90	0
+	+	91	0
+	+	93	0
+	+	95	0
+	+	96	0
+	+	97	0
+	+	98	0
+	+	99	0
+	+	100	0
+	+	101	0
+	+	103	0
+	+	104	0
+	+	106	0
+	+	107	0
+	+	110	0
+	+	111	0
+	+	112	0
+
+> ~/parcours_professionnel.html
+	"	8	5
+
+> ~/geolllibre_annonce.html
+	"	8	0
+	^	315	30
+	.	315	29
+	+	313	22
+	+	315	29
+
+> ~/.icewm/keys
+	"	17	0
+
+> ~/heaume_pierre/bin_scripts/postgresql_latest_version.reb
+	"	1	0
+	.	2	0
+	+	2	0
+
+> ~/heaume_pierre/transferts/from/damien_gasse/2016_01_20/lr15201855.csv
+	"	1	0
+	.	1	0
+	+	1	0
+
+> /usr/share/sysvinit/inittab
+	"	1	1
+
+> /etc/inittab
+	"	1	1
+
+> ~/aarchives_notes_2000_2xxx_perso_et_prof.txt
+	"	1229183	0
+	.	1229184	0
+	+	105461	6
+	+	105025	24
+	+	105027	15
+	+	105025	24
+	+	105464	16
+	+	104277	13
+	+	104278	16
+	+	105027	5
+	+	104274	16
+	+	103647	12
+	+	103651	0
+	+	103652	0
+	+	103653	0
+	+	103654	0
+	+	103655	0
+	+	103656	0
+	+	103657	0
+	+	103658	0
+	+	103659	0
+	+	103660	0
+	+	103661	0
+	+	103662	0
+	+	103663	0
+	+	103664	0
+	+	103665	0
+	+	103667	0
+	+	103670	15
+	+	103667	65
+	+	103647	6
+	+	103651	0
+	+	103647	6
+	+	103666	6
+	+	103668	0
+	+	103667	0
+	+	103668	0
+	+	103669	0
+	+	103649	0
+	+	103648	0
+	+	103515	7
+	+	103515	0
+	+	103514	0
+	+	103514	0
+	+	103511	0
+	+	103512	0
+	+	103508	66
+	+	101426	4
+	+	101268	0
+	+	101270	0
+	+	116319	10
+	+	116319	0
+	+	101267	3
+	+	100455	19
+	+	91813	0
+	+	100485	0
+	+	100483	10
+	+	100484	10
+	+	101268	0
+	+	91813	70
+	+	91814	12
+	+	91813	0
+	+	91812	3
+	+	60979	0
+	+	60978	3
+	+	1193927	79
+	+	1193927	0
+	+	2	88
+	+	18	69
+	+	16783	69
+	+	54151	70
+	+	41914	69
+	+	60979	79
+	+	91813	80
+	+	101268	79
+	+	116319	79
+	+	157343	79
+	+	210926	79
+	+	235812	78
+	+	376892	78
+	+	561053	78
+	+	718698	78
+	+	966038	78
+	+	60979	0
+	+	91813	0
+	+	101268	0
+	+	116319	0
+	+	157343	0
+	+	210926	0
+	+	235812	0
+	+	376892	0
+	+	561053	0
+	+	718698	0
+	+	966038	0
+	+	1193927	0
+	+	1229184	0
+	+	1193927	1
+	+	21	22
+	+	21	10
+	+	22	0
+	+	1229184	0
+	+	1229184	0
+
+> ~/nnotes.txt
+	"	171423	89
+	^	193875	0
+	.	193875	0
+	+	193996	0
+	+	193995	0
+	+	193994	0
+	+	193993	0
+	+	193992	0
+	+	195997	64
+	+	193991	0
+	+	193989	0
+	+	194273	0
+	+	194274	0
+	+	194274	0
+	+	194271	38
+	+	195608	40
+	+	196115	51
+	+	197202	44
+	+	197203	0
+	+	197204	0
+	+	197205	0
+	+	197206	0
+	+	197207	0
+	+	197208	0
+	+	197209	0
+	+	197210	0
+	+	197212	0
+	+	197211	0
+	+	198493	0
+	+	198761	0
+	+	193952	0
+	+	193950	0
+	+	185554	0
+	+	185555	0
+	+	185556	10
+	+	181615	0
+	+	181616	0
+	+	181617	0
+	+	181618	0
+	+	181619	0
+	+	181620	0
+	+	181621	0
+	+	181622	0
+	+	181623	0
+	+	181624	0
+	+	181625	0
+	+	181626	0
+	+	181627	0
+	+	181628	0
+	+	181629	0
+	+	181630	0
+	+	181631	0
+	+	181632	0
+	+	181633	0
+	+	181634	0
+	+	181635	0
+	+	181636	0
+	+	181637	0
+	+	181638	0
+	+	181639	0
+	+	181640	0
+	+	181641	0
+	+	181642	0
+	+	181643	0
+	+	181644	0
+	+	181645	0
+	+	181646	0
+	+	181647	0
+	+	181648	0
+	+	181649	0
+	+	181650	0
+	+	181651	0
+	+	181652	0
+	+	181653	0
+	+	181654	0
+	+	181656	0
+	+	168314	15
+	+	185556	10
+	+	185555	0
+	+	185556	10
+	+	185557	0
+	+	185556	29
+	+	193865	31
+	+	193864	15
+	+	193865	31
+	+	193867	0
+	+	193871	0
+	+	193872	174
+	+	193922	0
+	+	193921	90
+	+	193873	0
+	+	193887	0
+	+	193875	44
+	+	193918	0
+	+	193876	0
+	+	193877	40
+	+	193875	0
+	+	193919	0
+	+	193924	52
+	+	193928	0
+	+	193925	107
+	+	193922	0
+	+	193875	0
+	a	131646	0
+	e	126066	2
+	v	153910	0
+
+> ~/heaume_pierre/notes/feuille_dans_poche_cds
+	"	15	24
+
+> ~/tmp_xtract_structural_measurements_samples_sup_1gt.csv
+	"	8	88
+
+> ~/avant
+	"	64	0
+	^	66	0
+	.	65	0
+	+	1	65
+	+	65	0
+
+> ~/apres
+	"	39	0
+	^	65	0
+	.	65	0
+	+	1	65
+	+	65	0
+
+> ~/gll_routines.r
+	"	48	11
+
+> ~/heaume_pierre/bin_scripts/sauvegarde_bdexplo
+	"	4	84
+
+> ~/apres2
+	"	20	0
+	^	28	0
+	.	27	0
+	+	18	0
+	+	19	0
+	+	20	0
+	+	21	0
+	+	22	0
+	+	23	0
+	+	24	0
+	+	25	0
+	+	26	0
+	+	29	0
+	+	29	0
+	+	27	0
+
+> ~/heaume_pierre/developpt/geolllibre/gll_geolpda_data_mgr.r
+	"	1	3
+
+> ~/rien.html
+	"	4	52
+	^	4	53
+	.	4	53
+	+	11	0
+	+	4	53
+
+> ~/heaume_pierre/bin_scripts/wifi
+	"	1	0
+
+> ~/truc_guyanais.html
+	"	1	0
+
+> ~/.rebol/view/user.r
+	"	62	0
+
+> ~/sez
+	"	143	0
+	^	143	0
+	.	142	3
+	+	144	245
+	+	144	0
+	+	142	3

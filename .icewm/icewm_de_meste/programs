@@ -1,0 +1,526 @@
+
+menu "Aide" folder {
+  prog    "Debian Reference" - /bin/sh -c "/usr/bin/debian-reference"
+  prog    "Dwww" - /bin/sh -c "/usr/bin/dwww"
+  prog    "Info" - /bin/sh -c "x-terminal-emulator  -T \"Info\" -e sh -c \"info\""
+  prog    "KDE Help Center" /usr/share/pixmaps/khelpcenter.xpm /bin/sh -c "/usr/bin/khelpcenter"
+  prog    "KTip" /usr/share/pixmaps/ktip.xpm /bin/sh -c "/usr/bin/ktip"
+  prog    "TeXdoctk" - /bin/sh -c "/usr/bin/texdoctk"
+  prog    "Xfce4-about" - /bin/sh -c "xfce4-about"
+  prog    "Xfhelp4" - /bin/sh -c "xfhelp4"
+  prog    "yelp" - /bin/sh -c "/usr/bin/yelp"
+}
+menu "Applications" folder {
+menu "Accessibilité" folder {
+  prog    "Xzoom" - /bin/sh -c "xzoom"
+}
+menu "Bureautique" folder {
+  prog    "AbiWord Word Processor" /usr/share/AbiSuite-2.4/icons/menu.xpm /bin/sh -c "/usr/bin/abiword"
+  prog    "gnumeric" /usr/share/pixmaps/gnome-gnumeric.xpm /bin/sh -c "/usr/bin/gnumeric"
+  prog    "KSpread" /usr/share/pixmaps/kspread.xpm /bin/sh -c "/usr/bin/kspread"
+  prog    "OpenOffice.org Calc" /usr/share/icons/gnome/32x32/apps/openofficeorg22-calc.xpm /bin/sh -c "/usr/bin/oocalc"
+  prog    "OpenOffice.org Impress" /usr/share/icons/gnome/32x32/apps/openofficeorg22-impress.xpm /bin/sh -c "/usr/bin/ooimpress"
+  prog    "OpenOffice.org Writer" /usr/share/icons/gnome/32x32/apps/openofficeorg22-writer.xpm /bin/sh -c "/usr/bin/oowriter"
+}
+menu "Dessin et image" folder {
+  prog    "Blender (full screen)" /usr/share/pixmaps/blender.xpm /bin/sh -c "/usr/bin/blender"
+  prog    "Blender (windowed)" /usr/share/pixmaps/blender.xpm /bin/sh -c "/usr/bin/blender -w"
+  prog    "Dia (GNOME)" /usr/share/pixmaps/dia_menu.xpm /bin/sh -c "/usr/bin/dia-gnome"
+  prog    "dotty" - /bin/sh -c "/usr/bin/dotty"
+  prog    "GNOME Screenshot Tool" - /bin/sh -c "/usr/bin/gnome-panel-screenshot"
+  prog    "GPS Correlate" - /bin/sh -c "/usr/bin/gpscorrelate-gui"
+  prog    "Hugin" - /bin/sh -c "/usr/bin/hugin"
+  prog    "Inkscape" /usr/share/pixmaps/inkscape.xpm /bin/sh -c "/usr/bin/inkscape"
+  prog    "KColorChooser" /usr/share/pixmaps/kcolorchooser.xpm /bin/sh -c "/usr/bin/kcolorchooser"
+  prog    "KColorEdit" /usr/share/pixmaps/kcoloredit.xpm /bin/sh -c "/usr/bin/kcoloredit"
+  prog    "KIconEdit" /usr/share/pixmaps/kiconedit.xpm /bin/sh -c "/usr/bin/kiconedit"
+  prog    "KolourPaint" /usr/share/pixmaps/kolourpaint.xpm /bin/sh -c "/usr/bin/kolourpaint"
+  prog    "Kooka" /usr/share/pixmaps/kooka.xpm /bin/sh -c "/usr/bin/kooka"
+  prog    "KPovModeler" /usr/share/pixmaps/kpovmodeler.xpm /bin/sh -c "/usr/bin/kpovmodeler"
+  prog    "KSnapshot" /usr/share/pixmaps/ksnapshot.xpm /bin/sh -c "/usr/bin/ksnapshot"
+  prog    "lefty" - /bin/sh -c "/usr/bin/lefty"
+  prog    "OpenOffice.org Draw" /usr/share/icons/gnome/32x32/apps/openofficeorg22-draw.xpm /bin/sh -c "/usr/bin/oodraw"
+  prog    "Stable version of Scribus" /usr/share/pixmaps/scribus.xpm /bin/sh -c "/usr/bin/scribus"
+  prog    "The GIMP" /usr/share/pixmaps/gimp.xpm /bin/sh -c "/usr/bin/gimp"
+  prog    "Xara LX" /usr/share/pixmaps/xaralx.xpm /bin/sh -c "/usr/bin/xaralx"
+  prog    "xfig" /usr/share/pixmaps/xfig32x32.xpm /bin/sh -c "/usr/bin/xfig"
+  prog    "XSane" /usr/share/pixmaps/xsane.xpm /bin/sh -c "/usr/bin/xsane"
+}
+menu "Développement web" folder {
+  prog    "Bluefish" /usr/share/pixmaps/bluefish_icon.xpm /bin/sh -c "/usr/bin/bluefish"
+}
+menu "Éditeurs" folder {
+  prog    "Emacs Snapshot (text)" /usr/share/emacs/22.0.95/etc/emacs.xpm /bin/sh -c "x-terminal-emulator  -T \"Emacs Snapshot (text)\" -e sh -c \"/usr/bin/emacs-snapshot -nw\""
+  prog    "Emacs Snapshot (X11)" /usr/share/emacs/22.0.95/etc/emacs.xpm /bin/sh -c "/usr/bin/emacs-snapshot-x"
+  prog    "Gedit" /usr/share/pixmaps/gedit-icon.xpm /bin/sh -c "/usr/bin/gedit"
+  prog    "Kate" /usr/share/pixmaps/kate.xpm /bin/sh -c "/usr/bin/kate"
+  prog    "KEdit" /usr/share/pixmaps/kedit.xpm /bin/sh -c "/usr/bin/kedit"
+  prog    "KImageMapEditor" /usr/share/pixmaps/kimagemapeditor.xpm /bin/sh -c "/usr/bin/kimagemapeditor"
+  prog    "Klipper" /usr/share/pixmaps/klipper.xpm /bin/sh -c "/usr/bin/klipper"
+  prog    "KWord" /usr/share/pixmaps/kword.xpm /bin/sh -c "/usr/bin/kword"
+  prog    "KWrite" /usr/share/pixmaps/kwrite.xpm /bin/sh -c "/usr/bin/kwrite"
+  prog    "MousePad" /usr/share/pixmaps/mousepad.xpm /bin/sh -c "/usr/bin/mousepad"
+  prog    "Nano" /usr/share/nano/nano-menu.xpm /bin/sh -c "x-terminal-emulator  -T \"Nano\" -e sh -c \"/bin/nano\""
+  prog    "NE" - /bin/sh -c "x-terminal-emulator  -T \"NE\" -e sh -c \"/usr/bin/ne\""
+  prog    "NEdit" /usr/share/pixmaps/Nedit.xpm /bin/sh -c "nedit"
+  prog    "Quanta Plus" /usr/share/pixmaps/quanta.xpm /bin/sh -c "/usr/bin/quanta"
+  prog    "sql-editor" - /bin/sh -c "/usr/bin/sql-editor"
+}
+menu "Éducatif" folder {
+  prog    "KBruch" /usr/share/pixmaps/kbruch.xpm /bin/sh -c "/usr/bin/kbruch"
+  prog    "KEduca" /usr/share/pixmaps/keduca.xpm /bin/sh -c "/usr/bin/keduca"
+  prog    "KEduca-Editor" /usr/share/pixmaps/keduca.xpm /bin/sh -c "/usr/bin/keducabuilder"
+  prog    "KGeography" /usr/share/pixmaps/kgeography.xpm /bin/sh -c "/usr/bin/kgeography"
+  prog    "Kiten" /usr/share/pixmaps/kiten.xpm /bin/sh -c "/usr/bin/kiten"
+  prog    "KLatin" /usr/share/pixmaps/klatin.xpm /bin/sh -c "/usr/bin/klatin"
+  prog    "KLettres" /usr/share/pixmaps/klettres.xpm /bin/sh -c "/usr/bin/klettres"
+  prog    "KPercentage" /usr/share/pixmaps/kpercentage.xpm /bin/sh -c "/usr/bin/kpercentage"
+  prog    "KTouch" /usr/share/pixmaps/ktouch.xpm /bin/sh -c "/usr/bin/ktouch"
+  prog    "KTurtle" /usr/share/pixmaps/kturtle.xpm /bin/sh -c "/usr/bin/kturtle"
+  prog    "Kverbos" /usr/share/pixmaps/kverbos.xpm /bin/sh -c "/usr/bin/kverbos"
+  prog    "KVocTrain" /usr/share/pixmaps/kvoctrain.xpm /bin/sh -c "/usr/bin/kvoctrain"
+  prog    "KWordQuiz" /usr/share/pixmaps/kwordquiz.xpm /bin/sh -c "/usr/bin/kwordquiz"
+  prog    "Marble" /usr/share/pixmaps/globe.xpm /bin/sh -c "/usr/bin/marble"
+}
+menu "Émulateurs" folder {
+  prog    "Qemulator" qemulator.xpm /bin/sh -c "/usr/bin/qemulator"
+  prog    "Qemu Launcher" /usr/share/pixmaps/qemu-launcher-32x32.xpm /bin/sh -c "/usr/bin/qemu-launcher"
+}
+menu "Émulateurs de terminaux" folder {
+  prog    "Gnome Terminal" /usr/share/pixmaps/gnome-terminal.xpm /bin/sh -c "/usr/bin/gnome-terminal"
+  prog    "Konsole" /usr/share/pixmaps/konsole.xpm /bin/sh -c "/usr/bin/konsole"
+  prog    "Terminal" /usr/share/pixmaps/terminal.xpm /bin/sh -c "/usr/bin/xfce4-terminal"
+  prog    "Xfterm4" - /bin/sh -c "x-terminal-emulator  -T \"Xfterm4\" -e sh -c \"xfterm4\""
+  prog    "XTerm" /usr/share/pixmaps/xterm-color_32x32.xpm /bin/sh -c "xterm"
+  prog    "X-Terminal as root (GKsu)" /usr/share/pixmaps/gksu-debian.xpm /bin/sh -c "/usr/bin/gksu -u root /usr/bin/x-terminal-emulator"
+  prog    "XTerm (Unicode)" /usr/share/pixmaps/xterm-color_32x32.xpm /bin/sh -c "uxterm"
+}
+menu "Gestion de données" folder {
+  prog    "Geneweb" /usr/share/pixmaps/geneweb.xpm /bin/sh -c "/usr/bin/x-www-browser http://localhost:2317"
+  prog    "HSQLDB Database Manager" /usr/share/pixmaps/hsqldb.xpm /bin/sh -c "/usr/bin/hsqldb-databasemanager"
+  prog    "HSQLDB Database Manager (Swing)" /usr/share/pixmaps/hsqldb.xpm /bin/sh -c "/usr/bin/hsqldb-databasemanagerswing"
+  prog    "HSQLDB Query Tool" /usr/share/pixmaps/hsqldb.xpm /bin/sh -c "/usr/bin/hsqldb-querytool"
+  prog    "HSQLDB Transfer Tool" /usr/share/pixmaps/hsqldb.xpm /bin/sh -c "/usr/bin/hsqldb-transfer"
+  prog    "KAddressbook" /usr/share/pixmaps/kaddressbook.xpm /bin/sh -c "/usr/bin/kaddressbook"
+  prog    "KAlarm" /usr/share/pixmaps/kalarm.xpm /bin/sh -c "/usr/bin/kalarm"
+  prog    "KitchenSync" - /bin/sh -c "/usr/bin/kitchensync"
+  prog    "Kleopatra" - /bin/sh -c "/usr/bin/kleopatra"
+  prog    "KMail/KAB Import Tool" - /bin/sh -c "/usr/bin/kmailcvt"
+  prog    "Knoda" - /bin/sh -c "/usr/bin/knoda"
+  prog    "KNotes" /usr/share/pixmaps/knotes.xpm /bin/sh -c "/usr/bin/knotes"
+  prog    "Kontact" /usr/share/pixmaps/kontact.xpm /bin/sh -c "/usr/bin/kontact"
+  prog    "KOrganizer" /usr/share/pixmaps/korganizer.xpm /bin/sh -c "/usr/bin/korganizer"
+  prog    "KWatchGnuPG" - /bin/sh -c "/usr/bin/kwatchgnupg"
+  prog    "MDB Viewer" /usr/share/pixmaps/gmdb2.xpm /bin/sh -c "/usr/bin/gmdb2"
+  prog    "MultiSynk" - /bin/sh -c "/usr/bin/multisynk"
+  prog    "MySQL Administrator" /usr/share/mysql-gui-tools/MySQLIcon_Admin_48x48.png /bin/sh -c "/usr/bin/mysql-admin"
+  prog    "MySQL Navigator" - /bin/sh -c "/usr/bin/mysqlnavigator"
+  prog    "MySQL Query Browser" /usr/share/mysql-gui-tools/MySQLIcon_QueryBrowser_48x48.png /bin/sh -c "/usr/bin/mysql-query-browser"
+  prog    "OpenOffice.org Base" /usr/share/icons/gnome/32x32/apps/openofficeorg22-base.xpm /bin/sh -c "/usr/bin/oobase"
+  prog    "pgAdmin III" /usr/share/pixmaps/pgadmin3.xpm /bin/sh -c "/usr/bin/pgadmin3"
+  prog    "TOra" /usr/share/icons/hicolor/32x32/apps/tora.xpm /bin/sh -c "/usr/bin/tora"
+}
+menu "Gestion de fichiers" folder {
+  prog    "Baobab" /usr/share/pixmaps/baobab.xpm /bin/sh -c "/usr/bin/baobab"
+  prog    "GNOME Search Tool" /usr/share/pixmaps/gsearchtool.xpm /bin/sh -c "/usr/bin/gnome-search-tool"
+  prog    "komparator" - /bin/sh -c "/usr/bin/komparator"
+  prog    "Konqueror" /usr/share/pixmaps/kfm.xpm /bin/sh -c "/usr/bin/konqueror --profile filemanagement"
+}
+menu "Gestion de projets" folder {
+  prog    "KArm" /usr/share/pixmaps/karm.xpm /bin/sh -c "/usr/bin/karm"
+}
+menu "Interpréteurs de commandes" folder {
+  prog    "Bash" - /bin/sh -c "x-terminal-emulator  -T \"Bash\" -e sh -c \"/bin/bash --login\""
+  prog    "Dash" - /bin/sh -c "x-terminal-emulator  -T \"Dash\" -e sh -c \"/bin/dash -i\""
+  prog    "Sh" - /bin/sh -c "x-terminal-emulator  -T \"Sh\" -e sh -c \"/bin/sh --login\""
+  prog    "tcsh" - /bin/sh -c "x-terminal-emulator  -T \"tcsh\" -e sh -c \"/bin/tcsh\""
+}
+menu "Langue écrite" folder {
+  prog    "Character map" - /bin/sh -c "/usr/bin/gucharmap"
+  prog    "Fortune" - /bin/sh -c "sh -c 'while /usr/games/fortune | col -x | xmessage -center -buttons OK:1,Another:0 -default OK -file - ; do :; done'"
+  prog    "GNOME Dictionary" /usr/share/pixmaps/gdict.xpm /bin/sh -c "/usr/bin/gnome-dictionary"
+  prog    "Kompare" /usr/share/pixmaps/kompare.xpm /bin/sh -c "/usr/bin/kompare"
+  prog    "KXSLDbg" - /bin/sh -c "/usr/bin/kxsldbg"
+}
+menu "Lecteurs" folder {
+  prog    "Evince" /usr/share/pixmaps/evince.xpm /bin/sh -c "/usr/bin/evince"
+  prog    "Eye of GNOME" /usr/share/pixmaps/gnome-eog.xpm /bin/sh -c "/usr/bin/eog"
+  prog    "gmplayer" - /bin/sh -c "/usr/bin/gmplayer"
+  prog    "GNOME Ghostscript Viewer" /usr/share/pixmaps/gnome-ghostview.xpm /bin/sh -c "/usr/bin/gnome-gv"
+  prog    "GQview" /usr/share/pixmaps/gqview.xpm /bin/sh -c "/usr/bin/gqview"
+  prog    "GV" /usr/share/pixmaps/mini-gv.xpm /bin/sh -c "/usr/bin/gv"
+  prog    "ImageMagick" - /bin/sh -c "/usr/bin/display"
+  prog    "KDVI" /usr/share/pixmaps/kdvi.xpm /bin/sh -c "/usr/bin/kdvi"
+  prog    "KFax" /usr/share/pixmaps/kfax.xpm /bin/sh -c "/usr/bin/kfax"
+  prog    "KFaxView" /usr/share/pixmaps/kfaxview.xpm /bin/sh -c "/usr/bin/kfaxview"
+  prog    "KGhostView" /usr/share/pixmaps/kghostview.xpm /bin/sh -c "/usr/bin/kghostview"
+  prog    "KPDF" /usr/share/pixmaps/kpdf.xpm /bin/sh -c "/usr/bin/kpdf"
+  prog    "KRuler" /usr/share/pixmaps/kruler.xpm /bin/sh -c "/usr/bin/kruler"
+  prog    "KTnef" /usr/share/pixmaps/ktnef.xpm /bin/sh -c "/usr/bin/ktnef"
+  prog    "Kuickshow" /usr/share/pixmaps/kuickshow.xpm /bin/sh -c "/usr/bin/kuickshow"
+  prog    "KView" /usr/share/pixmaps/kview.xpm /bin/sh -c "/usr/bin/kview"
+  prog    "PDF viewer" /usr/share/pixmaps/gnome-pdf.xpm /bin/sh -c "/usr/bin/gpdf"
+  prog    "VLC media player" /usr/share/vlc/vlc.xpm /bin/sh -c "/usr/bin/wxvlc"
+  prog    "XDvi" - /bin/sh -c "/usr/bin/xdvi"
+  prog    "Xpdf" /usr/share/pixmaps/xpdf.xpm /bin/sh -c "/usr/bin/xpdf"
+  prog    "xzgv Image Viewer" /usr/share/pixmaps/xzgv.xpm /bin/sh -c "/usr/bin/xzgv"
+}
+menu "Matériel nomade" folder {
+  prog    "JPilot" /usr/share/pixmaps/jpilot.xpm /bin/sh -c "/usr/bin/jpilot"
+  prog    "Kandy" - /bin/sh -c "/usr/bin/kandy"
+  prog    "KPalmDOC" /usr/share/pixmaps/kpalmdoc.xpm /bin/sh -c "/usr/bin/kpalmdoc"
+  prog    "KPilot" /usr/share/pixmaps/kpilot.xpm /bin/sh -c "/usr/bin/kpilot"
+}
+menu "Outils" folder {
+  prog    "Ark" /usr/share/pixmaps/ark.xpm /bin/sh -c "/usr/bin/ark"
+  prog    "dgpsip" - /bin/sh -c "x-terminal-emulator  -T \"dgpsip\" -e sh -c \"/usr/bin/dgpsip\""
+  prog    "File-Roller" /usr/share/pixmaps/file-roller.xpm /bin/sh -c "/usr/bin/file-roller"
+  prog    "Gentoo" - /bin/sh -c "gentoo"
+  prog    "iceconf" - /bin/sh -c "/usr/bin/iceconf"
+  prog    "KCharSelect" /usr/share/pixmaps/kcharselect.xpm /bin/sh -c "/usr/bin/kcharselect"
+  prog    "Kgpg" /usr/share/pixmaps/kgpg.xpm /bin/sh -c "/usr/bin/kgpg"
+  prog    "KHexEdit" /usr/share/pixmaps/khexedit.xpm /bin/sh -c "/usr/bin/khexedit"
+  prog    "KJots" /usr/share/pixmaps/kjots.xpm /bin/sh -c "/usr/bin/kjots"
+  prog    "KMag" /usr/share/pixmaps/kmag.xpm /bin/sh -c "/usr/bin/kmag"
+  prog    "KMousetool" /usr/share/pixmaps/kmousetool.xpm /bin/sh -c "/usr/bin/kmousetool"
+  prog    "KMouth" /usr/share/pixmaps/kmouth.xpm /bin/sh -c "/usr/bin/kmouth"
+  prog    "Kommander Editor" - /bin/sh -c "/usr/bin/kmdr-editor"
+  prog    "Kregexpeditor" /usr/share/pixmaps/kregexpeditor.xpm /bin/sh -c "/usr/bin/kregexpeditor"
+  prog    "krusader (File Manager)" /usr/share/pixmaps/krusader_user.xpm /bin/sh -c "/usr/bin/krusader"
+  prog    "krusader - root-mode (File Manager)" /usr/share/pixmaps/krusader_root.xpm /bin/sh -c "kdesu -c /usr/bin/krusader"
+  prog    "KSayIt" /usr/share/pixmaps/ksayit.xpm /bin/sh -c "/usr/bin/ksayit"
+  prog    "KSync" /usr/share/pixmaps/ksync.xpm /bin/sh -c "/usr/bin/ksync"
+  prog    "KTimer" /usr/share/pixmaps/ktimer.xpm /bin/sh -c "/usr/bin/ktimer"
+  prog    "mc" /usr/share/pixmaps/mc.xpm /bin/sh -c "x-terminal-emulator  -T \"mc\" -e sh -c \"/usr/bin/mc\""
+  prog    "Planner" - /bin/sh -c "/usr/bin/planner"
+  prog    "Superkaramba" /usr/share/pixmaps/superkaramba.xpm /bin/sh -c "/usr/bin/superkaramba"
+  prog    "uim-chardict-qt" - /bin/sh -c "/usr/bin/uim-chardict-qt"
+  prog    "uim-pref-qt" - /bin/sh -c "/usr/bin/uim-pref-qt"
+  prog    "uim-toolbar-qt" - /bin/sh -c "/usr/bin/uim-toolbar-qt"
+  prog    "USB View" - /bin/sh -c "/usr/bin/usbview"
+}
+menu "Programmation" folder {
+  prog    "BeanShell (text)" - /bin/sh -c "x-terminal-emulator  -T \"BeanShell (text)\" -e sh -c \"/usr/bin/bsh\""
+  prog    "BeanShell (windowed)" - /bin/sh -c "/usr/bin/xbsh"
+  prog    "Boa Constructor" /usr/share/pixmaps/boa-constructor.xpm /bin/sh -c "/usr/bin/boa-constructor"
+  prog    "ccmake" /usr/share/pixmaps/cmake.xpm /bin/sh -c "x-terminal-emulator  -T \"ccmake\" -e sh -c \"/usr/bin/ccmake\""
+  prog    "Data Display Debugger" - /bin/sh -c "/usr/bin/ddd"
+  prog    "DrPython" /usr/share/pixmaps/drpython.xpm /bin/sh -c "/usr/bin/drpython"
+  prog    "eric" /usr/share/pixmaps/eric.xpm /bin/sh -c "/usr/bin/eric3"
+  prog    "GDB" - /bin/sh -c "x-terminal-emulator  -T \"GDB\" -e sh -c \"/usr/bin/gdb\""
+  prog    "IDLE (Python v2.5)" /usr/share/pixmaps/python2.5.xpm /bin/sh -c "/usr/bin/idle-python2.5 -n"
+  prog    "Jython" - /bin/sh -c "x-terminal-emulator  -T \"Jython\" -e sh -c \"/usr/bin/jython\""
+  prog    "KDevelop" /usr/share/pixmaps/kdevelop.xpm /bin/sh -c "/usr/bin/kdevelop"
+  prog    "Kiki" /usr/share/pixmaps/kiki.xpm /bin/sh -c "/usr/bin/kiki"
+  prog    "pida" - /bin/sh -c "/usr/bin/pida"
+  prog    "pycrust" - /bin/sh -c "/usr/bin/pycrust"
+  prog    "pydb" - /bin/sh -c "x-terminal-emulator  -T \"pydb\" -e sh -c \"/usr/bin/pydb\""
+  prog    "PyPE" /usr/share/pixmaps/pype.xpm /bin/sh -c "/usr/bin/pype"
+  prog    "pyshell" - /bin/sh -c "/usr/bin/pyshell"
+  prog    "PythonCard codeEditor" - /bin/sh -c "/usr/bin/codeEditor"
+  prog    "PythonCard findfiles" - /bin/sh -c "/usr/bin/findfiles"
+  prog    "PythonCard resourceEditor" - /bin/sh -c "/usr/bin/resourceEditor"
+  prog    "Python (v2.4)" /usr/share/pixmaps/python2.4.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v2.4)\" -e sh -c \"/usr/bin/python2.4\""
+  prog    "Python (v2.5)" /usr/share/pixmaps/python2.5.xpm /bin/sh -c "x-terminal-emulator  -T \"Python (v2.5)\" -e sh -c \"/usr/bin/python2.5\""
+  prog    "Qt3 Designer" - /bin/sh -c "/usr/bin/designer-qt3"
+  prog    "Qt Assistant" - /bin/sh -c "/usr/bin/assistant-qt4"
+  prog    "Qt Linguist" - /bin/sh -c "/usr/bin/linguist-qt4"
+  prog    "SPE (Stani's Python Editor)" /usr/share/pixmaps/spe.png /bin/sh -c "/usr/bin/spe"
+  prog    "Tclsh8.4" - /bin/sh -c "x-terminal-emulator  -T \"Tclsh8.4\" -e sh -c \"/usr/bin/tclsh8.4\""
+  prog    "TkWish8.4" - /bin/sh -c "x-terminal-emulator -e /usr/bin/wish8.4"
+  prog    "Umbrello" /usr/share/pixmaps/umbrello.xpm /bin/sh -c "/usr/bin/umbrello"
+  prog    "WxGlade" - /bin/sh -c "/usr/bin/wxglade"
+  prog    "xrced" - /bin/sh -c "/usr/bin/xrced"
+}
+menu "Réseau" folder {
+menu "Communication" folder {
+  prog    "EGroupware Setup Wizard" - /bin/sh -c "/usr/bin/egroupwarewizard"
+  prog    "Ekiga" /usr/share/pixmaps/ekiga-logo-icon.png /bin/sh -c "/usr/bin/ekiga"
+  prog    "KDE Groupware Wizard" - /bin/sh -c "/usr/bin/groupwarewizard"
+  prog    "KMail" /usr/share/pixmaps/kmail.xpm /bin/sh -c "/usr/bin/kmail"
+  prog    "KNode" /usr/share/pixmaps/knode.xpm /bin/sh -c "/usr/bin/knode"
+  prog    "KOLab Setup Wizard" - /bin/sh -c "/usr/bin/kolabwizard"
+  prog    "MS Exchange Setup Wizard" - /bin/sh -c "/usr/bin/exchangewizard"
+  prog    "Mutt" /usr/share/pixmaps/mutt.xpm /bin/sh -c "x-terminal-emulator  -T \"Mutt\" -e sh -c \"/usr/bin/mutt\""
+  prog    "Novell GroupWise Setup Wizard" - /bin/sh -c "/usr/bin/groupwisewizard"
+  prog    "Openexchange Setup Wizard" - /bin/sh -c "/usr/bin/sloxwizard"
+  prog    "Pidgin" /usr/share/pixmaps/pidgin-menu.xpm /bin/sh -c "/usr/bin/pidgin"
+}
+menu "Composants Iceape" folder {
+  prog    "Iceape Browser" /usr/share/pixmaps/iceape.xpm /bin/sh -c "/usr/bin/iceape"
+  prog    "Iceape Composer" /usr/share/pixmaps/iceape-composer.xpm /bin/sh -c "/usr/bin/iceape -edit"
+  prog    "Iceape IRC Client" /usr/share/pixmaps/chatzilla.xpm /bin/sh -c "/usr/bin/iceape -chat"
+}
+menu "Flux d'informations" folder {
+  prog    "aKregator" /usr/share/pixmaps/akregator.xpm /bin/sh -c "/usr/bin/akregator"
+  prog    "KOrn" /usr/share/pixmaps/korn.xpm /bin/sh -c "/usr/bin/korn"
+}
+  prog    "Iceape Navigator" /usr/share/pixmaps/iceape.xpm /bin/sh -c "/usr/bin/iceape"
+  prog    "Icedove Mail" /usr/share/pixmaps/icedove-menu.xpm /bin/sh -c "icedove"
+  prog    "KDict" /usr/share/pixmaps/kdict.xpm /bin/sh -c "/usr/bin/kdict"
+  prog    "KGet" /usr/share/pixmaps/kget.xpm /bin/sh -c "/usr/bin/kget"
+  prog    "KLinkStatus" /usr/share/pixmaps/klinkstatus.xpm /bin/sh -c "/usr/bin/klinkstatus"
+  prog    "KNewsTicker" /usr/share/pixmaps/knewsticker.xpm /bin/sh -c "/usr/bin/appletproxy knewsticker.desktop"
+  prog    "Kopete" /usr/share/pixmaps/kopete.xpm /bin/sh -c "/usr/bin/kopete"
+  prog    "KPPP" /usr/share/pixmaps/kppp.xpm /bin/sh -c "/usr/bin/kppp"
+  prog    "KPPP - Logview" - /bin/sh -c "/usr/bin/kppplogview"
+  prog    "Krdc" /usr/share/pixmaps/krdc.xpm /bin/sh -c "/usr/bin/krdc"
+  prog    "Krfb" /usr/share/pixmaps/krfb.xpm /bin/sh -c "/usr/bin/krfb"
+  prog    "KSig" /usr/share/pixmaps/ksig.xpm /bin/sh -c "/usr/bin/ksig"
+  prog    "KSirc" /usr/share/pixmaps/ksirc.xpm /bin/sh -c "/usr/bin/ksirc"
+  prog    "KWifiManager" /usr/share/pixmaps/kwifimanager.xpm /bin/sh -c "/usr/bin/kwifimanager"
+  prog    "Lynx" - /bin/sh -c "x-terminal-emulator  -T \"Lynx\" -e sh -c \"/usr/bin/lynx\""
+menu "Navigateurs web" folder {
+  prog    "Iceweasel" /usr/share/pixmaps/iceweasel.xpm /bin/sh -c "iceweasel"
+  prog    "Konqueror" /usr/share/pixmaps/konqueror.xpm /bin/sh -c "/usr/bin/konqueror --profile webbrowsing"
+}
+  prog    "ncftp" - /bin/sh -c "x-terminal-emulator  -T \"ncftp\" -e sh -c \"/usr/bin/ncftp3\""
+  prog    "Telnet" - /bin/sh -c "x-terminal-emulator  -T \"Telnet\" -e sh -c \"/usr/bin/telnet\""
+menu "Transfert de fichiers" folder {
+  prog    "gFTP" /usr/share/pixmaps/gftp.xpm /bin/sh -c "/usr/bin/gftp-gtk"
+  prog    "Grsync" /usr/share/pixmaps/grsync.xpm /bin/sh -c "/usr/bin/grsync"
+  prog    "KTorrent" /usr/share/pixmaps/ktorrent.xpm /bin/sh -c "ktorrent"
+}
+  prog    "VRweb VRML browser" - /bin/sh -c "/usr/bin/vrweb"
+  prog    "w3m" - /bin/sh -c "x-terminal-emulator  -T \"w3m\" -e sh -c \"/usr/bin/w3m /usr/share/doc/w3m/MANUAL.html\""
+  prog    "xSMBrowser" /usr/share/pixmaps/xsmbrowser-mini.xpm /bin/sh -c "/usr/bin/xsmbrowser"
+  prog    "xtightvncviewer" - /bin/sh -c "/usr/bin/xtightvncviewer"
+}
+menu "Sciences" folder {
+menu "Analyse de données" folder {
+  prog    "LabPlot" /usr/share/pixmaps/labplot.xpm /bin/sh -c "/usr/bin/labplot"
+}
+menu "Astronomie" folder {
+  prog    "KStars" /usr/share/pixmaps/kstars.xpm /bin/sh -c "/usr/bin/kstars"
+}
+menu "Chimie" folder {
+  prog    "Kalzium" /usr/share/pixmaps/kalzium.xpm /bin/sh -c "/usr/bin/kalzium"
+  prog    "PyMOL" /usr/share/pixmaps/pymol.xpm /bin/sh -c "/usr/bin/pymol"
+}
+menu "Électronique" folder {
+  prog    "GPSMan" - /bin/sh -c "/usr/bin/gpsman"
+  prog    "PythonCAD" - /bin/sh -c "/usr/bin/pythoncad"
+  prog    "QCad" /usr/share/pixmaps/qcad.xpm /bin/sh -c "/usr/bin/qcad"
+}
+menu "Mathématiques" folder {
+  prog    "Bc" - /bin/sh -c "x-terminal-emulator  -T \"Bc\" -e sh -c \"/usr/bin/bc\""
+  prog    "Dc" - /bin/sh -c "x-terminal-emulator  -T \"Dc\" -e sh -c \"/usr/bin/dc\""
+  prog    "GCalcTool" /usr/share/pixmaps/gcalctool.xpm /bin/sh -c "/usr/bin/gcalctool"
+  prog    "Gnuplot" - /bin/sh -c "x-terminal-emulator  -T \"Gnuplot\" -e sh -c \"/usr/bin/gnuplot\""
+  prog    "KCalc" /usr/share/pixmaps/kcalc.xpm /bin/sh -c "/usr/bin/kcalc"
+  prog    "Kig" /usr/share/pixmaps/kig.xpm /bin/sh -c "/usr/bin/kig"
+  prog    "KmPlot" /usr/share/pixmaps/kmplot.xpm /bin/sh -c "/usr/bin/kmplot"
+  prog    "OpenOffice.org Math" /usr/share/icons/gnome/32x32/apps/openofficeorg22-math.xpm /bin/sh -c "/usr/bin/oomath"
+  prog    "Scilab" - /bin/sh -c "/usr/bin/scilab"
+}
+  prog    "Mayavi" - /bin/sh -c "/usr/bin/mayavi"
+  prog    "QGIS" /usr/share/pixmaps/qgis-icon.xpm /bin/sh -c "/usr/bin/qgis"
+menu "Sciences de la terre" folder {
+  prog    "OpenJUMP" - /bin/sh -c "/usr/bin/openjump"
+}
+}
+menu "Son et musique" folder {
+  prog    "Alsamixergui" /usr/share/pixmaps/alsamixergui.xpm /bin/sh -c "/usr/bin/alsamixergui"
+  prog    "AlsaPlayer" - /bin/sh -c "/usr/bin/alsaplayer -i gtk2"
+  prog    "aRts Builder" /usr/share/pixmaps/artsbuilder.xpm /bin/sh -c "/usr/bin/artsbuilder"
+  prog    "aRts Control" /usr/share/pixmaps/artscontrol.xpm /bin/sh -c "/usr/bin/artscontrol"
+  prog    "gmix (Gnome 2.0 Mixer)" /usr/share/pixmaps/gnome-mixer.xpm /bin/sh -c "/usr/bin/gnome-volume-control"
+  prog    "gnome-cd (Gnome 2.0 CD Player)" /usr/share/pixmaps/gnome-cd.xpm /bin/sh -c "/usr/bin/gnome-cd"
+  prog    "grecord (GNOME 2.0 Recorder)" /usr/share/pixmaps/gnome-grecord.xpm /bin/sh -c "/usr/bin/gnome-sound-recorder"
+  prog    "JuK" /usr/share/pixmaps/juk.xpm /bin/sh -c "/usr/bin/juk"
+  prog    "Kaboodle" /usr/share/pixmaps/kaboodle.xpm /bin/sh -c "/usr/bin/kaboodle"
+  prog    "KAudioCreator" /usr/share/pixmaps/kaudiocreator.xpm /bin/sh -c "/usr/bin/kaudiocreator"
+  prog    "KMid" /usr/share/pixmaps/kmid.xpm /bin/sh -c "/usr/bin/kmid"
+  prog    "KMix" /usr/share/pixmaps/kmix.xpm /bin/sh -c "/usr/bin/kmix"
+  prog    "KRec" /usr/share/pixmaps/krec.xpm /bin/sh -c "/usr/bin/krec"
+  prog    "KsCD" /usr/share/pixmaps/kscd.xpm /bin/sh -c "/usr/bin/kscd"
+  prog    "Noatun" /usr/share/pixmaps/noatun.xpm /bin/sh -c "/usr/bin/noatun"
+  prog    "vumeter (Gnome 2.0 Volume Meter)" /usr/share/pixmaps/gnome-vumeter.xpm /bin/sh -c "/usr/bin/vumeter"
+  prog    "wmXMMS" /usr/share/pixmaps/wmxmms.xpm /bin/sh -c "/usr/bin/wmxmms"
+  prog    "xfmedia" - /bin/sh -c "/usr/bin/xfmedia"
+  prog    "XMMS" /usr/share/pixmaps/xmms.xpm /bin/sh -c "/usr/bin/xmms"
+}
+menu "Système" folder {
+menu "Administration" folder {
+  prog    "alsaconf" - /bin/sh -c "x-terminal-emulator  -T \"alsaconf\" -e sh -c \"su-to-root -p root -c /usr/sbin/alsaconf\""
+  prog    "DSL/PPPoE configuration tool" /usr/share/pixmaps/pppoeconf.xpm /bin/sh -c "x-terminal-emulator  -T \"DSL/PPPoE configuration tool\" -e sh -c \"/usr/sbin/pppoeconf\""
+  prog    "GDM flexiserver" /usr/share/pixmaps/gdm.xpm /bin/sh -c "gdmflexiserver"
+  prog    "GDM flexiserver in Xnest" /usr/share/pixmaps/gdm.xpm /bin/sh -c "gdmflexiserver -n"
+  prog    "GDM Photo Setup" /usr/share/pixmaps/gdm.xpm /bin/sh -c "gdmphotosetup"
+  prog    "GDM Setup" /usr/share/pixmaps/gdm.xpm /bin/sh -c "su-to-root -X -p root -c /usr/sbin/gdmsetup"
+  prog    "kAppfinder" /usr/share/pixmaps/kappfinder.xpm /bin/sh -c "/usr/bin/kappfinder"
+  prog    "KControl" /usr/share/pixmaps/kcontrol.xpm /bin/sh -c "/usr/bin/kcontrol"
+  prog    "KDebugDialog" - /bin/sh -c "/usr/bin/kdebugdialog"
+  prog    "kdepasswd" - /bin/sh -c "/usr/bin/kdepasswd"
+  prog    "KDEPrintFax" /usr/share/pixmaps/kdeprintfax.xpm /bin/sh -c "/usr/bin/kdeprintfax"
+  prog    "KEditBookmarks" /usr/share/pixmaps/keditbookmarks.xpm /bin/sh -c "/usr/bin/keditbookmarks"
+  prog    "KFind" /usr/share/pixmaps/kfind.xpm /bin/sh -c "/usr/bin/kfind"
+  prog    "Kicker" /usr/share/pixmaps/kicker.xpm /bin/sh -c "/usr/bin/kicker"
+  prog    "KInfoCenter" /usr/share/pixmaps/kinfocenter.xpm /bin/sh -c "/usr/bin/kinfocenter"
+  prog    "KMenuEdit" /usr/share/pixmaps/kmenuedit.xpm /bin/sh -c "/usr/bin/kmenuedit"
+  prog    "KPager" /usr/share/pixmaps/kpager.xpm /bin/sh -c "/usr/bin/kpager"
+  prog    "KPersonalizer" /usr/share/pixmaps/kpersonalizer.xpm /bin/sh -c "/usr/bin/kpersonalizer"
+  prog    "KPrinter" /usr/share/pixmaps/kdeprint.xpm /bin/sh -c "/usr/bin/kprinter"
+  prog    "Orphaner (all)" - /bin/sh -c "x-terminal-emulator  -T \"Orphaner (all)\" -e sh -c \"su-to-root -c '/usr/sbin/orphaner -a'\""
+  prog    "Orphaner - editkeep" - /bin/sh -c "x-terminal-emulator  -T \"Orphaner - editkeep\" -e sh -c \"su-to-root -c '/usr/sbin/editkeep'\""
+  prog    "Orphaner (libs)" - /bin/sh -c "x-terminal-emulator  -T \"Orphaner (libs)\" -e sh -c \"su-to-root -c /usr/sbin/orphaner\""
+  prog    "pppconfig" - /bin/sh -c "x-terminal-emulator  -T \"pppconfig\" -e sh -c \"su-to-root -p root -c /usr/sbin/pppconfig\""
+  prog    "QtConfig" - /bin/sh -c "/usr/bin/qtconfig-qt4"
+  prog    "System Information" /usr/share/pixmaps/hardinfo.xpm /bin/sh -c "/usr/bin/hardinfo"
+  prog    "TeXconfig" - /bin/sh -c "x-terminal-emulator  -T \"TeXconfig\" -e sh -c \"/usr/bin/texconfig\""
+  prog    "Xfce-setting-show" /usr/share/pixmaps/xfce4-mcs-manager.xpm /bin/sh -c "xfce-setting-show"
+  prog    "XFrun4" - /bin/sh -c "xfrun4"
+  prog    "Xrefresh" - /bin/sh -c "xrefresh"
+}
+  prog    "FSView" /usr/share/pixmaps/fsview.xpm /bin/sh -c "/usr/bin/fsview"
+menu "Gestionnaires de paquets" folder {
+  prog    "Synaptic Package Manager" /usr/share/synaptic/pixmaps/synaptic_32x32.xpm /bin/sh -c "/usr/bin/su-to-root -X -c /usr/sbin/synaptic"
+}
+menu "Gnome" folder {
+  prog    "Gnome Control Center" /usr/share/pixmaps/control-center2.xpm /bin/sh -c "/usr/bin/gnome-control-center"
+}
+  prog    "GNOME CUPS Manager" - /bin/sh -c "/usr/bin/gnome-cups-manager"
+  prog    "GNOME Network Tool" /usr/share/pixmaps/gnome-nettool.xpm /bin/sh -c "/usr/bin/gnome-nettool"
+  prog    "GNOME partition editor" /usr/share/pixmaps/gparted.xpm /bin/sh -c "/usr/bin/gparted"
+  prog    "GNOME system monitor" - /bin/sh -c "/usr/bin/gnome-system-monitor"
+  prog    "htop" - /bin/sh -c "x-terminal-emulator  -T \"htop\" -e sh -c \"/usr/bin/htop\""
+  prog    "icemc" - /bin/sh -c "/usr/bin/icemc"
+  prog    "KDat" /usr/share/pixmaps/kdat.xpm /bin/sh -c "/usr/bin/kdat"
+  prog    "KDE Package Manager" /usr/share/pixmaps/kpackage.xpm /bin/sh -c "/usr/bin/kpackage"
+  prog    "KDE SysV-Init Editor" /usr/share/pixmaps/ksysv.xpm /bin/sh -c "/usr/bin/ksysv"
+  prog    "KDE Task Scheduler" /usr/share/pixmaps/kcron.xpm /bin/sh -c "/usr/bin/kcron"
+  prog    "KDE User Manager" /usr/share/pixmaps/kuser.xpm /bin/sh -c "/usr/bin/kuser"
+  prog    "KDiskFree" /usr/share/pixmaps/kdf.xpm /bin/sh -c "/usr/bin/kdf"
+  prog    "KFloppy" /usr/share/pixmaps/kfloppy.xpm /bin/sh -c "/usr/bin/kfloppy"
+  prog    "kwikdisk" /usr/share/pixmaps/kwikdisk.xpm /bin/sh -c "/usr/bin/kwikdisk"
+menu "Matériel" folder {
+  prog    "GNOME Floppy Formatter" /usr/share/pixmaps/gfloppy.xpm /bin/sh -c "/usr/bin/gfloppy"
+  prog    "Xvidtune" - /bin/sh -c "xvidtune"
+}
+  prog    "Nautilus" /usr/share/pixmaps/nautilus.xpm /bin/sh -c "/usr/bin/nautilus"
+  prog    "Network Admin" /usr/share/gnome-system-tools/pixmaps/network.xpm /bin/sh -c "/usr/bin/network-admin"
+  prog    "Print Notification Icon" - /bin/sh -c "/usr/bin/gnome-cups-icon"
+  prog    "Pstree" /usr/share/pixmaps/pstree16.xpm /bin/sh -c "x-terminal-emulator  -T \"Pstree\" -e sh -c \"/usr/bin/pstree.x11\""
+  prog    "reportbug" - /bin/sh -c "x-terminal-emulator  -T \"reportbug\" -e sh -c \"/usr/bin/reportbug --exit-prompt\""
+  prog    "Services Admin" /usr/share/gnome-system-tools/pixmaps/services.xpm /bin/sh -c "/usr/bin/services-admin"
+  prog    "Shares Admin" /usr/share/gnome-system-tools/pixmaps/shares.xpm /bin/sh -c "/usr/bin/shares-admin"
+menu "Surveillance" folder {
+  prog    "GKrellM" /usr/share/pixmaps/gkrellm.xpm /bin/sh -c "/usr/bin/gkrellm"
+  prog    "GNOME Log Viewer" /usr/share/pixmaps/gnome-system-log.xpm /bin/sh -c "/usr/bin/gnome-system-log"
+  prog    "KDCOP" - /bin/sh -c "/usr/bin/kdcop"
+  prog    "KDE System Guard" /usr/share/pixmaps/ksysguard.xpm /bin/sh -c "/usr/bin/ksysguard"
+  prog    "KDE System Guard - Process Table" - /bin/sh -c "/usr/bin/kpm"
+  prog    "KJobViewer" /usr/share/pixmaps/kjobviewer.xpm /bin/sh -c "/usr/bin/kjobviewer --show --all"
+  prog    "KPowersave" /usr/share/pixmaps/kpowersave.xpm /bin/sh -c "/usr/bin/kpowersave"
+  prog    "Top" - /bin/sh -c "x-terminal-emulator  -T \"Top\" -e sh -c \"/usr/bin/top\""
+  prog    "Xosview" - /bin/sh -c "/usr/bin/xosview"
+}
+  prog    "Time Admin" /usr/share/gnome-system-tools/pixmaps/time.xpm /bin/sh -c "/usr/bin/time-admin"
+  prog    "User accounts Admin" /usr/share/gnome-system-tools/pixmaps/users.xpm /bin/sh -c "/usr/bin/users-admin"
+}
+}
+menu "Écran" folder {
+menu "Lockinging" folder {
+  prog    "Xflock4" - /bin/sh -c "x-terminal-emulator  -T \"Xflock4\" -e sh -c \"xflock4\""
+}
+menu "Veille" folder {
+  prog    "Activate ScreenSaver (Next)" - /bin/sh -c "/usr/bin/xscreensaver-command -next"
+  prog    "Activate ScreenSaver (Previous)" - /bin/sh -c "/usr/bin/xscreensaver-command -prev"
+  prog    "Activate ScreenSaver (Random)" - /bin/sh -c "/usr/bin/xscreensaver-command -activate"
+  prog    "Demo Screen Hacks" - /bin/sh -c "/usr/bin/xscreensaver-command -demo"
+  prog    "Disable XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver-command -exit"
+  prog    "Enable XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver"
+  prog    "KTux" /usr/share/pixmaps/ktux.xpm /bin/sh -c "/usr/bin/ktux -root"
+  prog    "Reinitialize XScreenSaver" - /bin/sh -c "/usr/bin/xscreensaver-command -restart"
+  prog    "ScreenSaver Preferences" - /bin/sh -c "/usr/bin/xscreensaver-command -prefs"
+}
+menu "Verrouillage" folder {
+  prog    "Lock Screen (XScreenSaver)" - /bin/sh -c "/usr/bin/xscreensaver-command -lock"
+}
+}
+menu "gCAD3D" folder {
+  prog    "gCAD3D" /home/pierre/.gCAD3D/gCAD3D.xpm /bin/sh -c "/home/pierre/.gCAD3D/gCAD3D"
+  prog    "gCAD3D_unInstall" /home/pierre/.gCAD3D/unInstall.xpm /bin/sh -c "/home/pierre/.gCAD3D/gCAD3D_unInstall"
+}
+menu "Gestionnaires de fenêtres" folder {
+  restart "Enlightenment" - /bin/sh -c "/usr/bin/enlightenment"
+  restart "IceWM" /usr/share/icewm/icons/icewm_16x16.xpm /bin/sh -c "/usr/bin/icewm"
+  restart "IceWM-lite" /usr/share/icewm/icons/icewm_16x16.xpm /bin/sh -c "/usr/bin/icewm-lite"
+  restart "XFwm" - /bin/sh -c "xfwm4"
+}
+menu "Jeux" folder {
+menu "Action" folder {
+  prog    "Gnibbles" /usr/share/pixmaps/gnibbles.xpm /bin/sh -c "/usr/games/gnibbles"
+  prog    "KAsteroids" /usr/share/pixmaps/kasteroids.xpm /bin/sh -c "/usr/games/kasteroids"
+  prog    "KDE Bounce Ball Game" /usr/share/pixmaps/kbounce.xpm /bin/sh -c "/usr/games/kbounce"
+  prog    "KDE Miniature Golf" /usr/share/pixmaps/kolf.xpm /bin/sh -c "/usr/games/kolf"
+  prog    "KDE Snake Race" /usr/share/pixmaps/ksnake.xpm /bin/sh -c "/usr/games/ksnake"
+  prog    "KDE SpaceDuel" /usr/share/pixmaps/kspaceduel.xpm /bin/sh -c "/usr/games/kspaceduel"
+  prog    "KDE Tron" /usr/share/pixmaps/ktron.xpm /bin/sh -c "/usr/games/ktron"
+  prog    "KGoldrunner" /usr/share/pixmaps/kgoldrunner.xpm /bin/sh -c "/usr/games/kgoldrunner"
+}
+menu "Cartes" folder {
+  prog    "Gnome Blackjack" /usr/share/pixmaps/blackjack.xpm /bin/sh -c "/usr/games/blackjack"
+  prog    "Gnome FreeCell" /usr/share/pixmaps/freecell.xpm /bin/sh -c "/usr/games/sol --variation freecell"
+  prog    "Gnome Solitaire Games" /usr/share/pixmaps/aisleriot.xpm /bin/sh -c "/usr/games/sol"
+  prog    "KDE Lieutnant Skat" /usr/share/pixmaps/lskat.xpm /bin/sh -c "/usr/games/lskat"
+  prog    "KDE Patience" /usr/share/pixmaps/kpat.xpm /bin/sh -c "/usr/games/kpat"
+  prog    "KDE Poker" /usr/share/pixmaps/kpoker.xpm /bin/sh -c "/usr/games/kpoker"
+  prog    "PySol" /usr/share/games/pysol/pysol.xpm /bin/sh -c "/usr/games/pysol"
+  prog    "X Solitaire" - /bin/sh -c "/usr/games/xsol"
+}
+menu "Casse-tête" folder {
+  prog    "Blinken" /usr/share/pixmaps/blinken.xpm /bin/sh -c "/usr/bin/blinken"
+  prog    "Gnome Klotski" /usr/share/pixmaps/gnotski.xpm /bin/sh -c "/usr/games/gnotski"
+  prog    "Gnome Robots" /usr/share/pixmaps/gnobots2.xpm /bin/sh -c "/usr/games/gnobots2"
+  prog    "Gnome Sudoku" /usr/share/pixmaps/gnome-sudoku.xpm /bin/sh -c "/usr/games/gnome-sudoku"
+  prog    "Gnome Tetravex" /usr/share/pixmaps/gnotravex.xpm /bin/sh -c "/usr/games/gnotravex"
+  prog    "Gnomine" /usr/share/pixmaps/gnomine.xpm /bin/sh -c "/usr/games/gnomine"
+  prog    "KAnagram" /usr/share/pixmaps/kanagram.xpm /bin/sh -c "/usr/bin/kanagram"
+  prog    "KBlackBox" /usr/share/pixmaps/kblackbox.xpm /bin/sh -c "/usr/games/kblackbox"
+  prog    "KDE Atomic Entertainment" /usr/share/pixmaps/katomic.xpm /bin/sh -c "/usr/games/katomic"
+  prog    "KDE SameGame" /usr/share/pixmaps/ksame.xpm /bin/sh -c "/usr/games/ksame"
+  prog    "KDE Sokoban" /usr/share/pixmaps/ksokoban.xpm /bin/sh -c "/usr/games/ksokoban"
+  prog    "KHangMan" /usr/share/pixmaps/khangman.xpm /bin/sh -c "/usr/bin/khangman"
+  prog    "Klickety" /usr/share/pixmaps/klickety.xpm /bin/sh -c "/usr/games/klickety"
+  prog    "Kmines" /usr/share/pixmaps/kmines.xpm /bin/sh -c "/usr/games/kmines"
+  prog    "KNetwalk" /usr/share/pixmaps/knetwalk.xpm /bin/sh -c "/usr/games/knetwalk"
+  prog    "Same Gnome" /usr/share/pixmaps/gsame.xpm /bin/sh -c "/usr/games/same-gnome"
+}
+menu "Chute de blocs" folder {
+  prog    "Gnometris" /usr/share/pixmaps/gnometris.xpm /bin/sh -c "/usr/games/gnometris"
+  prog    "KDE Foul Eggs" /usr/share/pixmaps/kfouleggs.xpm /bin/sh -c "/usr/games/kfouleggs"
+  prog    "KDE Sirtet" /usr/share/pixmaps/ksirtet.xpm /bin/sh -c "/usr/games/ksirtet"
+  prog    "KDE Smiletris" /usr/share/pixmaps/ksmiletris.xpm /bin/sh -c "/usr/games/ksmiletris"
+}
+menu "Jouets" folder {
+  prog    "AMOR" /usr/share/pixmaps/amor.xpm /bin/sh -c "/usr/bin/amor"
+  prog    "KDE Potato Guy" /usr/share/pixmaps/ktuberling.xpm /bin/sh -c "/usr/games/ktuberling"
+  prog    "KOdometer" /usr/share/pixmaps/kodo.xpm /bin/sh -c "/usr/bin/kodo"
+  prog    "KTeaTime" /usr/share/pixmaps/kteatime.xpm /bin/sh -c "/usr/bin/kteatime"
+  prog    "KWorldClock" /usr/share/pixmaps/kworldclock.xpm /bin/sh -c "/usr/bin/kworldclock"
+}
+menu "Réflexion" folder {
+  prog    "Atlantik" /usr/share/pixmaps/atlantik.xpm /bin/sh -c "/usr/games/atlantik"
+  prog    "Atlantik Designer" /usr/share/pixmaps/atlantikdesigner.xpm /bin/sh -c "/usr/bin/atlantikdesigner"
+  prog    "Four-in-a-row" /usr/share/pixmaps/gnect.xpm /bin/sh -c "/usr/games/gnect"
+  prog    "GL Chess" /usr/share/pixmaps/glchess.xpm /bin/sh -c "/usr/games/glchess"
+  prog    "Gnome GYahtzee" /usr/share/pixmaps/gtali.xpm /bin/sh -c "/usr/games/gtali"
+  prog    "Gnome Iagno" /usr/share/pixmaps/iagno.xpm /bin/sh -c "/usr/games/iagno"
+  prog    "Gnome Lines" /usr/share/pixmaps/glines.xpm /bin/sh -c "/usr/games/glines"
+  prog    "Gnome Mahjongg" /usr/share/pixmaps/gnome-mahjongg.xpm /bin/sh -c "/usr/games/mahjongg"
+  prog    "GnuChess" - /bin/sh -c "x-terminal-emulator  -T \"GnuChess\" -e sh -c \"/usr/games/gnuchess\""
+  prog    "KBattleship" /usr/share/pixmaps/kbattleship.xpm /bin/sh -c "/usr/games/kbattleship"
+  prog    "KDE Backgammon" /usr/share/pixmaps/kbackgammon.xpm /bin/sh -c "/usr/games/kbackgammon"
+  prog    "KDE Reversi" /usr/share/pixmaps/kreversi.xpm /bin/sh -c "/usr/games/kreversi"
+  prog    "KDE Shisen-Sho" /usr/share/pixmaps/kshisen.xpm /bin/sh -c "/usr/games/kshisen"
+  prog    "KEnolaba" /usr/share/pixmaps/kenolaba.xpm /bin/sh -c "/usr/games/kenolaba"
+  prog    "KLines" /usr/share/pixmaps/klines.xpm /bin/sh -c "/usr/games/klines"
+  prog    "KMahjongg" /usr/share/pixmaps/kmahjongg.xpm /bin/sh -c "/usr/games/kmahjongg"
+  prog    "KWin4" /usr/share/pixmaps/kwin4.xpm /bin/sh -c "/usr/games/kwin4"
+}
+menu "Stratégie" folder {
+  prog    "KJumpingCube" /usr/share/pixmaps/kjumpingcube.xpm /bin/sh -c "/usr/games/kjumpingcube"
+  prog    "Konquest" /usr/share/pixmaps/konquest.xpm /bin/sh -c "/usr/games/konquest"
+}
+}
