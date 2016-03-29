@@ -4,9 +4,13 @@
 --\set PROMPT1 '--%M %/%R%# \n'
 
 --mon prompt en suivant les instruction de la formation DBA1 de Dalibo:
-\set PROMPT1 '%n@%/%R%# '
+--\set PROMPT1 '%n@%/%R%# '
+
+--mon prompt en faisant la synthèse de tout ça:
+\set PROMPT1 '--%M %n@%/%R%# \n'
 
 SET search_path TO pierre, public;
+
 --\timing
 \set ON_ERROR_ROLLBACK 'on'
 \pset fieldsep ','
