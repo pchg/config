@@ -1,7 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/pierre/tmp'
-let g:netrw_dirhist_2='/etc/firebird'
-let g:netrw_dirhist_3='/etc/firebird/2.5'
-let g:netrw_dirhist_4='/home/pierre/heaume_pierre/developpt/qsdf/utils-libs'
-let g:netrw_dirhist_5='/home/pierre/heaume_pierre/developpt/utils-libs'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki'
+let g:netrw_dirhist_2='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki.non'
+let g:netrw_dirhist_3='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki'
