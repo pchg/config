@@ -218,10 +218,16 @@ set infercase
 "set autoindent
 
 " La correction orthographique, c'est trÃ¨s trÃ¨s bien
-map ,C :w<CR>:!aspell -c %<CR>:e %<CR>
+map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
+
+" La dictÃ©e, c'est trÃ¨s trÃ¨s bien aussi, pour le paragraphe en cours:
+map <F9> :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block <cr>
+
+" Pareil, en anglais:
+map <S-F9> :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block <cr>
 
 
-"copié depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz
+"copiÃ© depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz
    augroup filetypedetect
        au BufNewFile,BufRead hibernate.conf set filetype=hibernate
        au BufNewFile,BufRead common.conf set filetype=hibernate
@@ -234,17 +240,17 @@ set keymodel=startsel,stopsel
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"à partir d'un vimrc trouvé sur la Toile:/*{{{*/
+"Ã  partir d'un vimrc trouvÃ© sur la Toile:/*{{{*/
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Fichier .vimrc de Nicolas Gressier
-" Créé le 11 mai 2006
+" CrÃ©Ã© le 11 mai 2006
 " Yoshidu62@gmail.com
-" Mise à jour : 03/06/2009
+" Mise Ã  jour : 03/06/2009
 " Version 2.6
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-"Complétion par tabulation
+"ComplÃ©tion par tabulation
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function! CleverTab()
     "check if at beginning of line of after a space
@@ -253,7 +259,7 @@ function! CleverTab()
     else
 	"use know-word completion
 	"return "\<C-N>"
-	"use know-word completion, mais plutôt à l'envers
+	"use know-word completion, mais plutÃ´t Ã  l'envers
 	return "\<C-P>"
     endif
 endfunction
@@ -263,7 +269,7 @@ function! CleverTabShift()
     if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
 	return "\<S-Tab>"
     else
-	"use known-word completion, à l'endroit
+	"use known-word completion, Ã  l'endroit
 	return "\<C-N>"
     endif
 endfunction
@@ -275,25 +281,58 @@ endfunction
 "et pareil sur la combinaison de touches Shift Tab:
 "inoremap <S-Tab> <C-R>=CleverTabShift()<CR>
 
-"Ctrl-Tab pour naviguer entre les fenêtres:
-"MARCHE PAS
-":map <C-Tab> <C-w> <C-w>
+"Ctrl-Tab pour naviguer entre les fenÃªtres:
+"MARCHE PAS ":map <C-Tab> <C-w><C-w>
+"Marche =>
+" http://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu
+" ...
+" Put this in your .vimrc:
+" !! Important - instead of XXXX you must type CTRL-V and then Esc OR copy-paste the whole text and run %s/\(set <F1[34]>=\)XXXX/\=submatch(1) . "\33"/g which is copy-pastable (insert it with <CTRL-R> +).
+set timeout timeoutlen=1000 ttimeoutlen=100
+set <F13>=[27;5;9~
+"nnoremap <F13> gt
+map <F13> <C-w><C-w>
+set <F14>=[27;6;9~
+"nnoremap <F14> gT
+"map <F14> :tabNext<CR>
+map <F14> <C-w><S-w>
+"And restart vim.
+"Done.
+" Pareil, pour le mode insertion (c'est quand mÃªme commode):
+inoremap <F13> <Esc><C-w><C-w>i
+inoremap <F14> <Esc><C-w><S-w>i
+
+
+" Pour naviguer dans les onglets (bof):
+":nmap <C-S-tab> :tabprevious<cr>
+":nmap <C-tab> :tabnext<cr>
+":nmap <C-t> :tabnew<cr>
+":map <C-t> :tabnew<cr>
+":map <C-S-tab> :tabprevious<cr>
+":map <C-tab> :tabnext<cr>
+":map <C-w> :tabclose<cr>
+":imap <C-S-tab> <ESC>:tabprevious<cr>i
+":imap <C-tab> <ESC>:tabnext<cr>i
+":imap <C-t> <ESC>:tabnew<cr>
 
 "/*}}}*/
 
 
-"Ctrl-flèches pour déplacer les lignes, comme dans oOo:
+"Ctrl-flÃ¨ches pour dÃ©placer les lignes, comme dans oOo:
 "nnoremap <C-Up> ddkp <CR>	"DONE marche pas => si, ainsi:
-map <C-Up> ddkP
+map <C-Up>   ddkP
 map <C-Down> ddp
+inoremap <C-Up>   <Esc>ddkPi
+inoremap <C-Down> <Esc>ddpi
 
-" pour les folds chéris:
+
+" pour les folds chÃ©ris:
 set foldmethod=marker
 set fdc=5
 set foldclose=all
 
 "###################################################################################
-" mapper F7 avec l'insertion de timestamp, comme sur ultraedit:
+" mapper F7 avec l'insertion de timestamp, comme dans le bon vieux ultraedit:
 "map <F7> :r !date +\%d/\%m/\%Y\ \%T <Enter>
 "07/10/2013 09:51:06
 "map <F7> :r !date +\%d_\%m_\%Y__\%T \| sed -e 's/\:/_/g' <Enter>
@@ -301,27 +340,29 @@ set foldclose=all
 "map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>
 "2013_12_29__20_29_38
 
-" Je mets la date en ISO 8601, plutôt:
+" Je mets la date en ISO 8601, plutÃ´t:
 ":r !date +\%Y_\%m_\%d__\%T 
 "2014_01_01__21:55:01
 ":r !date +\%Y-\%m-\%d_\%T 
 "2014-01-01_21:55:51
 "map <F7> :r !date +\%Y-\%m-\%d_\%T \| sed -e 's/\:/h/' \| sed -e 's/\:/m/' <Enter>
-"non, plutôt en ISO underscoré, comme dans le .bashrc:
+"non, plutÃ´t en ISO underscorÃ©, comme dans le .bashrc:
 "map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>
 "map <F7> :r!date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/h/' \| sed -e 's/\:/m/'<Enter>
 "2014_01_03__14h45m36
 "2014_01_07__16h34m19
 map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
+"inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
 "2014_01_14__08_53_38
 "###################################################################################
 
+"mapper F10 avec la ligne courante Ã  faire tourner en tant que commande vi (:)
+"map <F10> <Esc>V<Left><Home>:<S-Ins><Enter>
+" => marche pas...
 
 
-
-"mapper F12 avec la dernière macro:
+"mapper F12 avec la derniÃ¨re macro:
 map <F12> @@
-
 
 set history=10000
 
@@ -332,7 +373,7 @@ set fileencoding=utf-8
 "highlighter toutes les occurrences du mot sous le curseur:/*{{{*/
 "http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
 "
-"created 2003 · complexity basic · author mosh · version 6.0
+"created 2003 Â· complexity basic Â· author mosh Â· version 6.0
 "Vim can easily highlight all search pattern matches and search for the current word (the word under the cursor). This tip shows how to automatically highlight all occurrences of the current word without searching. That can be useful when examining unfamiliar source code: just move the cursor to a variable, and all occurrences of the variable will be highlighted.
 "
 "
@@ -357,18 +398,22 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
-" on fait ça avec... ! (pas loin de *)
-:map ! :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-" non, plutôt avec... µ (maj - *)
+" on fait Ã§a avec... ! (pas loin de *)
+map ! :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+" non, plutÃ´t avec... Âµ (maj - *)
 " => marche pas 
 ":map <S-*> :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 " ni <C-*> ni <S-C-*> ni <S-*> ... donc retour au !
 
 "/*}}}*/
 
-"quelques conseils de http://vim.wikia.com/wiki/Using_standard_editor_shortcuts_in_Vim; fait un peu (beaucoup!) de ménage, quand même:
-":map <C-a> GVgg
-":map <C-s> :w <Enter>
+" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
+highlight DiffAdd    ctermbg=6
+highlight DiffChange ctermbg=2
+highlight DiffDelete ctermbg=6
+highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
+
+"quelques conseils de http://vim.wikia.com/wiki/Using_standard_editor_shortcuts_in_Vim; fait un peu (beaucoup!) de mÃ©nage, quand mÃªme:
 
 "set smartindent
 set tabstop=4
@@ -407,9 +452,9 @@ set shiftwidth=4
 
 "pour sauver et faire tourner le fichier courant par rebol:
 "to save and run the current file by rebol interpreter:
-:map <F5> :w<cr> :!rebol -qs %<cr>
+map <F5> :w<cr> :!rebol -qs %<cr>
 
-""pour faire tourner la sélection courante par rebol:
+""pour faire tourner la sÃ©lection courante par rebol:
 ""to interpret the current visual selection by rebol interpreter:
 ":map <F6> :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
 
@@ -418,21 +463,31 @@ set shiftwidth=4
 
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
-:map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
-
-"pour commenter une ligne de code Rebol et passer à la suivante:
-:map ; <Home>i;<Esc><Down>
+":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
+map <F6> vip :w! /tmp/tmp_vim_block<cr> :!echo "rebol []" > /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>
 
 
-"Et un raccourci pour sélectionner un Paragraphe:
-:map <C-S-p> vip
-"(enlevé <S-p> qui fait paste avant)
+"pour commenter une ligne de code Rebol et passer Ã  la suivante:
+map ; <Home>i;<Esc><Down>
+
+"pour commenter une ligne de code, genre shell script, par # passer Ã  la suivante:
+":map &; <Home>i#<Esc><Down>
+" => marche pas...
+map Â£ <Home>i#<Esc><Down>
+
+"pour commenter une ligne de code SQL et passer Ã  la suivante:
+map - <Home>i--<Space><Esc><Down><Home>
+
+
+"Et un raccourci pour sÃ©lectionner un Paragraphe:
+map <C-S-p> vip
+"(enlevÃ© <S-p> qui fait paste avant)
 
 " pour faire tourner le paragraphe courant par bash:
-:map <F8> vip :w! tmp_vim_block<cr> :!bash tmp_vim_block <cr>
+map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 
 
-" Pour sélectionner divers bidules par des double (non, déjà fait)
+" Pour sÃ©lectionner divers bidules par des double (non, dÃ©jÃ  fait)
 "<LeftMouse>     - Left mouse button press
 "<RightMouse>    - Right mouse button press
 "<MiddleMouse>   - Middle mouse button press
@@ -455,48 +510,48 @@ set shiftwidth=4
 "<X1Drag>        - Mouse drag while X1 button is pressed
 "<X2Drag>        - Mouse drag while X2 button is pressed
 
-"  - Right mouse button triple-click => sélectionne déjà une ligne, je laisse.
+"  - Right mouse button triple-click => sÃ©lectionne dÃ©jÃ  une ligne, je laisse.
 
-"pour sélectionner une phraSe:
+"pour sÃ©lectionner une phraSe:
 :nnoremap <3-LeftMouse> vis
-"pour sélectionner un Paragraphe (comme ctrl-P):
+"pour sÃ©lectionner un Paragraphe (comme ctrl-P):
 :nnoremap <4-LeftMouse> vip
 
 
-"Un raccourci similaire à *, mais avec shift, ça fait µ, qui
-"ouvre une autre fenêtre puis fait un *
-" => très utile pour les tags
+"Un raccourci similaire Ã  *, mais avec shift, Ã§a fait Âµ, qui
+"ouvre une autre fenÃªtre puis fait un *
+" => trÃ¨s utile pour les tags
 " => mince, pas pu faire :map <S-*> :split <cr>*
-"                  ni:   :map <µ> :split <cr>*
+"                  ni:   :map <Âµ> :split <cr>*
 "donc je fais avec F3, et vers le haut, c'est plus commode, avec #:
 :map <F3> :split <cr>#
 
 
 
 
-"Pour PAS ne pas recommencer la recherche au début/fin du fichier:
+"Pour PAS ne pas recommencer la recherche au dÃ©but/fin du fichier:
 ":set nowrapscan 
-"Pour ne pas recommencer la recherche au début/fin du fichier:
+"Pour ne pas recommencer la recherche au dÃ©but/fin du fichier:
 :set wrapscan
 
-"le plus souvent, le wrap m'emmerdoie, pour des sources bien indentés notamment; donc j'ôte:
+"le plus souvent, le wrap m'emmerdoie, pour des sources bien indentÃ©s notamment; donc j'Ã´te:
 :set nowrap
 "mais des fois, il rend service..
 :set wrap
 
-"Pour ôter les /* */ disgrâcieux de mes folds {{{ }}} ou [ ]
+"Pour Ã´ter les /* */ disgrÃ¢cieux de mes folds {{{ }}} ou [ ]
 :set commentstring=%s
 
 
-"Réticule;
-""Pour avoir un réticule amusant (et utile):
+"RÃ©ticule;
+""Pour avoir un rÃ©ticule amusant (et utile):
 ":set cursorcolumn
 ":set cursorline
 "
-""Pour mettre du grisé dans les 2 axes du réticule (car le soulignement de l'axe horizontal gêne quelque peu la lecture):
+""Pour mettre du grisÃ© dans les 2 axes du rÃ©ticule (car le soulignement de l'axe horizontal gÃªne quelque peu la lecture):
 ":hi CursorLine cterm=NONE
 "":hi CursorLine ctermbg=Cyan
 ":hi CursorLine ctermbg=Grey
 "":hi CursorColumn ctermbg=Cyan
 "
-"=> En fait, dès qu'on est dans un ssh quelconque, ou une console, ce réticule est giga-chiasseur: zou, je le zappe.
+"=> En fait, dÃ¨s qu'on est dans un ssh quelconque, ou une console, ce rÃ©ticule est giga-chiasseur: zou, je le zappe.
