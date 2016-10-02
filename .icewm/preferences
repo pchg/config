@@ -77,7 +77,7 @@ RunCommand=""
 DesktopBackgroundColor=""
 DesktopBackgroundImage="/home/pierre/photos/2014/reduit_700/2014_10_scan_photo_concours_preignan_ufana_bligny_madialen.jpg"
 Theme=""
-WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc","virtu","devel","zik"
+WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
 #KeyWinMaximize="Alt+Enter"
 #KeyWinMaximizeFullScreen="Shift+Ctrl+Alt+Enter" ---> marche pas; chercher le bon keyword
 #KeyWinMaximizeFullScreen="Alt+Enter" ---> curieux, marche pas non plus...
@@ -98,7 +98,7 @@ KeyWinMaximizeVert="Ctrl+Alt+Enter"
 
 #LimitByDockLayer=0
 CenterMaximizedWindows=0
-SizeMaximized=1
+#SizeMaximized=1
 
 #TaskBarShowAPMStatus=1
 #TaskBarShowAPMTime=1
