@@ -1,3 +1,16 @@
+" Les touches de fonctions avec des raccourcis (à maintenir):
+" F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  
+" -   -   |   -   |   |   |   |   |    |    -    |   -    -    -    -    -    -    -    -
+"         \_ ouvre une fenêtre au-dessus avec l'occurrence précédente du mot sous le curseur
+"                 \_ sauver et faire tourner le fichier courant par rebol
+"                     \_ faire tourner le paragraphe courant par rebol
+"                         \_ insertion de timestamp, comme dans le bon vieux ultraedit
+"                             \_ faire tourner le paragraphe courant par bash
+"                                 \_ dictée du paragraphe en cours
+"                                 \_ shift => idem en anglais
+"                                                \_ dernière macro
+"                                      \_ correction orthographique du paragraphe courant
+
 syntax on
 set noautoindent
 set ignorecase
@@ -219,12 +232,14 @@ set infercase
 
 " La correction orthographique, c'est très très bien
 map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
+" Pour le paragraphe en cours:
+map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up> :!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr> i<cr>
 
 " La dictée, c'est très très bien aussi, pour le paragraphe en cours:
-map <F9> :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block <cr>
+map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block <cr>
 
 " Pareil, en anglais:
-map <S-F9> :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block <cr>
+map <S-F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block <cr>
 
 
 "copié depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz
@@ -333,6 +348,7 @@ set foldclose=all
 
 "###################################################################################
 " mapper F7 avec l'insertion de timestamp, comme dans le bon vieux ultraedit:
+"brouillons:{{{
 "map <F7> :r !date +\%d/\%m/\%Y\ \%T <Enter>
 "07/10/2013 09:51:06
 "map <F7> :r !date +\%d_\%m_\%Y__\%T \| sed -e 's/\:/_/g' <Enter>
@@ -351,6 +367,7 @@ set foldclose=all
 "map <F7> :r!date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/h/' \| sed -e 's/\:/m/'<Enter>
 "2014_01_03__14h45m36
 "2014_01_07__16h34m19
+"}}}
 map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
 "inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
 "2014_01_14__08_53_38
@@ -464,7 +481,7 @@ map <F5> :w<cr> :!rebol -qs %<cr>
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
 ":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
-map <F6> vip :w! /tmp/tmp_vim_block<cr> :!echo "rebol []" > /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>
+map <F6> vip :w! /tmp/tmp_vim_block<cr> :!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print "=>"' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr> }
 
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
@@ -555,3 +572,10 @@ map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 "":hi CursorColumn ctermbg=Cyan
 "
 "=> En fait, dès qu'on est dans un ssh quelconque, ou une console, ce réticule est giga-chiasseur: zou, je le zappe.
+
+"syntaxe Rebol:
+:set syntax=rebol
+"aussitôt désactivée:
+:set syntax=none
+"=> c'est pour avoir les complétions judicieuses, les mots avec des - vus comme un seul mot (ce qui est commode), mais sans avoir les couleurs (qui n'aident pas forcément beaucoup).
+
