@@ -1,5 +1,5 @@
 [user]
-	name = Pierre
+	name = pchg_aut
 	email = pierrechevaliergeol@free.fr
 [color]
 	diff = auto
@@ -12,6 +12,6 @@
         br = branch
 
 [credential]
-	helper = cache
+	helper = cache --timeout=360000000
 [push]
 	default = simple
