@@ -236,10 +236,10 @@ map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
 map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up> :!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr> i<cr>
 
 " La dictée, c'est très très bien aussi, pour le paragraphe en cours:
-map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block <cr>
+map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block &<cr>
 
 " Pareil, en anglais:
-map <S-F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block <cr>
+map <S-F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block &<cr>
 
 
 "copié depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz
@@ -467,9 +467,10 @@ set shiftwidth=4
 ":map <F4>
 
 
-"pour sauver et faire tourner le fichier courant par rebol:
-"to save and run the current file by rebol interpreter:
-map <F5> :w<cr> :!rebol -qs %<cr>
+"pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chebang soit bien fait:
+"to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
+"map <F5> :w<cr> :!rebol -qs %<cr>
+map <F5> :w<cr> :!./%<cr>
 
 ""pour faire tourner la sélection courante par rebol:
 ""to interpret the current visual selection by rebol interpreter:
@@ -481,7 +482,7 @@ map <F5> :w<cr> :!rebol -qs %<cr>
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
 ":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
-map <F6> vip :w! /tmp/tmp_vim_block<cr> :!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print "=>"' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr> }
+map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
