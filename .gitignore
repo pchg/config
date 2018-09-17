@@ -1,3 +1,5 @@
+.*sw*
+.gitignore
 .git/
 .gitconfig
 .vim/.netrwhist.orig
