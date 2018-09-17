@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/pierre/tmp'
-let g:netrw_dirhist_2='/etc/firebird'
-let g:netrw_dirhist_3='/etc/firebird/2.5'
-let g:netrw_dirhist_4='/home/pierre/heaume_pierre/developpt/qsdf/utils-libs'
-let g:netrw_dirhist_5='/home/pierre/heaume_pierre/developpt/utils-libs'
-let g:netrw_dirhist_6='/var/mail/pierre_chevalier'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/pierre/emaux'
+let g:netrw_dirhist_2='/home/pierre/.config/libreoffice/4'
+let g:netrw_dirhist_3='/home/pierre/tt'
+let g:netrw_dirhist_4='/home/pierre/heaume_pierre/sig/france'
+let g:netrw_dirhist_5='/home/pierre/notes'
+let g:netrw_dirhist_6='/home/pierre/heaume_pierre/scans_multifonction_brother'
+let g:netrw_dirhist_7='/home/pierre/autan/heaume_pierre/scans_multifonction_brother'
+let g:netrw_dirhist_8='/home/pierre/heaume_pierre/scans_multifonction_brother'
+

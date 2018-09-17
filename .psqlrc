@@ -4,13 +4,21 @@
 --\set PROMPT1 '--%M %/%R%# \n'
 
 --mon prompt en suivant les instruction de la formation DBA1 de Dalibo:
-\set PROMPT1 '%n@%/%R%# '
+--\set PROMPT1 '%n@%/%R%# '
+
+--mon prompt en faisant la synthèse de tout ça:
+\set PROMPT1 '--%M %n@%/%R%# \n'
 
 SET search_path TO pierre, public;
+
 --\timing
 \set ON_ERROR_ROLLBACK 'on'
 \pset fieldsep ','
 
---le mode étendu automatique, c'est trocoule:
+-- le mode étendu automatique, c'est trocoule:
 \x auto
+
+-- de jolies bordures:
+\pset linestyle unicode
+\pset border 2
 
