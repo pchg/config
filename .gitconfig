@@ -1,6 +1,6 @@
 [user]
-	name = Pierre
-	email = pierrechevaliergeol@gmail.com
+	name = pchg
+	email = pierrechevaliergeol@free.fr
 [color]
 	diff = auto
 	status = auto
@@ -12,6 +12,7 @@
         br = branch
 
 [credential]
-	helper = store
+	#helper = cache --timeout=360000000
+	helper = cache --timeout=360000000
 [push]
 	default = simple
