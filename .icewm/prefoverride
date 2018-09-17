@@ -1,1 +1,6 @@
-prefoverride_alt_capture_OFF
+BorderSizeX = 1
+BorderSizeY = 1
+DlgBorderSizeX = 1
+DlgBorderSizeY = 1
+TitleBarHeight = 10
+TitleFontNameXft="sans-serif:size=8:bold,AR StdSongU30 Medium:size=8"

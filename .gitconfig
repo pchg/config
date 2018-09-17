@@ -13,6 +13,6 @@
 
 [credential]
 	#helper = cache --timeout=360000000
-	helper = cache --timeout=360000000
+	helper = store
 [push]
 	default = simple

@@ -28,7 +28,7 @@ QuickSwitchToAllWorkspaces=0
 #ShowWorkspaceStatus=1
 QuickSwitch=1
 AutoRaise=1
-DesktopBackgroundCenter=0
+#DesktopBackgroundCenter=0
 DelayPointerFocus=1
 GrabRootWindow=0
 IgnoreNoFocusHint=0
@@ -74,8 +74,13 @@ LogoutCancelCommand=""
 MailCommand=""
 OpenCommand=""
 RunCommand=""
+<<<<<<< HEAD
+#DesktopBackgroundColor=""
+#DesktopBackgroundImage=""
+=======
 DesktopBackgroundColor=""
 DesktopBackgroundImage=""
+>>>>>>> 08acafe380d44640a8d420415c205893264d9244
 Theme=""
 WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
 #KeyWinMaximize="Alt+Enter"
