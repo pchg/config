@@ -1,15 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =5
-<<<<<<< HEAD
 let g:netrw_dirhist_1='/home/pierre/geolllibre_LATITUDE/geolllibrebis/geolllibre'
 let g:netrw_dirhist_2='/home/pierre/latitude/geolllibre'
 let g:netrw_dirhist_3='/home/pierre/geolllibre_LATITUDE/geolllibrebis/geolllibre'
 let g:netrw_dirhist_4='/home/pierre/geolllibre_LATITUDE/geolllibrebis'
 let g:netrw_dirhist_5='/home/pierre/latitude/geolllibre'
-=======
-let g:netrw_dirhist_1='/home/pierre/emaux'
-let g:netrw_dirhist_2='/home/pierre/.config/libreoffice/4'
-let g:netrw_dirhist_3='/home/pierre/tt'
-let g:netrw_dirhist_4='/home/pierre/heaume_pierre/sig/france'
-let g:netrw_dirhist_5='/home/pierre/notes'
->>>>>>> 08acafe380d44640a8d420415c205893264d9244
+
