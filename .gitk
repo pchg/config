@@ -26,7 +26,7 @@ set colors {green red blue magenta darkgrey brown orange}
 set diffcolors {red "#00a000" blue}
 set mergecolors {red blue green purple brown "#009090" magenta "#808000" "#009000" "#ff0080" cyan "#b07070" "#70b0f0" "#70f0b0" "#f0b070" "#ff70b0"}
 set markbgcolor #e0e0ff
-set diffcontext 5
+set diffcontext 3
 set selectbgcolor gray85
 set foundbgcolor yellow
 set currentsearchhitbgcolor orange
@@ -51,14 +51,14 @@ set indexcirclecolor green
 set circlecolors {white blue gray blue blue}
 set linkfgcolor blue
 set circleoutlinecolor black
-set geometry(main) 897x636+123+75
+set geometry(main) 1353x768+0+0
 set geometry(state) normal
-set geometry(topwidth) 897
-set geometry(topheight) 206
-set geometry(pwsash0) "498 1"
-set geometry(pwsash1) "668 1"
-set geometry(botwidth) 644
-set geometry(botheight) 425
+set geometry(topwidth) 1353
+set geometry(topheight) 285
+set geometry(pwsash0) "669 1"
+set geometry(pwsash1) "925 1"
+set geometry(botwidth) 958
+set geometry(botheight) 478
 set permviews {{{Vue gll_geolpda_report_generator.r} gll_geolpda_report_generator.r {} {}}
 {{Vue gll_geolpda_fetch_data.r} gll_geolpda_fetch_data.r {} {}}
 }

@@ -1,0 +1,4 @@
+GISDBASE: /tmp/processingc1fa5468e0f040849b9f31cc94199d73/grassdata
+MAPSET: PERMANENT
+LOCATION_NAME: temp_location
+GRASS_GUI: tcltk

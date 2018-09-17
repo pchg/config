@@ -16,4 +16,5 @@ done
 rm ~/.git
 rm ~/README.md
 rm ~/create_symlinks.sh
+rm ~/.gitconfig
 

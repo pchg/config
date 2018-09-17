@@ -1,0 +1,23 @@
+#========================================================================
+#
+# System-wide xpdfrc file
+#
+# The Xpdf tools look for a config file in two places:
+# 1. ~/.xpdfrc
+# 2. /etc/xpdf/xpdfrc
+#
+# Note that if ~/.xpdfrc exists, Xpdf will NOT read the system
+# configuration file /etc/xpdf/xpdfrc. You may wish to include it
+# from your ~/.xpdfrc using:
+    include /etc/xpdf/xpdfrc
+# and then add additional settings.
+#
+# For complete details on config file syntax and available options, 
+# please see the xpdfrc(5) man page.
+#
+# http://www.foolabs.com/xpdf/
+#
+#========================================================================
+initialZoom 200
+continuousView yes
+
