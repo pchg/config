@@ -298,4 +298,4 @@ alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
 alias dus='du -ch | sort -h'
 alias dua='du -ach | sort -h'
 alias findhere='find . -iname'
-
+alias cloudcommander_semopi_blackpearl='firefox http://black-pearl.local:8000'
