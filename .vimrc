@@ -424,12 +424,6 @@ map ! :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
 "/*}}}*/
 
-" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
-highlight DiffAdd    ctermbg=6
-highlight DiffChange ctermbg=2
-highlight DiffDelete ctermbg=6
-highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
-
 "quelques conseils de http://vim.wikia.com/wiki/Using_standard_editor_shortcuts_in_Vim; fait un peu (beaucoup!) de ménage, quand même:
 
 "set smartindent
@@ -586,9 +580,26 @@ map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 "
 "=> En fait, dès qu'on est dans un ssh quelconque, ou une console, ce réticule est giga-chiasseur: zou, je le zappe.
 
+
 "syntaxe Rebol:
 :set syntax=rebol
 "aussitôt désactivée:
 :set syntax=none
 "=> c'est pour avoir les complétions judicieuses, les mots avec des - vus comme un seul mot (ce qui est commode), mais sans avoir les couleurs (qui n'aident pas forcément beaucoup).
+
+
+" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
+highlight DiffAdd    ctermbg=6
+highlight DiffChange ctermbg=2
+highlight DiffDelete ctermbg=6
+highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
+
+" Toujours dans le cadre d'un vimdiff, passer à la ligne et ne pas coloriser la syntaxe:
+if &diff
+    syntax off
+    "execute 'set wrap'
+    ":windo set wrap
+    "execute 'windo set wrap'
+	autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+endif
 
