@@ -282,15 +282,29 @@ PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 
-#export GLL_BD_HOST=localhost
-#export GLL_BD_HOST=duran
+
+
+####  GeolLLibre variables: ####
+## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
+## Con mais bon.
+export GLL_BD_HOST=duran
+export GLL_BD_HOST=latitude
+export GLL_BD_HOST=localhost
+
+export GLL_BD_HOST=black-pearl
+export GLL_BD_NAME=$POSTGEOL
+export GLL_BD_USER=pic # trigramme de chez Sémofi.
+
 export GLL_BD_HOST=autan
-#export GLL_BD_HOST=latitude
 export GLL_BD_NAME=bdexplo
+export GLL_BD_USER=$USER
+
+export POSTGEOL=postgeol
+export GLL_BD_PORT=5432
+################################
 
 export BROWSER=firefox
 
-export POSTGEOL=postgeol
 alias htop='htop -d 50'
 alias htopbg='htop -d 600'
 alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
