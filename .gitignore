@@ -2,4 +2,5 @@
 .gitignore
 .git/
 .gitconfig
-.vim/.netrwhist.orig
+.vim/.netrwhi*
+.poubelle/

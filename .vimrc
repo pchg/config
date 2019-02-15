@@ -2,7 +2,7 @@
 " F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  
 " -   -   |   -   |   |   |   |   |    |    -    |   -    -    -    -    -    -    -    -
 " F3      \_ ouvre une fenêtre au-dessus avec l'occurrence précédente du mot sous le curseur
-" F5              \_ sauver et faire tourner le fichier courant par rebol
+" F5              \_ sauver et faire tourner le fichier courant par rebol, ou plutôt par le shebang
 " F6                  \_ faire tourner le paragraphe courant par rebol
 " F7                      \_ insertion de timestamp, comme dans le bon vieux ultraedit
 " F8                          \_ faire tourner le paragraphe courant par bash
@@ -369,7 +369,7 @@ set foldclose=all
 "2014_01_07__16h34m19
 "}}}
 map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
-"inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
+inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
 "2014_01_14__08_53_38
 "###################################################################################
 

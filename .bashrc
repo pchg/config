@@ -284,7 +284,8 @@ PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 
 
 
-####  GeolLLibre variables: ####
+################################################################
+########        GeolLLibre variables:                   ########
 ## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
 ## Con mais bon.
 export POSTGEOL=postgeol
@@ -293,18 +294,22 @@ export GLL_BD_HOST=duran
 export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
 
+
 export GLL_BD_HOST=black-pearl
+export GLL_BD_HOST=geopoppy
 export GLL_BD_NAME=$POSTGEOL
 export GLL_BD_USER=pic # trigramme de chez Sémofi.
 
+export POSTGEOL=bdexplo
+export GLL_BD_USER=$USER
 export GLL_BD_HOST=autan
 export GLL_BD_NAME=bdexplo
-export GLL_BD_USER=$USER
-
 export GLL_BD_PORT=5432
-################################
 
+# Agrégation de ces variables dans une variable de connexion:
 export CONNINFO="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
+################################################################
+
 
 export BROWSER=firefox
 

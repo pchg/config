@@ -11,11 +11,11 @@
 #
 key "Alt+Ctrl+Esc"		xkill
 #key "Alt+Ctrl+e"		nedit
-key "Alt+Ctrl+e"		gvim
 #key "Alt+Ctrl+e"		geany
 #key "Alt+Ctrl+e"		gedit
-key "Alt+Ctrl+f"		thunar
+key "Alt+Ctrl+e"		gvim
 #key "Alt+Ctrl+f"		fte
+key "Alt+Ctrl+f"		thunar
 key "Alt+Ctrl+g"		gimp
 key "Alt+Ctrl+k"		krusader
 #key "Alt+Ctrl+b"		netscape -noraise -remote openBookmarks
@@ -28,7 +28,7 @@ key "Alt+Ctrl+t"		x-terminal-emulator
 key "Alt+Ctrl+x"		xterm #-r
 key "Alt+Ctrl+p"		xterm -T "psql LOCALHOST BDEXPLO" -e "psql -h localhost -d bdexplo"
 key "Alt+Ctrl+z"		xterm -T "##RED_ZOU##" -e "~/bin/red"
-key "Alt+Ctrl+y"		xterm -T "##REBOL##" -e "python"
+key "Alt+Ctrl+y"		xterm -T "##PYTHON##" -e "python"
 #key "Alt+Ctrl+b"		mozilla -noraise -remote openBookmarks
 #key "Alt+Ctrl+m"		mozilla-thunderbird mailto:
 

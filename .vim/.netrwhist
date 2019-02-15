@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/pierre/config/.icewm/.icewm/.icewm/.icewm'
 let g:netrw_dirhist_2='/home/pierre/config/.icewm/.icewm/.icewm/.icewm/.icewm'
 let g:netrw_dirhist_3='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki/.git/logs'
 let g:netrw_dirhist_4='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki'
 let g:netrw_dirhist_5='/home/pierre/heaume_pierre/developpt/geo-poppy.wiki.nonplusnonplus'
+let g:netrw_dirhist_6='/home/pierre/heaume_pierre/semofi'
+let g:netrw_dirhist_7='/home/pierre/heaume_pierre/semofi/operations/encours/fort_de_l_est_c1'
+let g:netrw_dirhist_8='/tmp/lu4941v39qj2.tmp'

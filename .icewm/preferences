@@ -112,3 +112,25 @@ CenterTransientsOnOwner=1
 
 #  Don't cut client windows by shapes set trough frame corner pixmap
 #ShapesProtectClientWindow=1
+
+PagerShowMinimized=0 # 0/1
+
+TaskBarAtTop=1 # 0/1
+
+TaskBarDoubleHeight=1 # 0/1
+
+TaskBarAtTop=0 # 0/1
+
+TaskBarShowCollapseButton=0 # 0/1
+
+TaskBarShowShowDesktopButton=0 # 0/1
+
+TaskBarDoubleHeight=0 # 0/1
+
+PagerShowPreview=0 # 0/1
+
+PagerShowWindowIcons=0 # 0/1
+
+FocusOnAppRaise=0 # 0/1
+
+RequestFocusOnAppRaise=0 # 0/1
