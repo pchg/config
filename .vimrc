@@ -340,6 +340,14 @@ map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
 
+"Shift-Ctrl-flèches pour scroller:
+map <S-C-Up>    <C-u>
+map <S-C-Down>  <C-d>
+inoremap <S-C-Up>   <C-u>
+inoremap <S-C-Down> <C-d>
+
+
+
 
 " pour les folds chéris:
 set foldmethod=marker
