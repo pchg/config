@@ -6,7 +6,7 @@ for f in config/*
 do
  if [ -a $f ]       # si f existe
   then
-  J mv $f $f.old    # on le renomme .old
+   mv $f $f.old    # on le renomme .old
   fi
  ln -s $f .
 done
