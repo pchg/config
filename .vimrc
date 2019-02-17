@@ -233,7 +233,8 @@ set infercase
 " La correction orthographique, c'est très très bien
 map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
 " Pour le paragraphe en cours:
-map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up> :!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr> i<cr>
+map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up>:!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr>
+" i<cr>
 
 " La dictée, c'est très très bien aussi, pour le paragraphe en cours:
 map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block &<cr>

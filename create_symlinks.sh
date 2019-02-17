@@ -3,13 +3,11 @@ cd ~
 shopt -s dotglob
 for f in config/*
 do
- # if f existe
- if [ -a $f ]
+ if [ -a $f ]       # si f existe
   then
-  #  on le renomme .old
-   mv $f $f.old
+  J mv $f $f.old    # on le renomme .old
   fi
- ln -s config/$f .
+ ln -s $f .
 done
 
 # remove unwanted symlinks (TODO can be vastly improved)
