@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd ~
 shopt -s dotglob
 for f in config/*
