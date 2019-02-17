@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cd ~
 shopt -s dotglob
-for f in config/*
+cd config
+for f in *
+cd ~
 do
  if [ -a $f ]       # si f existe
   then
