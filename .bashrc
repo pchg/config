@@ -59,8 +59,8 @@ alias gel_chromium='killall chromium -s 19'             #gel de chromium
 alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 
 
-# pour mettre un bon rythme au clavier:
-xset r rate 200 100
+# pour mettre un bon rythme au clavier (si on est dans un terminal X):
+[ ! -t 0 ] && xset r rate 200 100
 
 #
 # Set some generic aliases
