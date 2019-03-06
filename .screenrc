@@ -8,6 +8,8 @@ hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%
 
 #caption always “%{=b wK}%-w%{=b rY}%n %t%{-}% w %=%{= wB}%c%{-} ”
 
+# Plus de lignes à scroller:
+defscrollback 200000
 
 # ------------------------------------------------------------------------------
 # STARTUP SCREENS

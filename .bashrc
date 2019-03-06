@@ -60,7 +60,9 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 
 
 # pour mettre un bon rythme au clavier (si on est dans un terminal X):
-[ ! -t 0 ] && xset r rate 200 100
+#[ ! -t 0 ] && xset r rate 200 100
+[[ $DISPLAY ]]&& xset r rate 200 100
+
 
 #
 # Set some generic aliases
@@ -288,22 +290,24 @@ PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 ########        GeolLLibre variables:                   ########
 ## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
 ## Con mais bon.
+## Un paragraphe par variable, dernière ligne valide.
+
 export POSTGEOL=postgeol
+export POSTGEOL=bdexplo
 
 export GLL_BD_HOST=duran
-export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
-
-
 export GLL_BD_HOST=black-pearl
 export GLL_BD_HOST=geopoppy
-export GLL_BD_NAME=$POSTGEOL
-export GLL_BD_USER=pic # trigramme de chez Sémofi.
-
-export POSTGEOL=bdexplo
-export GLL_BD_USER=$USER
 export GLL_BD_HOST=autan
+export GLL_BD_HOST=latitude
+
+export GLL_BD_NAME=$POSTGEOL
 export GLL_BD_NAME=bdexplo
+
+export GLL_BD_USER=pic # trigramme de chez Sémofi.
+export GLL_BD_USER=$USER
+
 export GLL_BD_PORT=5432
 
 # Agrégation de ces variables dans une variable de connexion:
