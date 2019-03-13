@@ -296,11 +296,11 @@ export POSTGEOL=postgeol
 export POSTGEOL=bdexplo
 
 export GLL_BD_HOST=duran
-export GLL_BD_HOST=localhost
 export GLL_BD_HOST=black-pearl
 export GLL_BD_HOST=geopoppy
 export GLL_BD_HOST=autan
 export GLL_BD_HOST=latitude
+export GLL_BD_HOST=localhost
 
 export GLL_BD_NAME=$POSTGEOL
 export GLL_BD_NAME=bdexplo

@@ -341,11 +341,11 @@ map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
 
-"Shift-Ctrl-flèches pour défiler (scroller):
-map <S-C-Up>    <C-y>
-map <S-C-Down>  <C-e>
-inoremap <S-C-Up>   <Esc><C-y>i
-inoremap <S-C-Down> <Esc><C-e>i
+"Shift-Ctrl-flèches pour défiler (scroller) de 5 lignes:
+map <S-C-Up>    5<C-y>
+map <S-C-Down>  5<C-e>
+inoremap <S-C-Up>   <Esc>5<C-y>i
+inoremap <S-C-Down> <Esc>5<C-e>i
 
 
 
@@ -495,7 +495,7 @@ map <F5> :w<cr> :!./%<cr>
 
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
+imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
 map ; <Home>i;<Esc><Down>
