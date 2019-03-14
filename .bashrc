@@ -173,9 +173,13 @@ export PYTHONSTARTUP='.pythonstartup.py'
 
 # Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
 #PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+
+PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
+#PS1='\t \[\033[0;31m]\u\033[0m]'
+PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
 
 
 ################################################################

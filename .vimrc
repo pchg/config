@@ -341,11 +341,11 @@ map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
 
-"Shift-Ctrl-flèches pour défiler (scroller) de 5 lignes:
-map <S-C-Up>    5<C-y>
-map <S-C-Down>  5<C-e>
-inoremap <S-C-Up>   <Esc>5<C-y>i
-inoremap <S-C-Down> <Esc>5<C-e>i
+"Shift-Ctrl-flèches pour défiler (scroller) de 3 lignes:
+map <S-C-Up>    3<C-y>
+map <S-C-Down>  3<C-e>
+inoremap <S-C-Up>   <Esc>3<C-y>i
+inoremap <S-C-Down> <Esc>3<C-e>i
 
 
 
