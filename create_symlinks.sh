@@ -1,7 +1,6 @@
 #!/bin/bash
-
+echo "Creation of symlinks in upper directory .. (`..`), pointing to current directory . (`pwd`)
 shopt -s dotglob
-pwd
 for f in *
 do
  if [ -a ../$f ]      # si f existe
