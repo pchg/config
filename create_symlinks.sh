@@ -8,7 +8,10 @@ for f in config/*
 do
  if [ -a $f ]      # si f existe
   then
-   mv $f $f.old    # on le renomme .old
+   if [ $f != config ]
+    then
+     mv $f $f.old    # on le renomme .old (à moins que ce ne soit le répertoire config)
+   fi
   fi
  ln -s $f .        # et sinon, on fait un lien symbolique
 done
