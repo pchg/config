@@ -12,7 +12,7 @@ do
      mv ../$f ../$f.old    # on le renomme .old (à moins que ce ne soit le répertoire config)
 #   fi
   fi
- ln -s $f ..        # et sinon, on fait un lien symbolique
+ ln -s config/$f ..        # et sinon, on fait un lien symbolique
 done
 
 # remove unwanted symlinks (TODO can be vastly improved)
