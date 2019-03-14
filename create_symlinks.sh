@@ -1,7 +1,7 @@
 #!/bin/bash
 
 shopt -s dotglob
-cd config
+cd ..
 for f in *
 cd ~
 do
