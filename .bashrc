@@ -107,7 +107,7 @@ export PILOTPORT=usb:
 export PILOTRATE=115200
 
 
-if `whoami` = "root" ; then
+if [ whoami = "root" ] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
 else
 	PATH=$PATH:$HOME/bin
