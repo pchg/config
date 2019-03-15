@@ -106,8 +106,14 @@ export EDITOR=/usr/bin/vim
 export PILOTPORT=usb:
 export PILOTRATE=115200
 
-PATH=$PATH:$HOME/bin
+
+if `whoami` = "root" ; then
+	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
+else
+	PATH=$PATH:$HOME/bin
+fi
 export PATH
+
 
 shopt -s histappend
 PROMPT_COMMAND='history -a'
