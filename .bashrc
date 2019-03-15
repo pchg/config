@@ -188,8 +188,8 @@ PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
 ## Con mais bon.
 ## Un paragraphe par variable, dernière ligne valide.
 
-export POSTGEOL=postgeol
 export POSTGEOL=bdexplo
+export POSTGEOL=postgeol
 
 export GLL_BD_HOST=duran
 export GLL_BD_HOST=black-pearl
@@ -198,8 +198,8 @@ export GLL_BD_HOST=autan
 export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
 
-export GLL_BD_NAME=$POSTGEOL
 export GLL_BD_NAME=bdexplo
+export GLL_BD_NAME=$POSTGEOL
 
 export GLL_BD_USER=pic # trigramme de chez Sémofi.
 export GLL_BD_USER=$USER
