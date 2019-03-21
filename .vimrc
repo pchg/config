@@ -324,6 +324,10 @@ map <A-Up>    :wincmd k<cr>
 map <A-Down>  :wincmd j<cr>
 map <A-Left>  :wincmd h<cr>
 map <A-Right> :wincmd l<cr>
+imap <A-Up>    <esc>:wincmd k<cr>i
+imap <A-Down>  <esc>:wincmd j<cr>i
+imap <A-Left>  <esc>:wincmd h<cr>i
+imap <A-Right> <esc>:wincmd l<cr>i
 
 
 " Pour naviguer dans les onglets (bof):
