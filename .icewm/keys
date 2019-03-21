@@ -13,8 +13,8 @@ key "Alt+Ctrl+Esc"		xkill
 key "Alt+Ctrl+Shift+e"	nedit
 #key "Alt+Ctrl+e"		geany
 #key "Alt+Ctrl+e"		gedit
-#key "Alt+Ctrl+e"		gvim
-key "Alt+Ctrl+e"		evim
+#key "Alt+Ctrl+e"		evim
+key "Alt+Ctrl+e"		gvim
 #key "Alt+Ctrl+f"		fte
 key "Alt+Ctrl+f"		thunar
 key "Alt+Ctrl+g"		gimp

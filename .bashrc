@@ -53,8 +53,10 @@ alias gel_firefox_iceweasel='killall firefox.* -r -s 19'   #gel de firefox => 20
 alias degel_firefox_iceweasel='killall firefox.* -r -s 18' #dégel de firefox => 2016_08_13__12_51_44: changement, firefox revient sous son nom dans debian.
 #alias gel_firefox_iceweasel='killall firefox -s 19'   #gel de firefox => 2016_08_16__22_02_02: ah, c'est firefox tout court, maintenant?
 #alias degel_firefox_iceweasel='killall firefox -s 18' #dégel de firefox => 2016_08_16__22_02_02: ah, c'est firefox tout court, maintenant?
-alias gel_thunderbird_icedove='killall icedove -s 19'   #gel d'icedove
-alias degel_thunderbird_icedove='killall icedove -s 18' #dégel d'icedove
+#alias gel_thunderbird_icedove='killall icedove -s 19'   #gel d'icedove
+alias gel_thunderbird_icedove='killall thunderbird -s 19'   #gel de thunderbird
+#alias degel_thunderbird_icedove='killall icedove -s 18' #dégel d'icedove
+alias degel_thunderbird_icedove='killall thunderbird -s 18' #dégel de thunderbird
 alias gel_chromium='killall chromium -s 19'             #gel de chromium
 alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 
@@ -107,7 +109,7 @@ export PILOTPORT=usb:
 export PILOTRATE=115200
 
 
-if [ whoami = "root" ] ; then
+if [ whoami="root" ] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
 else
 	PATH=$PATH:$HOME/bin
@@ -203,12 +205,13 @@ export GLL_BD_HOST=geopoppy
 export GLL_BD_HOST=autan
 export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
+export GLL_BD_HOST=semopi
 
 export GLL_BD_NAME=bdexplo
 export GLL_BD_NAME=$POSTGEOL
 
-export GLL_BD_USER=pic # trigramme de chez Sémofi.
 export GLL_BD_USER=$USER
+export GLL_BD_USER=pic # trigramme de chez Sémofi.
 
 export GLL_BD_PORT=5432
 

@@ -319,6 +319,13 @@ inoremap <F13> <Esc><C-w><C-w>i
 inoremap <F14> <Esc><C-w><S-w>i
 
 
+"Alt-flèches pour naviguer entre les fenêtres, à la mode de chez terminator:
+map <A-Up>    :wincmd k<cr>
+map <A-Down>  :wincmd j<cr>
+map <A-Left>  :wincmd h<cr>
+map <A-Right> :wincmd l<cr>
+
+
 " Pour naviguer dans les onglets (bof):
 ":nmap <C-S-tab> :tabprevious<cr>
 ":nmap <C-tab> :tabnext<cr>
