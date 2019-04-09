@@ -352,13 +352,23 @@ map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
 
+"Ctrl-jk pour faire pareil:
+map <C-j> ddp
+map <C-k> ddkP
+inoremap <C-j> <Esc>ddpi
+inoremap <C-k> <Esc>ddkPi
+
 "Shift-Ctrl-flèches pour défiler (scroller) de 3 lignes:
 map <S-C-Up>    3<C-y>
 map <S-C-Down>  3<C-e>
 inoremap <S-C-Up>   <Esc>3<C-y>i
 inoremap <S-C-Down> <Esc>3<C-e>i
 
-
+"Shift-Ctrl-jk pour défiler (scroller) de 3 lignes:
+map <S-C-k> 3<C-y>
+map <S-C-j> 3<C-e>
+inoremap <S-C-k>   <Esc>3<C-y>i
+inoremap <S-C-j>   <Esc>3<C-e>i
 
 
 " pour les folds chéris:
@@ -473,6 +483,10 @@ set shiftwidth=4
 ":map <S-{> vi{
 ":map <S-(> vi(
 ":map <S-[> vi[
+
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
 
 "Je me fais des raccourcis pour les Fn:
 ":map <F1>

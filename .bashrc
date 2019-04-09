@@ -183,11 +183,13 @@ export PYTHONSTARTUP='.pythonstartup.py'
 #PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 #PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-
-PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+#PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
 #PS1='\t \[\033[0;31m]\u\033[0m]'
-PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+#PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+# Allez, un peu de couleur, pour égayer:
+PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
+
 
 
 ################################################################
@@ -195,26 +197,27 @@ PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
 ## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
 ## Con mais bon.
 ## Un paragraphe par variable, dernière ligne valide.
-
+## Et une ligne #ée, pour n'avoir qu'un paragraphe. Commode.
+#
 export POSTGEOL=bdexplo
 export POSTGEOL=postgeol
-
+#
 export GLL_BD_HOST=duran
 export GLL_BD_HOST=black-pearl
 export GLL_BD_HOST=geopoppy
 export GLL_BD_HOST=autan
-export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
+export GLL_BD_HOST=latitude
 export GLL_BD_HOST=semopi
-
+#
 export GLL_BD_NAME=bdexplo
 export GLL_BD_NAME=$POSTGEOL
-
+#
 export GLL_BD_USER=$USER
 export GLL_BD_USER=pic # trigramme de chez Sémofi.
-
+#
 export GLL_BD_PORT=5432
-
+#
 # Agrégation de ces variables dans une variable de connexion:
 export CONNINFO="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
 ################################################################
@@ -228,4 +231,8 @@ alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
 alias dus='du -ch | sort -h'
 alias dua='du -ach | sort -h'
 alias findhere='find . -iname'
+
+# Pour pouvoir utiliser Ctrl-S pour sauver dans un vim, sans que le terminal ne s'arrête bêtement:
+bind -r '\C-s'
+stty -ixon
 
