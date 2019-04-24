@@ -287,6 +287,8 @@ PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 ####  GeolLLibre variables: ####
 ## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
 ## Con mais bon.
+export POSTGEOL=postgeol
+
 export GLL_BD_HOST=duran
 export GLL_BD_HOST=latitude
 export GLL_BD_HOST=localhost
@@ -299,9 +301,10 @@ export GLL_BD_HOST=autan
 export GLL_BD_NAME=bdexplo
 export GLL_BD_USER=$USER
 
-export POSTGEOL=postgeol
 export GLL_BD_PORT=5432
 ################################
+
+export CONNINFO="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
 
 export BROWSER=firefox
 

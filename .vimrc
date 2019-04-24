@@ -377,7 +377,6 @@ map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A
 "map <F10> <Esc>V<Left><Home>:<S-Ins><Enter>
 " => marche pas...
 
-
 "mapper F12 avec la dernière macro:
 map <F12> @@
 
@@ -424,12 +423,6 @@ map ! :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
 "/*}}}*/
 
-" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
-highlight DiffAdd    ctermbg=6
-highlight DiffChange ctermbg=2
-highlight DiffDelete ctermbg=6
-highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
-
 "quelques conseils de http://vim.wikia.com/wiki/Using_standard_editor_shortcuts_in_Vim; fait un peu (beaucoup!) de ménage, quand même:
 
 "set smartindent
@@ -467,7 +460,7 @@ set shiftwidth=4
 ":map <F4>
 
 
-"pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chebang soit bien fait:
+"pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chieboum soit bien fait:
 "to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
 "map <F5> :w<cr> :!rebol -qs %<cr>
 map <F5> :w<cr> :!./%<cr>
@@ -500,7 +493,7 @@ map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr
 "pour commenter une ligne de code Rebol et passer à la suivante:
 map ; <Home>i;<Esc><Down>
 
-"pour commenter une ligne de code, genre shell script, par # passer à la suivante:
+"pour commenter une ligne de code, genre shell script, par # , puis passer à la suivante:
 ":map &; <Home>i#<Esc><Down>
 " => marche pas...
 map £ <Home>i#<Esc><Down>
@@ -586,9 +579,52 @@ map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 "
 "=> En fait, dès qu'on est dans un ssh quelconque, ou une console, ce réticule est giga-chiasseur: zou, je le zappe.
 
+
 "syntaxe Rebol:
 :set syntax=rebol
 "aussitôt désactivée:
 :set syntax=none
 "=> c'est pour avoir les complétions judicieuses, les mots avec des - vus comme un seul mot (ce qui est commode), mais sans avoir les couleurs (qui n'aident pas forcément beaucoup).
 
+
+" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
+highlight DiffAdd    ctermbg=6
+highlight DiffChange ctermbg=2
+highlight DiffDelete ctermbg=6
+highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
+
+" Toujours dans le cadre d'un vimdiff, passer à la ligne et ne pas coloriser la syntaxe:
+if &diff
+    syntax off
+    "execute 'set wrap'
+    ":windo set wrap
+    "execute 'windo set wrap'
+	autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+endif
+
+" Pour scroller plus confortablement, mappons Fn+Ctrl+flèches avec C-D et C-U:
+"map <C-S-PageDown> <C-D>
+"map <C-S-PageUp> <C-U>
+"inoremap <C-S-PageDown> <p>
+"inoremap <C-S-PageUp> <p>
+"  2018_10_13__11_44_06 => ne fonctionne pas.
+
+
+" Contenu de ~/dev/postgresql/src/tools/editors/vim.samples:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" These settings are appropriate for editing PostgreSQL code with vim
+"
+" You would copy this into your .vimrc or equivalent
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+:if match(getcwd(), "/pgsql") >=0 ||  match(getcwd(), "/postgresql") >= 0
+
+:  set cinoptions=(0
+:  set tabstop=4
+:  set shiftwidth=4
+
+:endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
