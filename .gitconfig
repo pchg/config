@@ -1,6 +1,7 @@
 [user]
-	name = pchg
-	email = pierrechevaliergeol@free.fr
+	#name = pchg
+	name = Pierre
+	email = pierrechevaliergeol@gmail.com
 [color]
 	diff = auto
 	status = auto

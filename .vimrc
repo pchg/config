@@ -2,7 +2,7 @@
 " F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  
 " -   -   |   -   |   |   |   |   |    |    -    |   -    -    -    -    -    -    -    -
 " F3      \_ ouvre une fenêtre au-dessus avec l'occurrence précédente du mot sous le curseur
-" F5              \_ sauver et faire tourner le fichier courant par rebol
+" F5              \_ sauver et faire tourner le fichier courant par rebol, ou plutôt par le shebang
 " F6                  \_ faire tourner le paragraphe courant par rebol
 " F7                      \_ insertion de timestamp, comme dans le bon vieux ultraedit
 " F8                          \_ faire tourner le paragraphe courant par bash
@@ -233,7 +233,8 @@ set infercase
 " La correction orthographique, c'est très très bien
 map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
 " Pour le paragraphe en cours:
-map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up> :!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr> i<cr>
+map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up>:!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr>
+" i<cr>
 
 " La dictée, c'est très très bien aussi, pour le paragraphe en cours:
 map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block &<cr>
@@ -291,10 +292,10 @@ endfunction
 
 
 "Mapping sur la touche Tab
-"inoremap <Tab> <C-R>=CleverTab()<CR>
+inoremap <Tab> <C-R>=CleverTab()<CR>
 
 "et pareil sur la combinaison de touches Shift Tab:
-"inoremap <S-Tab> <C-R>=CleverTabShift()<CR>
+inoremap <S-Tab> <C-R>=CleverTabShift()<CR>
 
 "Ctrl-Tab pour naviguer entre les fenêtres:
 "MARCHE PAS ":map <C-Tab> <C-w><C-w>
@@ -318,6 +319,17 @@ inoremap <F13> <Esc><C-w><C-w>i
 inoremap <F14> <Esc><C-w><S-w>i
 
 
+"Alt-flèches pour naviguer entre les fenêtres, à la mode de chez terminator:
+map <A-Up>    :wincmd k<cr>
+map <A-Down>  :wincmd j<cr>
+map <A-Left>  :wincmd h<cr>
+map <A-Right> :wincmd l<cr>
+imap <A-Up>    <esc>:wincmd k<cr>i
+imap <A-Down>  <esc>:wincmd j<cr>i
+imap <A-Left>  <esc>:wincmd h<cr>i
+imap <A-Right> <esc>:wincmd l<cr>i
+
+
 " Pour naviguer dans les onglets (bof):
 ":nmap <C-S-tab> :tabprevious<cr>
 ":nmap <C-tab> :tabnext<cr>
@@ -339,6 +351,24 @@ map <C-Up>   ddkP
 map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
+
+"Ctrl-jk pour faire pareil:
+map <C-j> ddp
+map <C-k> ddkP
+inoremap <C-j> <Esc>ddpi
+inoremap <C-k> <Esc>ddkPi
+
+"Shift-Ctrl-flèches pour défiler (scroller) de 3 lignes:
+map <S-C-Up>    3<C-y>
+map <S-C-Down>  3<C-e>
+inoremap <S-C-Up>   <Esc>3<C-y>i
+inoremap <S-C-Down> <Esc>3<C-e>i
+
+"Shift-Ctrl-jk pour défiler (scroller) de 3 lignes:
+map <S-C-k> 3<C-y>
+map <S-C-j> 3<C-e>
+inoremap <S-C-k>   <Esc>3<C-y>i
+inoremap <S-C-j>   <Esc>3<C-e>i
 
 
 " pour les folds chéris:
@@ -369,13 +399,14 @@ set foldclose=all
 "2014_01_07__16h34m19
 "}}}
 map <F7> :r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
-"inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
+inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A 
 "2014_01_14__08_53_38
 "###################################################################################
 
 "mapper F10 avec la ligne courante à faire tourner en tant que commande vi (:)
 "map <F10> <Esc>V<Left><Home>:<S-Ins><Enter>
 " => marche pas...
+
 
 "mapper F12 avec la dernière macro:
 map <F12> @@
@@ -423,6 +454,12 @@ map ! :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
 "/*}}}*/
 
+" Des couleurs de vimdiff un peu plus humainement lisibles pour un presse-b!t3:
+highlight DiffAdd    ctermbg=6
+highlight DiffChange ctermbg=2
+highlight DiffDelete ctermbg=6
+highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
+
 "quelques conseils de http://vim.wikia.com/wiki/Using_standard_editor_shortcuts_in_Vim; fait un peu (beaucoup!) de ménage, quand même:
 
 "set smartindent
@@ -453,6 +490,10 @@ set shiftwidth=4
 ":map <S-(> vi(
 ":map <S-[> vi[
 
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
+
 "Je me fais des raccourcis pour les Fn:
 ":map <F1>
 ":map <F2>
@@ -476,19 +517,16 @@ map <F5> :w<cr> :!./%<cr>
 "to interpret the current paragraph by rebol interpreter:
 ":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
 
-" De la cagade:{{{
-"<<<<<<< HEAD
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo " ; {{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================}  >> /tmp/tmp_vim_block.r && echo '}}}"' >> /tmp/tmp_vim_block.r && echo "wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r"<cr>}k
 "KK! map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && \ echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo "{{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================} > /tmp/tmp_vim_block.r && echo 'print "}}}"' > /tmp/tmp_vim_block.r print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-"=======
-">>>>>>> 9c5fdd129f321270380bf4df102d390c977af39c
-"}}}
+
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo "{{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================} && echo "}}}" wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 
+"map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
+imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
 map ; <Home>i;<Esc><Down>
@@ -547,9 +585,10 @@ map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 " => mince, pas pu faire :map <S-*> :split <cr>*
 "                  ni:   :map <µ> :split <cr>*
 "donc je fais avec F3, et vers le haut, c'est plus commode, avec #:
-:map <F3> :split <cr>#
-
-
+:map <F3> :split<cr>#
+"Pareil, en faisant une division verticale:
+":map <S-F3> :vsplit<cr>#
+"=> ne fonctionne pas...
 
 
 "Pour PAS ne pas recommencer la recherche au début/fin du fichier:

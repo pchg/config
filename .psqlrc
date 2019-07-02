@@ -1,4 +1,4 @@
-\set PAGER 'less -nS'
+\set PAGER 'less -n -S'
 
 --mon prompt d'avant:
 --\set PROMPT1 '--%M %/%R%# \n'
@@ -19,6 +19,6 @@ SET search_path TO pierre, public;
 \x auto
 
 -- de jolies bordures:
-\pset linestyle unicode
-\pset border 2
+-- \pset linestyle unicode
+-- \pset border 2
 
