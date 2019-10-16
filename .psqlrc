@@ -15,8 +15,9 @@ SET search_path TO pierre, public;
 \set ON_ERROR_ROLLBACK 'on'
 \pset fieldsep ','
 
--- le mode étendu automatique, c'est trocoule:
-\x auto
+---- le mode étendu automatique, c'est trocoule:
+-- oui, mais parfois ça prend le chou...
+--\x auto
 
 -- de jolies bordures:
 -- \pset linestyle unicode
