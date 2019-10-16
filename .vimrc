@@ -352,12 +352,12 @@ map <A-l>   :wincmd l<cr>
 
 "Ctrl-flèches pour déplacer les lignes, comme dans oOo:
 "nnoremap <C-Up> ddkp <CR>	"DONE marche pas => si, ainsi:
-map <C-Up>   ddkP
+map <C-Up> ddkP
 map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
 
-"Ctrl-jk pour faire pareil:
+"Ctrl-jk pour faire pareil: (marche pas...)
 map <C-j> ddp
 map <C-k> ddkP
 inoremap <C-j> <Esc>ddpi
@@ -503,7 +503,8 @@ set shiftwidth=4
 "pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chieboum soit bien fait:
 "to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
 "map <F5> :w<cr> :!rebol -qs %<cr>
-map <F5> :w<cr> :!./%<cr>
+map  <F5> :w<cr> :!./%<cr>
+imap <F5> <esc>:w<cr> :!./%<cr>i
 
 ""pour faire tourner la sélection courante par rebol:
 ""to interpret the current visual selection by rebol interpreter:
@@ -514,18 +515,17 @@ map <F5> :w<cr> :!./%<cr>
 
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
+map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
+imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
+"(des vieilleries:){{{
 ":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
-
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo " ; {{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================}  >> /tmp/tmp_vim_block.r && echo '}}}"' >> /tmp/tmp_vim_block.r && echo "wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r"<cr>}k
 "KK! map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && \ echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo "{{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================} > /tmp/tmp_vim_block.r && echo 'print "}}}"' > /tmp/tmp_vim_block.r print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo "{{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================} && echo "}}}" wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
+"}}}
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
 map ; <Home>i;<Esc><Down>
@@ -544,7 +544,8 @@ map <C-S-p> vip
 "(enlevé <S-p> qui fait paste avant)
 
 " pour faire tourner le paragraphe courant par bash:
-map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
+map  <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
+imap <F8> <esc>vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>i
 
 
 " Pour sélectionner divers bidules par des double (non, déjà fait)
@@ -585,6 +586,8 @@ map <F8> vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block <cr>
 "                  ni:   :map <µ> :split <cr>*
 "donc je fais avec F3, et vers le haut, c'est plus commode, avec #:
 :map <F3> :split<cr>#
+" Pareil, en mode insertion aussi:
+imap <F3> <Esc> :split<cr>#i
 "Pareil, en faisant une division verticale:
 ":map <S-F3> :vsplit<cr>#
 "=> ne fonctionne pas...
@@ -634,10 +637,12 @@ highlight DiffText   ctermfg=1 ctermbg=2 cterm=bold
 " Toujours dans le cadre d'un vimdiff, passer à la ligne et ne pas coloriser la syntaxe:
 if &diff
     syntax off
+    " essayé tout ça, sans succès:{{{
     "execute 'set wrap'
-    ":windo set wrap
+    "set wrap
     "execute 'windo set wrap'
-	autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+	"autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+    "}}}
 endif
 
 " Pour scroller plus confortablement, mappons Fn+Ctrl+flèches avec C-D et C-U:

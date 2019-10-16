@@ -15,7 +15,9 @@ alias lla='ll -a | less'
 alias lls='ls -trlh | tail -10'
 alias llls='ls -trlh | tail -40'
 
-alias der_fichier='ls --group-directories-first -Htr | tail -1'
+#alias der_fichier='(ls --group-directories-first -Htr | tail -1)'
+export der_fichier=`ls --group-directories-first -Htr | tail -1`
+alias der_fichier=`ls --group-directories-first -Htr | tail -1`
 
 # des progs amoin; au lieu de faire un mini-script à chaque fois:
 alias qe='wine ~/progswin/util/qe.exe'
@@ -180,15 +182,25 @@ export LESS="-iMSx4 -R"
 export PYTHONSTARTUP='.pythonstartup.py'
 
 # Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
-#PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-#PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-#PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-#PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
-#PS1='\t \[\033[0;31m]\u\033[0m]'
-#PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+PS1='\t \[\033[0;31m]\u\033[0m]'
+PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
 # Allez, un peu de couleur, pour égayer:
 PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
+# Et puis aussi le PID, manière d'avoir un identifiant unique par xterm 
+#(pratique, quand on en arrive là: {{{
+#  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
+#px bash | wc -l
+#75
+#}}}
+PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+
+
+
 
 
 
@@ -207,20 +219,55 @@ export GLL_BD_HOST=black-pearl
 export GLL_BD_HOST=geopoppy
 export GLL_BD_HOST=autan
 export GLL_BD_HOST=localhost
-export GLL_BD_HOST=latitude
 export GLL_BD_HOST=semopi
+export GLL_BD_HOST=geolllibre.org
+export GLL_BD_HOST=latitude
+#
+export GLL_BD_USER=pic # trigramme de chez Sémofi.
+export GLL_BD_USER=$USER
 #
 export GLL_BD_NAME=bdexplo
 export GLL_BD_NAME=$POSTGEOL
-#
-export GLL_BD_USER=$USER
-export GLL_BD_USER=pic # trigramme de chez Sémofi.
 #
 export GLL_BD_PORT=5432
 #
 # Agrégation de ces variables dans une variable de connexion:
 export CONNINFO="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
 ################################################################
+
+
+################################################################
+########        PAR variables:                          ########
+## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
+## Con mais bon.
+## Un paragraphe par variable, dernière ligne valide.
+## Et une ligne #ée, pour n'avoir qu'un paragraphe. Commode.
+#
+export PAR=par_02
+#
+export PAR_BD_HOST=geolllibre.org
+export PAR_BD_HOST=latitude
+#
+export PAR_BD_USER=$USER
+#
+export PAR_BD_NAME=bdexplo
+export PAR_BD_NAME=$PAR
+#
+export PAR_BD_PORT=5432
+#
+# Agrégation de ces variables dans une variable de connexion:
+export CONNINFO_PAR="-h $PAR_BD_HOST -p $PAR_BD_PORT -U $PAR_BD_USER $PAR_BD_NAME"
+################################################################
+
+# ATTENTION! définition de CONNINFO_PAR par défaut
+export CONNINFO=$CONNINFO_PAR
+export GLL_BD_USER=$PAR_BD_USER
+export GLL_BD_PORT=$PAR_BD_PORT
+export GLL_BD_HOST=$PAR_BD_HOST
+export GLL_BD_NAME=$PAR_BD_NAME
+
+
+
 
 export BROWSER=firefox
 
@@ -236,4 +283,8 @@ alias cloudcommander_semopi_blackpearl='firefox http://black-pearl.local:8000'
 # Pour pouvoir utiliser Ctrl-S pour sauver dans un vim, sans que le terminal ne s'arrête bêtement:
 bind -r '\C-s'
 stty -ixon
+
+# Pour faire tourner gtkcam
+export RED_GTK_CAMERA=YES
+export GST_V4L2_USE_LIBV4L2=1
 
