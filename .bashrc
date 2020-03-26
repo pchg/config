@@ -1,3 +1,70 @@
+########################################################################################
+########        GeolLLibre variables:                                           ########
+## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
+## Con mais bon.
+## Un paragraphe par variable, dernière ligne valide.
+## Et une ligne #ée, pour n'avoir qu'un paragraphe. Commode.
+
+export POSTGEOL=bdexplo
+export POSTGEOL=postgeol
+
+export GLL_BD_HOST=duran
+export GLL_BD_HOST=black-pearl
+export GLL_BD_HOST=geopoppy
+export GLL_BD_HOST=autan
+export GLL_BD_HOST=localhost
+export GLL_BD_HOST=semopi
+export GLL_BD_HOST=geolllibre.org
+export GLL_BD_HOST=latitude
+
+export GLL_BD_USER=pic # trigramme de chez Sémofi.
+export GLL_BD_USER=$USER
+
+export GLL_BD_NAME=bdexplo
+export GLL_BD_NAME=$POSTGEOL
+
+export GLL_BD_PORT=5432
+
+# Agrégation de ces variables dans une variable de connexion:
+export CONNINFO_GLL="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
+########################################################################################
+
+
+########################################################################################
+########        PAR variables:                                                  ########
+export PAR=par_02
+
+export PAR_BD_HOST=geolllibre.org
+export PAR_BD_HOST=latitude
+export PAR_BD_HOST=pellehovh
+
+export PAR_BD_USER=$USER
+
+export PAR_BD_NAME=bdexplo
+export PAR_BD_NAME=$PAR
+
+export PAR_BD_PORT=5432
+
+# Agrégation de ces variables dans une variable de connexion:
+export CONNINFO_PAR="-h $PAR_BD_HOST -p $PAR_BD_PORT -U $PAR_BD_USER $PAR_BD_NAME"
+########################################################################################
+
+
+export CONNINFO=$CONNINFO_PAR # ATTENTION!!! définition de CONNINFO_PAR par défaut
+export CONNINFO=$CONNINFO_GLL # ATTENTION!!! définition de CONNINFO_GLL par défaut
+
+# export GLL_BD_USER=$PAR_BD_USER
+# export GLL_BD_PORT=$PAR_BD_PORT
+# export GLL_BD_HOST=$PAR_BD_HOST
+# export GLL_BD_NAME=$PAR_BD_NAME
+########################################################################################
+########################################################################################
+
+
+
+
+
+
 export TERM=xterm
 
 if [ -f /etc/bash_completion ]; then
@@ -202,69 +269,6 @@ PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BAS
 
 
 
-
-
-################################################################
-########        GeolLLibre variables:                   ########
-## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
-## Con mais bon.
-## Un paragraphe par variable, dernière ligne valide.
-## Et une ligne #ée, pour n'avoir qu'un paragraphe. Commode.
-#
-export POSTGEOL=bdexplo
-export POSTGEOL=postgeol
-#
-export GLL_BD_HOST=duran
-export GLL_BD_HOST=black-pearl
-export GLL_BD_HOST=geopoppy
-export GLL_BD_HOST=autan
-export GLL_BD_HOST=localhost
-export GLL_BD_HOST=semopi
-export GLL_BD_HOST=geolllibre.org
-export GLL_BD_HOST=latitude
-#
-export GLL_BD_USER=pic # trigramme de chez Sémofi.
-export GLL_BD_USER=$USER
-#
-export GLL_BD_NAME=bdexplo
-export GLL_BD_NAME=$POSTGEOL
-#
-export GLL_BD_PORT=5432
-#
-# Agrégation de ces variables dans une variable de connexion:
-export CONNINFO="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
-################################################################
-
-
-################################################################
-########        PAR variables:                          ########
-## Trié comme ça, bêtement, c'est la dernière valeur qui est choisie.
-## Con mais bon.
-## Un paragraphe par variable, dernière ligne valide.
-## Et une ligne #ée, pour n'avoir qu'un paragraphe. Commode.
-#
-export PAR=par_02
-#
-export PAR_BD_HOST=geolllibre.org
-export PAR_BD_HOST=latitude
-#
-export PAR_BD_USER=$USER
-#
-export PAR_BD_NAME=bdexplo
-export PAR_BD_NAME=$PAR
-#
-export PAR_BD_PORT=5432
-#
-# Agrégation de ces variables dans une variable de connexion:
-export CONNINFO_PAR="-h $PAR_BD_HOST -p $PAR_BD_PORT -U $PAR_BD_USER $PAR_BD_NAME"
-################################################################
-
-# ATTENTION! définition de CONNINFO_PAR par défaut
-export CONNINFO=$CONNINFO_PAR
-export GLL_BD_USER=$PAR_BD_USER
-export GLL_BD_PORT=$PAR_BD_PORT
-export GLL_BD_HOST=$PAR_BD_HOST
-export GLL_BD_NAME=$PAR_BD_NAME
 
 
 
