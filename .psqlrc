@@ -20,6 +20,6 @@ SET search_path TO pierre, public;
 --\x auto
 
 -- de jolies bordures:
-\pset linestyle unicode
-\pset border 2
+-- \pset linestyle unicode
+-- \pset border 2
 
