@@ -489,8 +489,14 @@ set shiftwidth=4
 ":map <S-(> vi(
 ":map <S-[> vi[
 
+" Pour sauvegarder "comme tout le monde" avec un Ctrl-S
 :nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
+:imap <c-s> <Esc>:w<CR>i
+
+" Pour quitter "comme tout le monde" avec un Ctrl-Q, poil au...
+:nmap <c-q> :q<CR>
+:imap <c-q> <Esc>:q<CR>
+
 
 
 "Je me fais des raccourcis pour les Fn:
@@ -533,7 +539,7 @@ map ; <Home>i;<Esc><Down>
 "pour commenter une ligne de code, genre shell script, par # passer à la suivante:
 ":map &; <Home>i#<Esc><Down>
 " => marche pas...
-map £ <Home>i#<Esc><Down>
+map £ <Home>i#<Space><Esc><Down>
 
 "pour commenter une ligne de code SQL et passer à la suivante:
 map - <Home>i--<Space><Esc><Down><Home>
