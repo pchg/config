@@ -83,3 +83,6 @@ key "Scroll_Lock"             /bin/sh -c "xcalib -invert -alter"
 # => ne fonctionne point...
 # => ah si! Mais il faut faire Fn+F3, sur latitude
 
+# Un truc pratique du genre Exposé ou Mission Control sur mac: skippy-xd
+key "Alt+Ctrl+Home"  skippy-xd
+

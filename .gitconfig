@@ -17,3 +17,7 @@
 	helper = store
 [push]
 	default = simple
+
+[diff "odf"]
+        binary = true
+        textconv = odt2txt

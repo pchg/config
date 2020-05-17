@@ -80,7 +80,8 @@ alias ls-l='ls -l'
 alias lll='ls -trlh | less'
 alias lla='ll -a | less'
 alias lls='ls -trlh | tail -10'
-alias llls='ls -trlh | tail -40'
+alias llls='ls -trlh | tail -50'
+alias lllls='ls -trlh | tail -100'
 
 #alias der_fichier='(ls --group-directories-first -Htr | tail -1)'
 export der_fichier=`ls --group-directories-first -Htr | tail -1`
@@ -164,6 +165,7 @@ alias mv='mv -i'
 alias dog=cat
 
 export EDITOR=/usr/bin/vim
+#export EDITOR=/bin/nano
 #export EDITOR=/usr/bin/mcedit
 
 # For some news readers it makes sense to specify the NEWSSERVER variable here
