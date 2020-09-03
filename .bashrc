@@ -99,11 +99,12 @@ alias mapfinfo75='wine ~/progswin/mapinfo_75/MAPINFOW.EXE'
 alias norton_commander_win='wine ~/progswin/nc_w/nc.exe'
 alias geoser='wine ~/progswin/sermine/geoser.exe'
 alias msqry='wine ~/progswin/util/msqry32.exe'
-alias nc='wine ~/progswin/util/nc.exe'
+# alias nc='wine ~/progswin/util/nc.exe'
 alias qbasic='wine ~/progswin/util/qbasic.exe'
 alias qe='wine ~/progswin/util/qe.exe'
 alias tectri='wine ~/progswin/util/tectri.exe'
 alias uedit='wine ~/progswin/util/uedit32.exe'
+alias freemind='cd ~/progs_lin/freemind/ && sh freemind.sh'
 
 # pour utiliser libreoffice avec les commandes d'openoffice (plus aisées, surtout local<TAB>...):
 alias oobase='lobase'
@@ -184,6 +185,7 @@ if [ whoami="root" ] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
 else
 	PATH=$PATH:$HOME/bin
+	PATH=$PATH:$HOME/.local/bin
 fi
 export PATH
 
@@ -212,9 +214,9 @@ export HISTSIZE=10000000000
 alias lc="cl"
 function cl () {
    if [ $# = 0 ]; then
-      cd && ll
+      cd      && ls -trlh | tail
    else
-      cd "$*" && ll
+      cd "$*" && ls -trlh | tail
    fi
 }
 #plus simple:
@@ -251,22 +253,33 @@ export LESS="-iMSx4 -R"
 export PYTHONSTARTUP='.pythonstartup.py'
 
 # Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
-PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
-PS1='\t \[\033[0;31m]\u\033[0m]'
-PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
-# Allez, un peu de couleur, pour égayer:
-PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
-# Et puis aussi le PID, manière d'avoir un identifiant unique par xterm 
-#(pratique, quand on en arrive là: {{{
-#  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
-#px bash | wc -l
-#75
-#}}}
-PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
+# PS1='\t \[\033[0;31m]\u\033[0m]'
+# PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+# # Allez, un peu de couleur, pour égayer:
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
+# # Et puis aussi le PID, manière d'avoir un identifiant unique par xterm
+# #(pratique, quand on en arrive là: {{{
+# #  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
+# #px bash | wc -l
+# #75
+# #}}}
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Je tente d'ôter le \n avant le prompt, manière de rendre plus compacts et monolithiques mes copié-collés depuis des terminaux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# Et puis aussi les états dirty, untracked, stash, etc.:
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+
 
 
 

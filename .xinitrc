@@ -2,7 +2,7 @@
 #exec /usr/bin/enlightenment
 
 xset r rate 200 100
-xrdb ~/.Xresources
+xrdb -merge ~/.Xresources
 xterm&
 demarrage
 #blackbox

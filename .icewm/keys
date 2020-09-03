@@ -23,18 +23,18 @@ key "Alt+Ctrl+k"		krusader
 #key "Alt+Ctrl+m"		netscape -noraise -remote openURL(mailto:,new-window) 
 #key "Alt+Ctrl+n"		netscape -noraise -remote openBrowser
 key "Alt+Ctrl+n"		sensible-browser
+key "Alt+Ctrl+x"		xterm -class UXTerm -u8 #-r
 #key "Alt+Ctrl+r"		xterm -T "##REBOL##" -e "rebol -qs"
 key "Alt+Ctrl+r"		xterm -T "##REBOL##" -e "bash -c -l -i 'rebol -qs'"
 #key "Alt+Ctrl+a"		xterm -T "##AUTOREBOL##" -e "rebol -qs --do run_clipboard_rebol_code"
 key "Alt+Ctrl+a"		xterm -T "##AUTOREBOL##" -e "bash -c -l -i 'rebol -qs --do run_clipboard_rebol_code'"
 key "Alt+Ctrl+t"		x-terminal-emulator
-key "Alt+Ctrl+x"		xterm #-r
 key "Alt+Ctrl+Shift+x"  xterm -sl 100000 -T "GROS xterm"
 #key "Alt+Ctrl+p"		xterm -T "psql LOCALHOST BDEXPLO" -e "psql -h localhost -d bdexplo"
 key "Alt+Ctrl+p"		xterm -T "PSQL $CONNINFO" -e "bash -c -l -i 'psql $CONNINFO'"
 #key "Alt+Ctrl+z"		xterm -T "##RED_ZOU##" -e "~/bin/red"
 key "Alt+Ctrl+z"		xterm -T "##RED_ZOU##" -e "bash -c -l -i '~/bin/red'"
-key "Alt+Ctrl+y"		xterm -T "##PYTHON##" -e "python"
+key "Alt+Ctrl+y"		xterm -T "##PYTHON##" -e "python3"
 #key "Alt+Ctrl+b"		mozilla -noraise -remote openBookmarks
 #key "Alt+Ctrl+m"		mozilla-thunderbird mailto:
 
@@ -75,7 +75,9 @@ key "Ctrl+Alt+Print"         scrot -m -s 'capture_%Y_%m_%d__$%T_window.png'
                                    #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_window.png"
 
 # Pareil, mais au lieu de copier dans un féchier, copier dans le presse-papiers:
+# Tout l'écran:
 key "Print"             /bin/sh -c "scrot -m    /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
+# La fenêtre courante:
 key "Alt+Print"         /bin/sh -c "scrot -m -s /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
 
 # Inversion de l'écran, pour rigoler

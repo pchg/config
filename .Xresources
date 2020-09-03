@@ -1,0 +1,30 @@
+! ---- language-env DON T MODIFY THIS LINE!
+! ISO-8859-15 (Latin-9) fonts for XTerm
+XTerm*Font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-15
+XTerm*Font2: -misc-fixed-medium-r-normal--8-*-*-*-*-*-iso8859-15
+XTerm*Font3: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-15
+XTerm*Font4: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-15
+XTerm*Font5: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso8859-15
+XTerm*Font6: -misc-fixed-medium-r-normal--20-*-*-*-*-*-iso8859-15
+! ISO-8859-15 (Latin-9) fonts for Rxvt
+Rxvt*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-15
+Rxvt*font2: -misc-fixed-medium-r-normal--8-*-*-*-*-*-iso8859-15
+Rxvt*font3: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-15
+Rxvt*font4: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-15
+Rxvt*font5: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso8859-15
+Rxvt*font6: -misc-fixed-medium-r-normal--20-*-*-*-*-*-iso8859-15
+! ISO-8859-15 fonts for many softwares
+*font:-*-*-medium-r-normal--14-*-*-*-c-*-iso8859-15
+! ---- language-env end DON T MODIFY THIS LINE!
+xterm*foreground: black
+xterm*background: white 
+
+! http://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu
+! I used the blog and wiki posts from @nfm s answer and solved it:
+! Put this in your .Xresources file (you can copy-paste in this case):
+xterm*VT100.Translations: #override \
+             Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n\
+             Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~")
+! Then do cd ; xrdb .Xresources and restart xterm.
+!Put this in your .vimrc: ...
+

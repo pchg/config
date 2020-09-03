@@ -6,3 +6,5 @@
 .vim/.netrwhi*
 .vim/.netrwhist
 .poubelle/
+.icewm/.session*
+
