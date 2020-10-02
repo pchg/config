@@ -715,4 +715,11 @@ let @s = '[1~32r_[1~'
 " Pour éditer rapidos du HTML et CSS, plugin https://github.com/mattn/emmet-vim/:
 " Plugin 'mattn/emmet-vim' (non, marche pas ainsi)
 
+" Pour fermer les ([{"' automagiquement:
+:inoremap ( ()<Left>
+:inoremap [ []<Left>
+:inoremap { {}<Left>
+:inoremap " ""<Left>
+"":inoremap ' ''<Left> (annulé, ça met le ouaï dans l'apostrophage...)'
+:inoremap < <><Left>
 
