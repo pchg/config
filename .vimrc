@@ -720,6 +720,69 @@ let @s = '[1~32r_[1~'
 :inoremap [ []<Left>
 :inoremap { {}<Left>
 :inoremap " ""<Left>
-"":inoremap ' ''<Left> (annulé, ça met le ouaï dans l'apostrophage...)'
+"":inoremap ' ''<Left> (annulé, ça met le ouaï dans l'apostrophage...)
 :inoremap < <><Left>
+
+
+
+
+" 2020_10_13__11_41_18
+" En lisant ça: https://realpython.com/vim-and-python-a-match-made-in-heaven/
+" Pour Vundle:
+"set nocompatible              " required  <= inutile, c'est déjà mentionné plus haut
+filetype off                  " required
+"
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+"
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+"
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+"
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/nerdtree'
+" ...
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
+"Pro Tip #5: Try this if you want to see the docstrings for folded code:
+let g:SimpylFold_docstring_preview=1
+
+"To add the proper PEP 8 indentation, add the following to your .vimrc:
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+"
+"For full stack development, you can use another au command for each filetype:
+au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2 softtabstop=2 shiftwidth=2
+
+"Flagging Unnecessary Whitespace
+"You also want to avoid extraneous whitespace. You can have VIM flag that for you so that it’s easy to spot and then remove:
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"Auto-Complete
+
+"The best plugin for Python auto-complete is YouCompleteMe. Again, use Vundle to install:
+"Bundle 'Valloric/YouCompleteMe'
+"=> bof, non, mon autocomplétion est déjà Parfaite.
+
+
+"""python with virtualenv support
+""py << EOF
+""import os
+""import sys
+""if 'VIRTUAL_ENV' in os.environ:
+""  project_base_dir = os.environ['VIRTUAL_ENV']
+""  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+""  execfile(activate_this, dict(__file__=activate_this))
+""EOF
+"" => ? Marche pas.
 
