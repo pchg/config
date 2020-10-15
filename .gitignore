@@ -1,10 +1,12 @@
-.*sw*
+rien
 .gitignore
-.git/
+.git/**
+.*sw*
 .gitconfig
-.vim/
+.vim/**
 .vim/.netrwhi*
 .vim/.netrwhist
+.netrwhist
 .poubelle/
 .icewm/.session*
 

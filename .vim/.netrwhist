@@ -1,3 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/pierre/adsillh/cours/programmation_systeme'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/pierre/heaume_pierre/developpt/rebol/library'
+let g:netrw_dirhist_2='/home/pierre/heaume_pierre/developpt/rebol/library/scripts'
+let g:netrw_dirhist_3='/usr/lib/python2.7/dist-packages'
+let g:netrw_dirhist_4='/usr/lib/python2.7'
+let g:netrw_dirhist_5='/home/pierre/adsillh'
+let g:netrw_dirhist_6='/home/pierre/adsillh/cours/programmation_systeme'
+let g:netrw_dirhist_7='/home/pierre/.config/ranger'
+let g:netrw_dirhist_8='/home/pierre/heaume_pierre/bin_scripts'
