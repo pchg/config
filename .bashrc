@@ -64,7 +64,6 @@ export CONNINFO=$CONNINFO_GLL # ATTENTION!!! définition de CONNINFO_GLL par dé
 
 
 
-
 export TERM=xterm
 
 if [ -f /etc/bash_completion ]; then
