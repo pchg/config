@@ -295,21 +295,7 @@ alias cloudcommander_semopi_blackpearl='firefox http://black-pearl.local:8000'
 # Pour pouvoir utiliser Ctrl-S pour sauver dans un vim, sans que le terminal ne s'arrête bêtement:
 bind -r '\C-s'
 #stty -ixon
-# 
-# 2020_10_15__11_52_07 mince, ça ne fonctionne plus dans un screen; essayons autre chose:
-# https://munkymorgy.blogspot.com/2008/07/screen-ctrl-s-bug.html
-# For a more permanent fix you can add this to your .bashrc (not sure how other shells are effected).
-# stty ixany
-#		 => marche pas
-# Which allows any character to call XON, so the character press is sent and displayed and you will never be aware of the terminal freezing.
-# If this does not work for you, or you also don't seem to be able to send ctrl-s ctrl-q commands to terminal applications you can use
-# stty stop undef  #To unmap ctrl-s
-# stty start undef #To unmap ctrl-q
-# 		=> ça fonctionne!
-# 
-# Or to stop XOFF and XON being sent from the keyboard but still allowing other software to send the commands use
 stty ixoff -ixon
-# NB: ctrl-q can now be used to shutdown rtorrent 
 
 # Pour faire tourner gtkcam
 export RED_GTK_CAMERA=YES
