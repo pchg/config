@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/pierre/adsillh/cours/programmation_systeme'
+let g:netrw_dirhist_2='/tmp'
+let g:netrw_dirhist_3='/etc/ldap/slapd.d/cn=config'
+let g:netrw_dirhist_4='/etc/ldap/slapd.d'
+let g:netrw_dirhist_5='/home/pierre/heaume_pierre/developpt/searx/searx/static/themes/simple/js'
