@@ -532,8 +532,8 @@ map <s-F5> :!rebol -qs %<cr>
 
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
-map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
-imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}ki
+map <F6> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
+imap <F6> mz<ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`zi
 "(des vieilleries:){{{
 ":map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
@@ -545,12 +545,12 @@ imap <F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_b
 "}}}
 
 "Pour faire à la mode, et faire du javascript (à reculons...), faire tourner le paragraphe courant par javascript:
-map <s-F6> vip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>}k
-imap <s-F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>}ki
+map <s-F6> mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`z
+imap <s-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`zi
 
 "Pour faire tourner le paragraphe courant par python3:
-map <c-F6> vip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>}k
-imap <c-F6> <ESC> vip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>}ki
+map <c-F6> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`z
+imap <c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`zi
 
 
 "pour commenter une ligne de code Rebol et passer à la suivante:
@@ -574,8 +574,8 @@ map  § vip
 
 
 " pour faire tourner le paragraphe courant par bash:
-map  <F8>      vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>
-imap <F8> <esc>vip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>i
+map  <F8>      mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
+imap <F8> <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>i`z
 
 
 " Pour sélectionner divers bidules par des double (non, déjà fait)
