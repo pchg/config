@@ -140,8 +140,8 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 # Set some generic aliases
 #
 #alias o='less -AS'	#-A marche pas sur le less de la debian
-alias o='less -Si'
-alias v='less -Si'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris
+alias o='less -SiN'
+alias v='less -SiN'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris
 alias ..='cd ..'
 alias ...='cd ../..'
 if test "$is" != "ksh" ; then
