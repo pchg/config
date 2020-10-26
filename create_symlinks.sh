@@ -5,11 +5,11 @@ cd ..
 for f in `ls -a config/`
 do
  echo "$f"
- if [ -a $f ]      # si f existe
+ if [ -a $f ]      # si f existe                             # if f exists
   then
-   mv $f $f.old    # on le renomme .old
+   mv $f $f.old    # on le renomme .old                      # it is renamed to .old
  fi
- ln -s config/$f .        # et sinon, on fait un lien symbolique
+ ln -s config/$f . # et sinon, on fait un lien symbolique    # otherwise, make a symlink
 done
 
 #   echo "coucou"
