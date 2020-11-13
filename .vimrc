@@ -1,7 +1,9 @@
 " Les touches de fonctions avec des raccourcis (à maintenir):
 " F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  
-" -   -   |   -   |   |   |   |   |    |    |    |   -    -    -    -    -    -    -    -
+" -   -   |   |   |   |   |   |   |    |    |    |   -    -    -    -    -    -    -    -
+" F2  \_ (libre)
 " F3      \_ ouvre une fenêtre au-dessus avec l'occurrence précédente du mot sous le curseur
+" F4          \_ (libre)
 " F5              \_ sauver et faire tourner le fichier courant par rebol, ou plutôt par le shebang
 " F6                  \_ faire tourner le paragraphe courant par rebol
 " ctrl-F6             \_ faire tourner le paragraphe courant par python3
@@ -15,10 +17,13 @@
 
 syntax on
 set noautoindent
+set noerrorbells
+
 set ignorecase
 set ruler
 set showmatch
 set showmode
+
 " changes special characters in search patterns (default)
 " set magic
 set esckeys            " Required to be able to use keypad keys and map missed escape sequences
@@ -232,20 +237,22 @@ set mouse=a
 set infercase
 "set autoindent
 
-" La correction orthographique, c'est très très bien
+" La correction orthographique, c'est très très bien {{{
 map ,c :w<CR>:!aspell -c %<CR>:e %<CR>
 " Pour le paragraphe en cours:
 map <F10> vip :w! /tmp/tmp_current_paragraph<cr>dip<up>:!aspell -c /tmp/tmp_current_paragraph<cr> :r /tmp/tmp_current_paragraph<cr>
 " i<cr>
+"}}}
 
-" La dictée, c'est très très bien aussi, pour le paragraphe en cours:
+" La dictée, c'est très très bien aussi, pour le paragraphe en cours:{{{
 map <F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v fr -s 200 -f /tmp/tmp_vim_block &<cr>
 
 " Pareil, en anglais:
 map <S-F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_block &<cr>
+"}}}
 
 
-"copié depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz
+"copié depuis /usr/share/doc/hibernate/examples/hibernate.vim.gz{{{
    augroup filetypedetect
        au BufNewFile,BufRead hibernate.conf set filetype=hibernate
        au BufNewFile,BufRead common.conf set filetype=hibernate
@@ -255,10 +262,12 @@ map <S-F9> vip :w! /tmp/tmp_vim_block<cr> :!espeak -v en -s 200 -f /tmp/tmp_vim_
    augroup END
 
 set keymodel=startsel,stopsel
+""}}}
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"à partir d'un vimrc trouvé sur la Toile:/*{{{*/
+"à partir d'un vimrc trouvé sur la Toile:/**/
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Fichier .vimrc de Nicolas Gressier
@@ -267,8 +276,7 @@ set keymodel=startsel,stopsel
 " Mise à jour : 03/06/2009
 " Version 2.6
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-"Complétion par tabulation
+"Complétion par tabulation:{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function! CleverTab()
     "check if at beginning of line of after a space
@@ -292,14 +300,13 @@ function! CleverTabShift()
     endif
 endfunction
 
-
 "Mapping sur la touche Tab
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
 "et pareil sur la combinaison de touches Shift Tab:
 inoremap <S-Tab> <C-R>=CleverTabShift()<CR>
-
-"Ctrl-Tab pour naviguer entre les fenêtres:
+"}}}
+"Ctrl-Tab pour naviguer entre les fenêtres:{{{
 "MARCHE PAS ":map <C-Tab> <C-w><C-w>
 "Marche =>
 " http://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu
@@ -320,12 +327,12 @@ map <F14> <C-w><S-w>
 inoremap <F13> <Esc><C-w><C-w>i
 inoremap <F14> <Esc><C-w><S-w>i
 
-
-"Alt-flèches pour naviguer entre les fenêtres, à la mode de chez terminator:
-map <A-Up>    :wincmd k<cr>
-map <A-Down>  :wincmd j<cr>
-map <A-Left>  :wincmd h<cr>
-map <A-Right> :wincmd l<cr>
+"}}}
+"Alt-flèches pour naviguer entre les fenêtres, à la mode de chez terminator:{{{
+map  <A-Up>    :wincmd k<cr>
+map  <A-Down>  :wincmd j<cr>
+map  <A-Left>  :wincmd h<cr>
+map  <A-Right> :wincmd l<cr>
 imap <A-Up>    <esc>:wincmd k<cr>i
 imap <A-Down>  <esc>:wincmd j<cr>i
 imap <A-Left>  <esc>:wincmd h<cr>i
@@ -337,7 +344,11 @@ map <A-j>   :wincmd j<cr>
 map <A-h>   :wincmd h<cr>
 map <A-l>   :wincmd l<cr>
 
-" Pour naviguer dans les onglets (bof):
+"Alt-+- pour retailler les fenêtres:
+map  <A-+> :vertical resize +5
+"}}}
+
+" Pour naviguer dans les onglets (bof):{{{
 ":nmap <C-S-tab> :tabprevious<cr>
 ":nmap <C-tab> :tabnext<cr>
 ":nmap <C-t> :tabnew<cr>
@@ -348,16 +359,18 @@ map <A-l>   :wincmd l<cr>
 ":imap <C-S-tab> <ESC>:tabprevious<cr>i
 ":imap <C-tab> <ESC>:tabnext<cr>i
 ":imap <C-t> <ESC>:tabnew<cr>
+"}}}
 
 "/*}}}*/
 
 
-"Ctrl-flèches pour déplacer les lignes, comme dans oOo:
+"Ctrl-flèches pour déplacer les lignes, comme dans oOo:{{{
 "nnoremap <C-Up> ddkp <CR>	"DONE marche pas => si, ainsi:
 map <C-Up> ddkP
 map <C-Down> ddp
 inoremap <C-Up>   <Esc>ddkPi
 inoremap <C-Down> <Esc>ddpi
+"}}}
 
 "Ctrl-jk pour faire pareil: (marche pas...) => 2020_07_09__12_13_32 en fait, si on met les lignes map <S-C-k> avant, ce sont elles qui prennent le pas sur les lignes map <C-k>, curieusement. Ça ne le fait pas pour les <C-Flèches, c'est étrange.
 map <C-j> ddp
@@ -703,10 +716,13 @@ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Incrémenter et décrémenter un nombre sous le curseur: 
+" Incrémenter et décrémenter un nombre sous le curseur: {{{
 " normalement, c'est <C-A>,<C-X>, mais dans un screen c'est peu aisé:
+"Mieux, A augmente et Q (juste en-dessous sur mon AZERTY)" diminue, avec Alt:
 :nnoremap <A-a> <C-a>
-:nnoremap <A-x> <C-x>
+:nnoremap <A-q> <C-x>
+"}}}
+
 
 " Mes macros pratiques, que je conserve:
 " @S Soulignements => pour mettre 32 fois _ sur une ligne de type _______________ENCOURS_______________QUELQUECHOSE
@@ -725,33 +741,35 @@ let @s = '[1~32r_[1~'
 
 
 
-
-" 2020_10_13__11_41_18
-" En lisant ça: https://realpython.com/vim-and-python-a-match-made-in-heaven/
-" Pour Vundle:
-"set nocompatible              " required  <= inutile, c'est déjà mentionné plus haut
-filetype off                  " required
-"
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-"
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-"
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-"
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/nerdtree'
-" ...
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+""2020_11_12__15_59_26  J'annule tout ça:{{{
+""
+""" 2020_10_13__11_41_18
+""" En lisant ça: https://realpython.com/vim-and-python-a-match-made-in-heaven/
+""" Pour Vundle:
+"""set nocompatible              " required  <= inutile, c'est déjà mentionné plus haut
+""filetype off                  " required
+"""
+""" set the runtime path to include Vundle and initialize
+""set rtp+=~/.vim/bundle/Vundle.vim
+""call vundle#begin()
+"""
+""" alternatively, pass a path where Vundle should install plugins
+"""call vundle#begin('~/some/path/here')
+"""
+""" let Vundle manage Vundle, required
+""Plugin 'gmarik/Vundle.vim'
+"""
+""" add all your plugins here (note older versions of Vundle
+""" used Bundle instead of Plugin)
+"""
+""Plugin 'tmhedberg/SimpylFold'
+""Plugin 'vim-scripts/indentpython.vim'
+""Plugin 'scrooloose/nerdtree'
+""" ...
+""" All of your Plugins must be added before the following line
+""call vundle#end()            " required
+""filetype plugin indent on    " required
+""}}}
 
 
 
