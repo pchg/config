@@ -277,8 +277,16 @@ export PYTHONSTARTUP='.pythonstartup.py'
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
-PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+#PS1=" \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)  < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+
 # => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
+# 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
+PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
+#PS1+='\[\033[38;5;63m\]'
+#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
+PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
+PS1+="\033[0m\n"
+
 
 export BROWSER=firefox
 
