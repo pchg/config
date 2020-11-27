@@ -7,10 +7,10 @@
 	status = auto
 	branch = auto
 [alias]
-        ci = commit
-        co = checkout
-        st = status
-        br = branch
+	ci = commit
+	co = checkout
+	st = status
+	br = branch
 
 [credential]
 	#helper = cache --timeout=360000000
@@ -19,5 +19,5 @@
 	default = simple
 
 [diff "odf"]
-        binary = true
-        textconv = odt2txt
+	binary = true
+	textconv = odt2txt
