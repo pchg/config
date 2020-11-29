@@ -804,3 +804,21 @@ au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2 softtabstop=2 shiftwidth=2
 ""EOF
 "" => ? Marche pas.
 
+
+
+" La leader key: espace, au lieu de l'abscon et malpratique \:
+let mapleader = " " " map leader to Space
+set timeoutlen=500 " Set timeout length to 500 ms
+set showcmd "Vim, by default, shows no feedback for this timeout length. Add set showcmd to your vimrc and it will show your leader key in the bottom right corner for the duration of the timeout.
+
+" Un moignon de plugin pour corriger la faute d'orthographe précédente par la première suggestion et revenir au même endroit en faisant <espace>sp  => {{{
+" Voilà mon premier plugin, à ce stade (oui, c'est pas un plugin, c'est quelques lignes dans mon .vimrc):
+
+function! FixLastSpellingError()
+ normal! mm[s1z=`m
+endfunction
+nnoremap <leader>sp :call FixLastSpellingError()<cr>
+nnoremap <leader>sop :source %<cr>
+
+"}}}
+
