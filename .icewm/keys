@@ -65,20 +65,22 @@ key "XF86Mail"			mozilla-thunderbird mailto:
 key "XF86Search"		sensible-browser http://www.google.com/
 key "XF86Eject"			eject
 
+
+
 # Pour prendre des copies d'écrans avec scrot:
 # Tout l'écran:
-key "Ctrl+Print"             scrot -m    'capture_%Y_%m_%d__$%T_full_screen.png'
-#key "Ctrl+Print"             FILE=`'%Y_%m_%d__$%T_full_screen.png'` && scrot -m "$FILE" && xclip -selection c -t image/png < "$FILE"
-                                   #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_full_screen.png"
+#key "Print"             FILE=`'%Y_%m_%d__$%T_full_screen.png'` && scrot -m "$FILE" && xclip -selection c -t image/png < "$FILE"
+key "Print"             scrot -m    'capture_%Y_%m_%d__$%T_full_screen.png'
 # La fenêtre courante:
-key "Ctrl+Alt+Print"         scrot -m -s 'capture_%Y_%m_%d__$%T_window.png'
-                                   #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_window.png"
-
+key "Alt+Print"         scrot -m -s 'capture_%Y_%m_%d__$%T_window.png'
+                                   #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_full_screen.png"
 # Pareil, mais au lieu de copier dans un féchier, copier dans le presse-papiers:
 # Tout l'écran:
-key "Print"             /bin/sh -c "scrot -m    /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
+key "Ctrl+Print"             /bin/sh -c "scrot -m    /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
 # La fenêtre courante:
-key "Alt+Print"         /bin/sh -c "scrot -m -s /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
+key "Ctrl+Alt+Print"         /bin/sh -c "scrot -m -s /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png"
+                                   #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_window.png"
+
 
 # Inversion de l'écran, pour rigoler
 key "Scroll_Lock"             /bin/sh -c "xcalib -invert -alter"
