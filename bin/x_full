@@ -1,5 +1,0 @@
-#!/bin/bash
-# (vieillerie?)
-xrandr --output VGA1 --mode 1280x1024 --above LVDS1 --output LVDS1 --mode 1024x600 --primary #Idem, mais avec l'écran cathodique au-dessus; une autre configuration à Mesté.
-
-
