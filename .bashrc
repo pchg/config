@@ -32,7 +32,8 @@ export CONNINFO_GLL="-h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL"
 
 ########################################################################################
 ########        PAR variables:                                                  ########
-export PAR=par_02
+export PAR=par_02 # anciennement; ça a changé, pour Pellehaut:
+export PAR=par_viti
 
 export PAR_BD_HOST=geolllibre.org
 export PAR_BD_HOST=latitude
@@ -50,8 +51,8 @@ export CONNINFO_PAR="-h $PAR_BD_HOST -p $PAR_BD_PORT -U $PAR_BD_USER $PAR_BD_NAM
 ########################################################################################
 
 
-export CONNINFO=$CONNINFO_PAR # ATTENTION!!! définition de CONNINFO_PAR par défaut
 export CONNINFO=$CONNINFO_GLL # ATTENTION!!! définition de CONNINFO_GLL par défaut
+export CONNINFO=$CONNINFO_PAR # ATTENTION!!! définition de CONNINFO_PAR par défaut
 
 # export GLL_BD_USER=$PAR_BD_USER
 # export GLL_BD_PORT=$PAR_BD_PORT
