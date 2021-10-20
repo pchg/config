@@ -1,0 +1,9 @@
+ifconfig eth0 down
+ifconfig wlan0 down
+killall dhclient 
+killall wpa_supplicant
+iwconfig wlan0 essid "Pib_FP3"
+wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf &
+dhclient wlan0
+ping 8.8.8.8 -c 3
+

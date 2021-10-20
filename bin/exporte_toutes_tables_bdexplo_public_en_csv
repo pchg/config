@@ -1,0 +1,1 @@
+for i in $(echo "SELECT tablename FROM pg_tables WHERE schemaname = 'public';" | psql bdexplo | grep -v tablename | grep -v lignes | grep -v '\-\-\-\-'); do sql2csv "SELECT * FROM public.$i" > $i.csv ; done

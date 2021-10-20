@@ -1,0 +1,1 @@
+echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC;" | psql -X -x pierre | less

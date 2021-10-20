@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pierre Chevalier
+# Ce script fait simplement la ligne des champs d'une requête, formatée avec des , pour 
+# mettre derrière un SELECT
+# Typiquement, on fait un:     sql2headers "SELECT * FROM grossetable"
+# pour obtenir en sortie:      id, annee, role, ag, zn, u, th, ir
+
+#$1: requete
+#$2: fichier .csv => bof, non, on redirigera, plutôt
+echo "COPY ($1 LIMIT 0) TO stdout  WITH CSV HEADER" | psql -X bdexplo 
+#> $2

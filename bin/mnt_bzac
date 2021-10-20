@@ -1,0 +1,2 @@
+#!/bin/bash
+smbmount //192.168.1.22/home /mnt/bzac -o username=pierre,password=pp

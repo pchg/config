@@ -1,0 +1,1 @@
+curlftpfs ftpperso.free.fr ~/ftp_server_free -o user="pierremariechevalier:pierre"

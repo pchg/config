@@ -1,0 +1,74 @@
+#!/usr/bin/rebol -qs
+rebol []
+
+;2020_01_26__13_03_58 converti de shell en rebol, c'est tellement plus simple...
+;{{{ DEBOG } } }
+vocal: false
+vocal: true
+
+message: func [msg] [
+	print msg
+	if vocal [
+		call/wait rejoin [{espeak  -s 250 -v fr "} msg {" > /dev/null 2>&1}] none 
+]	]
+
+message "Mise à jour et compilation de QGIS"
+
+cd ~/dev
+;#Anciennement, quand c'était dans SVN: {{{
+;#svn co https://svn.osgeo.org/qgis/trunk/qgis qgis
+;#cd qgis
+;## mkdir build
+;##à l'ancienne:
+;#cd build
+;##ccmake ..
+;#make
+;#su -c "make install"
+;#
+;##mieux, en passant par le système apt:
+;#	#cd qgis
+;#	#sed -e 's/UNRELEASED/lenny/' debian/changelog > debian/changelog.tmp
+;#	#rm debian/changelog
+;#	#mv debian/changelog.tmp debian/changelog
+;#
+;#
+;##cd debian
+;##debuild -us -uc -d
+;## => marche pas...
+;## ah, si, marche?... => bah non...
+;#}}}
+
+;# Maintenant (2019_04_26__12_17_59) que c'est dans github:
+message "Récupération du code source depuis github"
+; }}} DEBOG
+cd %QGIS/
+print pwd
+call/wait "git pull"
+cd build-master
+
+message "Fini, attente d'instruction: <Entrée> pour continuer, ou n'importe quoi suivi de <Entrée> pour faire ccmake:"
+;echo "<Entrée> pour continuer, ou n'importe quoi suivi de <Entrée> pour faire ccmake:"
+tmp: ask ""
+unless (tmp = "") [
+	call/wait "ccmake .."
+]
+
+message "Fini, attente d'instruction: <Entrée> pour 4 jobs par défaut, ou nombre de jobs suivi de <Entrée> pour lancer make:"
+;echo "<Entrée> pour 4 jobs par défaut, ou nombre de jobs suivi de <Entrée> pour lancer make:"
+JOBS: to-integer ask ""
+if (jobs = "") [JOBS: 4]
+call/wait "time make -j$JOBS"
+
+message "Fini, attente d'instruction: Compilation finie. <Entrée> pour continuer:"
+;echo "Compilation finie. <Entrée> pour continuer:"
+ask ""
+
+call/wait "ls output/bin/ -trlh"
+
+message "Fini, attente d'instruction: <Entrée> pour faire tourner le fruit de la compilation, ou n'importe quoi suivi de <Entrée> pour finir tout ça:"
+;echo "<Entrée> pour faire tourner le fruit de la compilation, ou n'importe quoi suivi de <Entrée> pour finir tout ça:"
+tmp: ask ""
+if (tmp = "") [
+	call/wait ./output/bin/qgis
+]
+

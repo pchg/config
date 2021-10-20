@@ -1,0 +1,6 @@
+#input coucou
+#mv /mnt/bab-nas/photos/.toutes/* /mnt/bab-nas/photos/.toutes/vu_lien_cree/
+#mv ./* /mnt/bab-nas/photos/.toutes/
+#ln -s /mnt/bab-nas/photos/.toutes/* .
+
+#mv /mnt/bab-nas/photos/.toutes/* /mnt/bab-nas/photos/.toutes/vu_lien_cree/

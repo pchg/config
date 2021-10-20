@@ -1,0 +1,17 @@
+#!/bin/bash
+# Ce défragmenteur universel pour Linux est issu d'un travail collaboratif
+# sur la liste tech de l'ABUL. Il est issu d'une première version faite par
+# Sébastien Blondeel. 
+# Placé sous licence GPL v3, ce programme est utilisé à vos risques et périls
+# bien qu'il n'ait aucune chance d'endommager quoi que ce soit !
+
+for i in `seq 100`
+do
+echo $i
+sleep 1
+done | dialog --backtitle "Défragmenteur de disque universel (ext2/ext3/ext4, ReiserFS, XFS et JFS)" --title "defrag" --gauge "Défragmentation en cours ..." 18 60
+
+dialog --backtitle "Défragmenteur de disque universel (ext2/ext3/ext4, ReiserFS et Vfat)" --title "defrag" --msgbox "Défragmentation terminée avec succès" 18 60
+
+clear
+exit

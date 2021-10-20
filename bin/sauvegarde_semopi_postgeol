@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Sauvegarde de la base $GLL_BD_NAME hébergée par $GLL_BD_HOST..."
+filename=sauvg_$GLL_BD_HOST"_"$GLL_BD_NAME"_"`date +%Y_%m_%d_%Hh%M`.sql.bz2
+echo $filename
+pg_dump -h $GLL_BD_HOST $GLL_BD_NAME -U docker | bzip2 > $filename #sauvg_bdexplo_`date +%Y_%m_%d_%Hh%M`.sql.bz2
+ls -l $filename

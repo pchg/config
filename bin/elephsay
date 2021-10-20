@@ -1,0 +1,52 @@
+#!/usr/bin/redlang 
+;#!/usr/bin/rebol
+;rebol []
+Red []
+
+;## elephsay 0.01
+;## This file is part of Elephantsay aka Elephsay.  (c) 0001-2329 Piboulet.
+
+;  # pierre@latitude: ~        < 2019_02_23__23_57_30 >
+;cowsay "Source d'inspiration pour elephantsay"
+; _______________________________________
+;< Source d'inspiration pour elephantsay >
+; ---------------------------------------
+;        \   ^__^
+;         \  (oo)\_______
+;            (__)\       )\/\
+;                ||----w |
+;                ||     ||
+
+elephant: {
+        \    __
+         \ /(  )\_---------_
+          { (°°) }          )\
+          { /()\ }          | \
+           / () \  |____\   |
+          /  !! |\ |     |  |\
+             J  [__|     [__||}
+
+; en rebol:
+;either (system/options/args = none) [
+; en red:
+;either system/options/args = [] [
+; les deux:
+either any [ (system/options/args = []) (system/options/args = none) ] [
+	print "Message? >"
+	text: input
+][
+	text: system/options/args/1
+]
+longueur: length? text
+bulle: copy ""
+append bulle "     "
+loop (longueur + 2) [append bulle "_"]
+append bulle newline
+append bulle "    "
+append bulle rejoin ["< " text " >"]
+append bulle newline
+append bulle "     "
+loop (longueur + 2) [append bulle "-"]
+print bulle
+print elephant
+

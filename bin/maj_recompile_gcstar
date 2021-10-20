@@ -1,0 +1,3 @@
+cd ~/dev
+svn co svn://svn.gna.org/svn/gcstar/trunk gcstar
+

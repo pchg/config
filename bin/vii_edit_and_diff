@@ -1,0 +1,4 @@
+#!/bin/sh
+cp $1 /tmp/
+vi $1
+diff  $1 /tmp/

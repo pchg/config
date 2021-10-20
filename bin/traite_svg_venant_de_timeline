@@ -1,0 +1,5 @@
+#!/bin/bash
+sed 's/clip-path=.*>/>/g' "$1" > tt1.svg
+sed "s/stroke-dasharray:(2, 2); font-family:Verdana; font-size:11px; text-anchor:middle;/-inkscape-font-specification:'Arial Narrow';font-family:'Arial Narrow';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;/g" tt1.svg > tt2.svg
+inkscape tt2.svg
+

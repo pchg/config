@@ -1,0 +1,1 @@
+pg_dump bdexplo -N smi -N tmp_a_traiter -N tmp_imports -F c > sauvg_bdexplo_sans_tmp_`date +%Y_%m_%d_%Hh%M`

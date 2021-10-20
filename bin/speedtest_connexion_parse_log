@@ -1,0 +1,116 @@
+#!/usr/bin/rebol -qs
+rebol []
+debug: 1
+txt: read/lines %~/speedtest_connexion.log
+sortie: copy ""
+noms_mois: ["janvier" 1 "février" 2 "mars" 3 "avril" 4 "mai" 5 "juin" 6 "juillet" 7 "août" 8 "septembre" 9 "octobre" 10 "novembre" 11 "décembre" 12]
+
+
+; Édictons les règles, et testons au furàmz:{{{
+
+rgl_debut: ["______________________________________________________________________________________________________________________"]
+print parse "______________________________________________________________________________________________________________________" rgl_debut
+print parse txt/136 rgl_debut
+
+rgl_testing_from: ["Testing from " copy testing_from to "(" thru "(" copy testing_from_ip to ")..." to end]
+print parse "Testing from Nomotech SAS (213.111.54.32)..." rgl_testing_from
+??? testing_from
+??? testing_from_ip
+rgl_fai: ["FAI: " copy fai to end]
+print parse "FAI: ozone" rgl_fai
+??? fai
+
+
+;rgl_ping: ["Hosted by " copy pinged_host to " [" thru " [" copy ping_distance_km to " km]" thru " km] : " copy ping_ms to " ms" to end]
+;rgl_ping: ["Hosted by " copy pinged_host to " [" copy ping_distance_km to " km]" thru " km] : " copy ping_ms to " ms" to end]
+rgl_ping: ["Hosted by " copy pinged_host to " [" thru "[" copy ping_distance_km to "km]" thru ": " copy ping_ms to " ms" to end]
+;129.51 km]: 68.117 ms"
+print parse "Hosted by Sure Telecom (St Helier) [129.51 km]: 68.117 ms" rgl_ping
+??? pinged_host
+??? ping_distance_km
+??? ping_ms
+
+
+;rgl_jour: ["lundi" | "mardi" | "mercredi" | "jeudi" | "vendredi" | "samedi" | "dimanche"]
+;rgl_date: [copy joursemaine to rgl_jour  end ]
+testing_from: testing_from_ip: fai: pinged_host: ping_distance_km: ping_ms: joursemaine: jour: mois: an: heure: minute: seconde: utc: reste: download: upload: none ; COPÉ ICI POUR DÉBOGUER
+rgl_date: [
+	copy joursemaine to " "
+	copy jour        to " " 
+	copy mois        to " " 
+	copy an          to "," thru ","
+	copy heure       to ":" thru ":"
+	copy minute      to ":" thru ":"
+	copy seconde     to "(" 
+	copy utc         thru ")"
+	copy reste       to end]
+print parse "mercredi 22 juillet 2020, 11:09:39 (UTC+0200)" rgl_date
+jour: to-integer replace jour " " ""
+mois: replace mois " " ""
+mois: (select noms_mois mois)
+an:   to-integer replace an   " " ""
+heure: to-integer replace heure " " ""
+minute: to-integer replace minute " " ""
+seconde: to-integer replace seconde " " ""
+utc: replace (replace utc "(" "") ")" ""
+??? joursemaine
+??? jour
+??? mois
+??? an
+??? heure
+??? minute
+??? seconde
+??? utc
+??? reste
+date_iso: rejoin [an "-" pad mois 2 "-" pad jour 2 "T" pad heure 2 ":" pad minute 2 ":" pad seconde 2 utc/4 utc/5 utc/6 ":" utc/7 utc/8 ]
+??? date_iso
+
+
+
+
+;rgl_addr_eth0: []
+
+rgl_debit_down: ["Download: " copy download to " Mbit/s" to end]
+print parse "Download: 10.08 Mbit/s" rgl_debit_down
+download: to-integer download
+??? download
+rgl_debit_up:   ["Upload: " copy upload     to " Mbit/s" to end]
+print parse "Upload: 1.70 Mbit/s" rgl_debit_up
+upload:   to-integer upload
+??? upload
+
+
+;}}}
+
+
+foreach l txt [  ; On boucle sur tout le féchier
+; On code pour de bon ce qui se passe
+	if parse l rgl_debut [
+		; On passe à un nouvel enregistrement: on écrit l'enregistrement précédemment lu:
+sep: {", "}
+enreg: rejoin [{"} to-string date_iso sep
+
+
+]
+		??? date_iso
+		download
+		upload
+	testing_from
+testing_from_ip
+fai
+pinged_host
+ping_distance_km
+ping_ms
+
+		
+
+
+
+		replace  " " ""
+		; Et on réinitialise toutes les variables:
+		testing_from: testing_from_ip: fai: pinged_host: ping_distance_km: ping_ms: joursemaine: jour: mois: an: heure: minute: seconde: utc: reste: download: upload: none
+		
+
+]
+
+

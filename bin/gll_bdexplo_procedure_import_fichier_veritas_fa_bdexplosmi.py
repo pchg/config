@@ -1,0 +1,1 @@
+/home/pierre/geolllibre/gll_bdexplo_procedure_import_fichier_veritas_fa_bdexplosmi.py

@@ -1,0 +1,9 @@
+#!/bin/sh
+echo; echo "  ______"; echo "_/ EXT3 \______________________________________________________"; echo; echo "$(df -h | head -1)"
+df --sync --human-readable -t ext3 | grep "/dev" | sort
+
+echo; echo "  ______"; echo "_/ VFAT \______________________________________________________"; echo; echo "$(df -h | head -1)"
+df --human-readable -t vfat | grep "/dev" | sort
+
+echo; echo "  ______"; echo "_/ NTFS \______________________________________________________"; echo; echo "$(df -h | head -1)"
+df --human-readable -t ntfs | grep "/dev" | sort

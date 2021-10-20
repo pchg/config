@@ -1,0 +1,64 @@
+#!/bin/sh
+# Pierre Jarillon, le 1er mars 2006
+# Pierre Chevalier, le 13 mars 2009, modifs avec 						###
+# Ce script :
+# 1- fabrique le répertoire "reduit" si il n'existe pas.
+#  1.1- fabrique le répertoire "original" si il n'existe pas.					###
+# 2- le peuple de toutes les images du répertoire courant réduites
+# 3- les noms des fichiers seront dépourvus d'accents, d'espaces, de majuscules.
+#  2.1- envoie les fichiers convertis dans le répertoire contenant les originaux		###
+# 3- crée PAS un aperçu de toutes ces images (Planche contact).					###
+
+
+REP=reduit	# Nom du répertoire recevant les réductions
+REPO=original	# Nom du répertoire recevant les photos originales non réduites
+		# (pour pas réduire deux fois les mêmes photos)
+NOM=Aperçu	# Nom de la "planche contact"
+HMAX=700 	# hauteur maximum des images réduites. --> valeur d'origine = 700		###
+#HMAX=150	# hauteur maximum des images réduites. --> pour petites figures pour rapport 	###
+REP=$REP"_"$HMAX										###
+HMAX=x$HMAX											###
+
+#if [ $# != 0 ]; then
+#	TITRE="$1";
+#else
+#	echo -e "Usage : `basename $0` \"Le titre (même vide) que vous voulez\""
+#	exit
+#fi
+
+if [ ! -d $REP ]; then mkdir $REP ; fi
+if [ ! -d $REPO ]; then mkdir $REPO ; fi	###
+
+
+ls *.tif *.jp2 *.jpg *.jpeg *.JPG *.JPEG *.png *.PNG 2>/dev/null | while read f
+do
+		# enlever espaces et accents
+	g=`echo $f |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"` 
+		# enlever espaces, accents et majuscules (pour web)
+	h=`echo "$REP/$g" |tr [:upper:] [:lower:]` 
+
+	if [ "$f" != "$g" ] ; then mv "$f" $g; fi
+
+	echo " => $g"
+
+	convert -geometry "$HMAX" "$g" "$h"
+	
+	mv "$g" "$REPO"		###
+done
+
+# # Création d'une "planche contact"
+# 
+# echo "Création d'un $NOM pour $TITRE"
+# 
+# cd $REP
+# montage -font "-adobe-helvetica-medium-r-normal--14-140-75-75-p-77-iso8859-15" \
+# 	-fill "#ffffff" \
+# 	-title "$1"  \
+# 	-background "#2e4e74" \
+# 	-border "2x2" \
+# 	-borderColor "blue" \
+# 	-page "595x842" \
+# 	$(ls *.jpg *.jpeg *.png *.gif 2>/dev/null |sed -e "s/ /_/g")  $NOM.jpg
+
+echo "C'est fait !"
+#cd ..

@@ -1,0 +1,1 @@
+echo '\x \\ SELECT * FROM pchgeol_rapports ORDER BY numrap;' | psql | less

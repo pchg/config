@@ -1,0 +1,188 @@
+#!/bin/bash
+#!/usr/bin/rebol -qs
+#rebol []
+#;#juste un script toukon où je copie des trucs à faire vite fait.
+date
+exit 0 #########
+echo "{{{"
+
+echo "# Rappel des paramètres de connexion à la base:"
+echo $CONNINFO
+
+echo "# On importe le féchier issu de la compilation des données depuis les fontchiers du serviteur:"
+cd ~/semofi/compilation_donnees_gps/
+csv2sql gps_data.csv
+#cd -
+
+####################
+: <<'END_COMMENT'
+echo "On démolit et recrée la table des points topo, et on traite les données importées à l'instant:"
+psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
+-- Démolition et recréation de public.topo_points:{{{
+DROP TABLE public.topo_points;
+CREATE TABLE public.topo_points (
+    opid                integer
+        REFERENCES public.operations (opid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+        DEFERRABLE INITIALLY DEFERRED,
+    location            text,
+    id                  text,
+    num                 numeric(10,0),
+    name                text,
+    srid                integer,
+    x                   numeric(10,3),
+    y                   numeric(10,3),
+    z                   numeric(10,3),
+    cq3d                numeric,
+    geography_4326      geography,
+--     geometry_corr       geometry,
+    survey_date         date,
+    topo_survey_type    text,
+--     coordsys            text,
+    surveyor            text,
+    comments            text,
+    filename            text,
+    datasource          integer,
+    numauto             serial PRIMARY KEY,
+    creation_ts         timestamptz DEFAULT now() NOT NULL,
+    username            text DEFAULT current_user
+);
+COMMENT ON TABLE public.topo_points IS 'Topographical data, survey points';
+COMMENT ON COLUMN topo_points.opid                    IS 'Operation identifier';
+COMMENT ON COLUMN topo_points.location                IS 'Zone';
+COMMENT ON COLUMN topo_points.num                     IS 'Point number, within topo survey context';
+COMMENT ON COLUMN topo_points.id                      IS 'Full identifier for borehole or trench, including zone code with type and sequential number';
+COMMENT ON COLUMN topo_points.srid                    IS 'Spatial Reference Identifier, or coordinate reference system: see spatial_ref_sys from postgis extension';
+COMMENT ON COLUMN topo_points.x                       IS 'X coordinate (Easting),  in coordinate system srid';       --'X coordinate, projected in UTM (m) or other similar CRS';
+COMMENT ON COLUMN topo_points.y                       IS 'Y coordinate (Northing), in coordinate system srid';       --'Y coordinate, projected in UTM (m) or other similar CRS';
+COMMENT ON COLUMN topo_points.z                       IS 'Z coordinate';                                             --'Z coordinate, projected in UTM (m) or other similar CRS';
+COMMENT ON COLUMN topo_points.cq3d                    IS 'Quality control of GPS survey';  -- TODO demander à quidedroit
+-- COMMENT ON COLUMN topo_points.geometry_corr           IS 'Manually corrected geometry: this is typically used when a GPS location turns out to be wrong, and that elements allow to better define the actual location of the survey point; when not NULL, this field should be used by cartographic VIEWs depending on this relation, instead of x, y fields';
+COMMENT ON COLUMN topo_points.geography_4326          IS 'Geographic position, in longitude-latitude according to WGS84 ellipsoid, aka EPSG 4326';
+COMMENT ON COLUMN topo_points.survey_date             IS 'Date of surveying';
+COMMENT ON COLUMN topo_points.surveyor                IS 'Survey operator name';
+COMMENT ON COLUMN licences.comments                   IS 'Comments, especially useful information such as peg not found, elevation measured at top of beacon, etc.';
+COMMENT ON COLUMN topo_points.filename                IS 'Original data file name (when datasource is not used, for some reason)';
+COMMENT ON COLUMN topo_points.datasource              IS 'Datasource identifier, refers to lex_datasource';
+COMMENT ON COLUMN topo_points.numauto                 IS 'Automatic integer primary key';
+COMMENT ON COLUMN topo_points.creation_ts             IS 'Current date and time stamp when data is loaded in table';
+COMMENT ON COLUMN topo_points.username                IS 'User (role) which created data record';
+-- }}}
+END_COMMENT
+####################
+
+echo "# On traite les données importées à l'instant:"
+psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
+
+-- ménage des valeurs à la noix dans la table importée:
+DELETE FROM tmp_imports.tmp_gps_data 
+	WHERE 	upper(x) = 'X'
+		OR  valid = 'XXXX'
+		OR 	upper(x) ILIKE '%X%' 
+		OR  x ILIKE 'CC%' 
+		OR  cq3d = 'XXXX'
+		OR  z = 'ele'
+--		OR  id IS NULL 
+		OR (id = 'Nom' AND x ILIKE '%E%')
+											; -- OR valid <> 'x' OR valid IS NULL;
+
+-- On ajoute, si ce n'est déjà le cas, l'opid à la table maîtresse des opérations, pour tout opid présent dans le lot de données qu'on vient d'importer:
+INSERT INTO public.operations (opid) (
+SELECT DISTINCT opid::numeric FROM tmp_imports.tmp_gps_data WHERE opid::numeric NOT IN (SELECT opid FROM public.operations)
+ORDER BY opid
+);
+
+
+-- Soucis de CRS: on va chercher srid par le biais d'un lexique créé par ailleurs:
+UPDATE tmp_imports.tmp_gps_data SET srid = tmp_lex_crs_srid.srid FROM tmp_imports.tmp_lex_crs_srid WHERE tmp_imports.tmp_gps_data.crs = tmp_lex_crs_srid.crs;
+
+
+-- Ménage dans la table des points topo: TODO à changer
+DELETE FROM public.topo_points WHERE topo_survey_type = 'GPS (probablement; à confirmer)';
+
+
+--On met dans la table des points topo les données qu'on vient d'importer via le truchement de gps_data.csv:
+
+
+INSERT INTO public.topo_points (opid,          id, srid,            x,          y,          z,          cq3d,          comments,     filename, topo_survey_type               )
+SELECT                          opid::numeric, id, srid::numeric, x::numeric, y::numeric, z::numeric, cq3d::numeric, commentaires, fechier,  'GPS (probablement; à confirmer)'
+FROM tmp_imports.tmp_gps_data;
+
+
+-- INSERT INTO public.topo_points (  opid,            id,   srid,            x,            y,            z,            cq3d,            comments,       filename, topo_survey_type               )
+-- SELECT                          d.opid::numeric, d.id, l.srid::numeric, d.x::numeric, d.y::numeric, d.z::numeric, d.cq3d::numeric, d.commentaires, d.fechier,  'GPS (probablement; à confirmer)'
+-- FROM tmp_imports.tmp_gps_data AS d 
+-- 	LEFT OUTER JOIN tmp_imports.tmp_lex_crs_srid AS l 
+-- 	ON d.crs = l.crs;
+-- -- WHERE valid = 'x'; -- WHERE srid = '4326';
+
+
+-- On met à jour les champs géométriques et géographiques:
+-- UPDATE topo_points SET geometry_corr = GeomFromewkt('SRID=' || srid || ';POINT(' || x || ' ' || y || ' ' || z || ')');
+--UPDATE public.topo_points SET geometry_4326 = GeomFromewkt('SRID=' || srid || ';POINT(' || topo_points.x || ' ' || topo_points.y || ' ' || topo_points.z || ')')::geography;
+UPDATE public.topo_points SET geography_4326 = ST_Transform(GeomFromewkt('SRID=' || srid || ';POINT(' || x || ' ' || y || ' ' || z || ')'), 4326)::geography;
+
+-- On affiche les orphelins de srid:
+SELECT DISTINCT a.crs AS "IL NE DOIT RIEN Y AVOIR; SINON, UPDATE TMP_IMPORTS.TMP_LEX_CRS_SRID:" FROM tmp_imports.tmp_gps_data AS a LEFT OUTER JOIN tmp_imports.tmp_lex_crs_srid AS b ON a.crs = b.crs WHERE b.crs IS NULL ORDER BY a.crs;
+
+
+/*
+--=> puis on refait les vues:{{{
+
+-- NOTICE:  drop cascades to 4 other objects
+-- DÉTAIL : drop cascades to view checks.collars_vs_topo_xyz_en_face_et_differences_importantes
+
+CREATE OR REPLACE VIEW checks.collars_vs_topo_xyz_en_face_et_differences_importantes AS
+SELECT id_topo, id_collars, topo_x, collars_x, diffx, topo_y, collars_y, diffy, topo_z, collars_z, diffz FROM (SELECT
+--tmp_dh_topo_coordinates
+topo_points.id AS id_topo, dh_collars.id AS id_collars,
+--tmp_dh_topo_coordinates
+ topo_points.x AS topo_x, dh_collars.x AS collars_x,
+--tmp_dh_topo_coordinates
+topo_points.y as topo_y, dh_collars.y AS collars_y,
+--tmp_dh_topo_coordinates
+topo_points.z AS topo_z, dh_collars.z AS collars_z,
+--tmp_dh_topo_coordinates
+topo_points.x-dh_collars.x AS diffx,
+--tmp_dh_topo_coordinates
+topo_points.y-dh_collars.y AS diffy,
+--tmp_dh_topo_coordinates
+topo_points.z-dh_collars.z AS diffz FROM
+--tmp_dh_topo_coordinates
+--topo_points
+topo_points JOIN dh_collars ON
+--tmp_dh_topo_coordinates
+topo_points.id = dh_collars.id) tmp WHERE ABS(diffx) >= 0.05 OR ABS(diffy) >= 0.05 OR ABS(diffz) >= 0.05;
+
+-- 
+-- 
+-- drop cascades to view checks.collars_vs_temp_topo_id_topo_sans_collars
+
+CREATE OR REPLACE VIEW checks.collars_vs_temp_topo_id_topo_sans_collars AS
+SELECT
+--tmp_dh_topo_coordinates
+ topo_points.id AS id_topo, dh_collars.id AS id_collars FROM
+--tmp_dh_topo_coordinates
+ topo_points LEFT OUTER JOIN dh_collars ON
+--tmp_dh_topo_coordinates
+ topo_points.id = dh_collars.id WHERE dh_collars.id IS NULL;
+
+
+-- drop cascades to view checks.dh_collars_to_topo_points_lines
+
+CREATE OR REPLACE VIEW checks.dh_collars_to_topo_points_lines AS SELECT dh_collars.id, topo_points.numauto, dh_collars.x dh_collars_x, topo_points.x AS topo_points_x, dh_collars.y AS dh_collars_y, topo_points.y AS topo_points_y, dh_collars.z AS dh_collars_z, topo_points.z AS topo_points_z, geomfromewkt('LINESTRING (' || dh_collars.x::text || ' ' || dh_collars.y::text || ' ' || dh_collars.z::text || ', ' || topo_points.x || ' ' || topo_points.y::text || ' ' || topo_points.z || ')') AS geometry FROM topo_points JOIN dh_collars ON topo_points.opid = dh_collars.opid AND topo_points.id = dh_collars.id;
+
+-- drop cascades to view pic.topo_points_points
+CREATE OR REPLACE VIEW        topo_points_points AS
+SELECT *, geomfromewkt('POINT(' || topo_points.x || ' ' || topo_points.y || ' ' || topo_points.z || ')') AS geometry FROM topo_points;
+-- pas vraiment (c'est censé se trouver dans mon schéma 'pic'); pagrave...
+--}}}
+=> non*/
+"
+psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
+-- Et on fait en sorte que PostGIS soit au courant de tout (dans un autre appel à psql, ça semble mieux aller, pour une raison encore inconnue):
+SELECT populate_geometry_columns();
+"
+echo "}}}"
+

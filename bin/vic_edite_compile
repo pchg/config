@@ -1,0 +1,13 @@
+#!/bin/bash
+echo " ### Édition     ###"
+vi "$1"
+echo " ### Code: {{{   ###"
+cat "$1"
+echo " ###       }}}   ###"
+echo " ### Compilation ###"
+prog="${1/\.c/}"
+gcc -lm -g -Wall -std=c99 "$1" -o "$prog"  && \
+echo " ### Exécution   ###"  && \
+echo "./$prog # en cours d'exécution..." && \
+./"$prog"
+

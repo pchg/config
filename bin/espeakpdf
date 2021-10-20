@@ -1,0 +1,5 @@
+#!/bin/sh
+evince $1 &
+pdftotext $1 /tmp/tobespoken.txt
+espeak -v en -s 200 -f /tmp/tobespoken.txt
+

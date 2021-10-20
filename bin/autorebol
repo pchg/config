@@ -1,0 +1,58 @@
+#!/bin/sh
+#!/usr/bin/rebol -qs
+#rebol []
+#bash -c "rebol -qs --do run_clipboard_rebol_code"
+bash -c -l -i 'rebol -qs --do run_clipboard_rebol_code'
+
+#
+#;Un utilitaire pour faire tourner automatiquement le code Rebol surligné:
+#run_clipboard_rebol_code: does [
+# timewait: 0.2
+# code_before: copy ""
+# err: copy []
+# write clipboard:// ""
+# c: open/binary/no-wait [scheme: 'console]
+# print "Press any key to suspend or resume automatic execution of code in the clipboard..."
+# enroute: true
+# forever [
+#  wait-duration: :0:2
+#  if not none? wait/all [c wait-duration] [ enroute: not enroute ]
+#  if enroute [
+#   code: copy read clipboard://
+#   if code != code_before [
+#    ;print "début"
+#    code_before: copy code
+#    print ";======================================================="
+#    print ";========== Code from clipboard: =========="
+#    print code
+#    print ";======== Code evaluation output: ========="
+#    if error? try [ do load code ] [
+#     print ";### code not valid ###"
+#     ;err: disarm :err
+#     ;print probe disarm err
+#     ;print reform [
+#     ; err/id err/where err/arg1
+#     ; newline
+#     ;]
+#     print ";######################"
+#    ]
+#    print ";==========================================^/"
+#   ]
+#  ]
+#  wait timewait
+#] ]
+#
+#;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#;
+#;
+#;    ; set following to whatever you wish
+#;    ; intentionally slow at 2 secs so you can "see" the effect
+#;    d: 0
+#;    forever [
+#;            print to-char to-integer copy c
+#;        ]
+#;        d: d + 1 ;let's do other stuff
+#;        print d
+#;    ]
+#;
+##############;;;;;;;;;;

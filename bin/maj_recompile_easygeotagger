@@ -1,0 +1,12 @@
+cd ~/dev
+svn co  https://svn.biodiversityinformatics.amnh.org/public/easygeotagger/trunk/ easygt
+cd easygt/easygeotagger
+mkdir build
+cd build
+cmake ..
+make
+su -c "make install"
+#sudo make install
+easygeotagger 
+
+

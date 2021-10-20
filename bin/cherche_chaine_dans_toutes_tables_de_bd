@@ -1,0 +1,19 @@
+#!/bin/bash
+#petit script recherchant une chaîne parmi toutes les tables d'une bd postgresql
+#dans le schéma public
+#echo "Usage: $0 (bd) (chaîne)"
+#             $0  $1    $2
+
+echo "______________________________________________________________________________"
+echo "Looking for occurrences of $2 in tables from database $1"
+echo "______________________________________________________________________________"
+
+#for i in $(echo "\dt" | psql -d bdexplo | grep table | grep -vi zz | colrm 1 10 | colrm 26); do
+
+
+for i in $(echo "SELECT tablename FROM pg_tables WHERE schemaname = 'public';" | psql -d bdexplo | grep -vi zz | grep -vi tablename | grep -vi '\-\-\-\-' | grep -vi '(' ); do
+	echo "___________ $i ____________"
+	echo "SELECT * FROM $i LIMIT 0;" | psql bdexplo | grep -v "("         #pour mettre l'en-tête
+	echo "SELECT * FROM $i;" | psql bdexplo | grep -i $2
+done
+

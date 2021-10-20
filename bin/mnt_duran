@@ -1,0 +1,4 @@
+#!/bin/bash
+#sshfs pierre:duran: duran_home_pierre/
+sshfs duran: ~/duran_home_pierre/ 
+sshfs duran:/ ~/duran_racine/

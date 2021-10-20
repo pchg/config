@@ -1,0 +1,577 @@
+#!/usr/bin/env python
+# -*-coding=utf-8
+"""
+Je fais un script traitant d'un seul coup les résultats analytiques de Veritas:
+Je fais ça en pseudo-code, converti en python
+
+31_10_2012__10_41_45: je reprends ça, avec le nouveau format .csv que fournit veritas:/*{{{*/
+
+:e ~/smi/transferts/from/polU/2012_10_31/u100133.csv
+
+Batch_No,u100133
+CLIENT,Societe des Mine d'Ity
+No of SAMPLES,222
+DATE RECEIVED,191012
+DATE COMPLETED,301012
+PROJECT,
+CERTIFICATE COMMENTS,Finished
+PO NUMBER,62639
+IDENT,Au,
+UNITS,ppm,
+SCHEME,FA001
+DETECTION LIMIT, 0.01,
+17138,5.46
+17139,10.20
+17140,0.73
+17141,0.70
+17142,0.65
+17143,0.31
+17144,0.12
+17145,0.49
+17146,0.04
+17147,0.12
+17148,0.12
+17149,0.22
+17150,0.19
+17151,0.20
+17152,2.24
+17153,8.53
+17154,0.03
+17155,0.24
+17156,0.26
+17157,1.26
+17158,0.14
+17159,24.90
+17160,18.30
+17161,0.98
+17162,0.40
+17163,0.85
+17164,0.32
+17165,1.19
+17166,1.78
+17167,0.54
+17168,11.50
+17169,0.85
+17170,0.03
+17171,0.60
+17172,1.42
+17173,0.87
+17174,0.27
+17175,0.15
+17176,0.06
+17177,0.11
+17178,0.04
+17179,0.09
+17180,0.05
+17181,0.05
+17182,0.12
+17183,0.22
+17184,0.64
+17185,0.04
+17186,0.01
+17187,0.10
+17188,0.11
+17189,0.12
+17190,0.10
+17191,0.12
+17192,0.03
+17193,0.46
+17194,0.96
+17195,0.23
+17196,0.04
+17197,0.02
+17198,0.07
+17199,0.05
+17200,<0.01
+17201,0.69
+17202,0.06
+17203,0.02
+17204,0.02
+17205,0.09
+17206,0.13
+17207,0.14
+17208,0.12
+17209,0.20
+17210,0.15
+17211,0.09
+17212,0.09
+17213,0.04
+17214,<0.01
+17215,1.35
+17216,0.61
+17217,1.40
+17218,1.29
+17219,0.75
+17220,0.59
+17221,<0.01
+17222,0.45
+17223,0.53
+17224,0.43
+17225,0.43
+17226,0.19
+17227,0.25
+17228,0.44
+17229,0.57
+17230,0.05
+17231,1.32
+17232,1.90
+17233,0.09
+17234,0.31
+17235,0.48
+17236,0.40
+17237,0.67
+17238,0.49
+17239,0.41
+17240,0.44
+17241,0.33
+17242,0.05
+17243,0.74
+17244,0.91
+17245,0.46
+17246,0.66
+17247,0.51
+17248,0.51
+17249,0.74
+17250,1.02
+17251,0.42
+17252,0.41
+17253,1.37
+17254,1.89
+17255,1.12
+17256,1.08
+17257,1.50
+17258,3.03
+17259,3.05
+17260,4.26
+17261,1.60
+17262,0.17
+17263,0.17
+17264,0.15
+17265,0.23
+17266,0.03
+17267,0.18
+17268,1.33
+17269,0.17
+17270,0.26
+17271,0.17
+17272,0.38
+17273,0.03
+17274,0.02
+17275,0.07
+17276,0.05
+17277,0.09
+17278,0.11
+17279,0.08
+17280,0.07
+17281,0.06
+17282,0.05
+17283,0.02
+17284,0.07
+17285,0.02
+17286,0.02
+17287,0.08
+17288,<0.01
+17289,2.87
+17290,1.43
+17291,1.09
+17292,0.98
+17293,0.73
+17294,0.50
+17295,0.70
+17296,0.05
+17297,0.35
+17298,0.40
+17299,5.50
+17300,0.34
+17301,0.80
+17302,6.36
+17303,0.30
+17304,0.31
+17305,0.39
+17306,0.25
+17307,0.04
+17308,0.26
+17309,0.54
+17310,0.44
+17311,0.23
+17312,0.34
+17313,0.14
+17314,0.09
+17315,0.22
+17316,0.11
+17317,0.78
+17318,1.49
+17319,<0.01
+17320,0.07
+17321,0.10
+17322,0.11
+17323,0.15
+17324,0.09
+17325,0.06
+17326,0.05
+17327,0.02
+17328,0.38
+17329,0.16
+17330,<0.01
+17331,0.18
+17332,0.08
+17333,0.03
+17334,<0.01
+17335,0.11
+17336,0.10
+17337,0.04
+STD:17138,5.21
+STD:17174,0.28
+STD:17195,0.25
+STD:17212,0.09
+STD:17240,0.45
+STD:17264,0.16
+STD:17275,0.07
+STD:17289,2.77
+STD:17326,0.05
+BLANK_1_u100133,<0.01
+BLANK_2_u100133,<0.01
+BLANK_3_u100133,<0.01
+ROCK Si64 _1_u100133,1.83
+ROCK Si64 _2_u100133,1.80
+ROCK Si64 _3_u100133,1.81
+ROCK Si64 _4_u100133,1.81
+ROCK OxG99  _5_u100133,0.95
+ROCK OxG99  _6_u100133,0.93
+ROCK OxG99  _7_u100133,0.89
+ROCK OxL93 _8_u100133,5.80
+ROCK OxK94 _9_u100133,3.62
+ROCK OxK94 _10_u100133,3.66
+
+
+/*}}}*/
+"""
+
+# Je reprends l'écriture d'un script important les fichiers analytiques de bureau veritas directement dans la bd:/*{{{*/
+
+import os, sys, csv, string, psycopg2
+
+# Fonctions:/*{{{*/
+def print_usage() :
+    print """
+Import des résultats analytiques depuis les fichiers
+de Bureau Veritas dans la base de données bdexplo.
+
+Usage: procedure_import_fichier_veritas.py [--help] file1
+
+--help                  Ce message
+
+Exemple:
+procedure_import_fichier_veritas.py u100133.csv
+
+va traiter le fichier u100133.csv et nourrir la base de données
+bdexplo, en informant les tables:
+  lab_ana_results
+  lex_datasource
+
+puis la table 
+  dh_sampling_grades
+
+sera mise à jour en calculant les moyennes de teneurs à partir
+de la table lab_ana_results.
+"""
+
+
+# /*}}}*/
+
+# paramètres:/*{{{*/
+# file_in = '/home/pierre/smi/transferts/from/polU/2012_10_31/u100133.csv'
+opid = 18
+labname = 'VERITAS'
+scheme = 'FA001'
+analyte = 'AU'
+unit = 'PPM'
+
+dbname  = 'bdexplo'
+dbhost  = 'autan'
+user    = 'pierre'
+# /*}}}*/
+
+
+"""/*{{{*/
+# => bof; je fais plutôt imputer le nom complet du .zip venant de chez veritas:
+
+
+if not(sys.argv):
+    file_lab_csv = raw_input("Fichier .csv complet (chemin + fichier) provenant de chez Veritas: ")
+else:
+    file_lab_csv = sys.argv[1:]
+
+#             exemple: '~/smi/transferts/from/charles/2012_04_10/BV120118c-Results & QAQC-csv.zip'
+
+
+# on échappe ce qu'il faut:
+# file_lab_zip = file_lab_zip.replace(' ', '\ ').replace('&', '\&')
+
+# le chemin où il est:
+chemin = string.join(file_lab_csv.split(os.sep)[:-1], sep = os.sep)
+
+# répertoire initial:
+chemin_ini = os.getcwd()
+
+
+# on se met dans le bon répertoire:
+os.chdir(os.path.expanduser(chemin))
+
+
+
+# le fichier .csv créé est (théoriquement):
+#file_lab_csv = file_lab_zip.replace('.zip', '').replace('-csv', '.csv')
+
+# vérifions qu'il existe bien:
+if not os.path.exists(os.path.expanduser(file_lab_csv)):
+    print "Fichier .csv inexistant: " + file_lab_csv
+    sys.exit(1)
+
+
+# si on est rendu ici, c'est que tout baigne.
+os.chdir(os.path.expanduser("~/smi/data/analyses/"))
+/*}}}*/
+"""
+
+
+####################################
+# un argument en ligne de commande?
+if len(sys.argv) == 2:
+    # oui: on définit le fichier comme cet argument:
+    file_in = sys.argv[1]
+else:
+    # non: on demande le fichier à traiter:
+    file_in = raw_input("Rien en argument.\nNom du fichier à traiter: ")
+
+# on vérifie que ce soit un fichier:
+try:
+    test = open(file_in, 'r')
+    # auquel cas, on le traite:
+    path = os.getcwd()
+    test.close()
+except:
+    print("Non, ça le fait pas, erreur en essayant d'ouvrir %s." % file_in)
+    sys.exit(1)
+
+
+# si on est arrivé jusqu'ici, c'est qu'on a un nom de fichier et un chemin.
+
+# Il est temps de se connecter à la base: on fait une connexion et un curseur:/*{{{*/
+# Connect to an existing database
+conn = psycopg2.connect(database=dbname, user=user, host=dbhost)
+
+# Open a cursor to perform database operations
+cur = conn.cursor()
+# /*}}}*/
+# Définition d'un nouveau datasource:/*{{{*/
+sql_string = "INSERT INTO public.lex_datasource (opid, filename, datasource_id) VALUES (%s, '%s', (SELECT max(datasource_id) + 1 FROM public.lex_datasource WHERE opid = %s));" % (opid, (path + os.sep + file_in), opid)
+cur.execute(sql_string)
+
+print(sql_string)
+
+# Re-fetchons-le tout de suite:
+sql_string = "SELECT max(datasource_id) FROM public.lex_datasource WHERE opid = %s;" % opid
+cur.execute(sql_string)
+datasource = cur.fetchall()[0][0]
+
+print("\n-- datasource             =>  %s" % datasource)
+
+# /*}}}*/
+# Lecture du fichier, d'abord l'en-tête:/*{{{*/
+file_in_reader = csv.reader(open(file_in, 'rb'), delimiter = ',', quotechar='"')
+# on lit les lignes en les parsant, on informe les clés-valeurs dans un tableau:
+# mieux: je construis un dico; mais comme j'ai besoin des données dans l'ordre,
+# non, je fais une liste, 
+key_values = []
+for i in range(12):
+    line = file_in_reader.next()
+    (k, v) = line[0:2]
+    key_values.append((k, v))
+
+# j'en refais un dico dont je prends ce qui m'intéresse:
+# bof, plus simple, j'itère:
+for (k, v) in key_values:
+    if   k == 'Batch_No':
+        jobno   = v
+    elif k == 'PO NUMBER':
+        orderno = v
+
+# Vérifions si ça s'est bien passé, si on a bien un jobno et un orderno:/*{{{*/
+try:
+    print("\n-- Batch_No    = jobno    =>  %s" % jobno)
+except:
+    # s'il n'y a pas de jobno défini, on sort.
+    print("\n-- Batch_No    = jobno    =>  non défini:\nVérifier le fichier d'entrée")
+    sys.exit(1)
+
+try:
+    print("\n-- PO NUMBER   = orderno  =>  %s" % orderno)
+except:
+    # s'il n'y a pas d'orderno, ça n'est pas si grave, on continue.
+    print("\n-- PO NUMBER   = orderno  =>  non défini.")
+
+print
+# /*}}}*/
+"""POUBELLE/*{{{*/
+
+/*{{{*/
+key_values = []
+(k,v) = file_in_reader.next()
+if (k == 'Batch_No'):
+    jobno = str(v)
+elif (k == 'PO NUMBER'):
+    orderno = str(k)
+else:
+    #jobno non défini
+    key_values.append((k,v))
+
+/*{{{*/
+for i in range(11):
+    line = file_in_reader.next()
+    key_values.append(line)/*}}}*/
+/*}}}*/
+
+    try:
+        # le cas normal, deux valeurs (clé, valeur) par ligne:
+        (k, v) = file_in_reader.next()
+    except:
+        # un cas particulier, où on trouve des lignes comme:
+        #         IDENT,Au,                <=
+        #         UNITS,ppm,               <= 
+        #         SCHEME,FA001
+        #         DETECTION LIMIT, 0.01,   <=
+        # où il y a 3 éléments:
+        (k, v, v2) = file_in_reader.next()
+
+
+
+key_values = []
+for i in range(2):
+    line = file_in_reader.next()
+    (k, v) = line[0:2]
+    if   k == 'Batch_No':
+        jobno   = k
+    elif k == 'PO NUMBER':
+        orderno = k
+    else:
+        key_values.append((k, v))
+
+
+"""# /*}}}*/
+# /*}}}*/
+# Construction de la chaîne SQL qui sera finalement "jouée": d'abord la partie lots:/*{{{*/
+sql_string  = "INSERT INTO public.lab_ana_batches_reception (opid, jobno, datasource, generic_txt_col1, generic_txt_col2) VALUES \n"
+for kv in key_values:
+    sql_string += "(" + str(opid) + ", '" + str(jobno) + "', '" + str(datasource) + "', '" + str(kv[0]) + "', '" + str(kv[1]).replace("'", "\\'") + "'),\n"
+
+sql_string = sql_string[0:-2] + ";\n\n"
+
+# /*}}}*/
+# Suite de la construction de la chaîne SQL: la partie des analyses:/*{{{*/
+sql_string += "INSERT INTO public.lab_ana_results (opid,          labname, jobno,       orderno, datasource,             scheme,    analyte, sample_id,  value,  unit) VALUES \n"
+for line in file_in_reader:
+    sql_string += "(" + str(opid) + ", '" + str(labname) + "', '" + 
+str(jobno) + "', '" + str(orderno) + "', '" + str(datasource) + "', '" + str(scheme) + "', '" + str(analyte) + "', '" + str(line[0]) + "', '" + str(line[1])  + "', '" + str(unit) + "'),\n"
+
+sql_string = sql_string[0:-2] + ";\n"
+
+# /*}}}*/
+# On "joue" finalement le SQL résultant:/*{{{*/
+
+cur.execute(sql_string)
+
+print(sql_string)
+
+#/*}}}*/
+# /*}}}*/
+
+
+# Ne pas oublier de commiter (ou pas):
+conn.commit()
+# conn.rollback()
+
+# ni de tout fermer:
+# Close communication with the database
+cur.close()
+conn.close()
+
+
+
+# Ça l'air de marcher.
+
+
+
+
+
+
+
+
+
+"""
+if ( __name__ == "__main__" ) :
+    # Processes command-line options
+    cmd_line = string.join(sys.argv)
+    # First, look for "--help"
+    if ( len(sys.argv) > 2 ):
+        print_usage()
+        sys.exit(1)
+    for ind_opt in range(len(sys.argv)) :
+        if ( sys.argv[ind_opt] == "--help" ) :
+            print_usage()
+            sys.exit(0)
+"""
+
+
+"""
+# TODO:
+# mise à jour des teneurs en fonction des analyses:
+
+
+
+# lister les trous avec des résultats:
+sql_string = "SELECT DISTINCT id FROM dh_sampling_grades WHERE sample_id IN ( SELECT sample_id FROM lab_ana_results WHERE datasource = (SELECT max(datasource) AS last_datasource FROM lab_ana_results));"
+result = data_extractor(sql_text)
+result.sort()
+
+print "Sondages avec les derniers résultats:"
+for i in result:
+    print i['id']
+
+
+# regardons les données nouvellement importées:
+ligne_cmd = "echo \"SELECT id, depfrom, depto, sample_id, au1_ppm, au2_ppm, au6_ppm, repeat('#', (au6_ppm*5)::integer) AS graph_au_6 FROM dh_sampling_grades WHERE id IN (SELECT id FROM dh_collars_points_last_ana_results) ORDER BY id, depto\" | psql -X -d bdexplo | less"
+sys.stdout.flush()
+os.system(ligne_cmd)
+
+
+# mise à jour de la sélection pour cartographie:
+sql_text = "CREATE OR REPLACE VIEW collars_selection AS SELECT * FROM dh_collars_points_last_ana_results;"
+result = data_extractor(sql_text)
+
+
+
+# calcule les passes minéralisées:
+# cf. procedure... TODO
+
+
+# màjour de la somme des accus sur les têtes:
+sql_text = "UPDATE public.dh_collars SET accusum = calcul_accusum FROM (SELECT opid, id, sum(accu) AS calcul_accusum FROM dh_mineralised_intervals WHERE mine = 0 GROUP BY opid, id) AS tmp WHERE (dh_collars.opid = tmp.opid AND dh_collars.id = tmp.id);"
+result = data_extractor(sql_text)
+
+
+
+# affiche la table dh_sampling_grades avec graphe teneurs, et passes minéralisées (j'avais fait ça, au Soudan): TODO
+"""
+
+"""
+:set foldclose=all
+:set foldmethod=marker
+:set syntax=python
+:set autoindent
+:set ts=4
+:set sw=4
+:set et
+:%s/\t/    /gc
+
+"""

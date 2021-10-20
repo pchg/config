@@ -1,0 +1,3 @@
+#!/bin/sh
+cmd='echo "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"'
+xterm -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 '$cmd'" &

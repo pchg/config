@@ -1,0 +1,11 @@
+#!/usr/bin/rebol -qs
+rebol []
+print "date à chercher?"
+date: replace/all to-iso-date request-date "-" "_"
+grep_output: copy ""
+call/wait/output rejoin ["grep " date " ~/nnotes.txt"] grep_output
+date_tags: copy []
+foreach s (parse grep_output none) [ if find s date [append/only date_tags s]]
+sort date_tags
+print-list unique date_tags
+

@@ -1,0 +1,18 @@
+echo "Conversion du message: $1"
+rep=`pwd`
+cp "$1" /tmp/
+cd /tmp/
+#~/bin/msgconvert "$rep/$1" # appel à la version modifiée de msgconvert, qui tente de pondre du iso-8859-1 => EZ
+#msgconvert "$rep/$1"
+msgconvert "$1"
+msg=$1.eml
+echo "####################"
+ls "$msg"
+echo "####################"
+#iconv --from-code=ISO-8859-1 --to-code=UTF-8 "$msg" > "$msg.conv.eml"
+#iconv --from-code=UTF-8 --to-code=ISO-8859-1 "$msg" > "$msg.conv.eml"
+
+#thunderbird "$msg.conv.eml"
+thunderbird "$msg"
+exit 0 ##########################
+

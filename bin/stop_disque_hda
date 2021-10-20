@@ -1,0 +1,2 @@
+echo "mise du disque /dev/hda en standby dans 5sec."
+hdparm /dev/hda -S 1

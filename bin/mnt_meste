@@ -1,0 +1,6 @@
+#!/bin/bash
+#pass='kdialog --password `Mot de passe pour le portable meste`'
+smbmount //192.168.1.21/users /mnt/meste -o username=root,password=p
+#smbmount //192.168.1.21/test  /mnt/meste -o username=root,password=p
+smbmount //192.168.1.21/homes  /mnt/mestehomes -o username=root,password=p
+

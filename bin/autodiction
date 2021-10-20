@@ -1,0 +1,48 @@
+#!/usr/bin/rebol -qs
+rebol []
+;DEBUG: TRUE
+timewait: 0.2
+
+presspap_before: presspap_bebefore: copy ""
+
+forever [
+	presspap: copy read clipboard://
+	presspap: replace/all presspap "\u2019" "'" 
+	;if all [(presspap != presspap_before) (presspap != "") (presspap != presspap_bebefore)] [
+	;if all [(presspap != presspap_before) (presspap != "")] [
+	if (presspap != presspap_before ) and (presspap != "") and (presspap != presspap_bebefore) [
+		??? presspap
+		??? presspap_before
+		??? presspap_bebefore
+		print "Début de diction:"
+		print presspap
+		write %/tmp/diction_clipboard presspap
+		call/wait "killall espeak > /dev/null 2>&1" none ; brutal, voire malpoli, mais efficace.
+		call (rejoin ["espeak -s 250 -v fr < /tmp/diction_clipboard > /dev/null 2>&1"])
+		presspap_bebefore: copy presspap_before
+		presspap_before:   copy presspap
+	]
+	wait timewait
+]
+
+; #############################################################################
+; La première solution était un petit script unilinéaire:
+; bash -c "rebol -qs --do diction_clipboard"
+;
+; Avec ceci, dans .rebol/view/user.r :
+;Un utilitaire pour faire déclamer automatiquement du texte surligné:
+;diction_clipboard: does [
+;	timewait: 0.2
+;	presspap_before: presspap_bebefore: copy ""
+;	forever [
+;		presspap: copy read clipboard://
+;		if (presspap != presspap_before ) and (presspap != "") and (presspap != presspap_bebefore) [
+;			print "début de la diction"
+;			write %/tmp/diction_clipboard presspap
+;			call/wait "killall espeak"  ; brutal, voire malpoli, mais efficace.
+;			call rejoin ["espeak -s 250 -v fr < /tmp/diction_clipboard"]
+;			presspap_before: copy presspap
+;		]
+;		wait timewait
+;]	]
+

@@ -1,0 +1,15 @@
+#:/bin/sh
+aa=`tempfile`
+bb=`tempfile`
+cc=`tempfile`
+echo "1st file, finish with Ctrl-D:  =========="
+cat > $aa
+echo "2nd file, finish with Ctrl-D:  =========="
+cat > $bb
+echo "3rd file, , finish with Ctrl-D: =========="
+cat > $cc
+sed -i "s/  */ /g" $aa
+sed -i "s/  */ /g" $bb
+sed -i "s/  */ /g" $cc
+vimdiff $aa $bb $cc
+

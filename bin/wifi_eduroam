@@ -1,0 +1,23 @@
+#!/bin/bash
+ifconfig eth0 down
+ifconfig wlan0 down
+killall dhclient 
+killall wpa_supplicant
+# wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf &
+# iwconfig wlan0 essid "eduroam"
+
+ID="pichevalier@u-bordeaux.fr"
+DRIVER="wext"
+IFACE="wlan0"
+SSID="eduroam"
+echo "Connexion au réseau : $SSID"
+read -p "Mot de passe pour $ID : " -s pass
+wpa_supplicant -i $IFACE -c /etc/wpa_supplicant/wpa_supplicant.conf -B
+wpa_cli identity $SSID $ID
+wpa_cli password $SSID $pass
+wpa_cli logon
+# dhclient wlan0
+dhclient $IFACE
+
+ping 8.8.8.8 -c 3
+

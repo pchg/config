@@ -1,0 +1,1 @@
+/home/pierre/geolllibre/procedure_genere_passmin.py

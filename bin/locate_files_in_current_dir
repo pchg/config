@@ -1,0 +1,42 @@
+#!/usr/bin/rebol -qs
+rebol []
+; Dommage: encore une tentative de Red qui se solde par un échec...
+;#!/usr/bin/redlang
+;Red []
+;print what-dir
+;print system/options/path
+;halt
+;; Tank il n'y a pas de lib chargeable à l'initialisation de red, on recopie:{{{
+;
+;; on se met dans le répertoire courant
+;; change to current directory
+;change-dir system/options/path
+;
+;print what-dir
+;
+;call_wait_output_error: func [{Run a shell call and get stdio output, and err output} 
+;    cmd [string!] "command to be run by the shell"
+;][
+;    call_output: copy "" copy 
+;    call_error: copy "" 
+;    call/wait/output/error cmd call_output call_error 
+;    prin call_output 
+;    if not (call_error = "") [print rejoin ["Error: " newline call_error]] 
+;    return call_output
+;]
+;;}}}
+
+ls: sort read system/options/path
+print ls
+foreach f ls [
+	print "###################################################"
+	print rejoin [ "To locate " f " file:" newline "Anything (including nothing) to proceed, N to skip to next file, <Enter> ..."]
+	x: input
+	unless ((lowercase x) == "n") [
+		print rejoin [ newline " ###" f "###"]
+		cmd: rejoin [ "locate " f ]
+		call_wait_output_error cmd
+		print call_output
+	]
+]
+

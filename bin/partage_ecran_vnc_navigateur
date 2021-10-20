@@ -1,0 +1,84 @@
+#! /bin/bash
+
+# Le nom externe de la machine à contacter par le client
+MACHINE="latitude"
+
+# Un mot de passe pour plus de "sécurité"
+PASSWORD="pouet"
+
+# Le chemin où se trouve noVNC
+NOVNC=~/dev/noVNC
+
+# Le port à utiliser par x11VNC
+VNC_PORT=9000
+
+# Le port à utiliser par le client WEB
+WEB_PORT=8080
+
+# La région de l'écran à partager
+REGION=1280x1024+2560+0
+
+# Les PID des deux process
+proxy_pid=""
+vnc_pid=""
+
+# On intercepte toute interruption
+trap "cleanup" TERM QUIT INT EXIT
+
+# Procédure qui va faire le ménage en fin de session
+cleanup() {
+  trap - TERM QUIT INT EXIT
+  trap "true" CHLD
+  if [ -n "${proxy_pid}" ]; then
+    echo "Arrêt du proxy (${proxy_pid})"
+    kill ${proxy_pid}
+  fi
+  if [ -n "${vnc_pid}" ]; then
+    echo "Arrêt de vnc (${vnc_pid})"
+    kill ${vnc_pid}
+  fi
+}
+
+# Démarrage du serveur VNC
+x11vnc \
+  -rfbport $VNC_PORT \
+  -clip $REGION \
+  -viewonly \
+  -noclipboard -nosetclipboard -nosel -nosetprimary -noprimary \
+  -quiet \
+  -passwd $PASSWORD \
+  2> /dev/null &
+
+# On récupère le PID du processus et on utilise nc (netcat) pour attendre que le port soit
+# correctement ouvert par x11vnc
+vnc_pid="$!"
+until nc -zw30 localhost $VNC_PORT;  do
+  sleep 1
+  done
+
+# Lancement du proxy
+#$NOVNC/utils/wsproxy.py --web $NOVNC :$WEB_PORT localhost:$VNC_PORT &
+$NOVNC/utils/launch.sh --vnc :$WEB_PORT localhost:9000
+
+
+# On récupère le PID du proxy et on attend une seconde que tout s'inititialise
+proxy_pid="$!"
+sleep 1
+
+# On fabrique l'URL de connexion au partage d'écran
+url="http://$MACHINE:$WEB_PORT/vnc.html?host=$MACHINE&port=$WEB_PORT&password=$PASSWORD"
+
+# On le colle dans le presse papier
+echo " $url" | xsel -psb
+
+# On l'affiche aussi à l'écran
+echo $url
+
+# Tank à fer, on lance le navigateur, pour les flemmards:
+$BROWSER $url &
+
+# x11VNC s'arrêtera si le client se déconnecte. C'est donc lui que l'on attend pour faire
+# le ménage.
+wait $vnc_pid
+cleanup
+

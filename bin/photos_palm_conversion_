@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+echo %0
+echo "d'abord, il faut synchroniser avec jpilot avec backup;
+"
+echo "#ainsi, les photos sont dans .jpilot/Backup/MainArchive/"
+
+ls -rtl ~/bab-nas/photos/.toutes|less
+ls -rtl ~/.jpilot/Backup/MainArchive/ |grep -i set |grep -i jpg | less
+
+cd  ~/.jpilot/Backup/MainArchive/
+for file in *.jpg.pdb
+  do
+    #ls $file
+    pilot-foto -c $file
+  done
+
+echo "Et maintenant, il faut les mettre où il convient."
+#for file in *.jpg
+#  do
+#    mv $file ~/photos_zire
+#  done
+#
+#cd ~/photos_zire
+
+

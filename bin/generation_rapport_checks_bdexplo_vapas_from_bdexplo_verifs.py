@@ -1,0 +1,1 @@
+/home/pierre/geolllibre/bdexplo/generation_rapport_checks_bdexplo_vapas_from_bdexplo_verifs.py

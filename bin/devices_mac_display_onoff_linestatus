@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Extending: To maintain a list of network devices, by mac address, and display the online/offline status of each.
+#
+# Uses include:
+#
+#    Monitoring your server status's
+#    checking your internet connection is up
+#    checking if a specific device has connected to your wifi
+#    checking your smart TV is really off
+#    etc
+#
+#Each device name is displayed in green if online, red if offline.
+#A desktop notification is displayed when a device status changes.
+#
+#Tested under linux mint, should work on other distro's.
+
+#Create associated arrays
+declare -A devicelist #device name: mac address
+declare -A statuslist #device name: online status
+
+devicelist[black-pearl]=b8:27:eb:ec:6b:4e
+devicelist[livebox]=c8:cd:72:64:22:6d
+devicelist[latitude]=d4:be:d9:02:da:85
+devicelist[latitude]=d4:be:d9:02:da:85
+devicelist[autan]=00:21:85:47:03:34
+devicelist[autan]=00:21:85:47:03:34
+devicelist[linutopch]=e8:40:f2:0b:c8:96
+devicelist[PC15]=90:2b:34:1a:18:92
+devicelist[PC43]=00:15:af:78:37:29
+devicelist[macmadialen]=b8:8d:12:08:15:2e
+devicelist[yanacocha]=00:10:dc:93:a8:6c
+devicelist[PC13]=00:1d:fd:d2:2d:2f
+devicelist[PC14]=00:17:61:10:ba:8d
+devicelist[micmac]=9c:f3:87:d6:c4:a4
+devicelist[imprimantebrother]=00:80:77:90:40:48
+devicelist[geolpoppy]=B8:27:EB:90:64:49
+devicelist[semopi]=B8:27:EB:EC:6B:4E
+devicelist[xboite]=7C:1E:52:4C:2E:DA
+#devicelist[MyPhone] =aa:bb:cc:dd:ee:03
+#devicelist[SmartTV] =aa:bb:cc:dd:ee:04
+
+#Colour Constants
+BRed='\033[1;31m [ OFF ] '
+BGreen='\033[1;32m [  ON ] '
+Reset='\033[m'
+
+function mactoip(){
+  echo $(arp -n | grep -i $mac | awk ' { print $1 }')
+}
+
+while [ true ]; do
+    # clear
+	echo "_________________________________________"
+	date
+    arp_cache_rebuilt=no
+    for devicename in ${!devicelist[@]}; do
+        status=OFFLINE
+        mac=${devicelist[${devicename}]}
+        ip=$( mactoip $mac )
+        if [ -z $ip ] && [ $arp_cache_rebuilt = "no" ]; then
+            #we need to rebuild the arp cache...
+            nmap -sn -T4 192.168.1.0/24 >& /dev/null
+            ip=$( mactoip $mac )
+            arp_cache_rebuilt=yes
+        fi;
+
+        if [ ! -z $ip ]; then
+            ping $ip -n -q -c 2 -i 0.2 -w 1 >& /dev/null
+            if [ $? -eq 0 ]; then status=ONLINE; fi
+        fi;
+        #if device's previous status not yet recorded, then set it now.
+        if [ ! ${statuslist[${devicename}]+_} ]; then statuslist[${devicename}]=$status; fi
+
+        if [ $status = "ONLINE" ]; then colour=$BGreen; else colour=$BRed; fi;
+        echo -e ${colour}${devicename}${Reset} - $ip
+        if [ ${statuslist[${devicename}]} != $status ]; then
+          notify-send -i ac-adapter -u critical -t 1000 $status "$devicename"
+        fi;
+        statuslist[$devicename]=$status
+    done
+    echo -
+    sleep 5
+done

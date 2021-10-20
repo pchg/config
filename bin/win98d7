@@ -1,0 +1,2 @@
+cd /mnt/hda9/aaaa_win98_qemu/image_floppy_win98
+qemu -k fr -fda WIN98C.IMG -boot a -m 3 -nographic

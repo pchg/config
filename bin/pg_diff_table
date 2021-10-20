@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pierre Chevalier
+
+# ce script va domper en csv la table fournie en ligne de commande, depuis deux bases:
+# bdexplo et bdexploy, puis runner vimdiff, pour voir les différences.
+
+sql2csv       "SELECT * FROM $1 ORDER BY 1,2,3" > xtr_bdexplo_$1.csv
+sql2csv_autre "SELECT * FROM $1 ORDER BY 1,2,3" > xtr_bdexploy_$1.csv
+ls -l xtr_bdexplo_$1.csv xtr_bdexploy_$1.csv
+#diff xtr_bdexplo_$1.csv xtr_bdexploy_$1.csv
+vimdiff xtr_bdexplo_$1.csv xtr_bdexploy_$1.csv

@@ -1,0 +1,134 @@
+#!/usr/bin/rebol -qs
+rebol []
+comment [ ;premier jet: {{{
+;date_achat: first read/lines %~/date_achat_machine
+;print rejoin ["Âge de " read %/etc/hostname ": " (now - (to-date date_achat)) / 365 " jours"]
+;
+;?? date_achat
+;
+;age_jours: (now - (to-date date_achat))
+;?? age_jours
+;
+;age_annees: round/floor ((now - (to-date date_achat)) / 365)
+;?? age_annees
+;
+;
+;print ((now - (to-date date_achat)) // 365)
+;
+;reste_jours: (age_jours - (age_annees * 365))
+;?? reste_jours 
+;
+;age_jours: round ((now - (to-date date_achat)) // 365)
+;?? age_jours
+;age_annees: 
+];}}}
+
+debug: true
+debug: not debug ; très commode, ce flag bête
+??? DEBUG
+
+hostname: trim_last_char read %/etc/hostname ??? hostname
+;date_achat: first read/lines %~/date_achat_machine ??? date_achat
+do load %~/machines
+
+foreach m machines [
+	if ((to-string m/1) = hostname) [
+		date_achat: m/2
+	]
+]
+
+??? hostname
+??? date_achat
+
+;DEBUG genre de tests unitaires à la noix:
+;date_achat: now - 365
+;date_achat: now - (365 + 60)
+;date_achat: now - ((4 * 365) + (3 * 7))
+;date_achat: now - ((4 * 365) + (3 * 7) + 5)
+;date_achat: now - ((4 * 365) + (6 * 30) + (3 * 7) + 5)
+
+;{{{
+msg: rejoin ["La machine *" hostname "* a été acquise le " date_achat "." newline] ;??? msg
+age_jours: (now - (to-date date_achat))	??? age_jours
+age_annees: ((now - (to-date date_achat))  / 365)	??? age_annees
+append msg rejoin ["Âge de " hostname ": " age_jours " jours, soit " age_annees " année"]	;??? msg
+if (age_annees > 1) [append msg "s"]	;??? msg
+append msg "."
+append msg newline	;??? msg
+nb_annees: round/floor ((now - (to-date date_achat))  / 365) 	??? nb_annees
+reste_jours: round ((now - (to-date date_achat)) // 365)	??? reste_jours
+mois:        round/floor (reste_jours / 30) 	??? mois
+reste_jours: reste_jours - (mois * 30)	??? reste_jours
+semaines:    round/floor (reste_jours / 7 )	??? semaines
+reste_jours: reste_jours - (semaines * 7)	??? reste_jours
+append msg "C'est à dire "
+if (nb_annees > 0) [
+	append msg rejoin [nb_annees " année"]	;??? msg
+	if (nb_annees > 1) [append msg "s"]
+] ;??? msg
+unless (mois = 0) 			[
+					append msg rejoin [", " mois " mois" 	]	]
+;	if (mois > 1) [	append msg                   "s"		]	;??? msg
+
+either ((semaines = 0) and (reste_jours = 0)) [
+	append msg "."
+	] [
+	unless (semaines = 0) 		[
+						append msg rejoin [", " semaines " semaines"		]	]
+	;	if (semaines > 1) append msg                     "s"	]	]
+
+;??? msg
+	unless (reste_jours = 0)	[
+						append msg rejoin [", " reste_jours " jour"	]
+		if (reste_jours > 1)	[append msg						 "s"]	]
+;??? msg 
+	append msg "."
+;??? msg 
+]
+
+msg: reverse msg	;??? msg
+deb: fin: copy ""
+if (parse msg [copy deb to " ," copy fin to end]) [
+	deb: reverse deb
+	fin: reverse fin
+	fin: trim_last_char trim_last_char fin
+;	??? deb ??? fin
+	msg: rejoin [fin " et " deb]
+]
+
+;??? msg
+print msg
+
+;}}}
+;??? debug
+;?? debug
+
+;;======== code evaluation output: =========
+;La machine autan a été acquise le 26/9/2008 11:33.
+;
+;Âge de autan: 3645 jours, soit 9.98630136986301 années.
+;C'est à dire 9 années et 12 mois.
+;;==========================================
+;
+;
+;=> à améliorer!
+
+
+;2019_02_15__12_40_27 des améliorations, cf. supra.
+;
+;;======== code evaluation output: =========
+;age_jours: 1619
+;age_annees: 4.43561643835616
+;nb_annees: 4
+;reste_jours: 159
+;mois: 5
+;reste_jours: 9
+;semaines: 1
+;reste_jours: 2
+;La machine latitude a été acquise le 10-Sep-2014.
+;
+;Âge de latitude
+;: 1619 jours, soit 4.43561643835616 années.
+;C'est à dire 4 années, 5 mois, 1 semaines et 2 jours.
+;;==========================================
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+#pass='kdialog --password `Mot de passe pour la pomme`'
+smbmount //192.168.1.97/Users /mnt/pomme -o username=mariechevalier,password=popo
+
+
+#mount -t smbfs -o username=mariechevalier,password=marie //192.168.1.10/mariechevalier /mnt/pomme
+
+#su -c "smbmount //192.168.1.10/Users /mnt/pomme -o username=mariechevalier"
+
+#su -c "
+#mount -t smbfs -o username=mariechevalier,password=marie //192.168.1.10/mariechevalier /mnt/pomme
+#mount -t smbfs -o username=pierre,password=p //192.168.1.10/pierre /mnt/pomme_pierre
+#mount -t smbfs -o username=mariechevalier,password=marie //192.168.1.10/shared /mnt/test

@@ -1,0 +1,13 @@
+echo "Coller le contenu de la fenêtre de la chatte yunohost ici, puis Ctrl-D :"
+cat > /tmp/chatte
+cat /tmp/chatte | \
+grep -v "a rejoint le salon" | \
+grep -v "a quitté le salon" | \
+grep -v "h our IRC ad service you can reach a glo" | \
+grep -v "thought you guys might be interested in this blog by freenode" | \
+grep -v "Read what IRC investigative journalists" | \
+grep -v " fascinating blog by freenode staff member Matth" | \
+grep -v "irc: <system> rejoin" \
+> /tmp/chattepure
+less /tmp/chattepure
+

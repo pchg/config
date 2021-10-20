@@ -1,0 +1,7 @@
+#!/bin/bash
+cd ~/.icewm
+rm prefoverride
+ln -s prefoverride_alt_capture_ON prefoverride
+#icewm --replace --restart
+#echo "Maintenant, il faut redémarrer icewm à la mano."
+killall -SIGHUP icewm

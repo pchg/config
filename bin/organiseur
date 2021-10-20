@@ -1,0 +1,9 @@
+#/bin/bash
+
+# ancien temps, d'avant le visor...
+#/usr/local/bin/wine /dosc/progs/Util/dayplan.exe 
+
+#nous entrons dans une ère nouvelle:
+su -c "/sbin/modprobe visor&& /sbin/insmod usb-ohci"
+su -c "rm -f /dev/pilot&& ln -s /dev/ttyUSB1 /dev/pilot"
+jpilot

@@ -1,0 +1,4 @@
+#!/bin/bash
+# (vieillerie?)
+xrandr --output LVDS1 --mode 1024x600 --output VGA1 --off
+

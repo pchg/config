@@ -1,0 +1,6 @@
+#!/bin/sh
+# on renomme le fichier passé en argument
+# en y appendant la date courante
+ls $1
+mv $1 $1_`date +%Y_%m_%d`
+ls $1*

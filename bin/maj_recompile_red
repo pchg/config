@@ -1,0 +1,11 @@
+#!/bin/sh
+cd ~/dev/Red/
+git pull 
+git checkout GTK 
+# rebol
+# do/args %red.r "%environment/console/console.red"
+# rebol -qs red.r environment/console/CLI/console.red 
+echo 'REBOL [] do/args %red.r "-r %environment/console/CLI/console.red"' > tmp_compile_console_red
+rebol -qs tmp_compile_console_red
+rm tmp_compile_console_red
+

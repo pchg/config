@@ -1,0 +1,12 @@
+echo "MARCHE PAS: VOIR À FAIRE UN CROSSPLOT"
+echo "COPY ($1) TO stdout WITH CSV;" | psql -X -d bdexplo > tmp_pour_graph.csv
+#sed -e 's/,/ /' < tmp_pour_graph.csv > tmp_pour_graph.dat
+echo "
+plot 'tmp_pour_graph.dat' w p title '$1'
+replot" | gnuplot -p
+
+#Un script pour grapher rapidos deux variables issue d'une requête SQL donnant deux champs numériques:
+#
+#usage:
+#sql_twovariables_graph  "SELECT aubr, ausm FROM smi.ity_mamsi_2011_10_17_ity_base_donne_soil_samples GROUP BY 1, 2 ORDER BY 1, 2"
+

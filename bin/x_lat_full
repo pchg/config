@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#xrandr --addmode VGA1 1600x1200
+#xrandr --output VGA1 --mode 1600x1200 --primary --output LVDS1 --mode 1366x768 --pos 1600x400 # encore mieux, résolution plus haute de l'écran cathodique
+#xrandr --output VGA1 --mode 1440x900 --primary --output LVDS1 --mode 1366x768  --pos 1440x424 --left-of VGA1 # avec l'écran Asus (celui habituellement branché sur durandeux)
+#xrandr --output VGA1 --mode 1440x900 --primary --output LVDS1 --mode 1366x768  --pos -1440x400  # avec l'écran Asus (celui habituellement branché sur durandeux)
+#xrandr --output VGA1 --mode 1280x1024  --output LVDS1 --mode 1366x768  --pos -1440x400 --primary  # avec l'écran Asus (celui habituellement branché sur durandeux)
+# => ça met toutes les fenêtres de bin/demarrage aux choux: donc je "déplace" l'écran droit vers le haut, et tampis pour la transition coule entre les deux écrans:
+#xrandr --output VGA-1 --mode 1440x900 --right-of LVDS-1 --output LVDS-1 --mode 1366x768 --primary # avec l'écran Asus (celui habituellement branché sur durandeux)
+#xrandr --output HDMI-3 --mode 1280x1024 --left-of LVDS-1 --output LVDS-1 --mode 1366x768 --primary # avec l'écran S branché par HDMI sur le socle d'accueil
+xrandr --output HDMI-3 --mode 1280x1024  --output LVDS-1 --mode 1366x768 --primary --pos 1280x400 # avec l'écran S branché par HDMI sur le socle d'accueil
+
+

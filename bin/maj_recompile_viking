@@ -1,0 +1,7 @@
+cd ~/dev
+pwd
+git clone git://viking.git.sourceforge.net/gitroot/viking/viking
+cd viking
+./autogen.sh
+make
+su -c "make install"

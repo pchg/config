@@ -1,0 +1,7 @@
+#wpt
+gpsbabel -w -D9 -i garmin -f /dev/ttyUSB0 -o gpx -F wpt_2007_06_05.gpx
+#adapter pour la date:
+#date +%Y_%m_%d_%H_%M_%S
+
+#trk
+gpsbabel -t  -D9 -i garmin -f /dev/ttyUSB0 -o gpx -F trk_2007_06_05.gpx

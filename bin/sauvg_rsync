@@ -1,0 +1,54 @@
+##rsync -r -t --delete --delete-after -v /mnt/win_d/heaume/pierre .
+##rsync -a --delete --delete-after --force -P -v /mnt/win_d/heaume/pierre .
+
+#rsync -a --delete --delete-after --force -P -v /home/pierre/heaume_pierre/ /mnt/disqusb1/sauvg/heaume_pierre
+#rsync -a --delete --delete-after --force -P -v /home/pierre/ /mnt/disqusb1/sauvg/home/pierre
+source=/
+#destination=/mnt/chifi/backup_`hostname`/
+destination=/mnt/tesrat/backup_`hostname`/
+echo $source
+echo $destination
+
+debut=`date +%d/%m/%Y\ %T`
+
+#rsync -auv --hard-links --links --one-file-system --del --exclude="tmp/" --exclude="telech/" --exclude="Desktop/" --exclude=".poubelle/" --exclude=".okz/" --exclude=".thumbnails/" / /mnt/chifi/backup_`hostname`/
+
+# Explicitons un petit peu:
+#rsync 
+#-auv 
+#        -a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
+#    	    -r, --recursive             recurse into directories
+#	        -l, --links                 copy symlinks as symlinks
+#	        -p, --perms                 preserve permissions
+#	        -t, --times                 preserve modification times
+#	        -g, --group                 preserve group
+#	        -o, --owner                 preserve owner (super-user only)
+#	        -D                          same as --devices --specials
+#	            --devices               preserve device files (super-user only)
+#    	        --specials              preserve special files
+#        -u, --update                skip files that are newer on the receiver
+#        -v, --verbose               increase verbosity
+#--hard-links 
+#        -H, --hard-links            preserve hard links
+#--one-file-system 
+#        -x, --one-file-system       don't cross filesystem boundaries
+#--del 
+#            --del                   an alias for --delete-during
+#            --delete-during         receiver deletes during the transfer
+#--exclude="tmp/" --exclude="telech/" --exclude="Desktop/" --exclude=".poubelle/" --exclude=".okz/" --exclude=".thumbnails/" 
+#/ /mnt/chifi/backup_`hostname`/
+
+# Réécrivons un peu plus proprement, en ôtant certaines options et en en ajoutant quelques autres:
+#        -h, --human-readable        output numbers in a human-readable format
+#            --progress              show progress during transfer
+#        -X, --xattrs                preserve extended attributes
+#--recursive --links --perms --times --group --owner --devices --specials 
+rsync --archive --update --hard-links --one-file-system --del --progress --xattrs --exclude="tmp/" --exclude="telech/" --exclude="Desktop/" --exclude=".poubelle/" --exclude=".okz/" --exclude=".thumbnails/" $source $destination
+
+
+fin=`date +%d/%m/%Y\ %T`
+
+echo "End backup; "
+echo "started at: $debut "
+echo "ended at:   $fin"
+

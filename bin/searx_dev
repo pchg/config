@@ -1,0 +1,8 @@
+#!/bin/bash
+cd dev/searx
+pwd
+python3 -m venv searx-ve
+pwd
+eval $(. ./searx-ve/bin/activate)
+pwd
+

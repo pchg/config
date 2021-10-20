@@ -1,0 +1,464 @@
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+# $Id: hdiff,v 1.7 2002/08/16 05:50:51 peters Exp $
+#
+# NAME:		hdiff
+#
+# PURPOSE:	HTML diff. Produces a colourised HTML diff output which is
+#		much easier to read than standard diff output.
+#
+# SOURCE:	http://www.ginini.com/software/hdiff/
+#
+# 		hdiff is derived from cvs2html from www.sslug.dk/cvs2html
+#
+#------------------------------------------------------------------------------
+
+require 5.000;
+
+use Getopt::Std;
+
+#
+# You must use a version of diff that has unified output.  GNU diff has this
+# option, so you can leave the default setting as is on Linux based systems.
+# For most other Unix systems, grab a copy of GNU diff from
+# ftp://ftp.gnu.org/gnu/diffutils
+#
+$diff = '/usr/bin/diff';
+
+#
+# Colors and font to show the diff type of code changes
+#
+$diffcolorEmpty      = '#CCCCCC';    # color of 'empty' lines
+$diffcolorAdd        = '#FF9999';    # Removed line(s) (left)  (  -  )
+$diffcolorChange     = '#99FF99';    # Changed line(s) (     both    )
+$diffcolorRemove     = '#CCCCFF';    # Added line(s)   (  - )  (right)
+$diffcolorDarkChange = '#99CC99';    # lines, which are empty in change
+$diffcolorLineNum    = '#666666';    # Lines containing line numbers
+
+#-----------------------------------------------------------------------------
+# END OF CONFIGURABLE OPTIONS
+#-----------------------------------------------------------------------------
+
+$Version = "2.1.0";
+
+#
+# Process options
+#
+
+# Keep warnings happy
+use vars qw($opt_s $opt_r $opt_n $opt_N);
+
+getopts('h:f:t:rl:sL:c:C:e:nNo:') or Usage();
+
+Usage() unless ( scalar @ARGV == 2 );
+
+$File1 = $ARGV[0];
+$File2 = $ARGV[1];
+
+if ( defined $opt_o ) {
+    open STDOUT, ">$opt_o"
+      or die "Error creating file '$opt_o' ($!)";
+}
+
+$tabstop = ( $opt_e > 0 ? $opt_e : 8 ) if defined $opt_e;
+
+if ($opt_t) {
+    $Title = "$opt_t";
+}
+else {
+    $Title = "hdiff output";
+}
+
+$opt_L = 'legend,Lines Added,Lines changed,Lines Removed,- No viewable Change -,Line ##NUM#' unless $opt_L;
+
+( $TextLegend, $TextAdded, $TextChanged, $TextRemoved, $TextNoChange, $TextLineNumber ) = map htmlify($_), split /,/, $opt_L . ", MISSING , MISSING , MISSING , MISSING , MISSING , MISSING ";
+
+$LeftCaptionText  = ( $opt_c ? htmlify($opt_c) : '#NAME#' );
+$RightCaptionText = ( $opt_C ? htmlify($opt_C) : '#NAME#' );
+
+die "$File1 not found\n" if ( ( !-f $File1 ) && ( !-d $File1 ) );
+die "$File2 not found\n" if ( ( !-f $File2 ) && ( !-d $File2 ) );
+
+HtmlHeader();
+
+human_readable_diff( $File1, $File2 );
+
+HtmlFooter();
+
+#--------------------------------------------------------------------------
+sub htmlify {
+    my ( $string, $pr ) = @_;
+
+    # Special Characters; RFC 1866
+    $string =~ s/&/&amp;/g;
+    $string =~ s/\"/&quot;/g;
+    $string =~ s/</&lt;/g;
+    $string =~ s/>/&gt;/g;
+
+    # get URL's as link ..
+    $string =~ s§(http|ftp)(://[-a-zA-Z0-9%.~:/]+)([?&]([-a-zA-Z0-9%.~:_]+)=([-a-zA-Z0-9%.~:_])+)*§<A HREF="$1$2$3">$1$2$3</A>§;
+
+    # get e-mails as link
+    $string =~ s§([-a-zA-Z0-9.]+@([-a-zA-Z0-9]+\.)+[A-Za-z]{2,4})§<A HREF="mailto:$1">$1</A>§;
+
+    # get #PR as link ..
+    if ( $pr && defined $prcgi ) {
+        $string =~ s!\b((pr[:#]?\s*#?)|((bin|conf|docs|gnu|i386|kern|misc|ports)\/))(\d+)\b!<A HREF="$prcgi?pr=$5">$&</A>!ig;
+    }
+
+    return $string;
+}
+
+#------------------------------------------------------------------------------
+sub spacedHtmlText {
+    my ( $string, $pr ) = @_;
+
+    # Cut trailing spaces
+    s/\s+$//;
+
+    # Expand tabs
+    if ( defined $tabstop ) {
+        while ( $string =~ s/\t+/' ' x (length($&) * $tabstop - length($`) % $tabstop)/e ) { }
+    }
+
+    # replace <tab> and <space> (§ is to protect us from htmlify)
+    # gzip can make excellent use of this repeating pattern :-)
+    $string =~ s/§/§%/g;    #protect our & substitute
+
+    $string =~ s/	/§nbsp;§nbsp;§nbsp;§nbsp;§nbsp;§nbsp;§nbsp;§nbsp;/g;
+    $string =~ s/ /§nbsp;/g;
+
+    $string = htmlify($string);
+
+    # unescape
+    $string =~ s/§([^%])/&$1/g;
+    $string =~ s/§%/§/g;
+
+    return $string;
+}
+
+#------------------------------------------------------------------------------
+sub LineNumText {
+    my ($LineNum) = @_;
+    return '' unless $opt_n;
+    return spacedHtmlText( sprintf( "%3d:", ($$LineNum)++ ) );
+}
+
+#------------------------------------------------------------------------------
+sub flush_diff_rows {
+    my $j;
+    my ( $leftColRef, $rightColRef, $leftRow, $rightRow ) = @_;
+    if ( $state eq "PreChangeRemove" ) {    # we just got remove-lines before
+        for ( $j = 0 ; $j < $leftRow ; $j++ ) {
+            print "<tr><td bgcolor=\"$diffcolorRemove\">@$leftColRef[$j]</td>";
+            print "<td bgcolor=\"$diffcolorEmpty\">&nbsp;</td></tr>\n";
+        }
+    }
+    elsif ( $state eq "PreChange" ) {       # state eq "PreChange"
+                                            # we got removes with subsequent adds
+        for ( $j = 0 ; $j < $leftRow || $j < $rightRow ; $j++ ) {    # dump out both cols
+            print "<tr>";
+            if ( $j < $leftRow ) { print "<td bgcolor=\"$diffcolorChange\">@$leftColRef[$j]</td>"; }
+            else { print "<td bgcolor=\"$diffcolorDarkChange\">&nbsp;</td>"; }
+            if ( $j < $rightRow ) { print "<td bgcolor=\"$diffcolorChange\">@$rightColRef[$j]</td>"; }
+            else { print "<td bgcolor=\"$diffcolorDarkChange\">&nbsp;</td>"; }
+            print "</tr>\n";
+        }
+    }
+}
+
+#------------------------------------------------------------------------------
+sub HtmlHeader {
+    if ($opt_h) {
+        my $header_content;
+        open HEADER, $opt_h or die "Can not open $opt_h $!\n";
+        $header_content = join ( "", <HEADER> );
+        $header_content =~ s/#TITLE/$Title/g;
+        print $header_content;
+        close(HEADER);
+    }
+    else {
+        print qq(<html>\n<head>\n);
+        print qq(<title>$Title</title>\n);
+        print qq(<style type="text/css">\n<!--\n);
+        print qq(BODY { font-family: Versana,Arial,Helvetica }\n);
+
+        if ($opt_s) {
+
+            # Small font for printing
+            print qq(TH { font-family : Verdana, Arial, Helvetica;font-size : 7pt;color : White; }\n);
+            print qq(TD { font-family : Verdana, Arial, Helvetica;font-size : 5pt;color : Black; }\n);
+        }
+        else {
+
+            # Normal fonts for screen reading
+            print qq(TH { font-family : Verdana, Arial, Helvetica;font-size : 8pt;color : White; }\n);
+            print qq(TD { font-family : Verdana, Arial, Helvetica;font-size : 7pt;color : Black; }\n);
+        }
+        print qq(-->\n</style>\n</head>);
+        print qq(<body bgcolor="#eeeeee">\n);
+        print qq(<div align="center"><h2>$Title</h2></div>\n);
+    }
+}
+
+#------------------------------------------------------------------------------
+sub HtmlFooter {
+
+    print <<EOF;
+<table border="0" cellspacing="0" cellpadding="1">
+<tr><th align="center" bgcolor="#000000" colspan="2"><font color="#ffffff">$TextLegend</font></th></tr>
+<tr><td align="center" bgcolor="$diffcolorRemove">$TextAdded</td><td bgcolor="$diffcolorEmpty">&nbsp;</td></tr>
+<tr bgcolor="$diffcolorChange"><td align="center" colspan="2">$TextChanged</td></tr>
+<tr><td bgcolor="$diffcolorEmpty">&nbsp;</td><td align="center" bgcolor="$diffcolorAdd">$TextRemoved</td></tr>
+</table>
+
+<p align="center"><font size="-1"><a href="http://www.ginini.com/software/hdiff/">hdiff - version: $Version</a></font></p>
+EOF
+
+    if ($opt_f) {
+        open FOOTER, $opt_f or die "Can not open $opt_f $!\n";
+        print <FOOTER>;
+        close(FOOTER);
+        return;
+    }
+    else {
+        print "</body></html>\n";
+    }
+}
+
+#------------------------------------------------------------------------------
+# Function to generate Human readable diff-files
+#
+sub human_readable_diff {
+    my ( $file1, $file2 ) = @_;
+
+    my ( $i, $difftxt, $filename, $pathname, $diffopts, $modefile );
+
+    if ($opt_r) {
+        $diffopts .= "-r -N ";
+    }
+
+    if ( defined $opt_l ) {
+        $diffopts .= "-U $opt_l ";
+    }
+    else {
+        $diffopts .= "-u ";
+    }
+
+    open DIFF, "$diff $diffopts $file1 $file2 |" or die "Can not run $diff $diffopts $file1 $file2 $!\n";
+
+    $leftfile  = "????";
+    $rightfile = "????";
+
+    if ( -f $file1 ) {
+
+        # Single file diff command, there will be no new file
+        # markers. We will start in the 'nodiff' state.
+        $state = "nodiff";
+    }
+    else {
+
+        # Start in the initialised state, ready for multiple files
+        $state = "init";
+    }
+
+    #
+    # Process diff text
+    #
+    while (<DIFF>) {
+        $difftxt = $_;
+
+        #
+        # Close of preceding file set, if necessary
+        # NB. "Only in" entries will appear if the '-N' option is omitted.
+        #
+        if (   ( $difftxt =~ /^diff / )
+            || ( $difftxt =~ /^Only in/ ) )
+        {
+
+            #
+            # Only output for no diffs
+            #
+            if ( $state eq "nodiff" ) {
+                print "<tr bgcolor=\"$diffcolorEmpty\" >";
+                print "<td colspan=2 align=center><b>$TextNoChange</b></td></tr>";
+            }
+
+            if ( $state ne "init" ) {
+                print "</table>\n\n";
+                print "<br><br>\n";
+            }
+
+            # State that we are not in a diff at present.
+            # i.e. we are awaiting a +++ or --- or 'Only in'
+            $state = "nodiff";
+        }
+
+        #
+        # Handle next file
+        #
+        if ( $difftxt =~ /^diff / ) {
+
+            # Absorb 'diff ' lines. They have been handled above.
+        }
+        elsif ( $state eq "nodiff" ) {
+
+            #
+            # we are awaiting a +++ or --- or 'Only in'
+            #
+            if ( $difftxt =~ /^--- / ) {
+                flush_diff_rows \@leftCol, \@rightCol, $leftRow, $rightRow;
+
+                #
+                # now init the next run
+                #
+                ($leftfile) = $difftxt =~ /^--- (.*)/;
+                $rightfile = "????";
+                $leftRow   = 0;
+                $rightRow  = 0;
+
+                # No state change, awaiting +++
+            }
+            elsif ( $difftxt =~ /^\+\+\+ / ) {
+
+                ($rightfile) = $difftxt =~ /^\+\+\+ (.*)/;
+
+                print qq(<table border="0" cellspacing="0" cellpadding="0" width="100%">\n);
+                print qq(<tr bgcolor="#000000">\n);
+
+                $CaptionText = $LeftCaptionText;
+                $CaptionText =~ s/#NAME#/$leftfile/gi;
+                print qq(<th width="50%" valign="top">);
+                print qq(<font color="#ffffff">$CaptionText</font>);
+                print qq(</th>\n);
+
+                $CaptionText = $RightCaptionText;
+                $CaptionText =~ s/#NAME#/$rightfile/gi;
+                print qq(<th width="50%" valign="top">);
+                print qq(<font color="#ffffff">$CaptionText</font>);
+                print qq(</th>\n</tr>);
+
+                # Wait for next hunk (@@)
+                $state = "await_hunk";
+            }
+            elsif ( $difftxt =~ /^Only in/ ) {
+                print qq(<table border="0" cellspacing="0" cellpadding="0" width="100%">\n);
+                print qq(<tr bgcolor="#000000">\n);
+                print qq(<th width="50%" valign="top">);
+                print qq(<font color="#ffffff">$difftxt</font>);
+                print qq(</th>\n);
+                print qq(<th width="50%" valign="top">);
+                print qq(<font color="#ffffff"><!-- Only found in one directory --></font>);
+                print qq(</th>\n</tr>);
+
+                # No state change, awaiting next 'Only in' or next ---
+            }
+        }
+        elsif ( $difftxt =~ /^@@/ ) {
+
+            # In case of a number of context lines of 0
+            flush_diff_rows \@leftCol, \@rightCol, $leftRow, $rightRow;
+
+            # Hunk, start dumping
+            #( $funname ) = $difftxt =~ /@@ \-[0-9]+.*\+[0-9]+.*@@(.*)/;
+            $state    = "dump";
+            $leftRow  = 0;
+            $rightRow = 0;
+            ( $LeftLineNum, $RightLineNum ) = $difftxt =~ m/^@@ \-(\d+).*\+(\d+)/;
+
+            if ($opt_N) {
+                my $LeftText  = $TextLineNumber;
+                my $RightText = $TextLineNumber;
+                $LeftText  =~ s/#NUM#/$LeftLineNum/gi;
+                $RightText =~ s/#NUM#/$RightLineNum/gi;
+                print "<tr><th width=\"50%\" bgcolor=\"$diffcolorLineNum\"><b>$LeftText</b></th>", "<th width=\"50%\" bgcolor=\"$diffcolorLineNum\">$RightText</th></tr>\n";
+            }
+
+        }
+        else {
+            ( $diffcode, $rest ) = $difftxt =~ /^([-+ ])(.*)/;
+            $_ = spacedHtmlText($rest);
+
+            # Add fontface, size
+            $_ = "&nbsp;$_";
+
+            #########
+            # little state machine to parse unified-diff output (Hen, zeller@think.de)
+            # in order to get some nice 'ediff'-mode output
+            # states:
+            #  "dump"             - just dump the value
+            #  "PreChangeRemove"  - we began with '-' .. so this could be the start of a 'change' area or just remove
+            #  "PreChange"        - okey, we got several '-' lines and moved to '+' lines -> this is a change block
+            ##########
+
+            if ( $diffcode eq '+' ) {
+                my $LineNumText = LineNumText($RightLineNum);
+                if ( $state eq "dump" ) {    # 'change' never begins with '+': just dump out value
+                    print qq(<tr><td bgcolor="$diffcolorEmpty">&nbsp;</td><td bgcolor="$diffcolorAdd">$LineNumText$_</td></tr>\n);
+                }
+                else {                       # we got minus before
+                    $state = "PreChange";
+                    $rightCol[ $rightRow++ ] = $LineNumText . $_;
+                }
+            }
+            elsif ( $diffcode eq '-' ) {
+                $state = "PreChangeRemove";
+                $leftCol[ $leftRow++ ] = LineNumText($LeftLineNum) . $_;
+            }
+            else {                           # empty diffcode
+                flush_diff_rows \@leftCol, \@rightCol, $leftRow, $rightRow;
+                print "<tr><td>", LineNumText($LeftLineNum), "$_</td><td>", LineNumText($RightLineNum), "$_</td></tr>\n";
+                $state    = "dump";
+                $leftRow  = 0;
+                $rightRow = 0;
+            }
+        }
+    }
+    flush_diff_rows \@leftCol, \@rightCol, $leftRow, $rightRow;
+
+    #
+    # Only output for no diffs
+    #
+    if ( ( $state eq "nodiff" ) || ( $state eq "init" ) ) {
+        print qq(<tr bgcolor="$diffcolorEmpty" >);
+        print qq(<td colspan="2" align="center"><b>$TextNoChange</b></td></tr>);
+    }
+
+    close(DIFF);
+
+    # In case diff does not return 0 (no diff) nor 1 (diffs)
+    die "Error running $diff $diffopts $file1 $file2\n" if ( $? >> 8 ) > 1;
+
+    print "</table>\n\n";
+    print "<br><br>\n";
+
+}
+
+#------------------------------------------------------------------------------
+sub Usage {
+    print <<EOF;
+Usage: $0 [-rsn] [-e <size>][-f <html footer>] [-h <html header>] [-l <lines>] [-L <Legend>,<Added>,<Changed>,<Removed>,<no change>,<Line>] [-t <title>] [-c <Text>] [-C <Text>] <file1/dir1> <file2/dir2>
+
+-c Caption for file 1 (#NAME# in caption is replaced by file name)
+-C Caption for file 2 (#NAME# in caption is replaced by file name)
+-e Expand tabs of 'size' characters (Defaults to 8 if <= 0)
+-f File to use for HTML footer
+-h File to use for HTML header
+-l Number of context lines
+-n Show line numbers in front of each line
+-N Show line numbers at the beginning of each block (in a separator line),
+     Put a '#NUM#' where you want to see the line number (otherwise it would not appear)
+-o File to create instead of stdout
+-r Recursively diff directories
+-s Small font for printing
+-t Title heading
+-L Legends/Text appearing in output, defaults to:
+     "legend,Lines Added,Lines changed,Lines Removed,- No viewable Change -,Line ##NUM#"
+
+Version: $Version
+
+EOF
+
+    exit 1;
+}
+

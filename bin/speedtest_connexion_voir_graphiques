@@ -1,0 +1,2 @@
+cat speedtest_connexion.log | grep -v "^#.*" | grep "Download:" | sed "s/Download: //g" | sed "s/ Mbit\/s//g" > /tmp/tt_download && cat speedtest_connexion.log | grep "Upload:" | sed "s/Upload: //g" | sed "s/ Mbit\/s//g" > /tmp/tt_upload && gnuplot -p -e "plot '/tmp/tt_download' w l; replot '/tmp/tt_upload' w l; set term png ; set output 'speedtest_connexion.log.png' ; replot"
+

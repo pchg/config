@@ -1,0 +1,11 @@
+# Brdl, c'était pas $0 mais $1! Voilà pourquoi ce script se modifiait "tout seul"!...
+sed -i 's/^Conseil National de Transition de France$//g' "$1"
+sed -i 's/•/-/g'  "$1"
+sed -i "s/’/'/g"  "$1"
+sed -i "s/ :/:/g" "$1"
+sed -i "s/ ;/;/g" "$1"
+sed -i 's/« /«/g' "$1"
+sed -i 's/ »/»/g' "$1"
+sed -i 's/–/-/g'  "$1"
+sed -i 's///g'  "$1"
+

@@ -1,0 +1,79 @@
+echo "Dompage de la montre garmin forerunner dans ~/gps/gps_log.gpx"
+cd ~/gps #_domps_montre_garmin_forerunner
+
+#de l'ordre dans les backups
+	#mv .okz/98_avant_dernier/gps_log.gpx   .okz/97_avant_avant_dernier/
+	#mv .okz/99_dernier/gps_log.gpx         .okz/98_avant_dernier/
+
+echo "Sauvegarde du gps/gps_log.gpx précédent dans .okz"
+cd .okz
+
+#tiré de mkdiraujourdhui
+i=`date +%Y_%m_%d`
+mkdir $i  &&  ls -trlh | tail -1
+
+cd ..
+cp gps_log.gpx .okz/$(ls .okz/ -trp | grep \/ | tail -1)
+
+#allons chercher les données du gps
+echo "Dompage des données du gps, préalablement convenablement raccordé"
+echo "..."
+gpsbabel -t -w -i garmin -o gpx -f /dev/ttyUSB0 -F tmp.gpx
+
+#pour enlever les:
+#  <cmt>^D#</cmt>
+#  <desc>^D#</desc>
+# disgrâcieux qui embêtent qgis:
+echo "nettoyage..."
+grep -v \# < tmp.gpx > tmp2.gpx
+
+#filtrons la sortie, manière de nettoyer un peu:
+#d'abord, on assemble les traces en une trace
+echo "rassemblage des traces en une seule..."
+gpsbabel -t -i gpx -f tmp2.gpx -x track,merge -o gpx -F tmp3.gpx
+#puis on redivise tout ça, en fonction du temps. On sépare les tracés quand il y a plus d'une demi-heure entre chaque point (GPS éteint ou sans couverture sat: ça évite les longs tronçons droits disgrâcieux quand on paume les satellites), et on met un titre explicite au tracé, généré à partir de la date&heure
+echo "puis redivision de la trace en fonction des arrêts de plus de 30 minutes..."
+gpsbabel -t -i gpx -f tmp3.gpx -x track,pack,split=30m,title="%F_%Hh%M" -o gpx -F tmp4.gpx
+
+
+#gpsbabel -t -w -i garmin -o gpx -f domp_gps_forerunner_log.gpx -i gpx -f tmp2.gpx -F tmp3.gpx
+#marche plus, le 19/10/2008
+
+
+#puis on rassemble avec le fichier principal où on logge tout, en excluant les duplicates:
+echo "puis on rassemble avec le fichier principal où on logge tout, en excluant les duplicates..."
+gpsbabel -t -w -i gpx -f gps_log.gpx -i gpx -f tmp4.gpx -x duplicate,location -o gpx -F tmp5.gpx
+
+#on renomme le dernier fichier temporaire avec la date courante:
+echo "on renomme le dernier fichier temporaire avec la date courante..."
+i=domp_gps_`date +"%F-%Hh%M"`.gpx
+mv tmp4.gpx $i
+
+#quelques sauvegardes, un peu parano, mais tout ça est en cours d'écriture; on supprimera quand on sera sûr de soi:
+echo "quelques sauvegardes de plus..."
+cp gps_log_dernier.gpx gps_log_avant_dernier.gpx
+cp gps_log.gpx gps_log_dernier.gpx
+#Et finalement, on renomme le dernier vers LE fichier contenant tous les tracés:
+echo "Finalement, on renomme le dernier vers LE fichier contenant tous les tracés"
+mv tmp5.gpx gps_log.gpx
+
+#ménage
+echo "ménage"
+rm tmp.gpx
+rm tmp2.gpx
+rm tmp3.gpx
+
+#mv domp_gps_forerunner_log_dernier.gpx domp_gps_forerunner_log_avdernier.gpx
+#mv domp_gps_forerunner_log.gpx domp_gps_forerunner_log_dernier.gpx
+#mv tmp3.gpx domp_gps_forerunner_log.gpx
+
+
+#rm dernier_domp_gps_forerunner.gpx
+#ln -s tmp_domp_gps_forerunner_`date +"%F-%Hh%M"`_pt_trk.gpx dernier_domp_gps_forerunner.gpx
+
+#regardons un peu le résultat: on lance viking
+echo "regardons un peu le résultat: on lance viking"
+viking carte_blue_marble.viking indices.gpx wpts_reperes.gpx gps_log.gpx $i
+
+#puis on revient où on était au départ
+cd -

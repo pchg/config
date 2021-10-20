@@ -1,0 +1,11 @@
+echo "COPY ($1) TO stdout WITH CSV;" | psql -X -d bdexplo > tmp_pour_graph.csv
+sed -e 's/,/ /' < tmp_pour_graph.csv > tmp_pour_graph.dat
+echo "
+plot 'tmp_pour_graph.dat' w l title '$1'
+replot" | gnuplot -p
+
+#Un script pour grapher rapidos une variable issue d'une requête SQL donnant un seul champ numérique:
+#
+#usage:
+#sql_onevariable_graph "SELECT au-or_::numeric(8,2) FROM smi.ity_mamsi_2011_10_17_ity_base_donne_assay_preexmtity GROUP BY au, or_, au_resource ORDER BY au-or_"
+

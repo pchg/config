@@ -1,0 +1,3 @@
+#!/bin/bash
+smbmount //192.168.1.9/musique /mnt/flezik -o username=musique,password=musique
+smbmount //192.168.1.9/pour_pierre /mnt/flepierre -o username=musique,password=musique

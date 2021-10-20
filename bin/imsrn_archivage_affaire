@@ -1,0 +1,14 @@
+#!/usr/bin/rebol -qs
+rebol []
+operation_a_archiver: request-dir/title/dir "Choisir le repertoire de l'operation IMSRN pour archivage .zip" %~/imsrn/operations/
+change-dir operation_a_archiver
+call/wait {find -L . -type f | sort | grep -v dirinfo | colrm 1 2  | grep -v "\.okz" | grep -v "poubelle" > dirinfo}
+;| grep -v "^$"  
+print read %dirinfo
+if request "Avant archivage, eliminer des fichiers de la liste?" [ call/wait {gvim dirinfo} 
+ask "Entrée quand fini..."
+]
+print "Zippage..."
+call/wait rejoin ["cat dirinfo | zip archive_" (replace (to-string last split-path clean-path %.) "/" "") ".zip -@"]
+call/wait "ls -lh archive*zip"
+print "Fini."

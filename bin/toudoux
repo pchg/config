@@ -1,0 +1,20 @@
+echo "D'abord les tags @#:"
+grep @# <~/notes/notes.txt|less
+echo "Entrée pour continuer, Ctrl-C pour arrêter..."
+read
+
+echo "Ensuite les listes avec les en-cours (e ):"
+grep "^e " <~/notes/notes.txt|less
+echo "Entrée pour continuer, Ctrl-C pour arrêter..."
+read
+
+echo "Ensuite les listes à faire (o ):"
+grep "^o " <~/notes/notes.txt|less
+echo "Entrée pour continuer, Ctrl-C pour arrêter..."
+read
+
+echo "Et enfin les ___ENCOURS___:"
+grep "_______________ENCOURS_______________" <~/notes/notes.txt|less
+echo "Entrée pour terminer."
+read
+

@@ -1,0 +1,3 @@
+cp "$1" /tmp
+vi "$1"
+diff /tmp/ "$1"

@@ -1,0 +1,52 @@
+#!/bin/sh
+# Pierre Chevalier
+# Ce script fait une table tmp_ dans la bd postgresql bdexplo, à partir d'un fichier csv => non, d'un pvg = PointVirGule (...) 
+# Tous champs en varchar pour le moment; faudrait itérer pour détecter les numériques, mais bof: faire ça plus tard, en python par exemple
+#$1: fichier .csv
+fichier_orig=$1
+#assainissement du nom (léger, à améliorer)
+fichier=`echo $1 | sed -e 's/" "/_/g' | sed -e 's/-/_/g' | tr "[:upper:]" "[:lower:]")`
+if [ ! $fichier_orig==$fichier ]; then mv fichier_orig fichier; fi
+table=`echo tmp_$fichier | sed -e 's/\.csv//g' `
+schema="tmp_imports"
+echo "--------------------------------------------------------------"
+echo "Import of data from $fichier into $schema.$table table from bdexplo database."
+echo "Input file lines count: `wc -l $fichier`"
+
+echo "--------------------------------------------------------------"
+cmd_sql="DROP TABLE $schema.$table;"
+#echo "DROP TABLE $table;" | psql -d bdexplo
+echo $cmd_sql
+echo $cmd_sql | psql -d bdexplo
+
+echo "--------------------------------------------------------------"
+cmd_sql="CREATE TABLE $schema.$table (`head -1 $fichier | sed -e 's/"//g' | sed -e 's/;/,/g' | sed -e 's/,\ /,/g' | sed -e 's/ /_/g' | sed -e 's/,/ varchar, /g'` varchar);"
+#  echo "CREATE TABLE $table        (`head -1 $fichier | sed -e 's/"/ /g' | sed -e 's/;/,/g' | sed -e 's/,/ varchar, /g'` varchar);" | psql -d bdexplo
+
+echo $cmd_sql
+echo $cmd_sql | psql -d bdexplo
+
+echo "--------------------------------------------------------------"
+cmd_sql="DELETE FROM $schema.$table;"
+echo $cmd_sql
+echo $cmd_sql | psql -d bdexplo
+
+echo "--------------------------------------------------------------"
+echo "Import ..."
+tail  -n +2 $fichier | psql -d bdexplo -c "\COPY $schema.$table FROM stdin WITH CSV delimiter as ';'"
+#tail -n +2 $fichier | psql -d bdexplo -c "\COPY $table         FROM stdin WITH CSV delimiter as ';'"
+echo "           done."
+echo "--------------------------------------------------------------"
+echo "Record count of table $schema.$table: `echo "SELECT count(*) FROM $schema.$table;" | psql bdexplo | head -3 | tail -1`"
+echo "--------------------------------------------------------------"
+echo "Overview of table $schema.$table (5 first records):"
+echo "SELECT * FROM $schema.$table LIMIT 5;" | psql -d bdexplo 
+echo "...     (and 5 last records):"
+echo "SELECT * FROM $schema.$table OFFSET (SELECT count(*) FROM $schema.$table) -5 ;" | psql -d bdexplo | tail -n +3
+echo "--------------------------------------------------------------"
+
+echo "If you saw your data, it is ok in $schema.$table."
+
+echo "(to browse it:)"
+echo "echo \"SELECT * FROM $schema.$table;\" | psql -d bdexplo | less"
+

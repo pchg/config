@@ -1,0 +1,6 @@
+#!/bin/bash
+#d'après http://lea-linux.org/cached/index/Hardware-hard_stock-cleusb.html#
+
+#su -c "modprobe usb-storage && modprobe ohci_hcd && modprobe sd_mod && mount /mnt/sda1 && mount /mnt/sda2"
+su -c "modprobe sd_mod && modprobe sg && modprobe ohci-hcd && mount /mnt/sda1 & mount /mnt/sda2 & mount /mnt/sda3 & mount /mnt/sda4 & mount /mnt/sda5 & mount /mnt/sda6 & mount /mnt/sda7"
+ 

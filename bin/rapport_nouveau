@@ -1,0 +1,17 @@
+echo "##############################################################"
+echo "Insertion d'un nouveau rapport dans la table des rapports."
+echo "Usage: $0 \"titre\" \"~/pchgeol/operations/ope/rapport.pdf\" \"opid\""
+echo "Ctrl-C pour annuler"
+echo "État avant insertion: 5 derniers rapports:"
+# 2016_08_23__11_52_05 la table des rapports est maintenant dans la bd pierre, et non plus dans bdexplo
+#echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 5;" | psql -X -h $GLL_BD_HOST -d $GLL_BD_NAME
+echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 5;" | psql -X -h $GLL_BD_HOST -d pierre
+echo "Insertion..."
+# 2016_08_23__11_52_05 la table des rapports est maintenant dans la bd pierre, et non plus dans bdexplo
+#echo "INSERT INTO pchgeol_rapports (numrap, date, titre, filename, opid) SELECT numrapsuivant, current_timestamp, '$1', '$2', '$3' FROM (SELECT max(numrap)+1 AS numrapsuivant FROM pchgeol_rapports) AS tmp;" | psql -X -h $GLL_BD_HOST -d $GLL_BD_NAME
+echo "INSERT INTO pchgeol_rapports (numrap, date, titre, filename, opid) SELECT numrapsuivant, current_timestamp, '$1', '$2', '$3' FROM (SELECT max(numrap)+1 AS numrapsuivant FROM pchgeol_rapports) AS tmp;" | psql -X -h $GLL_BD_HOST -d pierre
+echo "État après insertion:..."
+# 2016_08_23__11_52_05 la table des rapports est maintenant dans la bd pierre, et non plus dans bdexplo
+#echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 5;" | psql -X -h $GLL_BD_HOST -d $GLL_BD_NAME
+echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 5;" | psql -X -h $GLL_BD_HOST -d pierre
+echo "##############################################################"

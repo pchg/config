@@ -1,0 +1,3 @@
+echo "DELETE FROM operation_active;" | psql -X bdexplo
+echo "INSERT INTO operation_active VALUES (11);" | psql -X bdexplo
+echo "INSERT INTO operation_active VALUES (18);" | psql -X bdexplo

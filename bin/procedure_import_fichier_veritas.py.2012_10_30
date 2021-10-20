@@ -1,0 +1,294 @@
+#!/usr/bin/env python
+# -*-coding=utf-8
+"""
+Je fais un script traitant d'un seul coup les résultats analytiques de Veritas:
+Je fais ça en pseudo-code, converti en python
+"""
+
+# Imports: #/*{{{*/
+import sqlalchemy, os, pickle, csv, decimal
+
+from math import *
+import sys
+import shutil
+import psycopg2
+import string
+host    = 'autan'
+dbname  = 'bdexplo'
+user    = 'pierre'
+connexion_string = 'postgresql://' + user + ':pp' + '@' + host + '/' + dbname
+#/*}}}*/
+# classes utilitaires:
+# Ces 3 classes viennent d'un article de Sébastien Chazallet paru dans GLMFen septembre 2011: #{{{
+class Extractor(object):#/*{{{*/
+    def __init__(self, url):
+        self.engine = sqlalchemy.create_engine(url)
+    def __call__(self, request):
+        connection = self.engine.connect()
+        result = ResultSet(connection.execute(request).fetchall())
+        #result = (connection.execute(request).fetchall())
+        connection.close()
+        return result
+    #/*}}}*/
+
+class RequestsManager(list):#/*{{{*/
+    filename = 'requests.pkl'
+    def __init__(self):
+        if os.path.isfile(self.filename):
+            f = open(self.filename, 'rb')
+            for d in pickle.load(f):
+                self.append(d)
+            f.close()
+        else:
+            print('Nouveau fichier de données')
+    def save(self):
+        f = open(self.filename, 'wb')
+        exported = []
+        for d in self:
+            exported.append(d)
+        pickle.dump(exported, f)
+        f.close()
+    #/*}}}*/
+
+class ResultSet(list):#/*{{{*/
+    def __init__(self, result):
+        for r in result:
+            self.append(dict((a, b) for a, b in r.items()))
+    def export(self, filename, columns):
+        f = open(filename, 'w')
+        w = csv.DictWriter(f, columns)
+        #w.writeheader()
+        w.writerows(self)
+        f.close()
+#/*}}}*/
+#}}}
+
+
+# Paramètres:
+opid = 18
+# on prend le fichier brut provenant de Veritas:
+# file_lab_xls:#/*{{{*/
+#file_lab_xls = os.path.expanduser("~")+"/smi/data/analyses/BV120118a-Results & QAQC.xls"
+#file_lab_xls = os.path.expanduser("~")+"/smi/data/analyses/BV120110c-Results & QAQC.xls"
+#file_lab_xls = os.path.expanduser("~")+"/smi/data/analyses/BV120110c-Results & QAQC.xls"
+#file_lab_xls = os.path.expanduser("~")+"/smi/data/analyses/BV120118b-Results & QAQC.xls"
+#file_lab_xls = os.path.expanduser("~")+"/smi/transferts/from/charles/2012_04_10/BV120118c-Results & QAQC.xls"/*}}}*/
+# => bof; je fais plutôt imputer le nom complet du .zip venant de chez veritas:
+
+if not(sys.argv):
+    file_lab_csv = raw_input("Fichier .csv complet (chemin + fichier) provenant de chez Veritas: ")
+else:
+    file_lab_csv = sys.argv[1:]
+
+#             exemple: '~/smi/transferts/from/charles/2012_04_10/BV120118c-Results & QAQC-csv.zip'
+
+
+# on échappe ce qu'il faut:
+# file_lab_zip = file_lab_zip.replace(' ', '\ ').replace('&', '\&')
+
+# le chemin où il est:
+chemin = string.join(file_lab_csv.split(os.sep)[:-1], sep = os.sep)
+
+# répertoire initial:
+chemin_ini = os.getcwd()
+
+# on se met dans le bon répertoire:
+os.chdir(os.path.expanduser(chemin))
+
+# on dézippe: => pas né"cessaire
+#ligne_cmd = 'unzip ' + file_lab_zip.replace(' ', '\ ').replace('&', '\&')
+#sys.stdout.flush()
+#os.system(ligne_cmd)
+
+# le fichier .csv créé est (théoriquement):
+#file_lab_csv = file_lab_zip.replace('.zip', '').replace('-csv', '.csv')
+
+# vérifions qu'il existe bien:
+if not os.path.exists(os.path.expanduser(file_lab_csv)):
+    print "Fichier .csv inexistant: " + file_lab_csv
+    sys.exit(1)
+
+
+# si on est rendu ici, c'est que tout baigne.
+os.chdir(os.path.expanduser("~/smi/data/analyses/"))
+
+filename_csv_tmp = "resultats_veritas_"
+i = 1
+
+while os.path.exists(filename_csv_tmp + "%04d" % i + ".csv"):
+    i+= 1
+
+filename_csv_tmp +=  "%04d" % i + ".csv"
+
+print "Nom du fichier temporaire qui sera importé: " + filename_csv_tmp
+
+# NON on ouvre le fichier brut avec oocalc:/*{{{*/
+#ligne_cmd = 'oocalc "' + file_lab_csv + '"'
+#sys.stdout.flush()
+#os.system(ligne_cmd)/*}}}*/
+
+# le .csv dont on se servira:
+shutil.copyfile(os.path.expanduser(file_lab_csv), filename_csv_tmp)
+
+file_results = filename_csv_tmp
+# file_results = os.path.expanduser("~")+"/smi/data/analyses/resultats_veritas.csv
+# NON os.path.expanduser("~")+"/smi/data/analyses/resultats_veritas.csv"
+
+# on ouvre le fichier brut avec oocalc:
+ligne_cmd = 'oocalc "' + file_results + '"'
+sys.stdout.flush()
+os.system(ligne_cmd)
+
+
+print "Faut préparer avec tableur, en sauvant le premier onglet en .csv; enlever tout l'inutile: " + file_results
+rien = raw_input("Appui sur une touche quand fini...")
+
+
+# on fait un nouveau datasource:{{{
+
+# Fabriquons un extracteur de données:
+data_extractor = Extractor(connexion_string)
+
+# utilisons-le pour créer le nouvel enregistrement de datasource:
+sql_text = "INSERT INTO public.lex_datasource (opid, filename, datasource_id) VALUES (" + str(opid) + ", '" + file_lab_zip + "', (SELECT max(datasource_id) + 1 FROM public.lex_datasource WHERE opid = " + str(opid) + "));"
+
+result = data_extractor(sql_text)
+
+# Sortons le datasource_id:
+datasource_id = data_extractor("SELECT datasource_id FROM public.lex_datasource ORDER BY datasource_id DESC LIMIT 1")[0]["datasource_id"]
+
+print "============> datasource courant: " + str(datasource_id)
+# }}}
+
+
+# on demande des paramètres:/*{{{*/
+# NON la date de réception:
+# NON reception_date = raw_input("Date de réception (jj/mm/aaaa): ")
+
+# le numéro de lot:
+batch_id = raw_input("Numéro de lot (aaaannn; exemple: 2012003 pour le troisième lot de l'année 2012): ")
+
+# on demande à valider le nombre de lignes de métadonnées à mettre dans la table des lots:
+nb_lignes_metadonnees_defaut = 21
+nb_lignes_metadonnees = raw_input("Nombre de lignes du fichier en en-tête, qu'il convient de mettre en métadonnées (%i par défaut)" % nb_lignes_metadonnees_defaut)
+if not(nb_lignes_metadonnees):
+    nb_lignes_metadonnees = nb_lignes_metadonnees_defaut
+
+# on demande la description du lot:
+description_lot = raw_input("Description du lot (Lab Certificate Number):")
+
+# on demande la reception_date:
+reception_date = raw_input("Date de réception (aaaa-mm-jj):")
+#/*}}}*/
+
+# on importe et informe les tables:/*{{{*/
+f = open(os.path.expanduser(file_results), "r")
+
+# lab_ana_batches/*{{{*/
+
+metadata = ""
+for i in range(nb_lignes_metadonnees):
+    metadata += f.readline()
+
+# pour éviter les bêtises avec d'Ivoire dans les strings:
+metadata = string.replace(metadata, "'", " ")
+
+
+sql_text = "INSERT INTO public.lab_ana_batches (opid,                   description,                 batch_id,          labname,                                          preparation,       shipment_date, sent_to_lab,     reception_date,                 results_received, comments, datasource) VALUES (" + str(opid) + ", '" + description_lot + "',     "+ str(batch_id)+" , 'Bureau Veritas Mineral Laboratories, Abidjan',    'aucune',          NULL,          TRUE,          '"+  str(reception_date)+"'::date,             TRUE, '" + metadata + "', " + str(datasource_id) + ");"
+
+#On utilise le même data_extractor pour jouer cet INSERT:
+result = data_extractor(sql_text)
+
+# /*}}}*/
+
+# lab_ana_results/*{{{*/
+
+# on lit le reste du fichier:
+data = f.readlines()
+
+datafile = open('datafiletmp.csv', "w")
+datafile.write("sample_id, au_ppm, au1_ppm, au2_ppm\n")
+datafile.writelines(data)
+datafile.close()
+
+# bien sûr, ceci requiert le script csv2sql
+ligne_cmd = 'csv2sql ' + datafile.name
+sys.stdout.flush()
+os.system(ligne_cmd)
+
+# les données sont dans la table temporaire de la base:
+# echo "SELECT * FROM tmp_imports.tmp_datafiletmp;" | psql -X -d bdexplo | less
+
+sql_text = "INSERT INTO public.lab_ana_results (opid,          labname,        datasource,             scheme,    analyte, sample_id,  value,  unit, sampletype, batch_id) (SELECT                                     " + str(opid) +", 'VERITAS',  " + str(datasource_id) + ", 'FA001',    'AU',    sample_id, au_ppm, 'PPM',       'RC',        "+ str(batch_id) + "FROM tmp_imports.tmp_datafiletmp WHERE au_ppm IS NOT NULL);"
+result = data_extractor(sql_text)
+
+sql_text = "INSERT INTO public.lab_ana_results (opid, labname,  datasource,  scheme, analyte, sample_id,  value,  unit, sampletype, batch_id) (SELECT                        " + str(opid) + ", 'VERITAS',       "+ str(datasource_id) + ", 'FA001',    'AU1', sample_id, au_ppm, 'PPM',       'RC',        " + str(batch_id) + "FROM tmp_imports.tmp_datafiletmp WHERE au1_ppm IS NOT NULL);"
+result = data_extractor(sql_text)
+
+sql_text = "INSERT INTO public.lab_ana_results (opid, labname,  datasource,  scheme, analyte, sample_id,  value,  unit, sampletype, batch_id) (SELECT                        " + str(opid) + ", 'VERITAS',       "+ str(datasource_id) + ", 'FA001',    'AU2', sample_id, au_ppm, 'PPM',       'RC',        " + str(batch_id) + "FROM tmp_imports.tmp_datafiletmp  WHERE au2_ppm IS NOT NULL);"
+result = data_extractor(sql_text)
+# /*}}}*/
+
+# Ach, les sample_id ne sont pas toujours bien écrits, il faut les normaliser (...):
+sql_text = "UPDATE public.lab_ana_results SET sample_id = btrim(to_char(sample_id::integer,'0000')) WHERE opid =" + str(opid) + ";"
+result = data_extractor(sql_text)
+
+# /*}}}*/
+
+# mise à jour de dh_sampling_grades:/*{{{*/
+#sql_text = "UPDATE public.dh_sampling_grades SET sample_id = btrim(to_char(sample_id::integer,'0000')) WHERE opid = " + str(opid) +" AND NOT(sample_id ILIKE 'MF\%');"
+#result = data_extractor(sql_text)
+
+sql_text = "UPDATE public.dh_sampling_grades SET au1_ppm = tmp.au_fa_avg_ppm FROM (SELECT opid, sample_id, avg(value_num) AS au_fa_avg_ppm FROM lab_ana_results WHERE opid = " + str(opid) +" AND analyte = 'AU' AND scheme = 'FA001' GROUP BY opid, sample_id) AS tmp WHERE (dh_sampling_grades.opid = tmp.opid AND dh_sampling_grades.sample_id = tmp.sample_id AND au1_ppm IS NULL);"
+result = data_extractor(sql_text)
+
+sql_text = "UPDATE public.dh_sampling_grades SET au6_ppm = greatest(au1_ppm, au2_ppm, au3_ppm, au4_ppm, au5_ppm) WHERE opid = " + str(opid) +" AND au6_ppm IS NULL;"
+result = data_extractor(sql_text)
+# /*}}}*/
+
+
+# lister les trous avec des résultats:
+sql_text = "SELECT DISTINCT id FROM dh_sampling_grades WHERE sample_id IN ( SELECT sample_id FROM lab_ana_results WHERE datasource = (SELECT max(datasource) AS last_datasource FROM lab_ana_results));"
+result = data_extractor(sql_text)
+result.sort()
+
+print "Sondages avec les derniers résultats:"
+for i in result:
+    print i['id']
+
+
+# regardons les données nouvellement importées:
+ligne_cmd = "echo \"SELECT id, depfrom, depto, sample_id, au1_ppm, au2_ppm, au6_ppm, repeat('#', (au6_ppm*5)::integer) AS graph_au_6 FROM dh_sampling_grades WHERE id IN (SELECT id FROM dh_collars_points_last_ana_results) ORDER BY id, depto\" | psql -X -d bdexplo | less"
+sys.stdout.flush()
+os.system(ligne_cmd)
+
+
+# mise à jour de la sélection pour cartographie:
+sql_text = "CREATE OR REPLACE VIEW collars_selection AS SELECT * FROM dh_collars_points_last_ana_results;"
+result = data_extractor(sql_text)
+
+
+
+# calcule les passes minéralisées:
+# cf. procedure... TODO
+
+
+# màjour de la somme des accus sur les têtes:
+sql_text = "UPDATE public.dh_collars SET accusum = calcul_accusum FROM (SELECT opid, id, sum(accu) AS calcul_accusum FROM dh_mineralised_intervals WHERE mine = 0 GROUP BY opid, id) AS tmp WHERE (dh_collars.opid = tmp.opid AND dh_collars.id = tmp.id);"
+result = data_extractor(sql_text)
+
+
+
+# affiche la table dh_sampling_grades avec graphe teneurs, et passes minéralisées (j'avais fait ça, au Soudan): TODO
+
+
+"""
+:set foldclose=all
+:set foldmethod=marker
+:set syntax=python
+:set autoindent
+:set ts=4
+:set sw=4
+:set et
+:%s/\t/    /gc
+"""

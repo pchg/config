@@ -1,0 +1,7 @@
+#sshfs durandeux: ~/duran_home_pierre/
+#rsync --inplace -auv --del --exclude="tmp/" --exclude="telech/" --exclude=".poubelle/" --exclude=".okz/" --exclude=".thumbnails/" --exclude="duran_home_pierre/" --exclude="duran_racine/" --exclude="ftp_server_free" /home/pierre/ /home/pierre/duran_home_pierre/sauvg/sauvg_home_autan_rapidos
+#
+#echo "à faire en tant que root:"
+#echo "sshfs duran:/ ~/duran_root/"
+#echo "rsync --inplace -auv --del  /var/lib/postgresql/9.0/ ~/duran_root/home/pierre/sauvg/sauvg_var_lib_postgresql_autan_rapidos"
+#

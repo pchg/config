@@ -1,0 +1,7 @@
+cd /srv/chroot/beowulf/
+mount --bind /proc proc
+mount --bind /sys sys
+schroot -p -c beowulf
+umount sys
+umount proc
+

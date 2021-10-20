@@ -1,0 +1,2 @@
+#!/bin/bash
+smbmount //192.168.1.45/data /mnt/iomeganas2 -o user=pierre,password=pp,domain=ECURIE

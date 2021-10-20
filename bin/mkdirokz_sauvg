@@ -1,0 +1,39 @@
+#!/usr/bin/rebol -qsw
+rebol []
+
+rep_okz: to-file ".okz"
+;print pwd
+change-dir system/options/path  ; lassant, de devoir faire ça...
+;print pwd
+;print exists? rep_okz 
+
+unless ( exists? rep_okz ) [
+	prin "Création du répertoire de sauvegarde au cas où: " print rep_okz 
+	make-dir rep_okz 
+]
+change-dir rep_okz
+rep_aujourdhui: to-file replace/all (left to-iso-date now 10) "-" "_"
+print rep_aujourdhui
+unless ( exists? rep_aujourdhui ) [
+	prin "Création du répertoire de sauvegarde du jour: " print rep_aujourdhui 
+	make-dir rep_aujourdhui
+]
+change-dir rep_aujourdhui
+print pwd
+
+repertoires_du_jour: read %.
+print repertoires_du_jour
+either repertoires_du_jour = [] [
+	num_courant: 1	
+] [
+	;print length? repertoires_du_jour
+	;print repertoires_du_jour
+	sort repertoires_du_jour
+	num_courant: 1 + to-integer replace to-string (last repertoires_du_jour) "/" ""
+	;print num_courant
+]
+make-dir to-file num_courant
+
+; lassé.
+; à finir, un beau jour...
+

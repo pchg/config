@@ -1,0 +1,1 @@
+/home/pierre/pchgeol/operations/geolllibre/tectri/py/tectri.py

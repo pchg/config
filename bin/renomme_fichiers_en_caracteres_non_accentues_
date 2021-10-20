@@ -1,0 +1,26 @@
+#!/bin/bash
+#From - Wed Mar 21 22:55:46 2007
+#From: Pierre Jarillon <jarillon@abul.org>
+#To: debutants@abul.org
+
+#> > A propos de grip, avez-vous une astuce pour remplacer les accents par leurs
+#> > équivalents non accentués et les apostrophes, virgules par des _?
+
+#Voila un script qui fait ça. Attention 2 lignes sont coupées.
+
+# Modifier le noms de fichiers si nécessaire.
+# Enlever les espaces, enlever les accents; mettre en minuscules
+ls | while read f
+do
+	if [ $OPT = "n1" ] ; then		# enlever les espaces
+		g=`echo $f | sed -e "s/ /_/g"`
+	elif [ $OPT = "n2" ] ; then	# enlever espaces et accents
+		g=`echo $f |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"` 
+	elif [ $OPT = "n3" ] ; then	# enlever espaces, accents et majuscules (pour 
+web)
+		g=`echo $f |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU" |tr 
+[:upper:] [:lower:]` 
+	fi
+	if [ "$f" != "$g" ] ; then mv "$f" $g; fi
+done
+

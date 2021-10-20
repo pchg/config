@@ -1,0 +1,5 @@
+#!/bin/bash
+smbmount //192.168.1.17/c$ /mnt/yanacocha_c -o username=pierre,password=
+smbmount //192.168.1.17/e$ /mnt/yanacocha_e -o username=pierre,password=
+smbmount //192.168.1.17/h$ /mnt/yanacocha_h -o username=pierre,password=
+

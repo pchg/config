@@ -1,0 +1,101 @@
+    #!/bin/sh
+    # #Jean-Louis Frucot le 05/04/2007
+    # D'après le script de Pierre Jarillon, le 1er mars 2006
+    # Ce script :
+    # 1- fabrique le répertoire "reduit" si il n'existe pas à partir du nom passé en paramètre.
+    # 2- le peuple de toutes les images du répertoire courant réduites
+    # 3- les noms des fichiers seront dépourvus d'accents, d'espaces, de majuscules.
+    # 4- crée le répertoire "thumbnail" dans le répertoire "réduit"
+    # 5- le peuple de toutes les vignettes réduites à partir des images réduites (pas trop cool mais plus rapide et suffisant)
+
+    HMAX=x300   # hauteur maximum des images réduites.
+    THUMB=thumbnail # nom du répertoire des vignettes
+    WMAX=120    # Largeur maximum des vignettes
+    PREFIX="TN-"    # Préfixe des vignettes
+
+            #Récupérer le nom du répertoire réduit
+    # if [ $# != 0 ]; then
+    #     REP="$1";
+    # else
+    #     echo -e "Usage : `basename $0` \"Le nom de la catégorie que vous voulez\""
+    #     exit
+    # fi
+
+            #Demander le nom du dossier à traiter
+    Dossier=`kdialog --getexistingdirectory .`
+    if [$0 != 0] 
+    then
+        echo -e "Vous n'avez pas choisi de dossier"
+        exit
+    else
+    cd $Dossier
+    fi
+        #Demander le nom de la catégorie à créer
+    REP=`kdialog --title "Nom de la catégorie" --inputbox "Nom du nouveau répertoire" "Mes_Photos"`
+    if [$0 != 0] ; then
+        echo -e "Vous n'avez pas choisi de nom !";
+        exit
+    fi
+    REP=`echo $REP |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"`
+    REP=`echo $REP |tr [:upper:] [:lower:]`
+    if [ ! -d $REP ]; then mkdir $REP ; fi
+      
+    echo "============== Création des images réduites =================="
+    ls *.jpg *.jpeg *.JPG *.JPEG *.png *.PNG 2>/dev/null | while read f
+    do
+            # enlever espaces et accents
+        g=`echo $f |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"`
+            # enlever espaces, accents et majuscules (pour web)
+        h=`echo "$REP/$g" |tr [:upper:] [:lower:]`
+        if [ "$f" != "$g" ] ; then mv "$f" $g; fi
+        echo " => $g"
+        convert -geometry "$HMAX" "$g" "$h"
+    done
+      
+    echo "================Création des vignettes ======================="
+            # Création du répertoire "thumbnail"
+    cd $REP
+    if [ ! -d $THUMB ]; then mkdir $THUMB ; fi
+            # Création des vignettes
+    ls *.jpg *.jpeg *.JPG *.JPEG *.png *.PNG 2>/dev/null | while read f
+    do
+           
+        g=`echo $f`
+            # construction du nom de la vignette
+        h=`echo "$THUMB/$PREFIX$g"`
+        echo " => $h"
+        convert -geometry "$WMAX" "$g" "$h"
+    done
+    exit
+    REP=`echo $REP |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"`
+    REP=`echo $REP |tr [:upper:] [:lower:]`
+    if [ ! -d $REP ]; then mkdir $REP ; fi
+      
+    echo "============== Création des images réduites =================="
+    ls *.jpg *.jpeg *.JPG *.JPEG *.png *.PNG 2>/dev/null | while read f
+    do
+            # enlever espaces et accents
+        g=`echo $f |tr " àçéèêëîïôöùüÂÇÉÈÊËÎÏÔÖÙÜ" "_aceeeeiioouuACEEEEIIOOUU"`
+            # enlever espaces, accents et majuscules (pour web)
+        h=`echo "$REP/$g" |tr [:upper:] [:lower:]`
+        if [ "$f" != "$g" ] ; then mv "$f" $g; fi
+        echo " => $g"
+        convert -geometry "$HMAX" "$g" "$h"
+    done
+      
+    echo "================Création des vignettes ======================="
+            # Création du répertoire "thumbnail"
+    cd $REP
+    if [ ! -d $THUMB ]; then mkdir $THUMB ; fi
+            # Création des vignettes
+    ls *.jpg *.jpeg *.JPG *.JPEG *.png *.PNG 2>/dev/null | while read f
+    do
+           
+        g=`echo $f`
+            # construction du nom de la vignette
+        h=`echo "$THUMB/$PREFIX$g"`
+        echo " => $h"
+        convert -geometry "$WMAX" "$g" "$h"
+    done
+      
+    exit

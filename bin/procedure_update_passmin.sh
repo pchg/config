@@ -1,0 +1,1 @@
+/home/pierre/geolllibre/bd/procedure_update_passmin.sh

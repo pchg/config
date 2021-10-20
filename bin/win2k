@@ -1,0 +1,10 @@
+qemu -hda ~/heaume_pierre/qemu/c.img -m 256 -boot c -k fr -localtime -net user -smb /home/pierre/partage
+#qemu -cdrom /dev/cdrom -hda c.img -hdb /mnt/hda8 -m 256 -boot c -k fr -localtime
+
+
+#Par défaut, le réseau de l'OS invité transitera sur l'hôte par le biais de l'interface /dev/net/tun0; toutefois, ce n'est pas le procédé le plus simple, car celle-ci n'est pas forcément présente sur le système et la créer peut nécessiter une compilation du noyau (rarement avec les distributions récentes). Je lui préfèrerai donc, pour plus de compatibilité, le mode "user":
+#
+#    * -user-net: active le mode "user" pour le réseau; Qemu se comporte comme un serveur DHCP, qui attribue au système émulé l'adresse 10.0.2.15; ce système se connecte via une passerelle virtuelle à 10.0.2.2, et le DNS est à 10.0.2.3. L'inconvénient de ce procédé est que le système invité "voit" l'hôte, mais pas l'inverse. Attention, Microsoft Windows ne trouve pas toujours le serveur DHCP, il vaudra mieux le configurer avec une IP fixe.
+#    * -smb [dossier]: permet à l'invité d'accéder à un dossier partagé sur l'hôte, qui devra être équipé d'un serveur Samba; l'adresse de ce serveur pour l'invité est 10.0.2.4.
+#    * -tftp [préfixe]: active un serveur TFTP à l'adresse 10.0.2.2. 
+#

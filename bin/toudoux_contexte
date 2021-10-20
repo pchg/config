@@ -1,0 +1,1 @@
+grep -A10 -B5 @#<~/notes/notes.txt|less

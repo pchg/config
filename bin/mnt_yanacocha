@@ -1,0 +1,2 @@
+#!/bin/bash
+smbmount //192.168.1.11/homes /mnt/yanacocha -o username=pierre,password=p
