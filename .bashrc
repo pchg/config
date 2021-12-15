@@ -36,8 +36,8 @@ export PAR=par_02 # anciennement; ça a changé, pour Pellehaut:
 export PAR=par_viti
 
 export PAR_BD_HOST=geolllibre.org
-export PAR_BD_HOST=latitude
 export PAR_BD_HOST=pellehovh
+export PAR_BD_HOST=latitude
 
 export PAR_BD_USER=$USER
 
