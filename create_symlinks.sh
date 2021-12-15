@@ -12,7 +12,14 @@ do
  ln -s config/$f . # et sinon, on fait un lien symbolique    # otherwise, make a symlink
 done
 
-#   echo "coucou"
+# Cas particulier de .mc
+cd ~/.config
+if [-a mc]
+ then
+  mv mc mc.old
+fi
+ln -s config/.mc ~/.config/mc
+
 # remove unwanted symlinks (TODO can be vastly improved)
 rm .git
 rm README.md
