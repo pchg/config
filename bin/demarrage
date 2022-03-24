@@ -18,7 +18,7 @@ elif [ "$HOSTNAME" = "latitude" ]; then
 	# Pour tenter de rendre ce clavier de latitude un 
 	# peu plus humain à manipuler:
 	setxkbmap -model pc105 -layout fr # TODO FINIR
-	# De l'ccélération à la souris crimosoft:
+	# De l'accélération à la souris crimosoft:
 	xinput set-prop 14 "libinput Accel Speed" 1
 elif [ "$HOSTNAME" = "durandeux" ]; then
 	salutation="duran deux"
@@ -65,7 +65,8 @@ imwheel
 xhost +
 #xscreensaver &
 nextcloud &
-clipit &
+#clipit &
+diodon & # Nouveau nom de clipit...
 orage -t &
 #xterm   -T "alsamixer" -geometry 50x20+0+-6 -e "alsamixer -c 0"&
 kdeconnect-indicator &
