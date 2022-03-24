@@ -740,7 +740,8 @@ let @s = '[1~32r_[1~'
 :inoremap ( ()<Left>
 :inoremap [ []<Left>
 :inoremap { {}<Left>
-":inoremap " ""<Left> (annulé, ça met souvent le ouaï ...)
+:inoremap " ""<Left>
+" était (annulé, ça met souvent le ouaï ...)
 ":inoremap ' ''<Left> (annulé, ça met le ouaï dans l'apostrophage...)
 :inoremap < <><Left>
 
