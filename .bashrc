@@ -120,8 +120,8 @@ alias oowriter='lowriter'
 # pour geler et dégeler les bloatouères classiques:
 #alias gel_firefox_iceweasel='killall iceweasel -s 19'   #gel d'iceweasel
 #alias degel_firefox_iceweasel='killall iceweasel -s 18' #dégel d'iceweasel
-alias gel_firefox_iceweasel='killall firefox.* -r -s 19'   #gel de firefox => 2016_08_13__12_51_44: changement, firefox revient sous son nom dans debian.
-alias degel_firefox_iceweasel='killall firefox.* -r -s 18' #dégel de firefox => 2016_08_13__12_51_44: changement, firefox revient sous son nom dans debian.
+alias gel_firefox_iceweasel='killall firefox* -r -s 19'   #gel de firefox => 2016_08_13__12_51_44: changement, firefox revient sous son nom dans debian.
+alias degel_firefox_iceweasel='killall firefox* -r -s 18' #dégel de firefox => 2016_08_13__12_51_44: changement, firefox revient sous son nom dans debian.
 #alias gel_firefox_iceweasel='killall firefox -s 19'   #gel de firefox => 2016_08_16__22_02_02: ah, c'est firefox tout court, maintenant?
 #alias degel_firefox_iceweasel='killall firefox -s 18' #dégel de firefox => 2016_08_16__22_02_02: ah, c'est firefox tout court, maintenant?
 #alias gel_thunderbird_icedove='killall icedove -s 19'   #gel d'icedove
@@ -181,8 +181,9 @@ export PILOTPORT=usb:
 export PILOTRATE=115200
 
 
-if [ whoami="root" ] ; then
+if [ `whoami` = "root" ] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
+	echo "Je suis en route!"
 else
 	PATH=$PATH:$HOME/bin
 	PATH=$PATH:$HOME/.local/bin
@@ -309,3 +310,10 @@ stty ixoff -ixon
 export RED_GTK_CAMERA=YES
 export GST_V4L2_USE_LIBV4L2=1
 
+# Pour ekylibre, cf. https://github.com/ekylibre/ekylibre/wiki/Base-ubuntu-20-04
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
