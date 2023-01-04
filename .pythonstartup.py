@@ -7,6 +7,8 @@ else:
     import rlcompleter
     readline.parse_and_bind("tab: complete")
 
+from math import * # J'utilise ça tout le temps, donc bon...
+
 def run_clipboard_python_code():
 	"Derived from the famous run_clipboard_rebol_code: a utility that automatically runs Rebol^WPython code when placed in the clipboard (or just highlighted text in X systems)."
 	#2020_08_24__18_22_11 
