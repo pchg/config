@@ -50,9 +50,32 @@ export PAR_BD_PORT=5432
 export CONNINFO_PAR="-h $PAR_BD_HOST -p $PAR_BD_PORT -U $PAR_BD_USER $PAR_BD_NAME"
 ########################################################################################
 
+########################################################################################
+########        Une définition pour une autre base                              ########
+export BD_HOST=latitude
+export BD_USER=$USER
+export BD_NAME=malemort
+export BD_PORT=5432
+# Agrégation de ces variables dans une variable de connexion:
+export CONNINFO_MALEM="-h $BD_HOST -p $BD_PORT -U $BD_USER $BD_NAME"
+########################################################################################
 
-export CONNINFO=$CONNINFO_GLL # ATTENTION!!! définition de CONNINFO_GLL par défaut
-export CONNINFO=$CONNINFO_PAR # ATTENTION!!! définition de CONNINFO_PAR par défaut
+
+########################################################################################
+########        Une définition pour ma base sur latitude, pour tests            ########
+export BD_HOST=latitude
+export BD_USER=$USER
+export BD_NAME=pierre
+export BD_PORT=5432
+# Agrégation de ces variables dans une variable de connexion:
+export CONNINFO_PIERRE="-h $BD_HOST -p $BD_PORT -U $BD_USER $BD_NAME"
+########################################################################################
+
+
+export CONNINFO=$CONNINFO_PAR   # ATTENTION!!! définition de CONNINFO_PAR   par défaut
+export CONNINFO=$CONNINFO_MALEM # ATTENTION!!! définition de CONNINFO_MALEM par défaut
+export CONNINFO=$CONNINFO_PIERRE # ATTENTION!!! définition de CONNINFO_PIERRE par défaut
+export CONNINFO=$CONNINFO_GLL   # ATTENTION!!! définition de CONNINFO_GLL   par défaut
 
 # export GLL_BD_USER=$PAR_BD_USER
 # export GLL_BD_PORT=$PAR_BD_PORT
@@ -310,10 +333,23 @@ stty ixoff -ixon
 export RED_GTK_CAMERA=YES
 export GST_V4L2_USE_LIBV4L2=1
 
-# Pour ekylibre, cf. https://github.com/ekylibre/ekylibre/wiki/Base-ubuntu-20-04
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Pour ekylibre, cf. https://github.com/ekylibre/ekylibre/wiki/Base-ubuntu-20-04 {{{
+# 2022_05_10__15_37_19 ça ralentit notablement mon démarrage de bash; je mets ça dans une condition si on est dans un répertoire où il y a kylibre:
+re='.*kylib.*'
+if [[ $(pwd) =~ $re ]]; then 
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+fi
+# }}}
+
+# Pour avoir les gems installés par gem install --user-install dans mon $PATH:
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+# export GEM_HOME=$HOME/.gem
+# export GEM_PATH=$HOME/.gem
+
