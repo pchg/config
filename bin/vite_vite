@@ -1,6 +1,189 @@
+#!/bin/bash
+#!/bin/sh
+# Un script pour lancer des choses vite faites.
+
+# Vieux trucs:{{{
 #input coucou
 #mv /mnt/bab-nas/photos/.toutes/* /mnt/bab-nas/photos/.toutes/vu_lien_cree/
 #mv ./* /mnt/bab-nas/photos/.toutes/
 #ln -s /mnt/bab-nas/photos/.toutes/* .
 
 #mv /mnt/bab-nas/photos/.toutes/* /mnt/bab-nas/photos/.toutes/vu_lien_cree/
+
+# https://www.shellcheck.net/#
+#{{{
+#!/bin/bash
+# ## Example: The shebang says 'sh' so shellcheck warns about portability
+# ##          Change it to '#!/bin/bash' to allow bashisms
+# #for n in {1..$RANDOM}
+# for ((n=1; i <= RANDOM; i++))
+# do
+#   str=""
+#   if (( n % 3 == 0 ))
+#   then
+#     str="fizz"
+#   fi
+#   if [ $((n%5)) == 0 ]
+#   then
+#     str="buzz"
+#   fi
+#   if [[ ! $str ]]
+#   then
+#     str="$n"
+#   fi
+#   echo "$str"
+# done
+
+
+# ## Example: a typical script with several problems
+# # for f in $(ls *.m3u)
+# for f in *.m3u
+# do
+#   grep -qi "hq.*mp3" "$f" \
+#     && echo "Playlist $f contains a HQ file in mp3 format"
+# done
+
+#!/bin/bash
+## Example: ShellCheck can detect many different kinds of quoting issues
+# 
+# if ! grep -q "backup=true.*" "$HOME/.myconfig"
+# then
+#   echo "Backup not enabled in $HOME/.myconfig, exiting"
+#   exit 1
+# fi
+# 
+# if [[ $1 =~ -v(erbose)? ]]
+# then
+#   verbose=(-printf "Copying %f\n")
+# fi
+# 
+# find backups/ \
+#   -iname "./*.tar.gz" \
+#   "${verbose[@]}" \
+#   -exec scp {}  "myhost:backups" +
+#}}}
+#}}}
+
+# Tentative de retrouver des répertoires nouvellement créés:{{{
+# touch toutou
+# ls -l toutou
+# sleep 0.5
+# mkdir zozo
+# cd zozo
+# pwd
+# ls
+# touch coucou__.jpg
+# cd ..
+# mkdir za
+# cd za
+# touch coucou.jpg
+# cd ..
+# ls zozo/
+# ls za/
+# 
+# pwd
+# echo "###coucou"
+# # find . "*jpg" -maxdepth 2 -type f -newer toutou
+# 
+# 
+# # for i in $(find . -mindepth 1 -maxdepth 1 -type d -newer "toutou");
+# # do
+# # 	echo $i
+# # 	for f in $i/*jpg; do
+# # 		echo $f
+# # 	done
+# # done
+# 
+# find . -mindepth 1 -maxdepth 1 -type d -newer "toutou" | while read -r i; do
+# 	#echo "$i"
+# 	for f in "$i"/*jpg; do
+# 		echo "voilà le fichier $i/$f"
+# 	done
+# done
+# 
+# echo "###coucou"
+# 
+# find . -mindepth 1 -maxdepth 1 -type f -newer "toutou" -name "*jpg" | while read -r i; do
+# 	echo "$i"
+# done
+# 
+# echo "###coucou"
+# 
+# 
+# 
+# rm toutou
+# cd zozo
+# rm coucou__.jpg
+# cd ..
+# rmdir zozo
+# cd za
+# rm coucou.jpg
+# cd ..
+# rmdir za
+# 
+# 
+# exit 0
+# 
+# }}}
+
+# Tests pour envoyer un courriel, depuis precidoc.fr:{{{
+# fichiers_telecharges="SENTINEL2B_20220617-110851-711_L2A_T30TXQ_D.zip SENTINEL2B_20220803-105918-160_L2A_T31TCH_D.zip"
+# destinataires="pierrechevaliergeol@gmail.com"
+# destinataires="pascal.herman@wanadoo.fr"
+# destinataires="pierre.chevalier@e.email"
+# 
+# echo -e "Fichiers téléchargés:\n$fichiers_telecharges\n\nEspace disque libre:\n $(df -h /theia)\n $(df -h /theiazip)" | mail --alternative -r www-data@precidoc.fr -s "Telechargement images theia par $0" $destinataires --content-type=image/jpeg --attach=/theia/./SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1/SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg --content-type=image/jpeg --attach=/theia/./SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1/SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg -a "Content-Transfer-Encoding: 8bit" -a "Content-Type: text/plain; charset=UTF-8"
+# 
+# echo -e "Fichiers téléchargés:\n$fichiers_telecharges\n\nEspace disque libre:\n $(df -h /theia)\n $(df -h /theiazip)" | mail --mime --alternative --encoding=base64 -r www-data@precidoc.fr -s "Telechargement images theia par $0" $destinataires --content-type=image/jpeg --content-name="image1" --attach=/theia/./SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1/SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg --content-type=image/jpeg --content-name="image2" --attach=/theia/./SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1/SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg --content-type 'text/plain; charset=utf-8'
+# 
+# echo -e "Fichiers téléchargés:\n$fichiers_telecharges\n\nEspace disque libre:\n $(df -h /theia)\n $(df -h /theiazip)" | mail -r www-data@precidoc.fr -s "Telechargement images theia par $0" $destinataires --content-type=image/jpeg --attach=/theia/./SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1/SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg --content-type=image/jpeg --attach=/theia/./SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1/SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg --content-type 'text/plain; charset=utf-8'
+# 
+# 
+# 
+# 
+# echo -e "Fichiers téléchargés:\n$fichiers_telecharges\n\nEspace disque libre:\n $(df -h /theia)\n $(df -h /theiazip)" | mail   $destinataires --content-type=image/jpeg --attach=/theia/./SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1/SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg --content-type=image/jpeg --attach=/theia/./SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1/SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg 
+# 
+# 
+# 
+# BOUNDARY="1643879608-342111580=:74189"
+# tmpfile=$(mktemp)
+# 
+# # First part - text content
+# echo "--${BOUNDARY}" >> ${tmpfile}
+# echo "Content-ID: <$(date +"%Y%m%d%H%M%S.%N").0@$(hostname)>" >> ${tmpfile}
+# echo -e "Content-Type: text/plain; charset=UTF-8\n" >> ${tmpfile}
+# echo -e "Content-Transfer-Encoding: 8bit" >> ${tmpfile}
+# echo -e "Content-Type: text/plain; charset=UTF-8" >> ${tmpfile}
+# 
+# echo -e "Fichiers téléchargés:\n$fichiers_telecharges\n\nEspace disque libre:\n $(df -h /theia)\n $(df -h /theiazip)" >> ${tmpfile}
+# 
+# # Second part - jpg attachment
+# echo "--${BOUNDARY}" >> ${tmpfile}
+# echo "Content-ID: <$(date +"%Y%m%d%H%M%S.%N").1@$(hostname)>" >> ${tmpfile}
+# echo "Content-Type: image/jpeg; name=image1" >> ${tmpfile}
+# echo "Content-Transfer-Encoding: base64" >> ${tmpfile}
+# echo -e "Content-Disposition: attachment; filename=SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg\n" >> ${tmpfile}
+# base64 /theia/./SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1/SENTINEL2B_20221117-111827-935_L2A_T30TXR_C_V3-1_QKL_ALL.jpg >> ${tmpfile}
+# 
+# echo "--${BOUNDARY}" >> ${tmpfile}
+# echo "Content-ID: <$(date +"%Y%m%d%H%M%S.%N").1@$(hostname)>" >> ${tmpfile}
+# echo "Content-Type: image/jpeg; name=image1" >> ${tmpfile}
+# echo "Content-Transfer-Encoding: base64" >> ${tmpfile}
+# echo -e "Content-Disposition: attachment; filename=SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg\n" >> ${tmpfile}
+# base64 /theia/./SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1/SENTINEL2A_20221116-105918-952_L2A_T30TYN_C_V3-1_QKL_ALL.jpg >> ${tmpfile}
+# 
+# 
+# # No more parts
+# echo "--${BOUNDARY}--" >> ${tmpfile}
+# 
+# mail -r www-data@precidoc.fr \
+#      -s "Telechargement images theia par $0" \
+#      --append="Content-Type: multipart/mixed; boundary=\"${BOUNDARY}\"" \
+#      $destinataires < ${tmpfile}
+# 
+# rm -f ${tmpfile}
+# }}}
+ls
+
+
+

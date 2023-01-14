@@ -1,9 +1,35 @@
 #!/bin/bash
+#!/usr/bin/python3
+#!/usr/bin/php
 #!/usr/bin/rebol -qs
 #rebol []
+
 #;#juste un script toukon où je copie des trucs à faire vite fait.
+
+# <?php
+# echo "coucou";
+# $to="pierrechevalierinfo@free.fr";
+# $subject="Utilisation du script de transfert de données Préci d'Oc vers John Deere";
+# $message="un petit test pour le moment";
+# $from = "precidoc_john_deere_xfer_application";
+# $headers = "From:" . $from;
+# 
+# mail($to,$subject,$message,$headers);
+# exit();
+# ?>
+
 date
 exit 0 #########
+
+# TO_ADDRESS="pierrechevalierinfo@free.fr"
+# FROM_ADDRESS="precidoc_john_deere_xfer_application"
+# SUBJECT="Utilisation du script de transfert Preci d'Oc vers John Deere"
+# BODY="un petit test pour le moment"
+# # echo ${BODY} | mail -s ${SUBJECT} ${TO_ADDRESS} -- -r ${FROM_ADDRESS}
+# echo $BODY
+# echo $BODY | mailx -s $SUBJECT $TO_ADDRESS -- -r $FROM_ADDRESS
+# echo $?
+
 echo "{{{"
 
 echo "# Rappel des paramètres de connexion à la base:"
@@ -14,63 +40,63 @@ cd ~/semofi/compilation_donnees_gps/
 csv2sql gps_data.csv
 #cd -
 
-####################
-: <<'END_COMMENT'
-echo "On démolit et recrée la table des points topo, et on traite les données importées à l'instant:"
-psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
--- Démolition et recréation de public.topo_points:{{{
-DROP TABLE public.topo_points;
-CREATE TABLE public.topo_points (
-    opid                integer
-        REFERENCES public.operations (opid)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-        DEFERRABLE INITIALLY DEFERRED,
-    location            text,
-    id                  text,
-    num                 numeric(10,0),
-    name                text,
-    srid                integer,
-    x                   numeric(10,3),
-    y                   numeric(10,3),
-    z                   numeric(10,3),
-    cq3d                numeric,
-    geography_4326      geography,
---     geometry_corr       geometry,
-    survey_date         date,
-    topo_survey_type    text,
---     coordsys            text,
-    surveyor            text,
-    comments            text,
-    filename            text,
-    datasource          integer,
-    numauto             serial PRIMARY KEY,
-    creation_ts         timestamptz DEFAULT now() NOT NULL,
-    username            text DEFAULT current_user
-);
-COMMENT ON TABLE public.topo_points IS 'Topographical data, survey points';
-COMMENT ON COLUMN topo_points.opid                    IS 'Operation identifier';
-COMMENT ON COLUMN topo_points.location                IS 'Zone';
-COMMENT ON COLUMN topo_points.num                     IS 'Point number, within topo survey context';
-COMMENT ON COLUMN topo_points.id                      IS 'Full identifier for borehole or trench, including zone code with type and sequential number';
-COMMENT ON COLUMN topo_points.srid                    IS 'Spatial Reference Identifier, or coordinate reference system: see spatial_ref_sys from postgis extension';
-COMMENT ON COLUMN topo_points.x                       IS 'X coordinate (Easting),  in coordinate system srid';       --'X coordinate, projected in UTM (m) or other similar CRS';
-COMMENT ON COLUMN topo_points.y                       IS 'Y coordinate (Northing), in coordinate system srid';       --'Y coordinate, projected in UTM (m) or other similar CRS';
-COMMENT ON COLUMN topo_points.z                       IS 'Z coordinate';                                             --'Z coordinate, projected in UTM (m) or other similar CRS';
-COMMENT ON COLUMN topo_points.cq3d                    IS 'Quality control of GPS survey';  -- TODO demander à quidedroit
--- COMMENT ON COLUMN topo_points.geometry_corr           IS 'Manually corrected geometry: this is typically used when a GPS location turns out to be wrong, and that elements allow to better define the actual location of the survey point; when not NULL, this field should be used by cartographic VIEWs depending on this relation, instead of x, y fields';
-COMMENT ON COLUMN topo_points.geography_4326          IS 'Geographic position, in longitude-latitude according to WGS84 ellipsoid, aka EPSG 4326';
-COMMENT ON COLUMN topo_points.survey_date             IS 'Date of surveying';
-COMMENT ON COLUMN topo_points.surveyor                IS 'Survey operator name';
-COMMENT ON COLUMN licences.comments                   IS 'Comments, especially useful information such as peg not found, elevation measured at top of beacon, etc.';
-COMMENT ON COLUMN topo_points.filename                IS 'Original data file name (when datasource is not used, for some reason)';
-COMMENT ON COLUMN topo_points.datasource              IS 'Datasource identifier, refers to lex_datasource';
-COMMENT ON COLUMN topo_points.numauto                 IS 'Automatic integer primary key';
-COMMENT ON COLUMN topo_points.creation_ts             IS 'Current date and time stamp when data is loaded in table';
-COMMENT ON COLUMN topo_points.username                IS 'User (role) which created data record';
--- }}}
-END_COMMENT
-####################
+#####################
+#: <<'END_COMMENT'
+#echo "On démolit et recrée la table des points topo, et on traite les données importées à l'instant:"
+#psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
+#-- Démolition et recréation de public.topo_points:{{{
+#DROP TABLE public.topo_points;
+#CREATE TABLE public.topo_points (
+#    opid                integer
+#        REFERENCES public.operations (opid)
+#        ON UPDATE CASCADE
+#        ON DELETE CASCADE
+#        DEFERRABLE INITIALLY DEFERRED,
+#    location            text,
+#    id                  text,
+#    num                 numeric(10,0),
+#    name                text,
+#    srid                integer,
+#    x                   numeric(10,3),
+#    y                   numeric(10,3),
+#    z                   numeric(10,3),
+#    cq3d                numeric,
+#    geography_4326      geography,
+#--     geometry_corr       geometry,
+#    survey_date         date,
+#    topo_survey_type    text,
+#--     coordsys            text,
+#    surveyor            text,
+#    comments            text,
+#    filename            text,
+#    datasource          integer,
+#    numauto             serial PRIMARY KEY,
+#    creation_ts         timestamptz DEFAULT now() NOT NULL,
+#    username            text DEFAULT current_user
+#);
+#COMMENT ON TABLE public.topo_points IS 'Topographical data, survey points';
+#COMMENT ON COLUMN topo_points.opid                    IS 'Operation identifier';
+#COMMENT ON COLUMN topo_points.location                IS 'Zone';
+#COMMENT ON COLUMN topo_points.num                     IS 'Point number, within topo survey context';
+#COMMENT ON COLUMN topo_points.id                      IS 'Full identifier for borehole or trench, including zone code with type and sequential number';
+#COMMENT ON COLUMN topo_points.srid                    IS 'Spatial Reference Identifier, or coordinate reference system: see spatial_ref_sys from postgis extension';
+#COMMENT ON COLUMN topo_points.x                       IS 'X coordinate (Easting),  in coordinate system srid';       --'X coordinate, projected in UTM (m) or other similar CRS';
+#COMMENT ON COLUMN topo_points.y                       IS 'Y coordinate (Northing), in coordinate system srid';       --'Y coordinate, projected in UTM (m) or other similar CRS';
+#COMMENT ON COLUMN topo_points.z                       IS 'Z coordinate';                                             --'Z coordinate, projected in UTM (m) or other similar CRS';
+#COMMENT ON COLUMN topo_points.cq3d                    IS 'Quality control of GPS survey';  -- TODO demander à quidedroit
+#-- COMMENT ON COLUMN topo_points.geometry_corr           IS 'Manually corrected geometry: this is typically used when a GPS location turns out to be wrong, and that elements allow to better define the actual location of the survey point; when not NULL, this field should be used by cartographic VIEWs depending on this relation, instead of x, y fields';
+#COMMENT ON COLUMN topo_points.geography_4326          IS 'Geographic position, in longitude-latitude according to WGS84 ellipsoid, aka EPSG 4326';
+#COMMENT ON COLUMN topo_points.survey_date             IS 'Date of surveying';
+#COMMENT ON COLUMN topo_points.surveyor                IS 'Survey operator name';
+#COMMENT ON COLUMN licences.comments                   IS 'Comments, especially useful information such as peg not found, elevation measured at top of beacon, etc.';
+#COMMENT ON COLUMN topo_points.filename                IS 'Original data file name (when datasource is not used, for some reason)';
+#COMMENT ON COLUMN topo_points.datasource              IS 'Datasource identifier, refers to lex_datasource';
+#COMMENT ON COLUMN topo_points.numauto                 IS 'Automatic integer primary key';
+#COMMENT ON COLUMN topo_points.creation_ts             IS 'Current date and time stamp when data is loaded in table';
+#COMMENT ON COLUMN topo_points.username                IS 'User (role) which created data record';
+#-- }}}
+#END_COMMENT
+#####################
 
 echo "# On traite les données importées à l'instant:"
 psql -X -1 -h $GLL_BD_HOST -p $GLL_BD_PORT -U $GLL_BD_USER $POSTGEOL -c "
