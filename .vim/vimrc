@@ -308,26 +308,27 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 "et pareil sur la combinaison de touches Shift Tab:
 inoremap <S-Tab> <C-R>=CleverTabShift()<CR>
 "}}}
-"Ctrl-Tab pour naviguer entre les fenêtres:{{{
-"MARCHE PAS ":map <C-Tab> <C-w><C-w>
-"Marche =>
-" http://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu
-" ...
-" Put this in your .vimrc:
-" !! Important - instead of XXXX you must type CTRL-V and then Esc OR copy-paste the whole text and run %s/\(set <F1[34]>=\)XXXX/\=submatch(1) . "\33"/g which is copy-pastable (insert it with <CTRL-R> +).
-set timeout timeoutlen=1000 ttimeoutlen=100
-set <F13>=[27;5;9~
-"nnoremap <F13> gt
-map <F13> <C-w><C-w>
-set <F14>=[27;6;9~
-"nnoremap <F14> gT
-"map <F14> :tabNext<CR>
-map <F14> <C-w><S-w>
-"And restart vim.
-"Done.
-" Pareil, pour le mode insertion (c'est quand même commode):
-inoremap <F13> <Esc><C-w><C-w>i
-inoremap <F14> <Esc><C-w><S-w>i
+"Ctrl-Tab pour naviguer entre les fenêtres (bof, peu usité, abandonné le 2022_03_24__18_26_16 avec un " devant):{{{
+ 
+""MARCHE PAS ":map <C-Tab> <C-w><C-w>
+""Marche =>
+"" http://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu
+"" ...
+"" Put this in your .vimrc:
+"" !! Important - instead of XXXX you must type CTRL-V and then Esc OR copy-paste the whole text and run %s/\(set <F1[34]>=\)XXXX/\=submatch(1) . "\33"/g which is copy-pastable (insert it with <CTRL-R> +).
+"set timeout timeoutlen=1000 ttimeoutlen=100
+"set <F13>=[27;5;9~
+""nnoremap <F13> gt
+"map <F13> <C-w><C-w>
+"set <F14>=[27;6;9~
+""nnoremap <F14> gT
+""map <F14> :tabNext<CR>
+"map <F14> <C-w><S-w>
+""And restart vim.
+""Done.
+"" Pareil, pour le mode insertion (c'est quand même commode):
+"inoremap <F13> <Esc><C-w><C-w>i
+"inoremap <F14> <Esc><C-w><S-w>i
 
 "}}}
 "Alt-flèches pour naviguer entre les fenêtres, à la mode de chez terminator:{{{
@@ -347,20 +348,37 @@ map <A-h>   :wincmd h<cr>
 map <A-l>   :wincmd l<cr>
 
 "Alt-+- pour retailler les fenêtres:
-map  <A-+> :vertical resize +5
+map  <A-+> :vertical resize +5<cr>
 "}}}
 
-" Pour naviguer dans les onglets (bof):{{{
-":nmap <C-S-tab> :tabprevious<cr>
-":nmap <C-tab> :tabnext<cr>
-":nmap <C-t> :tabnew<cr>
-":map <C-t> :tabnew<cr>
-":map <C-S-tab> :tabprevious<cr>
-":map <C-tab> :tabnext<cr>
-":map <C-w> :tabclose<cr>
-":imap <C-S-tab> <ESC>:tabprevious<cr>i
-":imap <C-tab> <ESC>:tabnext<cr>i
-":imap <C-t> <ESC>:tabnew<cr>
+" Pour naviguer dans les onglets (bof => non, retenté le 2022_03_24__18_26_16):{{{
+nmap <C-S-tab> :tabprevious<cr>
+nmap <C-tab> :tabnext<cr>
+nmap <C-t> :tabnew<cr>
+map <C-t> :tabnew<cr>
+map <C-S-tab> :tabprevious<cr>
+map <C-tab> :tabnext<cr>
+""map <C-w> :tabclose<cr> "Surtout pas! Quand on commence à jouer avec les fenêtres, ça interfère, mal!
+imap <C-S-tab> <ESC>:tabprevious<cr>i
+imap <C-tab> <ESC>:tabnext<cr>i
+imap <C-t> <ESC>:tabnew<cr>
+
+" Bof: je préfère naviguer dans les onglets avec Ctrl-PgUp/Dn: => 2022_03_25__21_10_28 marde, ça ne fonctionne pas.
+map      <C-PageUp>      :tabprevious<cr>
+nmap     <C-PageUp>      :tabprevious<cr>
+nnoremap <C-PageUp>      :tabprevious<cr>
+inoremap <C-PageUp> <ESC>:tabprevious<cr>i
+map      <C-PageDown>      :tabnext<cr>
+nmap     <C-PageDown>      :tabnext<cr>
+nnoremap <C-PageDown>      :tabnext<cr>
+inoremap <C-PageDown> <ESC>:tabnext<cr>i
+map      <C-t>      :tabnew<cr>
+nnoremap <C-t>      :tabnew<cr>
+inoremap <C-t> <ESC>:tabnew<cr>
+"map <C-w> :tabclose<cr> "Surtout pas! Quand on commence à jouer avec les fenêtres, ça interfère, mal!
+
+
+
 "}}}
 
 "/*}}}*/
@@ -368,10 +386,38 @@ map  <A-+> :vertical resize +5
 
 "Ctrl-flèches pour déplacer les lignes, comme dans oOo:{{{
 "nnoremap <C-Up> ddkp <CR>	"DONE marche pas => si, ainsi:
-map <C-Up> ddkP
-map <C-Down> ddp
-inoremap <C-Up>   <Esc>ddkPi
-inoremap <C-Down> <Esc>ddpi
+"map <C-Up> ddkP
+"map <C-Down> ddp
+"inoremap <C-Up>   <Esc>ddkPi
+"inoremap <C-Down> <Esc>ddpi
+
+" Autre version, trouvée dans http://www.billodom.com/talks/vim-key-mapping.pdf: plus efficace, marche avec des sélections, en les gardant:
+"nnoremap <silent> <C-Up> :move -2<CR>
+"nnoremap <silent> <C-Down> :move +<CR>
+"xnoremap <silent> <C-Up> :move '<-2<CR>gv
+"xnoremap <silent> <C-Down> :move '>+<CR>gv
+"imap <silent> <C-Up> <C-O><C-Up>
+"imap <silent> <C-Down> <C-O><C-Down>
+"smap <silent> <C-Up> <C-G><C-Up><C-G>
+"smap <silent> <C-Down> <C-G><C-Down><C-G>
+
+"Encore une autre version, en essayant d'améliorer, pour faire comme avant, notamment en bougeant les blocs z:
+"nnoremap <C-Up> ddkp <CR>	"DONE marche pas => si, ainsi:
+"map <C-Up> ddkP
+"map <C-Down> ddp
+"inoremap <C-Up>   <Esc>ddkPi
+"inoremap <C-Down> <Esc>ddpi
+nnoremap <silent> <C-Up> ddkP
+nnoremap <silent> <C-Down> ddp
+xnoremap <silent> <C-Up> :move '<-2<CR>gv
+xnoremap <silent> <C-Down> :move '>+<CR>gv
+imap <silent> <C-Up> <Esc>ddkPi
+imap <silent> <C-Down> <Esc>ddpi
+smap <silent> <C-Up> <Esc>ddkPi
+smap <silent> <C-Down> <Esc>ddpi
+
+
+
 "}}}
 
 "Ctrl-jk pour faire pareil: (marche pas...) => 2020_07_09__12_13_32 en fait, si on met les lignes map <S-C-k> avant, ce sont elles qui prennent le pas sur les lignes map <C-k>, curieusement. Ça ne le fait pas pour les <C-Flèches, c'est étrange.
@@ -380,11 +426,11 @@ map <C-k> ddkP
 inoremap <C-j> <Esc>ddpi
 inoremap <C-k> <Esc>ddkPi
 
-"Shift-Ctrl-flèches pour défiler (scroller) de 3 lignes:
-map <S-C-Up>    3<C-y>
-map <S-C-Down>  3<C-e>
-inoremap <S-C-Up>   <Esc>3<C-y>i
-inoremap <S-C-Down> <Esc>3<C-e>i
+"Shift-Ctrl-flèches pour défiler (scroller) de 5 lignes:
+map <S-C-Up>    5<C-y>
+map <S-C-Down>  5<C-e>
+inoremap <S-C-Up>   <Esc>5<C-y>i
+inoremap <S-C-Down> <Esc>5<C-e>i
 
 "Shift-Ctrl-jk pour défiler (scroller) de 3 lignes:
 map <S-C-k> 3<C-y>
@@ -432,12 +478,24 @@ inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g' <Enter>A
 "mapper F11 avec la recherche de la précédente occurrence de _______________ENCOURS_______________
 nnoremap <F11>        ?\<_______________ENCOURS_______________<cr>
 inoremap <F11>   <Esc>?\<_______________ENCOURS_______________<cr>i
+
 "mapper Shift-F11 avec la même chose, dans l'autre sens:
 nnoremap <S-F11>      /\<_______________ENCOURS_______________<cr>
 inoremap <S-F11> <Esc>/\<_______________ENCOURS_______________<cr>i
 
+"mapper Ctrl-F11 avec la recherche de la précédente occurrence de @#
+nnoremap <C-F11>        ?@#<cr>
+inoremap <C-F11>   <Esc>?@#<cr>i
+
+"mapper Ctrl-Shift-F11 avec la même chose, dans l'autre sens:
+nnoremap <C-S-F11>      /@#<cr>
+inoremap <C-S-F11>   <Esc>/@#<cr>i
+
+
+
 "mapper F12 avec la dernière macro:
 map <F12> @@
+imap <F12> <ESC>@@i
 
 set history=10000
 
@@ -532,8 +590,10 @@ set shiftwidth=4
 "pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chieboum soit bien fait:
 "to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
 "map <F5> :w<cr> :!rebol -qs %<cr>
+" *** ENLEVÉ POUR VIMSPECTOR( ***
 map  <F5> :w<cr> :!./%<cr>
 imap <F5> <esc>:w<cr> :!./%<cr>i
+" *** ENLEVÉ POUR VIMSPECTOR) ***
 "Utile pour un script Rebol existant, qu'on n'a nulle intention de modifier, et qui n'a aucun chieboum:
 map <s-F5> :!rebol -qs %<cr>
 
@@ -687,11 +747,13 @@ if &diff
     syntax off
     " essayé tout ça, sans succès:{{{
     "execute 'set wrap'
-    :set wrap
+    "":set wrap
     "execute 'windo set wrap'
 	"autocmd FilterWritePre * if &diff | setlocal wrap< | endif
     "}}}
-:set wrap
+    :set wrap
+    "Pour ignorer les espaces (utile quand collage de codes divers...)
+    :set diffopt+=iwhite
 endif
 
 " Pour scroller plus confortablement, mappons Fn+Ctrl+flèches avec C-D et C-U:
@@ -864,4 +926,34 @@ endif " has autocmd
 
 "Numérotation des lignes:
 set nu
+
+"Ouverture d'une fenêtre d'exploration de fichiers netrw à gauche:
+":Lexplore
+" => marche pas... Pagrave.
+
+" selon le conseil de https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f:
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
+
+
+" Installation de vimspector
+"let g:vimspector_enable_mappings = 'HUMAN'
+" => annulé, je préfère mon F5 tout bête
+"Voici les raccourcis "humains" de vimspector:
+"  nmap <F5>         <Plug>VimspectorContinue
+"  nmap <leader><F5> <Plug>VimspectorLaunch
+"  nmap <F3>         <Plug>VimspectorStop
+"  nmap <F4>         <Plug>VimspectorRestart
+"  nmap <F6>         <Plug>VimspectorPause
+"  nmap <F9>         <Plug>VimspectorToggleBreakpoint
+"  nmap <leader><F9> <Plug>VimspectorToggleConditionalBreakpoint
+"  nmap <F8>         <Plug>VimspectorAddFunctionBreakpoint
+"  nmap <leader><F8> <Plug>VimspectorRunToCursor
+"  nmap <F10>        <Plug>VimspectorStepOver
+"  nmap <F11>        <Plug>VimspectorStepInto
+"  nmap <F12>        <Plug>VimspectorStepOut
+" => du coup, il faut que je redéfinisse mes raccourcis...
+" => non: quand on réussit à lancer le débogueur python, les raccourcis de vimspector fonctionnent.
+
 
