@@ -1,8 +1,9 @@
 #!/usr/bin/rebol -qs
 rebol []
-debug: false
+debug: true
 autorefresh: true
 dataset: dataset_avant: copy []
+clipboard_unchanged: false
 
 ; Définitions:
 ; 1) modules, fonctions: 
@@ -10,10 +11,15 @@ do %~/rebol/library/scripts/q-plot.r
 recup_presse_papier: does [ ;{{{ } } }
 	; fonction récupérant les numerics dans le presse-papiers, et mettant ça dans le block! dataset_num
 	; dataset: read %/tmp/zz 
-	dataset: read clipboard://
-	if (dataset = dataset_avant) [
-		debug_print "RETURN PABON 15: PRESSE-PAPIERS A PAS BOUGÉ"
+	if error? try [ dataset: read clipboard:// ] [ debug_print "Erreur en lisant clipboard://"]
+	either (dataset = dataset_avant) [
+		unless clipboard_unchanged [ ; pour éviter de répéter à l'envi le message que ça ne bouge pas
+			debug_print "RETURN PABON 17: PRESSE-PAPIERS A PAS BOUGÉ"
+		]
+		clipboard_unchanged: true
 		return false
+	][
+		clipboard_unchanged: false
 	]
 	dataset_avant: copy dataset
 	if error? try [
@@ -37,13 +43,13 @@ recup_presse_papier: does [ ;{{{ } } }
 			??? dataset_num
 			if debug [ write %/tmp/zzz dataset_num ]
 		if ( ( length? dataset_num ) <= 1 ) [ 
-			debug_print "RETURN PABON 41"
+			debug_print "RETURN PABON 46"
 			return false
 		]
 	] [
 		debug_print "AH, YA EU ERREUR ICI"
 		debug_print "Clipboard contents unplottable"
-		debug_print "RETURN PABON 47"
+		debug_print "RETURN PABON 52"
 		return false 
 	]
 	; Pour prendre en compte quand min = max, que ça fait une division par zéro, on rajoute une bête valeur à 1 en dernier:
@@ -53,7 +59,7 @@ recup_presse_papier: does [ ;{{{ } } }
 		append dataset_num ((last dataset_num) + 1)
 		debug_print "Attention, valeurs constantes: ajout d'une valeur + 1 à la fin, pour éviter certains désagréments."
 	]
-	debug_PRINT "RETURN BON 57"
+	debug_PRINT "RETURN BON 62"
 	return true 
 ]
 ;}}}
@@ -93,7 +99,9 @@ recup_presse_papier: does [ ;{{{ } } }
 trace: does [ ; {{{ } } }
 	; fonction traçant le graphique
 	try [ 
-		debug_PRINT "ON APPELLE RECUP_PRESSE_PAPIER"
+		unless clipboard_unchanged [ ; pour éviter de répéter à l'envi le message que ça ne bouge pas
+			debug_PRINT "ON APPELLE RECUP_PRESSE_PAPIER"
+		]
 		if recup_presse_papier [
 			debug_PRINT "IL A RETOURNÉ DU BON"
 			debug_PRINT "VOILÀ LES DONNÉES: (que la première)"
@@ -111,8 +119,12 @@ trace: does [ ; {{{ } } }
 			] 
 		plot/offset: 0x0
 		graph/pane: plot
-		show graph/pane
-		show window
+		if error? try [
+			show graph/pane
+			show window
+		] [
+			debug_print "Erreur en affichant le graphique"
+		]
 		]
 	]
 ]
