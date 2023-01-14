@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -n "Contenu du répertoire parent de "
+pwd
+ls ..

@@ -1,0 +1,24 @@
+# *******************************
+#! /bin/bash
+# donne le chemin vers le programme qui va interpréter les commandes du
+script.
+# Script Bash djl 11/07 pour podcaster MX Finter.
+#****************
+#1/demander et lire l'entrée au clavier de la variable DATE et variable
+REPSTOCKEMISSION du rep de stockage :
+echo "Script Bash djl 11/07 pour podcaster MX Finter."
+echo "Entrez la DATE de l'émission au format annéejourmois, ex:20071118: \c"
+read DATE
+echo $DATE
+echo "Entrez le repertoire voulu de stockage de l'émission : \c"
+read REPSTOCKEMISSION
+echo $REPSTOCKEMISSION
+#2/entrer DATE à la bonne place pour intoduire le lien rstp lu dans la
+variable LIENRSTP:
+LIENRSTP=$(vim http://www.tv-radio.com/ondemand/france_inter/MX/MX$DATE.ram)
+#3/lancer le téléchargement avec mplayer :
+mplayer -nocache -dumpfile $REPSTOCKEMISSION/MX-DATE.rm -dumpstream
+$LIENRSTP
+#4/faire la liste de REPSTOCKEMISSION pour voir si le fichier est bien créé:
+ls -la $REPSTOCKEMISSION
+# fin du script *****************************

@@ -1,0 +1,10 @@
+#!/bin/sh
+#echo "Ne fonctionne pas!"
+for filename in `ls -a`
+do
+	if !([ -d $filename ]); then
+		grep -l "$1" $filename 2>/dev/null
+	fi
+done
+exit $?
+

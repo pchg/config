@@ -1,0 +1,10 @@
+cowsay -b coucou
+cowsay -d salut
+cowsay -g agur
+cowsay -p egün on
+cowsay -s holà 
+figlet "Ça te troue pas le derche, non?"
+cowsay -t "Ça te troue pas le derche, non?"
+cowsay -w "ah, ben, je me disais, aussi"
+cowsay -y "dis-toi que c'est du temps gagné, tout ce que tu passes à scripter"
+

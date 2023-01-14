@@ -1,0 +1,6 @@
+#!/bin/bash
+sshfs root@pellehovh:/ ~/pellehaut/pellehovh_root -p 1984
+cd ~/pellehaut/pellehovh_root
+ls
+pwd
+bash # simplement pour rester dans le même répertoire...

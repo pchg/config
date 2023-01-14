@@ -1,0 +1,3 @@
+cd /home/pierre/heaume_pierre/qemu
+qemu -boot c -m 54 -enable-audio -L . c.img
+cd -

@@ -1,0 +1,9 @@
+ifconfig eth0 down
+ifconfig wlan0 down
+killall dhclient 
+killall wpa_supplicant
+wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf &
+iwconfig wlan0 essid "aquilenet"
+dhclient wlan0
+ping 8.8.8.8 -c 3
+

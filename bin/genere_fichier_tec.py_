@@ -1,0 +1,211 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from string import *
+import sqlalchemy
+import sys, os
+
+# on prend les mesures structurales dans la table field_observations_struct_measures,
+# selon un critère éventuel, et on fabrique, pour chaque type de structure (champ structure_type),
+# un fichier pour TecTri, nommé avec un préfixe.
+
+# Le critère:
+critere = "True"      # toujours vrai: pas de critère
+
+# Ces 3 classes viennent d'un article de Sébastien Chazallet paru dans GLMFen septembre 2011: #{{{
+class Extractor(object):#{{{
+    def __init__(self, url):
+        self.engine = sqlalchemy.create_engine(url)
+    def __call__(self, request):
+        connection = self.engine.connect()
+        result = ResultSet(connection.execute(request).fetchall())
+        #result = (connection.execute(request).fetchall())
+        connection.close()
+        return result
+    #}}}
+
+class RequestsManager(list):#{{{
+    filename = 'requests.pkl'
+    def __init__(self):
+        if os.path.isfile(self.filename):
+            f = open(self.filename, 'rb')
+            for d in pickle.load(f):
+                self.append(d)
+            f.close()
+        else:
+            print('Nouveau fichier de données')
+    def save(self):
+        f = open(self.filename, 'wb')
+        exported = []
+        for d in self:
+            exported.append(d)
+        pickle.dump(exported, f)
+        f.close()
+    #}}}
+
+class ResultSet(list):#{{{
+    def __init__(self, result):
+        for r in result:
+            self.append(dict((a, b) for a, b in r.items()))
+    def export(self, filename, columns):
+        f = open(filename, 'w')
+        w = csv.DictWriter(f, columns)
+        #w.writeheader()
+        w.writerows(self)
+        f.close()
+#}}}
+
+#}}}
+
+# Fabriquons un extracteur de données:
+data_extractor = Extractor('postgresql://pierre:pp@autan/bdexplo')
+
+# les types de mesures (plan, plan-ligne, plan-ligne orientée, ligne, etc.):
+# PLANE_LINE_MOVT   PLM     codes raccourcis, car ça génère des noms de fichiers trop longs pour TecTri(... TODO...)
+# PLANE_LINE        PL
+# PLANE             P
+
+# Les types de structures: 
+sql_text = "SELECT DISTINCT structure_type FROM field_observations_struct_measures WHERE " + critere + " ORDER BY structure_type"
+structure_types = data_extractor(sql_text)
+
+#print "Types de structures: %s" % structure_types
+
+files_generated = []
+
+for s in structure_types:
+    #print (s.values())
+    structure_type = str(s.values()[0])
+    print "- structures de type %s: " % structure_type
+
+    # tout d'abord, on traite les plans-lignes avec jeu sûr:
+    measure_type = 'PLMS'
+    critere2 = " measure_type = '%s' " % measure_type
+    # s'il n'y a pas de mesures, on ne fait rien, plutôt que d'encombrer avec des fichiers vides:
+    sql_text = "SELECT count(*) FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND measure_type = '" + measure_type + "'" 
+    count = data_extractor(sql_text)[0].values()[0]
+    if count:
+        file_out = str.upper(structure_type) + '_' + measure_type + '.TEC'
+        files_generated.append(file_out)
+        print "  - mesures de type %s: %i enregistrements => fichier %s" % (measure_type, count, file_out)
+        output = open(file_out, 'w')
+        output.write("Mesures structurales, plans-lignes avec jeu sûr; type = " + structure_type + "\n")
+        output.close()
+        sql_text = "SELECT direction, dip, dip_quadrant, pitch, pitch_quadrant, movement, obs_id || ' <' || coalesce(structure_type, '') || '> ' || coalesce(comments, '') AS comments FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND valid ORDER BY obs_id" 
+        ligne_cmd = """echo "COPY (""" + sql_text + """) TO stdout WITH CSV DELIMITER '\t'" | psql -X -d bdexplo >>""" + file_out
+        sys.stdout.flush()
+        os.system(ligne_cmd)
+        print
+
+    # d'abord, on traite les plans-lignes avec jeu:
+    measure_type = 'PLM'
+    critere2 = " measure_type = '%s' " % measure_type
+    # s'il n'y a pas de mesures, on ne fait rien, plutôt que d'encombrer avec des fichiers vides:
+    sql_text = "SELECT count(*) FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND measure_type = '" + measure_type + "'" 
+    count = data_extractor(sql_text)[0].values()[0]
+    if count:
+        file_out = str.upper(structure_type) + '_' + measure_type + '.TEC'
+        files_generated.append(file_out)
+        print "  - mesures de type %s: %i enregistrements => fichier %s" % (measure_type, count, file_out)
+        output = open(file_out, 'w')
+        output.write("Mesures structurales, plans-lignes avec jeu; type = " + structure_type + "\n")
+        output.close()
+        sql_text = "SELECT direction, dip, dip_quadrant, pitch, pitch_quadrant, movement, obs_id || ' <' || coalesce(structure_type, '') || '> ' || coalesce(comments, '') AS comments FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND valid ORDER BY obs_id" 
+        ligne_cmd = """echo "COPY (""" + sql_text + """) TO stdout WITH CSV DELIMITER '\t'" | psql -X -d bdexplo >>""" + file_out
+        sys.stdout.flush()
+        os.system(ligne_cmd)
+        print
+
+    # puis on traite les plans-lignes sans jeu, en rajoutant un jeu bidon (N):
+    measure_type = 'PL'
+    critere2 = " measure_type = '%s' " % measure_type
+    # s'il n'y a pas de mesures, on ne fait rien, plutôt que d'encombrer avec des fichiers vides:
+    sql_text = "SELECT count(*) FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND measure_type = '" + measure_type + "'" 
+    count = data_extractor(sql_text)[0].values()[0]
+    if count:
+        #file_out = str.upper(structure_type) + '_PLANE_LINE.TEC'
+        file_out = str.upper(structure_type) + '_' + measure_type + '.TEC'
+        print "  - mesures de type %s: %i enregistrements => fichier %s" % (measure_type, count, file_out)
+        files_generated.append(file_out)
+        output = open(file_out, 'w')
+        output.write("Mesures structurales, plans-lignes sans jeu (N=bidon); type = " + structure_type + "\n")
+        output.close()
+        sql_text = "SELECT direction, dip, dip_quadrant, pitch, pitch_quadrant, 'I' AS movement, obs_id || ' <' || coalesce(structure_type, '') || '> ' || coalesce(comments, '') AS comments FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND valid ORDER BY obs_id" 
+        ligne_cmd = """echo "COPY (""" + sql_text + """) TO stdout WITH CSV DELIMITER '\t'" | psql -X -d bdexplo >>""" + file_out
+        sys.stdout.flush()
+        os.system(ligne_cmd)
+        print
+
+    # puis on traite les plans-lignes sans jeu, en rajoutant un pitch et jeu bidons (33/N):
+    measure_type = 'P'
+    critere2 = " measure_type = '%s' " % measure_type
+    # s'il n'y a pas de mesures, on ne fait rien, plutôt que d'encombrer avec des fichiers vides:
+    sql_text = "SELECT count(*) FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND measure_type = '" + measure_type + "'" 
+    count = data_extractor(sql_text)[0].values()[0]
+    if count:
+        #file_out = str.upper(structure_type) + '_PLANE.TEC'
+        files_generated.append(file_out)
+        file_out = str.upper(structure_type) + '_' + measure_type + '.TEC'
+        print "  - mesures de type %s: %i enregistrements => fichier %s" % (measure_type, count, file_out)
+        files_generated.append(file_out)
+        output = open(file_out, 'w')
+        output.write("Mesures structurales, plans-lignes sans jeu (N=bidon); type = " + structure_type + "\n")
+        output.close()
+        sql_text = "SELECT direction, dip, dip_quadrant, 33 AS pitch, (CASE WHEN dip_quadrant IN ('N', 'S') THEN 'E' ELSE 'N' END) AS pitch_quadrant, 'N' AS movement, obs_id || ' <' || coalesce(structure_type, '') || '> ' || coalesce(comments, '') AS comments FROM field_observations_struct_measures WHERE " + critere + " AND " + critere2 + " AND structure_type = '" + structure_type + "' AND valid ORDER BY obs_id" 
+        ligne_cmd = """echo "COPY (""" + sql_text + """) TO stdout WITH CSV DELIMITER '\t'" | psql -X -d bdexplo >>""" + file_out
+        sys.stdout.flush()
+        os.system(ligne_cmd)
+        print
+
+for f in files_generated:
+    ligne_cmd = "unix2dos %s" % f
+    os.system(ligne_cmd)
+    print
+
+print "Terminé; fichiers générés pour TecTri:"
+print files_generated
+
+
+
+# POUBELLE:/*{{{*/ 
+"""
+# Sortons les mesures structurales, pour TecTri:
+mesures = data_extractor("SELECT direction, dip, dip_quadrant, pitch, pitch_quadrant, movement, obs_id || ' <' || coalesce(structure_type, '') || '> ' || coalesce(comments, '') AS comments FROM field_observations_struct_measures WHERE valid ORDER BY obs_id LIMIT 5")
+
+comment_station = "commentaire station vide"
+
+print comment_station
+
+for i in mesures:
+    print '\t'.join(replace(unicode(x), 'None', '') for x in (i['direction'], i['dip'], i['dip_quadrant'], i['pitch'], i['pitch_quadrant'], i['movement'], i['comments']))
+
+
+
+##########################################################################################
+# tout ça marche très bien, jusqu'au moment où il faut rediriger la sortie, soit par |, soit par >: là, ça complaint:
+  # pierre@autan:~$        < 2012_06_03__23_07_20 >
+genere_fichier_tec.py > ttt
+Traceback (most recent call last):
+  File "/home/pierre/bin/genere_fichier_tec.py", line 64, in <module>
+    print '\t'.join(replace(unicode(x), 'None', '') for x in (i['direction'], i['dip'], i['dip_quadrant'], i['pitch'], i['pitch_quadrant'], i['movement'], i['comments']))
+UnicodeEncodeError: 'ascii' codec can't encode character u'\xe9' in position 91: ordinal not in range(128)
+"""
+# => renoncé.
+# /*}}}*/
+
+
+
+"""
+
+:set foldclose=all
+:set foldmethod=marker
+:set syntax=python
+:set autoindent
+:set ts=4
+:set sw=4
+:set et
+:%s/\t/    /gc
+
+"""
+
+print "fini."

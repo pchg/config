@@ -1,0 +1,1 @@
+wine ~/progs_win/av_gis30/arcview/bin32/arcview.exe $1 $2 $3 $4 $5

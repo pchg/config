@@ -1,0 +1,5 @@
+#!/bin/sh
+cd ..
+pwd
+ls -lai --author
+

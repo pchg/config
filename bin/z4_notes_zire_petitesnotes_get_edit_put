@@ -1,0 +1,8 @@
+cd ~/notes
+pilot-xfer -p usb: -f notes
+txt2pdbdoc -d notes.pdb notestmp.txt
+vi notestmp.txt
+txt2pdbdoc -c notes notestmp.txt notes.pdb
+#pilot-xfer -p usb: --delete Notes
+pilot-xfer -p usb: -i notes.pdb
+cd -

@@ -1,0 +1,27 @@
+cd ~/notes
+
+#synchro_notes_pdb_zire_get
+echo "1 - allons chercher les notes dans le zire:"
+echo "    appuyons donc sur la saint-kro..."
+#avec libpisock9:
+pilot-xfer -p usb: -f notes
+
+#avec module visor: marche plus depuis que ce module est blacklisté:
+#pilot-xfer -p /dev/ttyUSB1 -f notes
+
+#pilot-xfer -p /dev/usbdev2.14_ep81 -f notes
+                                  #.pdb
+				  #marche plus avec l'extension dans le nouveau pilot-link mis avec ma debian sur meste en janvier 2007
+echo "1 et demi - sauvegardons, sétonjamais"
+python ~/bin/z1.5_notes_zire_sauvg.py
+
+echo "2 - convertissons"
+#, et éditons dans la foulée:"
+#bof cp notes.pdb notes.pdb.okz
+#bof txt2pdbdoc -d notes.pdb notes.txt
+txt2pdbdoc -d notes.pdb notesziretmp.txt
+
+echo "3 - tiens, voyons ce qu'il y a de 9:"
+#diff notes.txt sauvg_der|less
+#vimdiff notes.txt sauvg_der
+vim -O notes.txt notesziretmp.txt

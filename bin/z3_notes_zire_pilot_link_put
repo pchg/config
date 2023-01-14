@@ -1,0 +1,20 @@
+cd ~/notes
+
+echo "3 - reconvertissons"
+#txt2pdbdoc -c notes notes.txt notes.pdb
+txt2pdbdoc -c notes notesziretmp.txt notes.pdb
+
+#quand il n'y a plus d'espace sur le zire, effaçons le notes du zire:
+#pilot-xfer -p usb: --delete notes
+
+
+#synchro_notes_txt_pdb_zire_put
+echo "4 - remettons enfin les notes dans le zire:"
+echo "    appuyons donc sur la saint-kro..."
+
+#pilot-xfer -p /dev/ttyUSB1 -i notes.pdb
+pilot-xfer -p usb: -i notes.pdb
+
+cd -
+echo "apu."
+echo "######################################"

@@ -1,0 +1,2 @@
+wine ~/progswin/acrobat_4.0/Acrobat/Acrobat.exe $1 $2 $3 $4 $5&
+#wine ~/progs_win/Acrobat_5.0/Acrobat/Acrobat.exe &

@@ -1,0 +1,8 @@
+#!/bin/bash
+#;#juste un second script toukon où je copie des trucs à faire vite fait.
+bindir=`echo "$0" | sed -e 's,[^/]*$,,'`
+echo $0
+echo $bindir
+exit 0 #########
+exec "${bindir}"ed --restricted "$@"
+

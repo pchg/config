@@ -1,0 +1,6 @@
+#!/bin/bash
+sshfs chevalier.science:/home ~/chevalier.science/mnt_home/ -p 55555
+cd ~/chevalier.science/mnt_home/pierre
+ls
+# pwd
+echo "cd `pwd` # pour venir chez moi sur le serveur viteuf"

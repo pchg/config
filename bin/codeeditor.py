@@ -1,0 +1,1 @@
+/usr/share/pyshared/PythonCard/tools/codeEditor/codeEditor.py

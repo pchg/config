@@ -1,0 +1,13 @@
+#!/bin/sh
+version_red=064 # à changer
+executable=red-$version_red
+cd ~/bin
+[ -f $executable ] && mv -f $executable .poubelle/
+wget https://static.red-lang.org/dl/linux/$executable
+chmod +x red-$version_red
+rm red redlang
+ln -s red-$version_red red
+ln -s red redlang
+ls -l red
+time ./red
+

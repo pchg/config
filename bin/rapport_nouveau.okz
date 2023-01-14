@@ -1,0 +1,11 @@
+echo "##############################################################"
+echo "Insertion d'un nouveau rapport dans la table des rapports."
+echo "Usage: $0 \"titre\" \"~/pchgeol/operations/ope/rapport.pdf\" \"opid\""
+echo "Ctrl-C pour annuler"
+echo "État avant insertion: 10 derniers rapports:"
+echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 10;" | psql -X
+echo "Insertion..."
+echo "INSERT INTO pchgeol_rapports (numrap, date, titre, filename, opid) SELECT numrapsuivant, current_timestamp, '$1', '$2', '$3' FROM (SELECT max(numrap)+1 AS numrapsuivant FROM pchgeol_rapports) AS tmp;" | psql
+echo "État après insertion:..."
+echo "SELECT numrap, date, fini, titre, filename, opid FROM pchgeol_rapports ORDER BY numrap DESC LIMIT 10;" | psql -X
+echo "##############################################################"

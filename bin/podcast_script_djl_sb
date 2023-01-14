@@ -1,0 +1,56 @@
+#! /bin/bash
+# **script Serge basterot (Podcast ) , commenté djl:
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+umask 077
+# Donner les droits 700 au fichier (je ne sais lequel ?)
+TMPDIR=`mktemp -d /tmp/ramfile.XXXXXXXXXX || exit 1`
+
+# mktemp - make temporary filename (unique)
+#mktemp [-V] | [-dqtu] [-p directory] [template]
+
+trap 'rm -rf ${TMPDIR}; exit 1' 0 1 2 3 13 15
+ # commande Unix, sans man , ni help , ni info .
+ #   Un trap est un "piege" pour "attraper" un signal. Il est alors possible
+ #de lui associer l¿execution de quelques actions.
+ #S. Baudry, Introduction a la programmation Bourne Shell.unix-initiation-4.0.pdf
+ #Syntaxe :
+ #     trap ¿commande¿ signo [signo ...]
+ #   "trap" permettra d¿executer des commandes si le signal "signo " survient.
+ echo -n "Date de l'émission au format yyyymmdd : "
+ #echo -n pour ne pas sauter à la ligne àla fin de la commande
+ read DATE
+ echo -n "Répertoire de stockage : "
+ read REPSTOCKEMISSION
+
+ wget -o "${TMPDIR}/MX${DATE}.ram" http://www.tv-radio.com/ondemand/france_inter/MX/MX${DATE}.ram
+
+ # Télécharger le fichier http://---------.ram , tous les messages seront stockés dans ${TMPDIR}/MX${DATE}.ram (option -o)
+ if [ $? -ne 0 ]; then
+     exit 1
+ fi
+ # un test conditionnel a appronfondir
+ LIENRTSP=`grep ^rtsp MX${DATE}.ram`
+
+ # création du LIENRTSP avec un filtre Grep à approfondir.
+ if [ -z ${LIENRTSP} ]; then
+     echo "problème avec le lien du fichier rm"; exit 1
+ fi
+
+ # un test conditionnel a appronfondir
+
+ mplayer -nocache -dumpfile ${REPSTOCKEMISSION}/MX${DATE}.rm -dumpstream $LIENRTSP || exit 1
+
+ # on télécharge l'émission du LIENRTSP dans
+ #REPSTOCKEMISSION}/MX${DATE}.rm avec || exit 1 à approfondir
+ if [ -f "${REPSTOCKEMISSION}/MX${DATE}.rm" ]; then
+     echo "fichier bien téléchargé !"
+ else
+     echo "problème avec le stockage du fichier \"MX${DATE}.rm\" dans
+"${REPSTOCKEMISSION}\""
+ fi
+ # un dernier test conditionnel .
+
+ exit 1
+ # probablement une balise de sortie sur condition des tests
+ #*******************
+

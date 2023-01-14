@@ -1,0 +1,11 @@
+#!/bin/sh
+formation="dba1"
+evince dalibo/formations/$formation.handout.pdf &
+vi dalibo/formations/$formation.md
+
+# Annciennement:
+#cd ~/dalibo/formations
+#evince dba1-pdf.pdf &
+#vi dba1.md
+#git commit -a
+

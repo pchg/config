@@ -1,0 +1,1 @@
+lynx https://duckduckgo.com/?q=$* -accept_all_cookies

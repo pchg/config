@@ -1,0 +1,11 @@
+cd ~/notes
+
+echo "2 - editons dans la foulee:"
+echo "_____________________________________" >> notes.txt
+date +%d/%m/%Y\ %T>>notes.txt
+#cat /proc/acpi/thermal_zone/THRM/temperature  >>notes.txt
+vi notes.txt
+#Non, ya pas txt2pdbdoc sur meste, donc on edite directement le .pdb:
+#vi notes.pdb
+#C bon, txt2pdbdoc compile sur meste
+
