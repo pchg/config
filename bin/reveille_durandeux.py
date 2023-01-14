@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 # reveil de durandeux par la carte ethernet
 #
 # Wake-On-LAN
