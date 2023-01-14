@@ -1,15 +1,17 @@
 FAI=ozone
 FAI=orange
+FAI=orangebox4G
 # FAI=orange_fibre_villenave_d_ornon
 echo "FAI (ozone, orange, autre): "
-read FAI
+# read FAI
+echo "FAI: $FAI"
 echo "Speedtest du FAI $FAI; résultats dans speedtest_connexion.log"
 echo "..."
 echo '______________________________________________________________________________________________________________________' >> speedtest_connexion.log
 date                                >> speedtest_connexion.log
 echo "FAI: $FAI"                    >> speedtest_connexion.log
 echo "Réseau: sortie de ifconfig:"  >> speedtest_connexion.log
-ifconfig                            >> speedtest_connexion.log
+/sbin/ifconfig                      >> speedtest_connexion.log
 echo "speedtest:"                   >> speedtest_connexion.log
 speedtest                           >> speedtest_connexion.log
 echo "Résultat du test: fin du log:"
