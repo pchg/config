@@ -1,4 +1,4 @@
 #/bin/bash
 # Copie d'un féchier, donné en argument, vers une version archivée avec un horodatage en suffixe
-cp $1{,.$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
+cp $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
 
