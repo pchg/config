@@ -165,7 +165,8 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 #
 #alias o='less -AS'	#-A marche pas sur le less de la debian
 alias o='less -SiN'
-alias v='less -SiN'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris
+alias v='less -SiNX'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris; “less -X” if your screen clears when you quit less and you want to avoid that.
+
 alias ..='cd ..'
 alias ...='cd ../..'
 if test "$is" != "ksh" ; then
@@ -187,6 +188,10 @@ alias mv='mv -i'
 
 # "dog is better than cat" ne semble plus être dans les dépôts de Jessie; un succédanné:
 alias dog=cat
+
+# Trouvé sur touïteur:
+alias busy='my_file=$(find /usr/include -type f | sort -R | head -n 1); my_len=$(wc -l $my_file | cut -d " " -f 1); let "r = $RANDOM % $my_len" 2>/dev/null; vim +$r $my_file'
+
 
 export EDITOR=/usr/bin/vim
 #export EDITOR=/bin/nano
@@ -228,10 +233,12 @@ shopt -s checkwinsize
 export HISTCONTROL=ignoredups
 # ... and ignore same sucessive entries.
 export HISTCONTROL=ignoreboth
+# https://linuxconfig.org/how-to-manage-bash-history => If we want to avoid duplicates in the whole shell history no matter the position they have, we can use the erasedups value, instead.
+export HISTCONTROL=ignoreboth:erasedups
 
 #BCPPLUS d'historique!! suivons le conseil démesuré de http://www.oreillynet.com/onlamp/blog/2007/01/whats_in_your_bash_history.html
-export HISTFILESIZE=10000000000000
-export HISTSIZE=10000000000
+export HISTFILESIZE=1000000000000000
+export HISTSIZE=1000000000000
 # encore plus de démesure...
 
 # Compress the cd, ls -l series of commands.
@@ -306,19 +313,22 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 # => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
 # 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
-PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
+# PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
+# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
 #PS1+='\[\033[38;5;63m\]'
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
 PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
-PS1+="\033[0m\n"
+PS1+="\033[0m\]\n"
 
 
 export BROWSER=firefox
 
 alias htop='htop -d 50'
 alias htopbg='htop -d 600'
-alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
-#alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
+# alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
+# alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
+alias px='ps faux | grep -v "grep faux" | grep -vi -e VSZ | grep -e'
 alias dus='du -ch | sort -h'
 alias dua='du -ach | sort -h'
 alias findhere='find . -iname'
@@ -349,7 +359,11 @@ fi
 # }}}
 
 # Pour avoir les gems installés par gem install --user-install dans mon $PATH:
-export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+# export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 # export GEM_HOME=$HOME/.gem
 # export GEM_PATH=$HOME/.gem
+
+
+# Pour le MOOC de bash:
+alias mooc_bash_document_compagnon="evince mooc_bash/MSB_doc_compagnon.pdf &"
 
