@@ -1,0 +1,55 @@
+#!/bin/bash
+# A utility that automatically runs Rebol^Wbash code when placed in the clipboard (or just highlighted text in X systems).
+
+# run_clipboard_rebol_code:    does      [ 
+# ;Un utilitaire pour faire tourner automatiquement le code Rebol^Wbash surligné:
+timewait=0.2
+changed=false
+# wait-duration: :0:2
+code_before=""
+code=""
+err=""
+#  write clipboard:// ""
+echo "" | xclip -i
+#  c: open/binary/no-wait [scheme: 'console]
+#  print "*Autorebol running*, waiting for clipboard contents change..."
+echo "*Autobash running*, waiting for clipboard contents change..."
+#  print "Press Ctrl-C to stop, and any key to suspend automatic execution of code in the clipboard..."
+echo "Press Ctrl-C to stop, and any key to suspend automatic execution of code in the clipboard..."
+enroute=true
+
+#  forever [
+while true; do
+  # Boucle guettant l'appui d'une touche: annulée pour le moment. 
+  #   if not none? wait/all [c timewait] [
+  #    print "Automatic clipboard code execution suspended.  Doing nothing."
+  #    ask "press Enter to resume..."
+  #    print "Automatic clipboard code execution resumed."
+  #    print "Press Ctrl-C to stop, and any key to suspend automatic execution of code in the clipboard..."
+  #    print "*Autorebol running*, waiting for clipboard contents change..."
+  #   ]
+
+  # code: copy read clipboard://
+  code=$(xclip -o)
+  # if code != code_before [
+  if [[ ${code} != "${code_before}" ]]; then
+    code_before=${code}
+    echo "#======================================================="
+    echo "#========== Code from clipboard: =========="
+    echo -e "${code}"
+    echo "#======== Code evaluation output: ========="
+    # if error? try [ do load code ] [
+    tmp=$(mktemp)
+    eval "${code}" 2> $tmp
+    if [[ ! $? == 0 ]]; then
+      echo -e "Error:"
+      cat "$tmp"
+      echo "#### code not valid ###"
+      echo "#######################"
+      rm "$tmp"
+    fi #]
+    echo -e "#==========================================\n"
+  fi
+  sleep $timewait
+done
+
