@@ -1,4 +1,4 @@
-#!/usr/bin/rebol -qs
+#!/usr/bin/rebol_core -qs
 rebol []
 comment [ ;premier jet: {{{
 ;date_achat: first read/lines %~/date_achat_machine

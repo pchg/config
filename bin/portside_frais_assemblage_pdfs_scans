@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Un petit utilitaire qui va dans le répertoire des scans
+# pour assembler mes scans de notes de frais:
+
+scans_directory=$HOME/scans_multifonction_brother
+destination_file_basename=$HOME/portside/frais/scan_facturettes_jq_
+
+cd $scans_directory
+cmd="pdftk "
+out="${destination_file_basename}$(date -I | tr '-' '_').pdf"
+for i in BRN* ; do 
+  echo $i
+  cmd+="$i "
+done
+cmd+=" cat output $out"
+eval $cmd
+
+for i in BRN*; do
+  j=$(echo $i | tr [:upper:] [:lower:])
+  mv $i $j
+done
+
+echo $out
+echo 'Entrée pour poursuivre...'
+read
+evince $out & "
+

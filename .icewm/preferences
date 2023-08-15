@@ -2,10 +2,13 @@
 # traficouilled by MaPomme ensuite.
 # Then retraficouilled by icewm bizarrely.
 ClickToFocus=0
+# Window is raised when focused.
 RaiseOnFocus=0
-FocusOnAppRaise=1
-FocusOnAppRaise=0 # 0/1
-RequestFocusOnAppRaise=0 # 0/1
+FocusOnAppRaise=0
+# FocusOnAppRaise=0 # 0/1
+# RequestFocusOnAppRaise=0 # 0/1
+# QuickSwitchRaiseCandidate=0
+
 
 #TaskBarAutoHide=0
 TaskBarMailboxStatusBeepOnNewMail=1
@@ -83,8 +86,9 @@ DesktopBackgroundColor="grey"
 # DesktopBackgroundImage=""
 Theme=""
 # ADSILLH=>
+#WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
 #WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rezo","progsys","projetut","install","outils","BDD","shell","droit","zik", "réseau", "progsys", "projet_tut", "install", "outils" 
-# WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
+
 WorkspaceNames="fch","emaux","net","root","data","bd","sig","op1","op2","op3","virtu","devel","zik"
 #KeyWinMaximize="Alt+Enter"
 #KeyWinMaximizeFullScreen="Shift+Ctrl+Alt+Enter" ---> marche pas; chercher le bon keyword
@@ -115,6 +119,7 @@ CenterTransientsOnOwner=1
 
 #  Don't cut client windows by shapes set trough frame corner pixmap
 #ShapesProtectClientWindow=1
+
 PagerShowMinimized=0 # 0/1
 
 
@@ -122,4 +127,17 @@ TaskBarShowShowDesktopButton=0 # 0/1
 PagerShowPreview=0 # 0/1
 PagerShowWindowIcons=0 # 0/1
 QuickSwitchAllIcons=0 # 0/1
+
+#  Allow to switch a window to fullscreen
+AllowFullscreen=1 # 0/1
+
+# Allow to switch a window to fullscreen.
+FullscreenUseAllMonitors = 0
+# oups, non, c'est naze!
+
+# Auto show task bar when fullscreen window active.
+TaskBarFullscreenAutoShow=1
+
+
+
 

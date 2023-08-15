@@ -1,6 +1,6 @@
 FAI=ozone
-FAI=orange
 FAI=orangebox4G
+FAI=orange
 # FAI=orange_fibre_villenave_d_ornon
 echo "FAI (ozone, orange, autre): "
 # read FAI
@@ -13,9 +13,17 @@ echo "FAI: $FAI"                    >> speedtest_connexion.log
 echo "Réseau: sortie de ifconfig:"  >> speedtest_connexion.log
 /sbin/ifconfig                      >> speedtest_connexion.log
 echo "speedtest:"                   >> speedtest_connexion.log
-speedtest                           >> speedtest_connexion.log
-echo "Résultat du test: fin du log:"
-tail speedtest_connexion.log
-echo "Graphique des débits:"
-speedtest_connexion_voir_graphiques 
+speedtest --timeout 60              >> speedtest_connexion.log
+#        --timeout TIMEOUT
+#               HTTP timeout in seconds. Default 10
+
+if [[ $? != 0 ]]; then
+ echo "Erreur lors de l'appel à speedtest"
+ exit 1
+else
+ echo "Résultat du test: fin du log:"
+ tail speedtest_connexion.log
+ echo "Graphique des débits:"
+ speedtest_connexion_voir_graphiques 
+fi
 

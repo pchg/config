@@ -72,10 +72,10 @@ export CONNINFO_PIERRE="-h $BD_HOST -p $BD_PORT -U $BD_USER $BD_NAME"
 ########################################################################################
 
 
-export CONNINFO=$CONNINFO_PAR   # ATTENTION!!! définition de CONNINFO_PAR   par défaut
-export CONNINFO=$CONNINFO_MALEM # ATTENTION!!! définition de CONNINFO_MALEM par défaut
+export CONNINFO=$CONNINFO_PAR   # ATTENTION!!! définition de CONNINFO_PAR     par défaut
+export CONNINFO=$CONNINFO_MALEM # ATTENTION!!! définition de CONNINFO_MALEM   par défaut
 export CONNINFO=$CONNINFO_PIERRE # ATTENTION!!! définition de CONNINFO_PIERRE par défaut
-export CONNINFO=$CONNINFO_GLL   # ATTENTION!!! définition de CONNINFO_GLL   par défaut
+export CONNINFO=$CONNINFO_GLL   # ATTENTION!!! définition de CONNINFO_GLL     par défaut
 
 # export GLL_BD_USER=$PAR_BD_USER
 # export GLL_BD_PORT=$PAR_BD_PORT
@@ -88,7 +88,7 @@ export CONNINFO=$CONNINFO_GLL   # ATTENTION!!! définition de CONNINFO_GLL   par
 
 
 
-export TERM=xterm
+# export TERM=xterm
 
 if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
@@ -106,9 +106,24 @@ alias lls='ls -trlh | tail -10'
 alias llls='ls -trlh | tail -50'
 alias lllls='ls -trlh | tail -100'
 
+# Un ls "vivant":
+alias ls_vivant='watch -d -n 0.2 "pwd; echo ""; ls -tl"'
+alias ls_vivant_fich_cach='watch -d -n 0.2 "pwd; echo ""; ls -tla"'
+alias lv='ls_vivant'
+alias lva='ls_vivant_fich_cach'
+
+
+# Pour travailler sur le dernier fichier:
 #alias der_fichier='(ls --group-directories-first -Htr | tail -1)'
-export der_fichier=`ls --group-directories-first -Htr | tail -1`
-alias der_fichier=`ls --group-directories-first -Htr | tail -1`
+# export der_fichier=`ls --group-directories-first -Htr | tail -1`
+# alias der_fichier=`ls --group-directories-first -Htr | tail -1`
+function der_fichier() {
+  echo $(ls --group-directories-first -Ht | head -1)
+}
+alias edit_der_fichier="f=\$(der_fichier); $EDITOR \$f"
+alias vi_der_fichier=edit_der_fichier
+
+
 
 # des progs amoin; au lieu de faire un mini-script à chaque fois:
 alias qe='wine ~/progswin/util/qe.exe'
@@ -191,6 +206,8 @@ alias dog=cat
 
 # Trouvé sur touïteur:
 alias busy='my_file=$(find /usr/include -type f | sort -R | head -n 1); my_len=$(wc -l $my_file | cut -d " " -f 1); let "r = $RANDOM % $my_len" 2>/dev/null; vim +$r $my_file'
+# Une version perso de cet alias rigolo pour paraître occupé...
+alias oqp='fontchiers=$(find ~/dev/ -maxdepth 3 -type f | grep "\.py$\|\.r$\|\.sh$" | sort -R | head -n 5); cmd="vim -o "; for f in $fontchiers; do len=$(wc -l $f | cut -d " " -f 1); let "r = $RANDOM % $len" 2>/dev/null; cmd+=" $f +$r "; done; echo $cmd; $cmd'
 
 
 export EDITOR=/usr/bin/vim
@@ -209,7 +226,7 @@ export PILOTPORT=usb:
 export PILOTRATE=115200
 
 
-if [ `whoami` = "root" ] ; then
+if [ $(whoami) = "root" ] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
 	echo "Je suis en route!"
 else
@@ -237,8 +254,8 @@ export HISTCONTROL=ignoreboth
 export HISTCONTROL=ignoreboth:erasedups
 
 #BCPPLUS d'historique!! suivons le conseil démesuré de http://www.oreillynet.com/onlamp/blog/2007/01/whats_in_your_bash_history.html
-export HISTFILESIZE=1000000000000000
-export HISTSIZE=1000000000000
+export HISTFILESIZE=100000000000000
+export HISTSIZE=100000000000
 # encore plus de démesure...
 
 # Compress the cd, ls -l series of commands.
@@ -364,6 +381,144 @@ fi
 # export GEM_PATH=$HOME/.gem
 
 
+
 # Pour le MOOC de bash:
 alias mooc_bash_document_compagnon="evince mooc_bash/MSB_doc_compagnon.pdf &"
+
+# # Exercices lors du MOOC bash:
+# D=$HOME/cv
+# export D
+
+# shellcheck shell=sh
+
+
+# Expand $PATH to include the directory where snappy applications go.
+snap_bin_path="/snap/bin"
+if [ -n "${PATH##*${snap_bin_path}}" -a -n "${PATH##*${snap_bin_path}:*}" ]; then
+    export PATH=$PATH:${snap_bin_path}
+fi
+
+# Ensure base distro defaults xdg path are set if nothing filed up some
+# defaults yet.
+if [ -z "$XDG_DATA_DIRS" ]; then
+    export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+fi
+
+# Desktop files (used by desktop environments within both X11 and Wayland) are
+# looked for in XDG_DATA_DIRS; make sure it includes the relevant directory for
+# snappy applications' desktop files.
+snap_xdg_path="/var/lib/snapd/desktop"
+if [ -n "${XDG_DATA_DIRS##*${snap_xdg_path}}" -a -n "${XDG_DATA_DIRS##*${snap_xdg_path}:*}" ]; then
+    export XDG_DATA_DIRS="${XDG_DATA_DIRS}:${snap_xdg_path}"
+fi
+
+
+
+
+# Tiré de: https://linuxhandbook.com/linux-alias-command/ :
+#Displaying iptables information the easy way :)
+alias iptlist='/sbin/iptables -L -n -v --line-numbers'           #this will display all lines of your current iptables
+alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'   #this will display all your INCOMING rules in iptables
+alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers' #this will display all your OUTGOING rules in iptables
+
+#make rm command safer
+alias rm="rm -i" 
+
+# Des couleurs!
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -lrt'
+alias ls='ls --color=auto'
+
+
+
+
+# Inspiration de https://opensource.com/article/19/7/bash-aliases :
+
+# Find a command in your grep history
+alias history_grep='history | grep'
+
+
+# # Create a Python virtual environment
+# Do you code in Python?
+# Do you code in Python a lot?
+# If you do, then you know that creating a Python virtual environment requires, at the very least, 53 keystrokes.
+# That’s 49 too many, but that’s easily circumvented with two new aliases called ve and va:
+alias ve='python3 -m venv ./venv'
+alias va='source ./venv/bin/activate'
+# Running ve creates a new directory, called venv, containing the usual virtual environment filesystem for Python3. The va alias activates the environment in your current shell:
+# $ cd my-project
+# $ ve 
+# $ va
+# (venv) $ 
+
+
+# # Add a copy progress bar
+# Everybody pokes fun at progress bars because they’re infamously inaccurate. And yet, deep down, we all seem to want them. The UNIX cp command has no progress bar, but it does have a -v option for verbosity, meaning that it echoes the name of each file being copied to your terminal. That’s a pretty good hack, but it doesn’t work so well when you’re copying one big file and want some indication of how much of the file has yet to be transferred.
+# The pv command provides a progress bar during copy, but it’s not common as a default application. On the other hand, the rsync command is included in the default installation of nearly every POSIX system available, and it’s widely recognized as one of the smartest ways to copy files both remotely and locally.
+# Better yet, it has a built-in progress bar.
+alias cpv='rsync -ah --info=progress2'
+# Using this alias is the same as using the cp command:
+# $ cpv bigfile.flac /run/media/seth/audio/
+#           3.83M 6%  213.15MB/s    0:00:00 (xfr#4, to-chk=0/4)
+# An interesting side effect of using this command is that rsync copies both files and directories without the -r flag that cp would otherwise require.
+
+
+
+# # Protect yourself from file removal accidents
+# You shouldn’t use the rm command. The rm manual even says so:
+#     Warning: If you use ‘rm’ to remove a file, it is usually possible to recover the contents of that file. If you want more assurance that the contents are truly unrecoverable, consider using ‘shred’.
+# If you want to remove a file, you should move the file to your Trash, just as you do when using a desktop.
+# POSIX makes this easy, because the Trash is an accessible, actual location in your filesystem. That location may change, depending on your platform: On a FreeDesktop, the Trash is located at ~/.local/share/Trash, while on MacOS it’s ~/.Trash, but either way, it’s just a directory into which you place files that you want out of sight until you’re ready to erase them forever.
+# This simple alias provides a way to toss files into the Trash bin from your terminal:
+alias tcn='mv --force -t ~/.local/share/Trash '
+# Je refais ça avec une fonction:
+function rm_trash() {
+  # Définissons la poubelle (je crois que c'est un peu POSIX):
+  trash="$HOME/.local/share/Trash"
+  # Faisons un répertoire par jour de suppression dans cette poubelle:
+  trash_of_ze_day="$trash/$(date +%Y_%m_%d | sed -e 's/\:/_/g')"
+  mkdir -p "$trash_of_ze_day"
+  target_file="$1"
+  # Si jamais il y a déja un féchier du nom de $1, on y rajoute autant de _ au c.l que nécessaire
+  while [[ -e $trash_of_ze_day/$target_file ]]; do
+    target_file+="_"
+  done
+  # Enfin, on met tout ça à la poubelle triée:
+  # mv --force -t "$1" "$trash_of_ze_day/$target" # => fonctionne pas
+  mv "$1" "$trash_of_ze_day/$target_file"
+}
+alias tcn='rm_trash'
+# This alias uses a little-known mv flag that enables you to provide the file you want to move as the final argument, ignoring the usual requirement for that file to be listed first. Now you can use your new command to move files and folders to your system Trash:
+# $ ls 
+# foo  bar
+# $ tcn foo
+# $ ls
+# bar 
+# Now the file is "gone," but only until you realize in a cold sweat that you still need it. At that point, you can rescue the file from your system Trash; be sure to tip the Bash and mv developers on the way out.
+# Note: If you need a more robust Trash command with better FreeDesktop compliance, see Trashy.
+# 
+# => raccourci vers rm, carrément:
+alias rm='tcn'
+
+
+
+
+function cptimestampedarchive () {
+  # (c'était naguère un script)
+  #/bin/bash
+  # Copie d'un féchier, donné en argument, vers une version archivée avec un horodatage en suffixe
+  # cp -r $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
+  cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
+  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_$(date +\%Y_\%m_\%d__* | sed -e 's/\:/_/g') | tail -2)"
+}
+alias backup_timestamp='cptimestampedarchive'
+
+
+# A simpler, and probably more universal, alias returns you to the Git project’s top level. This alias is useful because when you’re working on a project, that project more or less becomes your "temporary home" directory. It should be as simple to go "home" as it is to go to your actual home, and here’s an alias to do it:
+alias cg='cd `git rev-parse --show-toplevel`'
+# Now the command cg takes you to the top of your Git project, no matter how deep into its directory structure you have descended.
 

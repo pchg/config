@@ -21,3 +21,6 @@
 [diff "odf"]
 	binary = true
 	textconv = odt2txt
+[pager]
+	branch = false
+	stash = false

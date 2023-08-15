@@ -63,8 +63,8 @@ synclient TapButton1=1
 imwheel
 
 xhost +
-#xscreensaver &
-nextcloud &
+xscreensaver &
+# nextcloud &
 #clipit &
 diodon & # Nouveau nom de clipit...
 orage -t &

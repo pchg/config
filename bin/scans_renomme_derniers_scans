@@ -1,0 +1,29 @@
+#!/bin/bash
+# Premières versions, ouane-laïneures:
+# for i in BRN* ; do echo $i ; echo "Affichage de $i avec evince..." ; evince $i ; echo "nom de féchier à ajouter à la fin de $i: " ; read nom ; nouveau_nom=${i/\.pdf/_${nom// /_}\.pdf} ; echo $nouveau_nom; read; mv "$i" "$nouveau_nom" ; ls $nouveau_nom ; done
+# for i in BRN* ; do echo $i ; echo "Affichage de $i avec evince..." ; evince $i ; echo "nom de féchier à ajouter à la fin de $i: " ; read nom ; nom=${nom// /_} ; echo $nom ; read; nouveau_nom=${i/\.pdf/_${nom}\.pdf} | tr "[:upper:]" "[:lower:]" ; echo $nouveau_nom; read; mv "$i" "$nouveau_nom" ; ls $nouveau_nom ; done
+
+# => 
+# for i in BRN* ; do echo BRN_904048_006263.pdf ; echo Affichage de BRN_904048_006263.pdf avec evince... ; evince BRN_904048_006263.pdf ; echo nom de féchier à ajouter à la fin de BRN_904048_006263.pdf:  ; read nom ; nouveau_nom=BRN_904048_006263_scans_bulletins_paie_marie_2023_jan_mars.pdf ; echo BRN_904048_006263_scans_bulletins_paie_marie_2023_jan_mars.pdf; read; mv BRN_904048_006263.pdf BRN_904048_006263_scans_bulletins_paie_marie_2023_jan_mars.pdf ; ls BRN_904048_006263_scans_bulletins_paie_marie_2023_jan_mars.pdf ; done
+
+export DEBUG=1
+export DEBUG=0
+
+cd ~/scans_multifonction_brother
+[[ $DEBUG == 1 ]] && pwd
+
+for i in BRN* ; do
+ echo "$i"
+ echo "Affichage de $i avec evince..."
+ evince "$i"
+ echo "Entrer un nom de féchier à ajouter à la fin de $i: "
+ read -r nom
+ nouveau_nom=${i/\.pdf/_${nom// /_}\.pdf}
+ [[ $DEBUG == 1 ]] && echo "$nouveau_nom"
+ nouveau_nom=$(echo "$nouveau_nom" | tr "[:upper:]" "[:lower:]")
+ [[ $DEBUG == 1 ]] && echo "$nouveau_nom"
+ [[ $DEBUG == 1 ]] && read -r
+ mv "$i" "$nouveau_nom"
+ ls -l "$nouveau_nom"
+done
+
