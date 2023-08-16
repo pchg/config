@@ -1,9 +1,0 @@
-cd /srv/chroot/debian_stable/
-mount --bind /proc proc
-mount --bind /sys sys
-mount --bind /tmp tmp
-chroot . /bin/bash
-umount sys
-umount proc
-umount tmp
-

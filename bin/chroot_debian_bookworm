@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [[ "$(whoami)" != "root" ]] ; then
+  echo -e "Ceci doit se lancer en tant que root:\nBe Root."
+  exit 1
+fi
+
+# cd /srv/chroot/beowulf/
+cd /home/pierre/debian_chroot
+
+# mount --bind /proc proc
+# mount --bind /sys sys
+mount -t proc  /proc  proc/
+mount -t sysfs /sys   sys/
+mount --rbind  /dev   dev/
+mount --rbind  /run   run/
+mount --rbind  /home  home/
+mount --rbind  /var/cache/apt/archives var/cache/apt/archives/
+
+# If you are running a UEFI system, you will also need access to EFI variables. Otherwise, when installing GRUB, you will receive a message similar to: UEFI variables not supported on this machine:
+# mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
+
+if [[ "$(readlink -- etc/resolv.conf)" != "/etc/resolv.conf" ]]; then
+  ln -s /etc/resolv.conf etc/resolv.conf
+fi
+
+# Début de la session chroot:
+# schroot -p -c beowulf
+# chroot . /bin/bash
+schroot -p -c debian-bookworm
+
+# Fin de la session
+
+# On tente de remettre tout en état
+# umount --recursive .
+umount --recursive {proc,sys,dev,run,home,var/cache/apt/archives}
+

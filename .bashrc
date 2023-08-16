@@ -226,7 +226,7 @@ export PILOTPORT=usb:
 export PILOTRATE=115200
 
 
-if [ $(whoami) = "root" ] ; then
+if [[ "$(whoami)" == "root" ]] ; then
 	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
 	echo "Je suis en route!"
 else
@@ -254,8 +254,8 @@ export HISTCONTROL=ignoreboth
 export HISTCONTROL=ignoreboth:erasedups
 
 #BCPPLUS d'historique!! suivons le conseil démesuré de http://www.oreillynet.com/onlamp/blog/2007/01/whats_in_your_bash_history.html
-export HISTFILESIZE=100000000000000
-export HISTSIZE=100000000000
+export HISTFILESIZE=1000000000000000
+export HISTSIZE=1000000000000
 # encore plus de démesure...
 
 # Compress the cd, ls -l series of commands.
@@ -300,6 +300,214 @@ export LESS="-iMSx4 -R"
 
 export PYTHONSTARTUP='.pythonstartup.py'
 
+# Prompt PS1:{{{
+# Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
+# Des vieilleries:{{{
+# PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
+# PS1='\t \[\033[0;31m]\u\033[0m]'
+# PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+# # Allez, un peu de couleur, pour égayer:
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
+# # Et puis aussi le PID, manière d'avoir un identifiant unique par xterm
+# #(pratique, quand on en arrive là: {{{
+# #  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
+# #px bash | wc -l
+# #75
+# #}}}
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Je tente d'ôter le \n avant le prompt, manière de rendre plus compacts et monolithiques mes copié-collés depuis des terminaux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# }}}
+# Et puis aussi les états dirty, untracked, stash, etc.:
+# export GIT_PS1_SHOWDIRTYSTATE=1
+# export GIT_PS1_SHOWCOLORHINTS=1
+# export GIT_PS1_SHOWUNTRACKEDFILES=1
+#PS1=" \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)  < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+
+# => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
+# 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
+# PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
+# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+
+# Annexe: doc pour mettre des couleurs:{{{
+#
+# To add colors to the shell prompt use the following export command syntax:
+# '\e[x;ym $PS1 \e[m'
+# Where,
+#    \e[ : Start color scheme.
+#    x;y : Color pair to use (x;y)
+#    $PS1 : Your shell prompt variable.
+#    \e[m : Stop color scheme.
+# 
+# export PS1="\e[0;31m[\u@\h \W]\$ \e[m "
+#
+# A list of color codes
+# Color     Code
+# Black     0;30
+# Blue      0;34
+# Green     0;32
+# Cyan      0;36
+# Red       0;31
+# Purple    0;35
+# Brown     0;33
+# Blue      0;34
+# Green     0;32
+# Cyan      0;36
+# Red       0;31
+# Purple    0;35
+# Brown     0;33
+#
+# Des variables, allez:
+colour_txtblk='\e[0;30m' # Black - Regular
+colour_txtred='\e[0;31m' # Red
+colour_txtgrn='\e[0;32m' # Green
+colour_txtylw='\e[0;33m' # Yellow
+colour_txtblu='\e[0;34m' # Blue
+colour_txtpur='\e[0;35m' # Purple
+colour_txtcyn='\e[0;36m' # Cyan
+colour_txtwht='\e[0;37m' # White
+colour_bldblk='\e[1;30m' # Black - Bold
+colour_bldred='\e[1;31m' # Red
+colour_bldgrn='\e[1;32m' # Green
+colour_bldylw='\e[1;33m' # Yellow
+colour_bldblu='\e[1;34m' # Blue
+colour_bldpur='\e[1;35m' # Purple
+colour_bldcyn='\e[1;36m' # Cyan
+colour_bldwht='\e[1;37m' # White
+colour_unkblk='\e[4;30m' # Black - Underline
+colour_undred='\e[4;31m' # Red
+colour_undgrn='\e[4;32m' # Green
+colour_undylw='\e[4;33m' # Yellow
+colour_undblu='\e[4;34m' # Blue
+colour_undpur='\e[4;35m' # Purple
+colour_undcyn='\e[4;36m' # Cyan
+colour_undwht='\e[4;37m' # White
+colour_bakblk='\e[40m'   # Black - Background
+colour_bakred='\e[41m'   # Red
+colour_bakgrn='\e[42m'   # Green
+colour_bakylw='\e[43m'   # Yellow
+colour_bakblu='\e[44m'   # Blue
+colour_bakpur='\e[45m'   # Purple
+colour_bakcyn='\e[46m'   # Cyan
+colour_bakwht='\e[47m'   # White
+colour_txtrst='\e[0m'    # Text Reset
+
+# }}}
+
+
+# Je redécoupe la construction du PS1:{{{
+# - une ligne vide d'abord, pour espacer, et une espace pour ne pas que ça arrive dans un historique:
+PS1="\n "
+# - l'utilisateur, avec une couleur rouge ou verte, selon qu'il soit root ou pas, avec un # pour innocenter la ligne de prompt:
+if [[ "$(whoami)" == "root" ]] ; then
+  PS1+="$colour_bldred# \u@"
+else
+  PS1+="$colour_txtgrn# \u@"
+fi
+# - le nom d'hôte:
+PS1+="\h"
+# - changer le prompt si on est dans un chroot:
+# if [ "$(stat -c %d:%i / 2> /dev/null)" != "$(stat -c %d:%i /proc/1/root/. 2> /dev/null)" ]; then
+# if [[ $(awk 'BEGIN{exit_code=1} $2 == "/" {exit_code=0} END{exit exit_code}' /proc/mounts) ]]; then
+# if [[ "$(ls -di / )" != "2" ]]; then 
+# if [[ "$(ls -di / | cut -f 1 )" != "2" ]] ; then
+if [[ "$(ls -di / | cut -d ' ' -f 1 )" != "2" ]]; then
+  # echo "We are chrooted!"
+  PS1+="{#CHROOT#}$colour_txtrst"
+else
+  # echo "Business as usual"
+  PS1+="$colour_txtrst"
+fi
+# - le répertoire courant:
+PS1+=": \w"
+# - l'horodatage:
+PS1+=" < $colour_txtgrn\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$colour_bldblu \#$colour_txtrst]"
+# - et plein de git:
+#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
+#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
+# PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[0;31m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
+# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+#PS1+='\[\033[38;5;63m\]'
+#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
+# PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
+# PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo -e \" [$colour_bldred\"; fi)\[\e[38;5;202m\]$(git branch 2>/dev/null | grep \"^*\" | colrm 1 2)\[\e[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo \"]\"; fi)'
+
+# 2023_08_16__17_26_09 
+# => ça n'écrit plus quelque chose de chouette:
+#  # pierre@latitude: ~/config < 2023_08_16__17_25_51 > [bashpid_26083 49] [;31m* master]
+# => autre solution:
+source ~/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=1
+export GIT_PS1_SHOWUPSTREAM="auto verbose name"
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_COMPRESSSPARSESTATE=1
+export GIT_PS1_SHOWCONFLICTSTATE="yes"
+# PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1+='$(__git_ps1 " (%s)")'
+# -on revient au noir et on passe à la ligne, finaloumen:
+PS1+="$colour_txtrst\n"
+# }}}
+
+# }}}
+
+if [ 2 == 0 ]; then
+# {{{
+
+
+# Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
+# PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
+# # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
+# PS1='\t \[\033[0;31m]\u\033[0m]'
+# PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
+# # Allez, un peu de couleur, pour égayer:
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
+# # Et puis aussi le PID, manière d'avoir un identifiant unique par xterm
+# #(pratique, quand on en arrive là: {{{
+# #  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
+# #px bash | wc -l
+# #75
+# #}}}
+# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Je tente d'ôter le \n avant le prompt, manière de rendre plus compacts et monolithiques mes copié-collés depuis des terminaux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+# Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
+# PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# Et puis aussi les états dirty, untracked, stash, etc.:
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+#PS1=" \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)  < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
+
+# => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
+# 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
+# PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
+# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+PS1="\n \033[0;32m\]\# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+#PS1+='\[\033[38;5;63m\]'
+#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
+PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
+PS1+="\033[0m\]\n"
+
+
+# }}}
+#{{{
+#
+
+
 # Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
 # PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
 # PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
@@ -338,6 +546,10 @@ PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BA
 PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
 PS1+="\033[0m\]\n"
 
+
+#
+#}}}
+fi
 
 export BROWSER=firefox
 
@@ -382,7 +594,7 @@ fi
 
 
 
-# Pour le MOOC de bash:
+# Pour le MOOC de bash:{{{
 alias mooc_bash_document_compagnon="evince mooc_bash/MSB_doc_compagnon.pdf &"
 
 # # Exercices lors du MOOC bash:
@@ -390,6 +602,7 @@ alias mooc_bash_document_compagnon="evince mooc_bash/MSB_doc_compagnon.pdf &"
 # export D
 
 # shellcheck shell=sh
+#}}}
 
 
 # Expand $PATH to include the directory where snappy applications go.
@@ -504,6 +717,11 @@ alias tcn='rm_trash'
 # => raccourci vers rm, carrément:
 alias rm='tcn'
 
+
+
+# Pour avoir des couleurs dans les greps divers, ainsi que dans les watches:
+alias grep='grep --color=always'
+alias watch='watch -d -c'
 
 
 
