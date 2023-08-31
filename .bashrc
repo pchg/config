@@ -94,6 +94,7 @@ if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
 fi
 
+# Des alias de ls comme s'il en pleuvait:
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias dir='ll'
@@ -103,8 +104,11 @@ alias ls-l='ls -l'
 alias lll='ls -trlh | less'
 alias lla='ll -a | less'
 alias lls='ls -trlh | tail -10'
+alias llsa='ls -trlha | tail -10'
 alias llls='ls -trlh | tail -50'
+alias lllsa='ls -trlha | tail -50'
 alias lllls='ls -trlh | tail -100'
+alias llllsa='ls -trlha | tail -100'
 
 # Un ls "vivant":
 alias ls_vivant='watch -d -n 0.2 "pwd; echo ""; ls -tl"'
@@ -119,6 +123,12 @@ alias lva='ls_vivant_fich_cach'
 # alias der_fichier=`ls --group-directories-first -Htr | tail -1`
 function der_fichier() {
   echo $(ls --group-directories-first -Ht | head -1)
+  # Tentatives de mieux faire (vaines):{{{
+	#   echo $(
+	#     find . -maxdepth 1 -type f -exec ls -1 {}\;
+	#     \ --group-directories-first\ -Htr\ '{}'\ \;
+	#      | tail -1)
+	# }}}
 }
 alias edit_der_fichier="f=\$(der_fichier); $EDITOR \$f"
 alias vi_der_fichier=edit_der_fichier
@@ -207,7 +217,7 @@ alias dog=cat
 # Trouvé sur touïteur:
 alias busy='my_file=$(find /usr/include -type f | sort -R | head -n 1); my_len=$(wc -l $my_file | cut -d " " -f 1); let "r = $RANDOM % $my_len" 2>/dev/null; vim +$r $my_file'
 # Une version perso de cet alias rigolo pour paraître occupé...
-alias oqp='fontchiers=$(find ~/dev/ -maxdepth 3 -type f | grep "\.py$\|\.r$\|\.sh$" | sort -R | head -n 5); cmd="vim -o "; for f in $fontchiers; do len=$(wc -l $f | cut -d " " -f 1); let "r = $RANDOM % $len" 2>/dev/null; cmd+=" $f +$r "; done; echo $cmd; $cmd'
+alias oqp='fontchiers=$(find ~/dev/ -maxdepth 3 -type f | 'grep' "\.py$\|\.r$\|\.sh$" | sort -R | head -n 5); cmd="vim -o "; for f in $fontchiers; do len=$(wc -l $f | cut -d " " -f 1); let "r = $RANDOM % $len" 2>/dev/null; cmd+=" $f +$r "; done; echo $cmd; $cmd'
 
 
 export EDITOR=/usr/bin/vim
@@ -252,7 +262,6 @@ export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
 # https://linuxconfig.org/how-to-manage-bash-history => If we want to avoid duplicates in the whole shell history no matter the position they have, we can use the erasedups value, instead.
 export HISTCONTROL=ignoreboth:erasedups
-
 #BCPPLUS d'historique!! suivons le conseil démesuré de http://www.oreillynet.com/onlamp/blog/2007/01/whats_in_your_bash_history.html
 export HISTFILESIZE=1000000000000000
 export HISTSIZE=1000000000000
@@ -324,7 +333,6 @@ export PYTHONSTARTUP='.pythonstartup.py'
 # Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
 # PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-# }}}
 # Et puis aussi les états dirty, untracked, stash, etc.:
 # export GIT_PS1_SHOWDIRTYSTATE=1
 # export GIT_PS1_SHOWCOLORHINTS=1
@@ -335,6 +343,7 @@ export PYTHONSTARTUP='.pythonstartup.py'
 # 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
 # PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
 # PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
+# }}}
 
 # Annexe: doc pour mettre des couleurs:{{{
 #
@@ -401,7 +410,6 @@ colour_txtrst='\e[0m'    # Text Reset
 
 # }}}
 
-
 # Je redécoupe la construction du PS1:{{{
 # - une ligne vide d'abord, pour espacer, et une espace pour ne pas que ça arrive dans un historique:
 PS1="\n "
@@ -428,7 +436,7 @@ fi
 # - le répertoire courant:
 PS1+=": \w"
 # - l'horodatage:
-PS1+=" < $colour_txtgrn\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$colour_bldblu \#$colour_txtrst]"
+PS1+=" < $colour_txtpur\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$colour_bldblu \#$colour_txtrst]"
 # - et plein de git:
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
@@ -458,98 +466,9 @@ PS1+='$(__git_ps1 " (%s)")'
 PS1+="$colour_txtrst\n"
 # }}}
 
-# }}}
-
-if [ 2 == 0 ]; then
-# {{{
-
-
-# Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
-# PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
-# PS1='\t \[\033[0;31m]\u\033[0m]'
-# PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
-# # Allez, un peu de couleur, pour égayer:
-# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
-# # Et puis aussi le PID, manière d'avoir un identifiant unique par xterm
-# #(pratique, quand on en arrive là: {{{
-# #  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
-# #px bash | wc -l
-# #75
-# #}}}
-# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-# Je tente d'ôter le \n avant le prompt, manière de rendre plus compacts et monolithiques mes copié-collés depuis des terminaux:
-# PS1="  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-# Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
-# PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-# Et puis aussi les états dirty, untracked, stash, etc.:
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-#PS1=" \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)  < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-
-# => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
-# 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
-# PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
-# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
-PS1="\n \033[0;32m\]\# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
-#PS1+='\[\033[38;5;63m\]'
-#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
-PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
-PS1+="\033[0m\]\n"
-
 
 # }}}
-#{{{
-#
 
-
-# Je me fais un prompt qui permette de copier-coller sans avoir à retrafiquer:
-# PS1="  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n  # \u@\h: \w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n   \u@\h:\w$        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# PS1="\n  # \u@\h: \w        < $(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g') >\n"
-# # Ah, enfin ce que je cherchais depuis longtemps: l'heure courante:
-# PS1='\t \[\033[0;31m]\u\033[0m]'
-# PS1="\n  # \u@\h: \w        < \D{%Y_%m_%d__%T} >\n"
-# # Allez, un peu de couleur, pour égayer:
-# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >\n"
-# # Et puis aussi le PID, manière d'avoir un identifiant unique par xterm
-# #(pratique, quand on en arrive là: {{{
-# #  # pierre@latitude: ~        < 2019_10_07__12:03:54 >
-# #px bash | wc -l
-# #75
-# #}}}
-# PS1="\n  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-# Je tente d'ôter le \n avant le prompt, manière de rendre plus compacts et monolithiques mes copié-collés depuis des terminaux:
-# PS1="  \033[0;32m# \u@\h: \033[0m\w        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-# Ah, aussi, j'y ajoute la branche, si je suis dans un répertoire gitteux:
-# PS1="  \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)        < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-# Et puis aussi les états dirty, untracked, stash, etc.:
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-#PS1=" \033[0;32m# \u@\h: \033[0m\w $(__git_ps1)  < \D{%Y_%m_%d__%T} >  [bashpid_$BASHPID]\n"
-
-# => ces fioritures avec du git ne fonctionnent correctement que quand on démarre un bash dans un répertoire git, pas sinon.
-# 2020_11_02__09_19_28 j'ajoute juste une ligne pour l'état du git, à partir du prompt précédent:
-# PS1=" \033[0;32m# \u@\h: \033[0m\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID \#]"
-# PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%T} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
-PS1="\n \033[0;32m\]# \u@\h: \033[0m\]\w < \D{%Y_%m_%d__%H_%M_%S} > [bashpid_$BASHPID\033[01;34m\] \#\033[0m\]]"
-#PS1+='\[\033[38;5;63m\]'
-#PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
-PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
-PS1+="\033[0m\]\n"
-
-
-#
-#}}}
-fi
 
 export BROWSER=firefox
 
@@ -557,7 +476,7 @@ alias htop='htop -d 50'
 alias htopbg='htop -d 600'
 # alias px='ps auxf | grep -v grep | grep -i -e VSZ -e'
 # alias px='ps faux | grep -v "grep faux" | grep -i -e VSZ -e'
-alias px='ps faux | grep -v "grep faux" | grep -vi -e VSZ | grep -e'
+alias px='ps faux | 'grep' -v "'grep' faux" | 'grep' -vi -e VSZ | grep -e'
 alias dus='du -ch | sort -h'
 alias dua='du -ach | sort -h'
 alias findhere='find . -iname'
@@ -693,9 +612,10 @@ function rm_trash() {
   # Définissons la poubelle (je crois que c'est un peu POSIX):
   trash="$HOME/.local/share/Trash"
   # Faisons un répertoire par jour de suppression dans cette poubelle:
-  trash_of_ze_day="$trash/$(date +%Y_%m_%d | sed -e 's/\:/_/g')"
+  # trash_of_ze_day="$trash/$(date +%Y_%m_%d | sed -e 's/\:/_/g')"
+  trash_of_ze_day="$trash/$(date +%Y_%m_%d)"
   mkdir -p "$trash_of_ze_day"
-  target_file="$1"
+  target_file=$(basename "$1")
   # Si jamais il y a déja un féchier du nom de $1, on y rajoute autant de _ au c.l que nécessaire
   while [[ -e $trash_of_ze_day/$target_file ]]; do
     target_file+="_"
@@ -720,9 +640,9 @@ alias rm='tcn'
 
 
 # Pour avoir des couleurs dans les greps divers, ainsi que dans les watches:
-alias grep='grep --color=always'
 alias watch='watch -d -c'
-
+# alias grep='grep --color=always'
+# => oui mais non... autant c'est zouli à l'écran, autant dès qu'on tube |, ça débloque grave.
 
 
 function cptimestampedarchive () {
@@ -730,13 +650,22 @@ function cptimestampedarchive () {
   #/bin/bash
   # Copie d'un féchier, donné en argument, vers une version archivée avec un horodatage en suffixe
   # cp -r $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
-  cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
-  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_$(date +\%Y_\%m_\%d__* | sed -e 's/\:/_/g') | tail -2)"
+  # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
+  cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)} && \
+  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_$(date +\%Y_\%m_\%d__*) | tail -1)"
 }
 alias backup_timestamp='cptimestampedarchive'
-
+alias cpt='cptimestampedarchive'
 
 # A simpler, and probably more universal, alias returns you to the Git project’s top level. This alias is useful because when you’re working on a project, that project more or less becomes your "temporary home" directory. It should be as simple to go "home" as it is to go to your actual home, and here’s an alias to do it:
 alias cg='cd `git rev-parse --show-toplevel`'
 # Now the command cg takes you to the top of your Git project, no matter how deep into its directory structure you have descended.
+
+
+# Un alias pour lancer vim en mode "vivant", à savoir qui recharge automatiquement le contenu du féchier édité:
+alias vi_live="vim $\"+:set autoread | au CursorHold * checktime | call feedkeys('lh')\" "
+alias vil='vi_live'
+
+# Connexion directe à psql avec $CONNINFO, ça simplifie des choses pour xbindkeys
+alias psql_conninfo="psql $CONNINFO"
 
