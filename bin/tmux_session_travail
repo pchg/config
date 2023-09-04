@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Session de travail tmux
+# tmux new-session -d 'travail' -n nnotes
+# tmux ls
+tmux new-session -d -s travail -n nnotes     "vi nnotes.txt"
+tmux new-window  -n archives   "vi aarchives_notes_2000_2xxx_perso_et_prof.txt"
+tmux new-window  -n lanceur    "bash"
+tmux new-window  -n mc         "mc"
+tmux new-window  -n ROUTE      "su"
+tmux new-window  -n taupe      "htop -d 50"
+tmux new-window  -n psql       "psql $CONNINFO"
+tmux new-window  -n mosaïque   "bash"
+tmux  split-window -v
+tmux  split-window -h
+tmux  split-window -h
+tmux -2 attach-session -t travail
+exit 0
+
+
+
+# tmux new-session \; \
+#   send-keys 'tail -f /var/log/monitor.log' C-m \; \
+#   split-window -v \; \
+#   split-window -h \; \
+#   send-keys 'top' C-m \; \
+#   select-pane -t 1 \; \
+#   split-window -v \; \
+#   send-keys 'weechat' C-m \;
+
+
+
+# screen -t postgres      7 bash
+# # screen -t psql_bdexplo 6 bash -c "psql -p 5432 -h localhost -d bdexplo"
+# screen -t psql_postgeol 6 bash -c "psql -p 5432 -h localhost -d postgeol"
+# screen -t taupe         5 htop -d 50
+# screen -t ROUTE         4 bash -c "su"
+# screen -t mc            3 mc
+# screen -t lanceur       2 bash
+# screen -t aarchives     1 bash
+# screen -t nnotes        0 bash # -c "vi nnotes.txt"
+#screen -t mail 8 mutt
+#screen -t daemon 9 tail -f /var/log/daemon.log
+
+
+tmux split-window -v 'ipython'
+tmux split-window -h
+# tmux new-window 'mutt'
+
