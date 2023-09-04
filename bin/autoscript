@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -e "Autoscript: automatically interpret whatever text is put in the X clipboard in an interpreter.\n"
+echo -e "At the moment, the following languages are implemented:\n - Rebol\n - Bash\n - PYthon\n"
+read -n1 -p "Press the key corresponding to the uppercase letter of the language of your choice, to start automatic clipboard feed of REPL (defaults is Python):" choice
+case ${choice^^} in
+  "R") autorebol     ;;
+  "B") autobash      ;;
+  "Y") autopython.py ;;
+  "" ) autopython.py ;;
+  "*") echo -e "Invalid choice, exiting."; exit 1 ;;
+esac
+return=$?
+echo -e "Finished running $0"
+echo "Press Enter to close.."
+read
+exit $return
+
