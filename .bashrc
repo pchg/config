@@ -652,7 +652,7 @@ function cptimestampedarchive () {
   # cp -r $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
   # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
   cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)} && \
-  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_$(date +\%Y_\%m_\%d__*) | tail -1)"
+  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_"$(date +\%Y_\%m_\%d__*)" | tail -1)"
 }
 alias backup_timestamp='cptimestampedarchive'
 alias cpt='cptimestampedarchive'
@@ -667,5 +667,20 @@ alias vi_live="vim $\"+:set autoread | au CursorHold * checktime | call feedkeys
 alias vil='vi_live'
 
 # Connexion directe à psql avec $CONNINFO, ça simplifie des choses pour xbindkeys
-alias psql_conninfo="psql $CONNINFO"
+alias psql_conninfo="psql \$CONNINFO"
 
+# Pourquoi diable une ouverture de xterm me fait-elle aujourd'hui tomber dans /usr/local ???
+ # pierre@latitude: /usr/local < 2023_09_01__19_02_53 > [bashpid_28394 1]
+# Remède:
+# cd $HOME
+# 2023_09_02__10_26_40 bah non, c'est fini... Mystères des errances des configurations...
+
+# Selon https://www.youtube.com/watch?v=S_9D1ndaGwY&t=9s :
+# Pour aller dans un répertoire, directement sans taper cd:
+shopt -s autocd
+# Pour expandre une variable d'environment quand on fait un cd avec (mouais, bof):
+shopt -s direxpand
+
+# Pour éditer la ligne de commande avec les raccourcis de vim, ou même vim lui-même:
+# set -o vi
+# Ah ben mince, quand je fais ça, ça empêche les haut-bas de faire mon historique filtré... => annulé
