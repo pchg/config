@@ -190,7 +190,9 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 #
 #alias o='less -AS'	#-A marche pas sur le less de la debian
 alias o='less -SiN'
-alias v='less -SiNX'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris; “less -X” if your screen clears when you quit less and you want to avoid that.
+alias v='less -SiNFX'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris; “less -X” if your screen clears when you quit less and you want to avoid that.  -F or --quit-if-one-screen: Causes less to automatically exit if the entire file can be displayed on the first screen.
+
+
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -651,8 +653,10 @@ function cptimestampedarchive () {
   # Copie d'un féchier, donné en argument, vers une version archivée avec un horodatage en suffixe
   # cp -r $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
   # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
-  cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)} && \
-  echo -e "Copied $1 to timestamped backup: \n$(ls -l "$1")\n$(ls -trl "$1"_"$(date +\%Y_\%m_\%d__*)" | tail -1)"
+  # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)} && \
+  fechier_cp_horodate="$1_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)"
+  cp -r -L "$1" "$fechier_cp_horodate"
+  echo -e "Copied $1 to timestamped backup: \n  $(ls -la "$1")\n  $(ls -al "$fechier_cp_horodate")"
 }
 alias backup_timestamp='cptimestampedarchive'
 alias cpt='cptimestampedarchive'
@@ -684,3 +688,8 @@ shopt -s direxpand
 # Pour éditer la ligne de commande avec les raccourcis de vim, ou même vim lui-même:
 # set -o vi
 # Ah ben mince, quand je fais ça, ça empêche les haut-bas de faire mon historique filtré... => annulé
+
+
+# Pour remettre le clavier à bonne vitesse:
+alias clavier_rapide='xset r rate 200 100 && xinput set-prop $(xinput | grep "Microsoft Microsoft IntelliMouse" | cut -f 2 | cut -d "=" -f 2) "libinput Accel Speed" 1'
+
