@@ -27,4 +27,17 @@ xterm*VT100.Translations: #override \
              Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~")
 ! Then do cd ; xrdb .Xresources and restart xterm.
 !Put this in your .vimrc: ...
+!! Important - instead of XXXX you must type CTRL-V and then Esc OR copy-paste the whole text and run %s/\(set <F1[34]>=\)XXXX/\=submatch(1) . "\33"/g which is copy-pastable (insert it with <CTRL-R> +).
+!
+!set timeout timeoutlen=1000 ttimeoutlen=100
+!set <F13>=XXXX[27;5;9~
+!nnoremap <F13> gt
+!set <F14>=XXXX[27;6;9~
+!nnoremap <F14> gT
+
+
+
+! Pour tenter d avoir Alt qui fonctionne dans un xterm:
+XTerm*eightBitOutput:  true
+!XTerm*eightBitInput:   false
 
