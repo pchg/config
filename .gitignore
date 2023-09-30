@@ -9,3 +9,5 @@ rien
 .netrwhist
 .poubelle/
 .icewm/.session*
+.vim/pack/plugins/*
+
