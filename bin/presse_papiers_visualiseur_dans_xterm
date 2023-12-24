@@ -1,19 +1,10 @@
 #!/bin/bash
 
+# Affichage des contenus des presse-papiers dans un xterm
+
 set -a
-
 export flag_xterm="qqchose"
-echo "YYYYY${flag_xterm}YYYY"
 source "$(dirname $0)"/presse_papiers_visualiseur
-echo "Entrée pour continuer..."; read rien
-# cmd_clipboard_viewer=$(presse_papiers_visualiseur)
-# xterm -T "presse-papiers" -geometry 43x16+973+0 -e "watch -d -c -n 0.2 '${cmd_clipboard_viewer}'"
-# cmd="watch -d -c -n 0.2 -x bash -c affiche_presse_papiers"
-# xterm -T "presse-papiers" -geometry 43x16+973+0 -e "watch -d -c -n 0.2 ${cmd}"
-
 cmd="watch -d -c -n 0.2 -x bash -c affiche_presse_papiers"
-xterm -T "presse-papiers" -geometry 43x16+973+0 -e "${cmd}"
+xterm -T "presse-papiers" -geometry 43x16+973+0 -e "${cmd}" &
 
-# echo $cmd_clipboard_viewer
-# echo $cmd_clipboard_viewer
-# echo "Entrée pour continuer..."; read rien
