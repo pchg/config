@@ -1,3 +1,41 @@
-#!/bin/sh
-cmd='echo -e "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"'
-xterm -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 '$cmd'" &
+#!/bin/bash
+
+# Affichage des contenus des presse-papiers
+
+set -a
+
+# cmd='echo -e "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"'
+# echo "Entrée pour continuer..."; read rien
+affiche_presse_papiers() {
+  echo -e "________ presse-papiers primaire: _________"
+  echo "$(xsel -po)"
+  # echo -e "\n"
+  echo -e "________ presse-papiers secondaire: _______"
+  xsel -so
+  echo -e "________ presse-papiers clipboard: ________"
+  xsel -bo
+}
+ 
+
+# echo $ 
+
+echo "XXXXX${flag_xterm}XXXX"
+echo "Entrée pour continuer..."; read rien
+ 
+if [[ -z "${flag_xterm}" ]]; then
+  # On n'est pas appelé par presse_papiers_visualiseur_dans_xterm:
+  # on watche la fonction affiche_presse_papiers:
+  # watch -d -c -n 0.2 "${cmd}"
+  echo "flag_xterm est vide"
+  echo "Entrée pour continuer..."; read rien
+  watch -d -c -n 0.2 -x bash -c affiche_presse_papiers
+else
+  # On est appelé par presse_papiers_visualiseur_dans_xterm:
+  # on renvoie simplement la commande à watcher:
+  echo "XXX${flag_xterm}XXX"
+  echo "flag_xterm n'est PAS vide"
+  echo "Entrée pour continuer..."; read rien
+  # affiche_presse_papiers
+  # rien à faire, on a simplement exporté la fonction affiche_presse_papiers
+fi
+
