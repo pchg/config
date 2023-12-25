@@ -4,8 +4,8 @@ DEBUG=0
 DEBUG=1
 
 # prog_name="$1"
+# => ça fonctione bien mieux ainsi:
 prog_name="$*"
-# => ça fonctione bien mieux ainsi
 [[ $DEBUG == "1" ]] && echo "$prog_name"
 
 # trouver le pid du process du programme
