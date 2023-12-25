@@ -2047,8 +2047,10 @@ vnoremap ` <esc>`>a`<esc>`<i`<esc>
 " TODO voir le .vimrc chez Spie, où ça fonctionne correctement
 
 " 2023_12_24__13_34_53 mince, pas vu...
+" Refait, de tête:
+nnoremap <C-F12>      /\$[A-Za-z]<cr> i{<esc>ea}<esc>
+inoremap <C-F12> <esc>/\$[A-Za-z]<cr> i{<esc>ea}<esc>
 
-nnoremap <C-F12>    /\$[A-Za-z]<cr> i{<esc>ea}<esc>
 " }}}
 
 
