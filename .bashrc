@@ -206,7 +206,7 @@ alias which='type -p'
 alias rehash='hash -r'
 #alias you='su - -c "/sbin/yast2 online_update"'
 if test "$is" != "ksh" ; then
-    alias beep='echo -en "\007"' 
+    alias beep='echo -en "\007"'
 else
     alias beep='echo -en "\x07"'
 fi
@@ -303,7 +303,7 @@ export LESS="-iMSx4 -R"
 #export LESS=-RSFX
 
 
-# pour avoir readline avec psql 
+# pour avoir readline avec psql
 # (ça y était avant, mais ça a mystérieusementdisparu, en mars 2011):
 #alias psql="LD_PRELOAD=/lib/libreadline.so.5 psql"
 # Ah, ça ne fonctionne plus, en 2016. On dirait qu'il n'y en a pas besoin, même.
@@ -356,7 +356,7 @@ export PYTHONSTARTUP='.pythonstartup.py'
 #    x;y : Color pair to use (x;y)
 #    $PS1 : Your shell prompt variable.
 #    \e[m : Stop color scheme.
-# 
+#
 # export PS1="\e[0;31m[\u@\h \W]\$ \e[m "
 #
 # A list of color codes
@@ -426,7 +426,7 @@ PS1+="\h"
 # - changer le prompt si on est dans un chroot:
 # if [ "$(stat -c %d:%i / 2> /dev/null)" != "$(stat -c %d:%i /proc/1/root/. 2> /dev/null)" ]; then
 # if [[ $(awk 'BEGIN{exit_code=1} $2 == "/" {exit_code=0} END{exit exit_code}' /proc/mounts) ]]; then
-# if [[ "$(ls -di / )" != "2" ]]; then 
+# if [[ "$(ls -di / )" != "2" ]]; then
 # if [[ "$(ls -di / | cut -f 1 )" != "2" ]] ; then
 if [[ "$(ls -di / | cut -d ' ' -f 1 )" != "2" ]]; then
   # echo "We are chrooted!"
@@ -449,7 +449,7 @@ PS1+=" < $colour_txtpur\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$
 # PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
 # PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo -e \" [$colour_bldred\"; fi)\[\e[38;5;202m\]$(git branch 2>/dev/null | grep \"^*\" | colrm 1 2)\[\e[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo \"]\"; fi)'
 
-# 2023_08_16__17_26_09 
+# 2023_08_16__17_26_09
 # => ça n'écrit plus quelque chose de chouette:
 #  # pierre@latitude: ~/config < 2023_08_16__17_25_51 > [bashpid_26083 49] [;31m* master]
 # => autre solution:
@@ -468,7 +468,10 @@ PS1+='$(__git_ps1 " (%s)")'
 PS1+="$colour_txtrst\n"
 # }}}
 
+# }}}
 
+# Prompt PS2:{{{
+PS2=""
 # }}}
 
 
@@ -497,7 +500,7 @@ export GST_V4L2_USE_LIBV4L2=1
 # Pour ekylibre, cf. https://github.com/ekylibre/ekylibre/wiki/Base-ubuntu-20-04 {{{
 # 2022_05_10__15_37_19 ça ralentit notablement mon démarrage de bash; je mets ça dans une condition si on est dans un répertoire où il y a kylibre:
 re='.*kylib.*'
-if [[ $(pwd) =~ $re ]]; then 
+if [[ $(pwd) =~ $re ]]; then
 	export PATH="$HOME/.rbenv/bin:$PATH"
 	eval "$(rbenv init -)"
 
@@ -556,7 +559,7 @@ alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'   #this will disp
 alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers' #this will display all your OUTGOING rules in iptables
 
 #make rm command safer
-alias rm="rm -i" 
+alias rm="rm -i"
 
 # Des couleurs!
 alias egrep='egrep --color=auto'
@@ -574,7 +577,7 @@ alias ls='ls --color=auto'
 
 # Find a command in your grep history
 alias history_grep='history | grep'
-
+alias hg='history_grep'
 
 # # Create a Python virtual environment
 # Do you code in Python?
@@ -585,9 +588,9 @@ alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
 # Running ve creates a new directory, called venv, containing the usual virtual environment filesystem for Python3. The va alias activates the environment in your current shell:
 # $ cd my-project
-# $ ve 
+# $ ve
 # $ va
-# (venv) $ 
+# (venv) $
 
 
 # # Add a copy progress bar
@@ -617,27 +620,33 @@ function rm_trash() {
   # trash_of_ze_day="$trash/$(date +%Y_%m_%d | sed -e 's/\:/_/g')"
   trash_of_ze_day="$trash/$(date +%Y_%m_%d)"
   mkdir -p "$trash_of_ze_day"
-  target_file=$(basename "$1")
-  # Si jamais il y a déja un féchier du nom de $1, on y rajoute autant de _ au c.l que nécessaire
-  while [[ -e $trash_of_ze_day/$target_file ]]; do
-    target_file+="_"
+  # Traitons le cas où il y aurait plusieurs fontchiers à foutre en l'air:
+  while [[ ! -z "$@" ]]; do
+    target_file=$(basename "$1")
+    # Si jamais il y a déja un féchier du nom de $1, on y rajoute autant de _ au c.l que nécessaire
+    while [[ -e $trash_of_ze_day/$target_file ]]; do
+      target_file+="_"
+    done
+    # Enfin, on met tout ça à la poubelle triée:
+    # mv --force -t "$1" "$trash_of_ze_day/$target" # => fonctionne pas
+    mv "$1" "$trash_of_ze_day/$target_file"
+    shift
   done
-  # Enfin, on met tout ça à la poubelle triée:
-  # mv --force -t "$1" "$trash_of_ze_day/$target" # => fonctionne pas
-  mv "$1" "$trash_of_ze_day/$target_file"
+
 }
 alias tcn='rm_trash'
 # This alias uses a little-known mv flag that enables you to provide the file you want to move as the final argument, ignoring the usual requirement for that file to be listed first. Now you can use your new command to move files and folders to your system Trash:
-# $ ls 
+# $ ls
 # foo  bar
 # $ tcn foo
 # $ ls
-# bar 
+# bar
 # Now the file is "gone," but only until you realize in a cold sweat that you still need it. At that point, you can rescue the file from your system Trash; be sure to tip the Bash and mv developers on the way out.
 # Note: If you need a more robust Trash command with better FreeDesktop compliance, see Trashy.
-# 
+#
 # => raccourci vers rm, carrément:
-alias rm='tcn'
+# alias rm='tcn'
+alias rm='rm_trash'
 
 
 
@@ -647,6 +656,7 @@ alias watch='watch -d -c'
 # => oui mais non... autant c'est zouli à l'écran, autant dès qu'on tube |, ça débloque grave.
 
 
+# Une fonction pour copier/sauvegarder un fichier dans sa version actuelle avec un horodatage:
 function cptimestampedarchive () {
   # (c'était naguère un script)
   #/bin/bash
@@ -660,6 +670,22 @@ function cptimestampedarchive () {
 }
 alias backup_timestamp='cptimestampedarchive'
 alias cpt='cptimestampedarchive'
+
+# # Et une autre fonction, pour archiver tous ces fontchiers issus de cptimestampedarchive vers le répertoire .backup:
+# 2023_10_14__11_05_33
+# backup_mv_
+# cpt_mv_timestampedarchives_to_backup() {
+  # for i in .*; do
+	# regex="_[0-9]
+    # if [[ "$i" =~ ^.*_[0-9]4_
+#
+# ]]]
+  # done
+# _______________ENCOURS_______________
+#
+# }
+
+
 
 # A simpler, and probably more universal, alias returns you to the Git project’s top level. This alias is useful because when you’re working on a project, that project more or less becomes your "temporary home" directory. It should be as simple to go "home" as it is to go to your actual home, and here’s an alias to do it:
 alias cg='cd `git rev-parse --show-toplevel`'
@@ -692,4 +718,37 @@ shopt -s direxpand
 
 # Pour remettre le clavier à bonne vitesse:
 alias clavier_rapide='xset r rate 200 100 && xinput set-prop $(xinput | grep "Microsoft Microsoft IntelliMouse" | cut -f 2 | cut -d "=" -f 2) "libinput Accel Speed" 1'
+
+
+: <<BOF # COMMENTAIRE
+# Le format de date par défaut:
+export TIME_STYLE="
+  - [posix-]full-iso
+  - [posix-]long-iso
+  - [posix-]iso
+  - [posix-]locale"
+
+for i in "full-iso long-iso iso locale"; do ls -l ; done
+BOF
+
+# Des alias pratiques:
+alias dstum='chromium https://teams.microsoft.com/'
+# Pour que les pages info puissent défiler avec hjkl:
+alias info='info --vi-keys'
+
+
+
+
+
+
+
+
+# 2023_10_14__11_05_33 REVENIR LÀ
+
+# Automatically added by the Guix install script.
+if [ -n "$GUIX_ENVIRONMENT" ]; then
+    if [[ $PS1 =~ (.*)"\\$" ]]; then
+        PS1="${BASH_REMATCH[1]} [env]\\\$ "
+    fi
+fi
 
