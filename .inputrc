@@ -1,6 +1,10 @@
 # /etc/inputrc - global inputrc for libreadline
 # See readline(3readline) and `info rluserman' for more information.
 
+# {{{ 8 bit clean:
+# ça fonctionne mal; donc on commente tout
+# 2023_09_01__22_24_25 comme ça fonctionne ENCORE PLUS MAL, on décommente:
+
 # Be 8 bit clean.
 set input-meta on
 set output-meta on
@@ -9,11 +13,14 @@ set output-meta on
 # the line below. However this makes the meta key not work as a meta key,
 # which is annoying to those which don't need to type in 8-bit characters.
 
-# set convert-meta off
+set convert-meta off
 
 # try to enable the application keypad when it is called.  Some systems
 # need this to enable the arrow keys.
 # set enable-keypad on
+
+
+# }}}
 
 # see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
 
@@ -22,7 +29,11 @@ set output-meta on
 # set bell-style visible
 
 # some defaults / modifications for the emacs mode
-$if mode=emacs
+#{{{
+
+# Non: pour TOUS les modes:
+# $if mode=emacs
+# $if mode=vi
 
 # allow the use of the Home/End keys
 "\e[1~": beginning-of-line
@@ -68,4 +79,14 @@ $endif
 # "\e[H": beginning-of-line
 # "\e[F": end-of-line
 
-$endif
+# $endif
+#}}}
+
+
+
+# Selon https://www.youtube.com/watch?v=S_9D1ndaGwY&t=9s :
+# Complétion en ignorant la casse:
+set completion-ignore-case on
+# Montrer tout de suite les possibilités de complétion (sans avoir à double-tabber); c'est assez ch!ant, à l'usage, donc non:
+# set show-all-if-ambiguous  on
+
