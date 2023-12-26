@@ -453,17 +453,20 @@ PS1+=" < $colour_txtpur\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$
 # => ça n'écrit plus quelque chose de chouette:
 #  # pierre@latitude: ~/config < 2023_08_16__17_25_51 > [bashpid_26083 49] [;31m* master]
 # => autre solution:
-source ~/.git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM=1
-export GIT_PS1_SHOWUPSTREAM="auto verbose name"
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_COMPRESSSPARSESTATE=1
-export GIT_PS1_SHOWCONFLICTSTATE="yes"
-# PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-PS1+='$(__git_ps1 " (%s)")'
+tt="~/.git-prompt.sh"
+if [[ -f ${tt} ]]; then
+  source ${tt}
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWSTASHSTATE=1
+  export GIT_PS1_SHOWUNTRACKEDFILES=1
+  export GIT_PS1_SHOWUPSTREAM=1
+  export GIT_PS1_SHOWUPSTREAM="auto verbose name"
+  export GIT_PS1_SHOWCOLORHINTS=1
+  export GIT_PS1_COMPRESSSPARSESTATE=1
+  export GIT_PS1_SHOWCONFLICTSTATE="yes"
+  # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+  PS1+='$(__git_ps1 " (%s)")'
+fi
 # -on revient au noir et on passe à la ligne, finaloumen:
 PS1+="$colour_txtrst\n"
 # }}}
@@ -739,16 +742,17 @@ alias info='info --vi-keys'
 
 
 
-
-
-
-
-# 2023_10_14__11_05_33 REVENIR LÀ
-
 # Automatically added by the Guix install script.
 if [ -n "$GUIX_ENVIRONMENT" ]; then
     if [[ $PS1 =~ (.*)"\\$" ]]; then
         PS1="${BASH_REMATCH[1]} [env]\\\$ "
     fi
 fi
+
+
+# 2023_12_26__16_45_00 pour appeler le débogueur de shell par bashdb:
+# alias bashdb=zshdb
+
+
+# 2023_10_14__11_05_33 REVENIR LÀ
 
