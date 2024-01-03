@@ -26,3 +26,6 @@
 	stash = false
 [diff]
 	tool = vimdiff
+[core]
+    pager = cat
+
