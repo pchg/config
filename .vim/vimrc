@@ -1335,6 +1335,33 @@ endif
 
 " Pour faire tourner le paragraphe ou le féchier courant: "{{{
 
+" TODO il y a beaucoup de redondances: factoriser, faire des fonctions. Penser à quelque chose de générique, un genre de wrapper peut-être.
+" Brouillon d'idées:{{{
+
+function! SaveCurrentLineToTmpCodeFile()
+  " ...
+endfunction
+
+function! SaveCurrentParagraphToTmpCodeFile()
+  " ...
+endfunction
+
+function! RunTmpCodeFile()
+  try
+    execute 'wincmd ' . a:direction
+    " ...
+  catch
+    echohl ErrorMsg | echo 'E11: Invalid in command-line window; <CR> executes, CTRL-C quits: wincmd k' | echohl None
+  endtry
+endfunction
+
+function! PasteOutputFromRanTmpCodeFile()
+  " ...
+endfunction
+
+"}}}
+
+
 "pour sauver et faire tourner le fichier courant par rebol^W n'importe quoi, pourvu que le chieboum soit bien fait:
 "to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
 "noremap <F5> :w<cr> :!rebol -qs %<cr>
@@ -1355,9 +1382,10 @@ noremap <s-F5>     :!rebol -qs %<cr>
 
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
-noremap <F6> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
-inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`zi
+noremap <F6>        mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>"         {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
+inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>"         {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`zi
 "(des vieilleries:) "{{{
+" noremap  <F6>       mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
 "map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'print rejoin [newline "=>" newline {;======== code evaluation output: =========} ]' >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "print {;==========================================} wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>}k
 "map <F6> vip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= } ]' >> /tmp/tmp_vim_block.rr && echo " ; {{{" >> /tmp/tmp_vim_block.rr  && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo "prin {;==========================================}  >> /tmp/tmp_vim_block.r && echo '}}}"' >> /tmp/tmp_vim_block.r && echo "wait 0.5 print rejoin [newline newline newline {Entrée pour continuer}] input" >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r"<cr>}k
@@ -1371,14 +1399,15 @@ inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp
 nnoremap <s-F6>       mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`z
 inoremap <s-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`zi
 
+
 " Pour faire tourner le paragraphe courant par python3:
-nnoremap <c-F6> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`z
-inoremap <c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`zi
+nnoremap <c-F6>       mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== Python code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`z
+inoremap <c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== Python code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`zi
 
 "Pour faire tourner le paragraphe courant par un compilateur C:
-noremap <s-c-F6>        mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block ; echo "... Entrée pour continuer" && read<cr>`z
+" FIXME logique des raccourcis pourrie. Plutôt demander quel langage au début, en gardant le même pour faire, par exemple: F6 P (pour python) Entrée, et après F6 Entrée Entrée. À réfléchir, puis refaire les raccourcis de manière logique, en faisant tourner ligne, paragraphe, en collant ou pas la sortie après.
+noremap  <s-c-F6>       mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block > /tmp/tmp_vim_block.ccc   ; echo "... Entrée pour continuer" && read<cr>`z
 inoremap <s-c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block ; echo "... Entrée pour continuer" && read<cr>`zi
-
 
 
 " pour faire tourner le paragraphe courant par bash:
@@ -1388,8 +1417,8 @@ inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_bloc
 " pour faire tourner le paragraphe courant par bash et coller la sortie après:
 " noremap  <F8>          mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
 " inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
-nnoremap <C-F8>        mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i# }}}<cr><esc>`z<cr>
-inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i# }}}<cr><esc>`z<cr>i
+nnoremap <C-F8>        mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z<cr>
+inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z<cr>i
 
 
 " pour faire tourner la ligne courante par bash:
@@ -1397,8 +1426,8 @@ noremap  <S-F8>        mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_bloc
 inoremap <S-F8>   <esc>mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
 
 " pour faire tourner la ligne courante par bash et coller la sortie après:
-nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i# }}}<cr><esc>`z<cr>
-inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i# }}}<cr><esc>`z<cr>i
+nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><esc>`z
+inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><esc>`zi
 
 
 
