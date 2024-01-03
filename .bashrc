@@ -413,8 +413,12 @@ colour_txtrst='\e[0m'    # Text Reset
 # }}}
 
 # Je redécoupe la construction du PS1:{{{
-# - une ligne vide d'abord, pour espacer, et une espace pour ne pas que ça arrive dans un historique:
-PS1="\n "
+# - en partant de rien:
+PS1=""
+# - une ligne vide d'abord, pour espacer:
+# PS1+="\n " # => PAS
+# - et une espace pour ne pas que ça arrive dans un historique:
+PS1+=" "
 # - l'utilisateur, avec une couleur rouge ou verte, selon qu'il soit root ou pas, avec un # pour innocenter la ligne de prompt:
 if [[ "$(whoami)" == "root" ]] ; then
   PS1+="$colour_bldred# \u@"
@@ -467,8 +471,10 @@ if [[ -f ${tt} ]]; then
   # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
   PS1+='$(__git_ps1 " (%s)")'
 fi
-# -on revient au noir et on passe à la ligne, finaloumen:
-PS1+="$colour_txtrst\n"
+# -on revient au noir:
+PS1+="$colour_txtrst"
+# et on passe à la ligne, finaloumen:
+PS1+="\n"
 # }}}
 
 # }}}
