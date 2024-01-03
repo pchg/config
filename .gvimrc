@@ -85,3 +85,6 @@ set  selection=exclusive
 set  selectmode=mouse,key
 set  infercase
 
+
+" On masque cette barre de boutons inutile:
+set guioptions -=T
