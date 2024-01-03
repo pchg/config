@@ -9,20 +9,22 @@
 # You'll have to omit XK_ prefixs and to replace XF86XK_ prefixes by
 # XF86. Valid modifiers are Alt, Ctrl, Shift, Meta, Super and Hyper.
 #
+
+# Je vire tout ce qui fait double emploi avec xbindkeys
 key "Alt+Ctrl+Esc"		xkill
-key "Alt+Ctrl+Shift+e"	nedit
+# key "Alt+Ctrl+Shift+e"	nedit
 #key "Alt+Ctrl+e"		geany
 #key "Alt+Ctrl+e"		gedit
 #key "Alt+Ctrl+e"		evim
-key "Alt+Ctrl+e"		gvim
+# key "Alt+Ctrl+e"		gvim
 #key "Alt+Ctrl+f"		fte
-key "Alt+Ctrl+f"		thunar
-key "Alt+Ctrl+g"		gimp
-key "Alt+Ctrl+k"		krusader
+# key "Alt+Ctrl+f"		thunar
+# key "Alt+Ctrl+g"		gimp
+key "Alt+Ctrl+k"		"lof /usr/bin/krusader"
 #key "Alt+Ctrl+b"		netscape -noraise -remote openBookmarks
 #key "Alt+Ctrl+m"		netscape -noraise -remote openURL(mailto:,new-window) 
 #key "Alt+Ctrl+n"		netscape -noraise -remote openBrowser
-key "Alt+Ctrl+n"		sensible-browser
+# key "Alt+Ctrl+n"		sensible-browser
 key "Alt+Ctrl+x"		xterm -class UXTerm -u8 #-r
 #key "Alt+Ctrl+r"		xterm -T "##REBOL##" -e "rebol -qs"
 key "Alt+Ctrl+r"		xterm -T "##REBOL##" -e "bash -c -l -i 'rebol -qs'"
