@@ -1,0 +1,154 @@
+
+https://www.vim.org/scripts/script.php?script_id=4688
+
+
+simple_highlighting : Easily highlight multiple words in all buffers and search through them
+
+ script karma  	Rating 72/22, Downloaded by 3244 	 Comments, bugs, improvements  	Vim wiki
+
+created by
+Pev Hall
+ 
+script type
+utility
+ 
+description
+==============================================================================
+Section 1: Description                               *simple_highlighting*
+
+Script is designed to be easy and quick to use and satisfy the following
+functionality:
+1. Highlight multiple different words in multiple different highlight styles.
+2. Keep the highlights between buffers.
+3. Change search pattern to a highlighted style
+
+==============================================================================
+Section 2: Brief example of usage:
+  * Place your cursor on a word and use "\h" to highlight it with default slot.
+  * Type "\h" over another word to add it to the default slot
+  * Run "\h" on a word already in the default highlight slot to remove it
+  * ":Hd 3" will change the default slot to slot 3
+  * 5\h will highlight the word under the cursor in 5's highlight slot.
+  * Change buffer or open new window and highlights will remain the same
+  * ":Hc 2"  will clear all the of slots 2's highlights.
+  * ":Hs"     to changes the search pattern to all the current highlighted word
+  * ":Hc"     will clear all highlights.
+  * ":Ha 1 \<aa" will add the regular expression "\<aa" to highlight slot 1
+  * ":Hw highlights.so" will save all the curent highlight settings
+
+==============================================================================
+Section 3: Detailed description of use:
+
+
+KEYBINDING
+
+<leader> default is \
+
+[<number>] <Leader> h   -> to highlight the whole word under the cursor,
+highlighted colour is determined by the preceding number, if no number
+is given 0 is used
+
+numbers can be between 0 to 7 default is 0. More highlight numbers/slots
+can be added and there representative colour's changed at the start of
+the script.
+
+If the a word (or pattern) is added to a slot that already cointains it
+the pattern will be removed.
+
+
+CHANGING / REMOVING SLOTS
+
+If the word/pattern you are trying to highlight already exits in a slot
+it will be removed from the previous slot. If the previous slot is the
+same as the one new one (you are trying to add it to the same slot twice)
+it will simply remove the word/pattern.
+
+
+COMMANDS
+
+*Hc* *HighlightClear*
+:Hc [0 2 ...]
+Clears the highlighted patterns in slot numbers listed or all if no
+number(s) are passed. If you just which to remove one word from the slot
+please see changing / removing slots above
+
+*Hs* *HighlightSearch*
+:Hs [0 2 ...]
+Changes the search pattern to the highlighted slot numbers listed or
+all if no number(s) passed
+
+*Ha* *HighlightAddMultiple*
+:Ha <slot_number> <pattern> [additional patterns ...]
+Adds the pattern and any additional patterns (space separated) to the
+highlight slot specified in <slot_number>. The patterns support regular
+expressions. To include a space use \ as escape character (eg "\ ")
+
+*Hw* *HighlightWrite*
+:Hw <file_location> [0 2 ...]
+Create a vim source file at <file_location> containing the settings for
+the slot number(s) passed (or all slots if no numbers are passed)
+
+To load the file created from HighlightWrite simple source it using
+:source <file_location>
+
+
+==============================================================================
+Section 4: Wrap up
+
+ISSUES:
+
+Currently there are no known bugs.
+
+
+ALTERNATIVES:
+<http://vim.wikia.com/wiki/Highlight_multiple_words>; is a very good
+alternative to this script. This script is designed to be simple and
+easy to use
+
+<http://www.vim.org/scripts/script.php?script_id=2666 > is a much more
+compressive and complex script then this one.
+
+```
+ 
+install details
+The script just needs to be source at compile time. You can do that by coping it or sourcing it from your .vimrc file.
+
+Or you can use a package manager to install it from https://github.com/pevhall/simple_highlighting.
+minpac:
+   call minpac#add('pevhall/simple_highlighting')  
+Plug:
+   Plug 'pevhall/simple_highlighting'
+
+ 
+rate this script 	Life Changing Helpful Unfulfilling 
+script versions (upload new version)
+
+Click on the package to download.
+
+package 	script version 	date 	Vim version 	user 	release notes
+simple_highlighting.vim 	2.1 	2021-04-04 	7.2 	Pev Hall 	Fixed issue #4:
+
+When highlighting on a visual selection the script does not current escape the magic characters.
+
+This causes undesirable behavior. For instance it you tried to match "...a" with a visual selection match you are going to end up with everything that has three characters before an a highlighted.
+simple_highlighting.vim 	2.0 	2020-07-19 	7.2 	Pev Hall 	New version number needed since the API has changed with slot 0 being removed.
+
+Added conferable default slot. To do this I needed to remove slot 0. So now the slots start at 1 and 0 means the default slot. The default slot can be changed by using the \":Hd\" command \":Hd 2\" will change the default highlight slot to 2.
+
+Fixed an issue with Hw where it was writing to many arguments for Ha due to vim error E740. It now breaks these long commands into multiple files if as needed.
+simpleHighlighting.vimrc 	1.2.1 	2015-07-25 	7.2 	Pev Hall 	* minor fix: stopped the cursor from moving a character when highlighting the word underneath it.
+* moved version into the file and out of the file name
+simpleHighlightingV1.2.vimrc 	1.2.0 	2015-01-05 	7.2 	Pev Hall 	Added Hw (Highlight Write) function use to create a vim source file for storing (and potential modifying) highlight settings
+simpleHighlightingV1.1.vimrc 	1.1.0 	2014-08-28 	7.2 	Pev Hall 	Fixed issue when using commands with multiple numbers eg
+    :Hs 0 2
+
+Two major improvements:
+   * If you highlight a word (or pattern) in a highlight slot where the word/pattern already exists. It now removes the highlight (so you don't have to clear all the highlights in the slot). If it exits in a different slot it will remove it from the old slot before putting it in the new.
+
+   * Added new command "Ha" (Highlight add) so it is much easier to add highlights that use regular expressions. See description for more information
+simple_highlighting.vimrc 	1.0.0 	2013-12-17 	7.2 	Pev Hall 	Major fix: Removed conflicts when multiple windows are editing same buffer.
+simple_highlighting 	0.9.1 	2013-08-11 	7.2 	Pev Hall 	Missed some dependent functions in previous commit.
+ip used for rating: 91.167.194.12
+	If you have questions or remarks about this site, visit the vimonline development pages. Please use this site responsibly.
+Questions about Vim should go to the maillist. Help Bram help Uganda.     	Vim at Github 	
+
