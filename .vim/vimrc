@@ -424,10 +424,13 @@ set commentstring=%s
 " pour commenter une ligne de code Rebol et passer à la suivante:
 noremap ; ^i;<Space><Esc><Down>
 
-"pour commenter une ligne de code, genre shell script, par # , puis passer à la suivante:
+" pour commenter une ligne de code, genre shell script, par # , puis passer à la suivante:
 "noremap &; <Home>i#<Esc><Down>
 " => marche pas...
 noremap £ ^i#<Space><Esc><Down>
+" pour faire la même chose, MAIS en mettant le '# ' au début de la ligne, et non pas devant le premier caractère non blanc:
+noremap ¤ 0i#<Space><Esc><Down>
+
 
 " pour commenter une ligne de code SQL et passer à la suivante:
 noremap - ^i--<Space><Esc><Down><Home>
@@ -1821,7 +1824,7 @@ inoremap <silent> <Up><Left> <esc>
 vnoremap <silent> <Up><Left> <esc>
 
 " Mouais, il faut que ce soit VRAIMENT très rapide, pour être confortable:
-set timeoutlen=50
+set timeoutlen=500
 " FIXME chiotte, cela rend les combinaisons avec la touche <Leader> quasiment impossibles à faire...
 
 "}}}
@@ -2205,6 +2208,13 @@ set modelines=0
 " => ach non, ça bloque Alt-H...
 "                                                => _
 nnoremap _ :redo<cr>
+
+
+" Le paquet simple_highlighting.vim ne semble pas avoir ses raccourcis clavier qui fonctionnent: je les mets ici:
+" Ah non... en fait, ce n'est pas un paquet, mais un script; donc je le source, plutôt:
+source ~/.vim/pack/plugins/start/simple_highlighting/simple_highlighting.vim
+
+
 
 
 
