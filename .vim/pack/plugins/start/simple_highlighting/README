@@ -8,59 +8,63 @@ simple_highlighting : Easily highlight multiple words in all buffers and search 
 
 created by
 Pev Hall
- 
+
 script type
 utility
- 
+
 description
 ==============================================================================
 Section 1: Description                               *simple_highlighting*
 
-Script is designed to be easy and quick to use and satisfy the following
-functionality:
+Script is designed to be easy and quick to use and satisfies the following
+functionalities:
 1. Highlight multiple different words in multiple different highlight styles.
 2. Keep the highlights between buffers.
-3. Change search pattern to a highlighted style
+3. Change search pattern to a highlighted style.
 
 ==============================================================================
 Section 2: Brief example of usage:
   * Place your cursor on a word and use "\h" to highlight it with default slot.
-  * Type "\h" over another word to add it to the default slot
-  * Run "\h" on a word already in the default highlight slot to remove it
-  * ":Hd 3" will change the default slot to slot 3
-  * 5\h will highlight the word under the cursor in 5's highlight slot.
-  * Change buffer or open new window and highlights will remain the same
-  * ":Hc 2"  will clear all the of slots 2's highlights.
-  * ":Hs"     to changes the search pattern to all the current highlighted word
+  * Type "<Leader> h" over another word to add it to the default slot.
+  * Type "<Leader> h" on a word already in the default highlight slot to remove it.
+_______________ENCOURS_______________ TODO FIXME dans ce cas (ligne précédente), tester si le mot est highlighté et si oui, ne pas incrémenter le numéro, pour avoir le même comportement que décrit.
+  * ":Hd 3" will change the default slot to slot 3.
+  * 5 <Leader> h will highlight the word under the cursor in 5's highlight slot.
+  * Change buffer or open new window and highlights will remain the same.
+  * ":Hc 2"  will clear all the slots 2's highlights.
+  * ":Hs"     to change the search pattern to all the current highlighted word.
   * ":Hc"     will clear all highlights.
-  * ":Ha 1 \<aa" will add the regular expression "\<aa" to highlight slot 1
-  * ":Hw highlights.so" will save all the curent highlight settings
+  * ":Ha 1 \<aa" will add the regular expression "\<aa" to highlight slot 1.
+  # * ":Hw highlights.so" will save all the current highlight settings.
 
 ==============================================================================
 Section 3: Detailed description of use:
 
 
-KEYBINDING
+KEYBINDINGS
 
 <leader> default is \
 
 [<number>] <Leader> h   -> to highlight the whole word under the cursor,
 highlighted colour is determined by the preceding number, if no number
-is given 0 is used
+is given 1 is used.
 
-numbers can be between 0 to 7 default is 0. More highlight numbers/slots
-can be added and there representative colour's changed at the start of
+## TODO idée: incrémenter automatiquement (en option) la couleur à chaque invocation de <Leader> H
+_______________ENCOURS_______________ voilà, presque fait.
+
+number can be between 1 to 9; default is 1.  More highlight numbers/slots
+can be added and their representative colours are defined at the start of
 the script.
 
-If the a word (or pattern) is added to a slot that already cointains it
+If a word (or pattern) is added to a slot that already contains it,
 the pattern will be removed.
 
 
 CHANGING / REMOVING SLOTS
 
-If the word/pattern you are trying to highlight already exits in a slot
-it will be removed from the previous slot. If the previous slot is the
-same as the one new one (you are trying to add it to the same slot twice)
+If the word/pattern you are trying to highlight already exits in a slot,
+it will be removed from the previous slot.  If the previous slot is the
+same as the one new one (you are trying to add it to the same slot twice),
 it will simply remove the word/pattern.
 
 
@@ -69,26 +73,26 @@ COMMANDS
 *Hc* *HighlightClear*
 :Hc [0 2 ...]
 Clears the highlighted patterns in slot numbers listed or all if no
-number(s) are passed. If you just which to remove one word from the slot
-please see changing / removing slots above
+number(s) are passed.  If you just wish to remove one word from the slot,
+please see changing / removing slots above.
 
 *Hs* *HighlightSearch*
 :Hs [0 2 ...]
 Changes the search pattern to the highlighted slot numbers listed or
-all if no number(s) passed
+all if no number(s) passed.
 
 *Ha* *HighlightAddMultiple*
 :Ha <slot_number> <pattern> [additional patterns ...]
 Adds the pattern and any additional patterns (space separated) to the
-highlight slot specified in <slot_number>. The patterns support regular
-expressions. To include a space use \ as escape character (eg "\ ")
+highlight slot specified in <slot_number>.  The patterns supports regular
+expressions.  To include a space use \ as an escape character (eg "\ ").
 
 *Hw* *HighlightWrite*
 :Hw <file_location> [0 2 ...]
 Create a vim source file at <file_location> containing the settings for
-the slot number(s) passed (or all slots if no numbers are passed)
+the slot number(s) passed (or all slots if no numbers are passed).
 
-To load the file created from HighlightWrite simple source it using
+To load the file created from HighlightWrite, simply source it by using:
 :source <file_location>
 
 
@@ -102,25 +106,25 @@ Currently there are no known bugs.
 
 ALTERNATIVES:
 <http://vim.wikia.com/wiki/Highlight_multiple_words>; is a very good
-alternative to this script. This script is designed to be simple and
+alternative to this script.  This script is designed to be simple and
 easy to use
 
 <http://www.vim.org/scripts/script.php?script_id=2666 > is a much more
-compressive and complex script then this one.
+compressive and complex script than this one.
 
 ```
- 
-install details
-The script just needs to be source at compile time. You can do that by coping it or sourcing it from your .vimrc file.
+
+Install details
+The script just needs to be sourced at compile time.  You can do that by copying it into your .vimrc file or by sourceing it from your .vimrc file.
 
 Or you can use a package manager to install it from https://github.com/pevhall/simple_highlighting.
 minpac:
-   call minpac#add('pevhall/simple_highlighting')  
+   call minpac#add('pevhall/simple_highlighting')
 Plug:
    Plug 'pevhall/simple_highlighting'
+_______________ENCOURS_______________ TODO Mettre méthode moderne avec les packages de vim 8+
 
- 
-rate this script 	Life Changing Helpful Unfulfilling 
+rate this script 	Life Changing Helpful Unfulfilling
 script versions (upload new version)
 
 Click on the package to download.
