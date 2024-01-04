@@ -49,16 +49,16 @@ highlight hlg8 ctermbg=DarkGrey    guibg=DarkGrey       ctermfg=white guifg=whit
 highlight hlg9 ctermbg=Black       guibg=Black          ctermfg=white guifg=white
 let s:TOTAL_HL_NUMBERS = 10
 
-let g:hlPat   = NewArray(s:TOTAL_HL_NUMBERS,[])  "stores the patters
+let g:hlPat   = NewArray(s:TOTAL_HL_NUMBERS,[])  "stores the patterns
 let s:REGEX_OR = '\|'
 
-"press [<number>] <Leader> h -> to highligt the whole word under the cursor
-"   highligted colour is determed by the number the number defined above
+"press [<number>] <Leader> h -> to highlight the whole word under the cursor.
+"   highlighted colour is determined by the number defined before.
 nmap <Leader>h :windo<C-U> exe "call HighlightAdd(".v:count.",'\\<".expand('<cword>')."\\>')"<CR>
-"NOTE: above funtion can match on an empty pattern '\<\>' however this doesn't
-"   seem to have any magor negetive effects so is not fixed
+"NOTE: above function can match on an empty pattern '\<\>' however this doesn't
+"   seem to have any major negative effects, so is not fixed.
 
-"Hc [0,2...] -> clears the highlighted patters listed or all if no arguments
+"Hc [0,2...] -> clears the highlighted patterns listed, or all patterns if no arguments
 "   are passed
 command -nargs=* Hc call HighlightClear(<f-args>)
 
@@ -109,8 +109,18 @@ function HighlightPatternCommands(hlNum)
     return cmds
 endfunction
 
+function IncrementDefaultSlot()
+    let g:hlDefaultNum += 1
+    if g:hlDefaultNum >= s:TOTAL_HL_NUMBERS " Rotate through the list, if maximum slot number is reached:
+       let g:hlDefaultNum = 1
+    endif
+    echo "coucou"
+endfunction
+
 function HighlightAdd(hlNum, pattern)
     if a:hlNum == 0
+      " Auto-increment the default slot number at every call of HighlightAdd function:
+      call IncrementDefaultSlot()
       let hlNum = g:hlDefaultNum
     else
       let hlNum = a:hlNum
@@ -122,7 +132,7 @@ function HighlightAdd(hlNum, pattern)
         if prevHlNum != -1
             call HighlightRemovePatternAt(prevHlNum,prevIdx)
             if prevHlNum == hlNum " was already at slot so do not add it back in
-                return 
+                return
             endif
         endif
         let g:hlPat[hlNum] += [a:pattern]
@@ -130,8 +140,8 @@ function HighlightAdd(hlNum, pattern)
     endif
 endfunction
 
-let s:HIGHLIGHT_PRIORITY = -1  " -1 => do not overide default serach highlighting
-function s:HighlightUpdatePriv(hlNum) "if patern is black will set w:hlIdArr[a:hlNum] to  -1
+let s:HIGHLIGHT_PRIORITY = -1  " -1 => do not override default search highlighting
+function s:HighlightUpdatePriv(hlNum) "if pattern is black will set w:hlIdArr[a:hlNum] to -1
     if w:hlIdArr[a:hlNum] > 0
         call matchdelete(w:hlIdArr[a:hlNum])
     end
@@ -193,7 +203,7 @@ endfunction
 
 function s:HighlightCheckNum(hlNum)
     if a:hlNum >= s:TOTAL_HL_NUMBERS
-        echoerr 'ERROR: Highlight number must be from 0 to 's:TOTAL_HL_NUMBERS-1'inclsive. Not'a:hlNum
+        echoerr 'ERROR: Highlight number must be from 0 to 's:TOTAL_HL_NUMBERS-1'inclusive. Not'a:hlNum
         return 0
     endif
     return 1
@@ -233,7 +243,7 @@ function HighlightPattern(...)
     for idx in idxs
         if len(g:hlPat[idx]) > 0
             let idxPattern = FlatternStrArr(g:hlPat[idx], s:REGEX_OR)
-            if len(pattern) > 0 
+            if len(pattern) > 0
                 let pattern .= s:REGEX_OR
             endif
             let pattern .= idxPattern
