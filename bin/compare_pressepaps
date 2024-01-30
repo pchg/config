@@ -1,6 +1,6 @@
-#:/bin/sh
-aa=`tempfile`
-bb=`tempfile`
+#!/bin/sh
+aa=$(mktemp)
+bb=$(mktemp)
 echo "1st file, finish with Ctrl-D:  =========="
 cat > $aa
 echo "2nd file, finish with Ctrl-D:  =========="
