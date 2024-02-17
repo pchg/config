@@ -1464,55 +1464,13 @@ endfunction
 
 function! RunCurrentFile()
   " Exécute le fichier qu'on est en train d'éditer
-  echo "Le fichier qu'on est en train d'éditer est" @%
+  " echo "Le fichier qu'on est en train d'éditer est" @%
   " call DebugPauseWaitForKeyPress()
-  echo "Son chemin est" expand('%:p:h')
-  call DebugPauseWaitForKeyPress()
-  " let filetorun =  expand('%:p')
-  " call RunFile(filetorun)
+  " echo "Son chemin est" expand('%:p:h')
+  " call DebugPauseWaitForKeyPress()
   call RunFile( expand('%:p'))
 endfunction
 
-" function! RunFile(file)
-  " " Exécute le féchier passé en argument
-  " let l:cmd = a:file
-  " echo "On va exécuter le féchier" a:file
-  " " call DebugPauseWaitForKeyPress()
-  " " exec 'call system("a:file")'
-  " let result = system(expand(a:file))
-  " " ! a:file
-  " echom "Voilà, c'est fait."
-  " call DebugPauseWaitForKeyPress()
-  " " ! l:cmd
-  " " __________***_JEANSUILA_***__________
-  " " ! expand(@file:p)
-  " " Non: {{{
-  " " Il faut séparer le cas d'un féchier qui a un chemin de défini
-  " "                 du cas d'un féchier sans chemin;
-  " " on va faire ça en bash, c'est plus simple:
-  " " :! bash -c "ls"
-  " "}}}
-" endfunction
-
-
-" function! RunFile(file)
-  " " Exécute le fichier passé en argument
-  " echo "On va exécuter le fichier" a:file
-  " call DebugPauseWaitForKeyPress()
-  " let result = system(a:file)
-  " call DebugPauseWaitForKeyPress()
-  " echom "Voilà, c'est fait."
-" endfunction
-
-" function! RunFile(file)
-  " " Exécute le fichier passé en argument
-  " let full_file_path = expand(a:file)
-  " echo "On va exécuter le fichier" full_file_path
-  " call DebugPauseWaitForKeyPress()
-  " let result = system(full_file_path)
-  " call DebugPauseWaitForKeyPress()
-  " echom "Voilà, c'est fait."
-" endfunction
 
 function! RunFile(file)
   " Exécute le fichier passé en argument
@@ -1521,7 +1479,7 @@ function! RunFile(file)
   " call DebugPauseWaitForKeyPress()
   execute '!'.full_file_path
   " call DebugPauseWaitForKeyPress()
-  echom "Voilà, c'est fait."
+  " echom "Voilà, c'est fait."
 endfunction
 
 
