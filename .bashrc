@@ -105,10 +105,13 @@ alias lll='ls -trlh | less'
 alias lla='ll -a | less'
 alias lls='ls -trlh | tail -10'
 alias llsa='ls -trlha | tail -10'
+alias llas=llsa
 alias llls='ls -trlh | tail -50'
 alias lllsa='ls -trlha | tail -50'
+alias lllas=lllsa
 alias lllls='ls -trlh | tail -100'
 alias llllsa='ls -trlha | tail -100'
+alias llllas=llllsa
 
 # Un ls "vivant":
 alias ls_vivant='watch -d -n 0.2 "pwd; echo ""; ls -tl"'
@@ -116,19 +119,23 @@ alias ls_vivant_fich_cach='watch -d -n 0.2 "pwd; echo ""; ls -tla"'
 alias lv='ls_vivant'
 alias lva='ls_vivant_fich_cach'
 
+# Des ls greppables:
+alias lg='ls -la | grep'
 
 # Pour travailler sur le dernier fichier:
 #alias der_fichier='(ls --group-directories-first -Htr | tail -1)'
 # export der_fichier=`ls --group-directories-first -Htr | tail -1`
 # alias der_fichier=`ls --group-directories-first -Htr | tail -1`
 function der_fichier() {
-  echo $(ls --group-directories-first -Ht | head -1)
+  # echo $(ls --group-directories-first -Ht | head -1)
   # Tentatives de mieux faire (vaines):{{{
 	#   echo $(
 	#     find . -maxdepth 1 -type f -exec ls -1 {}\;
 	#     \ --group-directories-first\ -Htr\ '{}'\ \;
 	#      | tail -1)
 	# }}}
+  ls -trlha | tail -1
+
 }
 alias edit_der_fichier="f=\$(der_fichier); $EDITOR \$f"
 alias vi_der_fichier=edit_der_fichier
@@ -182,7 +189,7 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 
 # pour mettre un bon rythme au clavier (si on est dans un terminal X):
 #[ ! -t 0 ] && xset r rate 200 100
-[[ $DISPLAY ]]&& xset r rate 200 100
+[[ $DISPLAY ]] && xset r rate 200 100
 
 
 #
@@ -421,9 +428,9 @@ PS1=""
 PS1+=" "
 # - l'utilisateur, avec une couleur rouge ou verte, selon qu'il soit root ou pas, avec un # pour innocenter la ligne de prompt:
 if [[ "$(whoami)" == "root" ]] ; then
-  PS1+="$colour_bldred# \u@"
+  PS1+="${colour_bldred}# \u@"
 else
-  PS1+="$colour_txtgrn# \u@"
+  PS1+="${colour_txtgrn}# \u@"
 fi
 # - le nom d'hôte:
 PS1+="\h"
@@ -437,12 +444,12 @@ if [[ "$(ls -di / | cut -d ' ' -f 1 )" != "2" ]]; then
   PS1+="{#CHROOT#}$colour_txtrst"
 else
   # echo "Business as usual"
-  PS1+="$colour_txtrst"
+  PS1+="${colour_txtrst}"
 fi
 # - le répertoire courant:
 PS1+=": \w"
 # - l'horodatage:
-PS1+=" < $colour_txtpur\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$colour_bldblu \#$colour_txtrst]"
+PS1+=" < ${colour_txtpur}\D{%Y_%m_%d__%H_%M_%S}${colour_txtrst} > [bashpid_${BASHPID}${colour_bldblu} \#${colour_txtrst}]"
 # - et plein de git:
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
@@ -457,7 +464,7 @@ PS1+=" < $colour_txtpur\D{%Y_%m_%d__%H_%M_%S}$colour_txtrst > [bashpid_$BASHPID$
 # => ça n'écrit plus quelque chose de chouette:
 #  # pierre@latitude: ~/config < 2023_08_16__17_25_51 > [bashpid_26083 49] [;31m* master]
 # => autre solution:
-tt="~/.git-prompt.sh"
+tt=~/.git-prompt.sh
 if [[ -f ${tt} ]]; then
   source ${tt}
   export GIT_PS1_SHOWDIRTYSTATE=1
@@ -472,7 +479,7 @@ if [[ -f ${tt} ]]; then
   PS1+='$(__git_ps1 " (%s)")'
 fi
 # -on revient au noir:
-PS1+="$colour_txtrst"
+PS1+="${colour_txtrst}"
 # et on passe à la ligne, finaloumen:
 PS1+="\n"
 # }}}
@@ -538,11 +545,13 @@ alias mooc_bash_document_compagnon="evince mooc_bash/MSB_doc_compagnon.pdf &"
 #}}}
 
 
-# Expand $PATH to include the directory where snappy applications go.
-snap_bin_path="/snap/bin"
-if [ -n "${PATH##*${snap_bin_path}}" -a -n "${PATH##*${snap_bin_path}:*}" ]; then
-    export PATH=$PATH:${snap_bin_path}
-fi
+# # Expand $PATH to include the directory where snappy applications go.
+# snap_bin_path="/snap/bin"
+# if [ -n "${PATH##*${snap_bin_path}}" -a -n "${PATH##*${snap_bin_path}:*}" ]; then
+    # export PATH=$PATH:${snap_bin_path}
+# fi
+# 2024_01_04__22_12_25 snap n'est, de toute évidence, plus là, donc on vire tout ça.
+
 
 # Ensure base distro defaults xdg path are set if nothing filed up some
 # defaults yet.
@@ -567,8 +576,11 @@ alias iptlist='/sbin/iptables -L -n -v --line-numbers'           #this will disp
 alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'   #this will display all your INCOMING rules in iptables
 alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers' #this will display all your OUTGOING rules in iptables
 
+
 #make rm command safer
 alias rm="rm -i"
+
+
 
 # Des couleurs!
 alias egrep='egrep --color=auto'
@@ -665,6 +677,7 @@ alias watch='watch -d -c'
 # => oui mais non... autant c'est zouli à l'écran, autant dès qu'on tube |, ça débloque grave.
 
 
+
 # Une fonction pour copier/sauvegarder un fichier dans sa version actuelle avec un horodatage:
 function cptimestampedarchive () {
   # (c'était naguère un script)
@@ -674,7 +687,7 @@ function cptimestampedarchive () {
   # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')} && \
   # cp -r -L $1{,_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)} && \
   fechier_cp_horodate="$1_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)"
-  cp -r -L "$1" "$fechier_cp_horodate"
+  cp -pr -L "$1" "$fechier_cp_horodate"
   echo -e "Copied $1 to timestamped backup: \n  $(ls -la "$1")\n  $(ls -al "$fechier_cp_horodate")"
 }
 alias backup_timestamp='cptimestampedarchive'
@@ -701,18 +714,26 @@ alias cg='cd `git rev-parse --show-toplevel`'
 # Now the command cg takes you to the top of your Git project, no matter how deep into its directory structure you have descended.
 
 
+
 # Un alias pour lancer vim en mode "vivant", à savoir qui recharge automatiquement le contenu du féchier édité:
 alias vi_live="vim $\"+:set autoread | au CursorHold * checktime | call feedkeys('lh')\" "
 alias vil='vi_live'
 
+# Un alias pour lancer systémétiquement vim en mode multifenêtré si plus d'un féchier est spécifié en argument:
+alias vi='vi -o'
+
 # Connexion directe à psql avec $CONNINFO, ça simplifie des choses pour xbindkeys
 alias psql_conninfo="psql \$CONNINFO"
+
+
 
 # Pourquoi diable une ouverture de xterm me fait-elle aujourd'hui tomber dans /usr/local ???
  # pierre@latitude: /usr/local < 2023_09_01__19_02_53 > [bashpid_28394 1]
 # Remède:
 # cd $HOME
 # 2023_09_02__10_26_40 bah non, c'est fini... Mystères des errances des configurations...
+
+
 
 # Selon https://www.youtube.com/watch?v=S_9D1ndaGwY&t=9s :
 # Pour aller dans un répertoire, directement sans taper cd:
@@ -723,6 +744,7 @@ shopt -s direxpand
 # Pour éditer la ligne de commande avec les raccourcis de vim, ou même vim lui-même:
 # set -o vi
 # Ah ben mince, quand je fais ça, ça empêche les haut-bas de faire mon historique filtré... => annulé
+
 
 
 # Pour remettre le clavier à bonne vitesse:
@@ -739,6 +761,8 @@ export TIME_STYLE="
 
 for i in "full-iso long-iso iso locale"; do ls -l ; done
 BOF
+
+
 
 # Des alias pratiques:
 alias dstum='chromium https://teams.microsoft.com/'
@@ -760,5 +784,52 @@ fi
 # alias bashdb=zshdb
 
 
+
+# 2024_01_04__22_22_36 sur les conseils de ChatGéPéTé, ajustement des choses pour faire tourner le vim_ttc tout juste compilé:{{{
+
+# Installer Vim dans votre répertoire personnel est tout à fait possible et peut être géré proprement. En plus d'ajuster votre $PATH, il y a quelques autres variables d'environnement que vous pouvez modifier.
+
+# PATH: Ajoutez le répertoire ~/pkg/vim/usr/local/bin en tête de votre $PATH pour que le système trouve d'abord l'exécutable Vim dans ce répertoire.
+export PATH=~/pkg/vim/usr/local/bin:$PATH
+
+# MANPATH: Si Vim installe également des pages de manuel, ajoutez également le chemin correspondant dans le MANPATH.
+export MANPATH=~/pkg/vim/usr/local/share/man:$MANPATH
+
+# VIMRUNTIME: Cette variable doit pointer vers le répertoire où Vim recherche les fichiers runtime. Vous pouvez définir cela dans votre .bashrc ou équivalent.
+# export VIMRUNTIME=~/pkg/vim/usr/local/share/vim/vim91
+# Assurez-vous de remplacer "vimxx" par la version spécifique de Vim que vous avez installée.
+export VIMRUNTIME=~/pkg/vim/usr/local/share/vim/vim91
+
+# LD_LIBRARY_PATH: Si Vim a des dépendances partagées, vous devrez peut-être également ajuster LD_LIBRARY_PATH.
+export LD_LIBRARY_PATH=~/pkg/vim/usr/local/lib:$LD_LIBRARY_PATH
+
+# Assurez-vous de remplacer "vimxx" par la version spécifique de Vim que vous avez installée.
+#
+# Après avoir ajusté ces variables, ouvrez un nouveau terminal ou exécutez source ~/.bashrc (ou le fichier de configuration de votre shell) pour appliquer les changements.
+#
+# Assurez-vous également que Vim utilise le bon fichier de configuration (~/.vimrc). Si vous avez des plugins ou des configurations spécifiques à Vim, ajustez également les chemins en conséquence.
+
+
+# # Ach, il m'a fallu aussi faire un ln -s vim vi...
+#  # pierre@latitude: ~ < 2024_01_04__22_26_31 > [bashpid_24301 5]
+# cd pkg/vim/usr/local/bin/
+#  # pierre@latitude: ~/pkg/vim/usr/local/bin < 2024_01_04__22_27_36 > [bashpid_24301 6]
+# ln -s vim vi
+#  # pierre@latitude: ~/pkg/vim/usr/local/bin < 2024_01_04__22_27_39 > [bashpid_24301 7]
+
+
+# }}}
+
+
+alias cra='$BROWSER https://portside.laya.fr//index.php?new=1&id=manageDTemps'
+
+
 # 2023_10_14__11_05_33 REVENIR LÀ
 
+
+# Completion pour poetry:{{{
+source ${HOME}/.bash_completion
+# }}}
+
+
+alias titre_xterm='icesh -w focus setWindowTitle '
