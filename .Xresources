@@ -38,6 +38,8 @@ xterm*VT100.Translations: #override \
 
 
 ! Pour tenter d avoir Alt qui fonctionne dans un xterm:
-XTerm*eightBitOutput:  true
+!XTerm*eightBitOutput:  true
+!XTerm*eightBitOutput:  false
+!XTerm*eightBitInput:   true
 !XTerm*eightBitInput:   false
 
