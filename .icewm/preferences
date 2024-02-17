@@ -663,9 +663,11 @@ WorkspaceNames="fch", "emaux", "net", "root", "data", "bd", "sig", "op1", "op2",
 
 #  Name of the active button font.
 # ActiveButtonFontName="-misc-dejavu sans-bold-r-normal--12-*-*-*-*-*-*-*"
+# ActiveButtonFontName="-*-sans-bold-r-*-*-*-120-*-*-*-*-*-*"
 
 #  Name of the active button font.
 # ActiveButtonFontNameXft="DejaVu Sans:size=12:bold"
+# ActiveButtonFontNameXft="sans-serif:size=12:bold"
 
 #  Name of the active task bar item font.
 ActiveTaskBarFontName=""
@@ -950,12 +952,14 @@ ClockFontName=""
 # ColorToolTipText="rgb:00/00/00"
 
 #  Resize corner width.
-CornerSizeX=0 # [0-64]
 # CornerSizeX=
+# CornerSizeX=24 # [0-64] # => du eeepc
+CornerSizeX=0 # [0-64]
 
 #  Resize corner height.
-CornerSizeY=0 # [0-64]
 # CornerSizeY=
+# CornerSizeY=24 # [0-64]  # => du eeepc
+CornerSizeY=0 # [0-64]
 
 #  Horizontal dialog window border.
 # DlgBorderSizeX=2 # [0-128]
@@ -997,24 +1001,30 @@ CornerSizeY=0 # [0-64]
 # MenuButtonIconVertOffset=0 # [-128-128]
 
 #  Name of the menu font.
+# MenuFontName="-*-sans-bold-r-*-*-*-100-*-*-*-*-*-*"
 # MenuFontName=""
 MenuFontName=""
 
 #  Name of the menu font.
+# MenuFontNameXft="sans-serif:size=10,AR StdSongU30 Medium:size=10" # => du eeepc
 # MenuFontNameXft="DejaVu Sans:size=10:bold"
 
 #  Menu icon size.
 # MenuIconSize=16 # [8-128]
 
 #  Name of the normal button font.
+# NormalButtonFontName="-*-sans-medium-r-*-*-*-120-*-*-*-*-*-*"
 # NormalButtonFontName="-misc-dejavu sans-medium-r-normal--12-*-*-*-*-*-*-*"
 
 #  Name of the normal button font.
+# NormalButtonFontNameXft="sans-serif:size=12"
 # NormalButtonFontNameXft="DejaVu Sans:size=12"
 
 #  Name of the normal task bar item font.
 # NormalTaskBarFontName=""
 NormalTaskBarFontName=""
+# NormalTaskBarFontName="-*-sans-medium-r-*-*-*-120-*-*-*-*-*-*"
+# NormalTaskBarFontName="-*-sans-medium-r-*-*-*-100-*-*-*-*-*- *" # => antixforum
 
 #  Name of the normal task bar item font.
 # NormalTaskBarFontNameXft="DejaVu Sans:size=12"
@@ -1027,10 +1037,13 @@ NormalTaskBarFontName=""
 
 #  Name of the font for Alt+Tab switcher window.
 # QuickSwitchFontName=""
+# QuickSwitchFontName="-*-monospace-bold-r-*-*-*-120-*-*-*-*-*-*"
 QuickSwitchFontName=""
 
 #  Name of the font for Alt+Tab switcher window.
 # QuickSwitchFontNameXft="DejaVu Sans Mono:monospace:size=12:bold"
+# QuickSwitchFontNameXft="monospace:size=12:bold"
+# QuickSwitchFontNameXft="sans-serif:size=10,AR StdSongU30 Medium:size=10"
 
 #  Horizontal margin of the quickswitch window.
 # QuickSwitchHorzMargin=3 # [0-64]
@@ -1063,10 +1076,12 @@ QuickSwitchFontName=""
 # SmallIconSize=16 # [8-128]
 
 #  Name of the status display font.
+# StatusFontName="-*-monospace-bold-r-*-*-*-120-*-*-*-*-*-*" # => du eeepc
 # StatusFontName=""
 StatusFontName=""
 
 #  Name of the status display font.
+# StatusFontNameXft="monospace:size=12:bold"
 # StatusFontNameXft="DejaVu Sans Mono:monospace:size=12:bold"
 
 #  Task bar clock/battery monitor uses nice pixmap LCD display (but then it doesn't display correctly in many languages anymore, e.g., for Japanese and Korean it works only when a real font is used and not the LCD pixmaps.
@@ -1123,6 +1138,7 @@ TaskBarClockLeds=1 # 0/1
 
 #  Name of the title bar font.
 # TitleFontName=""
+# TitleFontName="-*-sans-medium-r-*-*-*-120-*-*-*-*-*-*"
 TitleFontName=""
 
 #  Name of the title bar font.
