@@ -1,0 +1,290 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.7
+#
+# If you edit this file, do not forget to uncomment any lines
+# that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# Examples of commands:
+
+"xbindkeys_show" 
+  control+shift + q
+
+# set directly keycode (here control + f with my keyboard)
+#"xterm"
+#  c:41 + m:0x4
+
+# specify a mouse button
+#"xterm"
+#  control + b:2
+
+#"xterm -geom 50x20+20+20"
+#   Shift+Mod2+alt + s
+#
+## set directly keycode (here control+alt+mod2 + f with my keyboard)
+#"xterm"
+#  alt + c:0x29 + m:4 + mod2
+#
+## Control+Shift+a  release event starts rxvt
+#"rxvt"
+#  release+control+shift + a
+#
+## Control + mouse button 2 release event starts rxvt
+#"rxvt"
+#  Control + b:2 + Release
+
+
+# En suivant la vidéo https://www.youtube.com/watch?v=AK2UKUfsV3g
+
+# Launche blueman-manager
+# Attention à l'espace qui doit être échappée
+"lof /usr/bin/python3\ /usr/bin/blueman-manager"
+    m:0x1c + c:44
+    Control+Alt+Mod2 + j
+
+
+
+# Je mets ici mes raccourcis, à partir de ceux de ~/.icewm/keys (que j'ai disablés en renommant le féchier keys_NON; non, que j'ai plutôt disablés en mettant # VOIR XBINDKEYS # pour commenter les lignes de ce féchier):{{{
+
+
+# Terminaux: {{{
+
+# "xterm -sl 100000 -T 'GROS xterm'"
+# => non, le raccourci servira plutôt à lancer un nouvel xterm; tous les xterm seront GROS.
+# "lof /usr/bin/xterm" # Ça fait revenir au même xterm (qui semble être le dernier)
+"lof /usr/bin/xterm\ -class\ UXTerm\ -u8\ -sl\ 100000 -T Watts"
+Control+Alt+ W
+# Control+Alt+Shift+ X
+
+# "xterm -sl 100000" # Ça ouvre un nouveau xterm, comme d'hab
+"/usr/bin/xterm\ -class\ UXTerm\ -u8\ -sl\ 100000"
+Control+Alt+ X
+
+
+
+# }}}
+# Éditeurs:{{{
+# Flûte, nedit ne fonctionne pas, wmctrl ne retourne pas son PID, curieusement.
+# "lof /usr/bin/nedit"
+#     Control+Alt + e
+# lof ne fonctionne pas
+"nedit"
+Control+Alt+Shift+ E
+#     Alt+Ctrl+Shift + e
+
+"lof /usr/bin/gvim"
+Control+Alt+ E
+
+# Mes notes dans gvim:
+# "lof /usr/bin/gvim\ nnotes.txt"
+"lof /usr/bin/gvim\ notes/notes.txt"
+Control+Alt+ N
+
+#}}}
+# Utilitaires divers:{{{
+
+"xkill"
+Control+Alt+ Escape
+# Mince, c'est intercepté par icewm...
+
+"/usr/bin/screen"
+Control+Alt+ S
+# Très étrange: ne fonctionne pas, quelque chose d'autre m'ouvre un firefox sur google!...
+# TODO déterminer quel programme capture, en amont, les appuis clavier.
+
+"lof /usr/bin/thunar"
+Control+Alt+ F
+
+"lof /usr/bin/krusader"
+Control+Alt+ K
+
+
+# Pour prendre des copies d'écrans avec scrot:{{{
+# Tout l'écran:
+#key "Print"             FILE=`'%Y_%m_%d__$%T_full_screen.png'` && scrot -m "$FILE" && xclip -selection c -t image/png < "$FILE"
+# key "Print"             
+"scrot -m    'capture_%Y_%m_%d__%H_%M_%S_full_screen.png'"
+Print
+
+# # Une fenêtre ou une région rectangulaire:
+"scrot -m -s -b 'capture_%Y_%m_%d__%H_%M_%S_window.png'"
+Shift+ Print
+
+# La fenêtre courante:
+"scrot -m -u -b 'capture_%Y_%m_%d__%H_%M_%S_window.png'"
+Control+ Print
+#                                    #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_full_screen.png"
+
+
+# # Pareil, mais au lieu de copier dans un féchier, copier dans le presse-papiers:
+# # Tout l'écran:
+# (essais infructueux:){{{
+# "tmpfile=\"$(mktemp).png\" ; echo ${tmpfile}; scrot -m    $tmpfile  && xclip -selection c -t image/png < $tmpfile"
+# tmpfile=$(echo $(mktemp -u -t XXXXXXXXX).png)
+# 
+#  ; 
+# echo ${tmpfile}
+# ; 
+# scrot -m    "${tmpfile}"
+# 
+# tmp='echo $(mktemp -t XXXXXXX)'; echo $tmp
+# scrot -m "${tmp}"
+# geeqie   "${tmpfile}"
+# 
+# scrot -m toto.png
+# scrot -m `mktemp`
+# 
+#   && xclip -selection c -t image/png < $tmpfile"
+# 
+# scrot -m -e 'xclip -i -selection c -t image/png $f'
+# scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+# scrot -mi | xclip -selection clipboard -target image/png
+# }}}
+"scrot -m -e 'xclip -selection clipboard -t image/png -i $f'"
+Alt+ Print
+
+# # Une fenêtre ou une région rectangulaire:
+# "/bin/sh -c 'scrot -m -s /tmp/qqscrot.png && xclip -selection primary -t image/png < /tmp/qqscrot.png'"
+"scrot -m -s -e 'xclip -selection clipboard -t image/png -i $f'"
+Alt+Shift+ Print
+
+# # La fenêtre courante:
+# "/bin/sh -c 'scrot -m -u -b /tmp/qqscrot.png && xclip -selection c -t image/png < /tmp/qqscrot.png'"
+"scrot -m -u -b -e 'xclip -selection clipboard -t image/png -i $f'"
+Alt+Control+ Print
+                                   #"~/capture_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')_window.png"
+# }}}
+
+#}}}
+
+# Navigateurs:{{{
+# "lof $(which $BROWSER)"
+# "$BROWSER"
+# "lof /usr/bin/sensible-browser"
+# Control+Alt + N
+# Ne fonctionne pas, tampis.
+
+# "lof $(which $BROWSER)"
+"lof /usr/bin/firefox"
+Control+Alt + b
+
+# "$BROWSER"
+# "lof /usr/bin/sensible-browser"
+# Control+Alt + N
+
+#}}}
+
+# Programmation:{{{
+
+# "xterm -T \#\#REBOL\#\# -e /bin/bash -c -l -i 'rebol -qs'"
+"xterm -T \#\#REBOL\#\# -e 'rebol -qs'"
+Control+Alt+ R
+
+# key "Alt+Ctrl+z"		xterm -T "##RED_ZOU##" -e "bash -c -l -i '~/bin/red'"
+"lof xterm -T \#\#RED_ZOU\#\# -e 'bash -c -l -i ~/bin/red'"
+Control+Alt+ Z
+
+"lof xterm\ -T\ \#\#PYTHON\#\#\ -e\ 'python3'"
+Control+Alt+ Y
+
+"lof xterm\ -T\ \#\#AUTOSCRIPT\#\#\ -e\ '/home/pierre/bin/autoscript'"
+Control+Alt+ A
+
+#}}}
+# BD:{{{
+# Ouvrir un psql:
+
+# # "xterm -T \"PSQL\ $(echo $CONNINFO | sed 's/ /\\ /g')\" -e /bin/bash\ -c\ -l\ -i\ 'psql\ \$CONNINFO'"
+# # "lof /usr/bin/xterm\ -T\ \"PSQL_CONNINFO\"\ -e\ /bin/bash\ -c\ -l\ -i\ psql\ \"${CONNINFO}\""
+# # "xterm -T \"PSQL $CONNINFO\" -e /bin/bash\ -c\ -l\ -i\ 'psql\ \$CONNINFO'"
+# # "lof /usr/bin/xterm -T \"PSQL_CONNINFO\" -e bash -c -l -i \'psql $CONNINFO\'"
+# # "lof /usr/bin/xterm -T \"PSQL_CONNINFO\" -e bash\ -c\ -l\ -i\ \'psql $(echo $CONNINFO | sed 's/ / /g')\'"
+# "lof /usr/bin/xterm -T \"PSQL_CONNINFO\" -e bash\ -c\ -l\ -i\ \'source\ $HOME/.bashrc\ ;\ psql_conninfo\'\'"
+# Shift+Control+Alt+ P
+
+# # 2023_08_17__20_04_43 ne fonctionne pas, c'est quelque chose d'autre qui capture le keydown Control+Alt+P en faisant aller le display sur LVDS-1...
+# Les lof ne fonctionnent pas, tampis:
+"/usr/bin/xterm -T \"PSQL_CONNINFO\" -e bash\ -c\ -l\ -i\ \'source\ $HOME/.bashrc\ ;\ psql_conninfo\'\'"
+Shift+Control+Alt+ P
+
+#}}}
+
+
+
+
+# # Contrôle du volume avec les touches sur le côté:{{{
+# #key "XF86AudioRaiseVolume"	aumix -v +5
+# #key "XF86AudioLowerVolume"	aumix -v -5
+# #key "XF86AudioMute"		amixer -v 0
+# key "XF86AudioRaiseVolume"	amixer sset Master unmute 2%+
+# key "XF86AudioLowerVolume"	amixer sset Master unmute 2%-
+# key "XF86AudioMute"         amixer sset Master toggle
+# key "XF86AudioPlay"		cdplay play 1
+# key "XF86AudioStop"		cdplay stop
+# # => ces touches ne sont pas détectées par xbindkeys -k => on annule tout ça
+# }}}
+
+
+
+
+
+
+# Inversion de l'écran, pour rigoler
+# "/bin/sh -c 'xcalib -invert -alter'"
+"xcalib -invert -alter"
+Alt+ Scroll_Lock
+# Curieux, Scroll_Lock tout seul ne réagit pas: il est probablement capturé par un autre programme, mais lequel?? TODO FIXME
+
+
+# Un truc pratique du genre Exposé ou Mission Control sur mac: skippy-xd
+"skippy-xd"
+Alt+Control+ Home
+
+
+# Midnight Commander:
+"lof xterm -e 'bash -c -l -i /usr/bin/mc'"
+Control+Alt+ M
+
+
+# Courrielleur:
+"lof /usr/bin/thunderbird"
+Control+Alt+ C
+
+
+# }}}
+
+##################################
+# End of xbindkeys configuration #
+##################################
