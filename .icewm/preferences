@@ -492,7 +492,7 @@ TaskBarMailboxStatusCountMessages=1
 # TaskBarNetSamples=20 # [2-1000]
 
 #  Enable TaskBarShowAPMStatus if a battery is present.
-# TaskBarShowAPMAuto=1 # 0/1
+TaskBarShowAPMAuto=1 # 0/1
 
 #  Show battery status in graph mode.
 # TaskBarShowAPMGraph=1 # 0/1
@@ -670,10 +670,17 @@ WorkspaceNames="fch", "emaux", "net", "root", "data", "bd", "sig", "op1", "op2",
 # ActiveButtonFontNameXft="sans-serif:size=12:bold"
 
 #  Name of the active task bar item font.
+# ActiveTaskBarFontName="-*-sans-bold-r-*-*-*-120-*-*-*-*-*-*"
+#  
+# ActiveTaskBarFontNameXft="sans-serif:size=12:bold"
+# ActiveTaskBarFontNameXft="sans-serif:size=10:bold,AR StdSongU30 Medium:size=10:bold"
 ActiveTaskBarFontName=""
 
 #  Name of the active task bar item font.
 # ActiveTaskBarFontNameXft="DejaVu Sans:size=12:bold"
+# ActiveTaskBarFontNameXft="sans-serif:size=12:bold"
+# ActiveTaskBarFontNameXft="sans-serif:size=10:bold,AR StdSongU30 Medium:size=10:bold"
+# ActiveTaskBarFontNameXft="sans-serif:size=10" # depuis l'eeepc
 
 #  Name of the active workspace button font (fallback: ActiveButtonFontName).
 # ActiveWorkspaceFontName="-misc-dejavu sans-medium-r-normal--12-*-*-*-*-*-*-*"
@@ -1028,6 +1035,9 @@ NormalTaskBarFontName=""
 
 #  Name of the normal task bar item font.
 # NormalTaskBarFontNameXft="DejaVu Sans:size=12"
+# NormalTaskBarFontNameXft="sans-serif:size=12"
+# NormalTaskBarFontNameXft="sans-serif:size=10" # depuis l'eeepc
+# NormalTaskBarFontNameXft="sans-serif:size=10,AR StdSongU30 Medium:size=10"
 
 #  Name of the normal workspace button font (fallback: NormalButtonFontName).
 # NormalWorkspaceFontName="-misc-dejavu sans-medium-r-normal--12-*-*-*-*-*-*-*"
