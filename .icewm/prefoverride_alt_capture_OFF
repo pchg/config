@@ -1,3 +1,6 @@
+FocusOnAppRaise=0 # 0/1
+QuickSwitchRaiseCandidate=0
+
 BorderSizeX = 1
 BorderSizeY = 1
 DlgBorderSizeX = 1

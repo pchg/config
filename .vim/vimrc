@@ -1,5 +1,6 @@
 " Problèmes à résoudre:
 " o BkSp ne fonctionne pas en mode insertion
+" o Caps_Lock ne fonctionne plus (pas que dans vim)
 " x Alt-H ne va pas à gauche
 " x è en mode insertion va vers la gauche
 let va1="oui"
@@ -25,7 +26,7 @@ let va18="oui"
 " Les touches de fonctions avec des raccourcis (à maintenir):
 " F1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20
 " -   -   |   |   |   |   |   |   |    |    |    |   -    -    -    -    -    -    -    -
-" F2  \_ (libre)
+" F2  \_ réticule)
 " F3      \_ ouvre une fenêtre au-dessus avec l'occurrence précédente du mot sous le curseur
 " F4          \_ (libre)
 " F5              \_ sauver et faire tourner le fichier courant par rebol, ou plutôt par le shebang
@@ -42,20 +43,26 @@ let va18="oui"
 " F12                                            \_ dernière macro
 
 
-" Pour le débogage du présent féchier: " [[[[
+" Pour le débogage du présent féchier:{{{ [[[[
 " il faut faire:
 " set foldmarker=[[[[,]]]]
 
 
-" ]]]]
+" }}} ]]]]
 
-" Trucs bateau:
+" Ces tests if va* == "oui", c'est pour déboguer le contenu de ce féchier, en invalidant de grosses portions de ce féchier de temps à autre.
 if va1 == "oui" "@# début de code désactivé #############################################[[[[
-" Des trucs assez bateau: "{{{
+" Trucs bateau:
+" Des trucs assez bateau:{{{
+
+" get easier to use and more user friendly vim defaults
+" CAUTION: This option breaks some vi compatibility.
+"          Switch it off if you prefer real vi compatibility
+set nocompatible
 
 syntax on
-set noautoindent
-"set autoindent
+" set noautoindent
+set autoindent
 set noerrorbells
 
 set ignorecase
@@ -69,14 +76,11 @@ set scrolloff=5
 set mouse=a
 set infercase
 
+
 " changes special characters in search patterns (default)
 " set magic
 set esckeys            " Required to be able to use keypad keys and map missed escape sequences
 
-" get easier to use and more user friendly vim defaults
-" CAUTION: This option breaks some vi compatibility.
-"          Switch it off if you prefer real vi compatibility
-set nocompatible
 
 " Complete longest common string, then each full match
 " enable this for bash compatible behaviour
@@ -92,10 +96,30 @@ set fileencoding=utf-8
 set keymodel=startsel,stopsel
 
 
-"Pour PAS ne pas recommencer la recherche au début/fin du fichier:
-"set nowrapscan
 "Pour ne pas recommencer la recherche au début/fin du fichier:
+"set nowrapscan
+"Pour PAS ne pas recommencer la recherche au début/fin du fichier:
 set wrapscan
+
+
+
+" Pour ne pas être embêté avec les messages de tampons non sauvés, quand on va d'un tampon à un autre (en suivant le conseil de iggredible):
+" Before you start, make sure you have the set hidden option in vimrc. Without it, whenever you switch buffers and your current buffer is not saved, Vim will prompt you to save the file (you don't want that if you want to move quickly). I haven't covered vimrc yet. If you don't have a vimrc, create one. It is usually placed in your home directory and is named .vimrc. I have mine on ~/.vimrc. To see where you should create your vimrc, check out :h vimrc. Inside it, add:
+set hidden
+
+
+
+
+
+"}}}
+
+" Des fonctions de débogage: {{{
+
+function! DebugPauseWaitForKeyPress()
+  " Fonction utilitaire à la c.n pour attendre un pressage de touche:
+  echo "Touche quelconque pour continuer..."
+  let c = getchar()
+endfunction
 
 "}}}
 let salut="coucou1"
@@ -105,7 +129,7 @@ endif "@# fin de code désactivé #############################################]
 if va2 == "oui" "@# début de code désactivé #############################################[[[[
 " Un tas de trucs hérités d'un passé lointain, avec des machins liés au type de terminal: "{{{
 
-" Try to get the correct main terminal type "{{{
+" Try to get the correct main terminal type {{{
 if &term =~ "xterm"
     let myterm = "xterm"
 else
@@ -124,41 +148,41 @@ let myterm = substitute(myterm, "\\([^-]*\\)[_-].*$", "\\1",   "")
 " within termcap/terminfo and we should map the character printed on the keys.
 if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     " keys in insert/command mode.
-    noremap! <ESC>Oo  :
-    noremap! <ESC>Oj  *
-    noremap! <ESC>Om  -
-    noremap! <ESC>Ok  +
-    noremap! <ESC>Ol  ,
-    noremap! <ESC>OM  
-    noremap! <ESC>Ow  7
-    noremap! <ESC>Ox  8
-    noremap! <ESC>Oy  9
-    noremap! <ESC>Ot  4
-    noremap! <ESC>Ou  5
-    noremap! <ESC>Ov  6
-    noremap! <ESC>Oq  1
-    noremap! <ESC>Or  2
-    noremap! <ESC>Os  3
-    noremap! <ESC>Op  0
-    noremap! <ESC>On  .
+    map! <ESC>Oo  :
+    map! <ESC>Oj  *
+    map! <ESC>Om  -
+    map! <ESC>Ok  +
+    map! <ESC>Ol  ,
+    map! <ESC>OM  
+    map! <ESC>Ow  7
+    map! <ESC>Ox  8
+    map! <ESC>Oy  9
+    map! <ESC>Ot  4
+    map! <ESC>Ou  5
+    map! <ESC>Ov  6
+    map! <ESC>Oq  1
+    map! <ESC>Or  2
+    map! <ESC>Os  3
+    map! <ESC>Op  0
+    map! <ESC>On  .
     " keys in normal mode
-    noremap <ESC>Oo  :
-    noremap <ESC>Oj  *
-    noremap <ESC>Om  -
-    noremap <ESC>Ok  +
-    noremap <ESC>Ol  ,
-    noremap <ESC>OM  
-    noremap <ESC>Ow  7
-    noremap <ESC>Ox  8
-    noremap <ESC>Oy  9
-    noremap <ESC>Ot  4
-    noremap <ESC>Ou  5
-    noremap <ESC>Ov  6
-    noremap <ESC>Oq  1
-    noremap <ESC>Or  2
-    noremap <ESC>Os  3
-    noremap <ESC>Op  0
-    noremap <ESC>On  .
+    map <ESC>Oo  :
+    map <ESC>Oj  *
+    map <ESC>Om  -
+    map <ESC>Ok  +
+    map <ESC>Ol  ,
+    map <ESC>OM  
+    map <ESC>Ow  7
+    map <ESC>Ox  8
+    map <ESC>Oy  9
+    map <ESC>Ot  4
+    map <ESC>Ou  5
+    map <ESC>Ov  6
+    map <ESC>Oq  1
+    map <ESC>Or  2
+    map <ESC>Os  3
+    map <ESC>Op  0
+    map <ESC>On  .
 endif
 "}}}
 
@@ -166,45 +190,45 @@ endif
 " and therefore not defined in termcap/terminfo.
 if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     " keys in insert/command mode.
-    noremap! <Esc>[H  <Home>
-    noremap! <Esc>[F  <End>
+    map! <Esc>[H  <Home>
+    map! <Esc>[F  <End>
     " Home/End: older xterms do not fit termcap/terminfo.
-    noremap! <Esc>[1~ <Home>
-    noremap! <Esc>[4~ <End>
+    map! <Esc>[1~ <Home>
+    map! <Esc>[4~ <End>
     " Up/Down/Right/Left
-    noremap! <Esc>[A  <Up>
-    noremap! <Esc>[B  <Down>
-    noremap! <Esc>[C  <Right>
-    noremap! <Esc>[D  <Left>
+    map! <Esc>[A  <Up>
+    map! <Esc>[B  <Down>
+    map! <Esc>[C  <Right>
+    map! <Esc>[D  <Left>
     " KP_5 (NumLock off)
-    noremap! <Esc>[E  <Insert>
+    map! <Esc>[E  <Insert>
     " PageUp/PageDown
-    noremap <ESC>[5~ <PageUp>
-    noremap <ESC>[6~ <PageDown>
-    noremap <ESC>[5;2~ <PageUp>
-    noremap <ESC>[6;2~ <PageDown>
-    noremap <ESC>[5;5~ <PageUp>
-    noremap <ESC>[6;5~ <PageDown>
+    map <ESC>[5~ <PageUp>
+    map <ESC>[6~ <PageDown>
+    map <ESC>[5;2~ <PageUp>
+    map <ESC>[6;2~ <PageDown>
+    map <ESC>[5;5~ <PageUp>
+    map <ESC>[6;5~ <PageDown>
     " keys in normal mode
-    noremap <ESC>[H  0
-    noremap <ESC>[F  $
+    map <ESC>[H  0
+    map <ESC>[F  $
     " Home/End: older xterms do not fit termcap/terminfo.
-    noremap <ESC>[1~ 0
-    noremap <ESC>[4~ $
+    map <ESC>[1~ 0
+    map <ESC>[4~ $
     " Up/Down/Right/Left
-    noremap <ESC>[A  k
-    noremap <ESC>[B  j
-    noremap <ESC>[C  l
-    noremap <ESC>[D  h
+    map <ESC>[A  k
+    map <ESC>[B  j
+    map <ESC>[C  l
+    map <ESC>[D  h
     " KP_5 (NumLock off)
-    noremap <ESC>[E  i
+    map <ESC>[E  i
     " PageUp/PageDown
-    noremap <ESC>[5~ 
-    noremap <ESC>[6~ 
-    noremap <ESC>[5;2~ 
-    noremap <ESC>[6;2~ 
-    noremap <ESC>[5;5~ 
-    noremap <ESC>[6;5~ 
+    map <ESC>[5~ 
+    map <ESC>[6~ 
+    map <ESC>[5;2~ 
+    map <ESC>[6;2~ 
+    map <ESC>[5;5~ 
+    map <ESC>[6;5~ 
 endif
 "}}}
 
@@ -212,59 +236,60 @@ endif
 " Sometimes not or wrong defined within termcap/terminfo.
 if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     " keys in insert/command mode.
-    noremap! <Esc>OH <Home>
-    noremap! <Esc>OF <End>
-    noremap! <ESC>O2H <Home>
-    noremap! <ESC>O2F <End>
-    noremap! <ESC>O5H <Home>
-    noremap! <ESC>O5F <End>
+    map! <Esc>OH <Home>
+    map! <Esc>OF <End>
+    map! <ESC>O2H <Home>
+    map! <ESC>O2F <End>
+    map! <ESC>O5H <Home>
+    map! <ESC>O5F <End>
     " Cursor keys which works mostly
     " map! <Esc>OA <Up>
     " map! <Esc>OB <Down>
     " map! <Esc>OC <Right>
     " map! <Esc>OD <Left>
-    noremap! <Esc>[2;2~ <Insert>
-    noremap! <Esc>[3;2~ <Delete>
-    noremap! <Esc>[2;5~ <Insert>
-    noremap! <Esc>[3;5~ <Delete>
-    noremap! <Esc>O2A <PageUp>
-    noremap! <Esc>O2B <PageDown>
-    noremap! <Esc>O2C <S-Right>
-    noremap! <Esc>O2D <S-Left>
-    noremap! <Esc>O5A <PageUp>
-    noremap! <Esc>O5B <PageDown>
-    noremap! <Esc>O5C <S-Right>
-    noremap! <Esc>O5D <S-Left>
+    map! <Esc>[2;2~ <Insert>
+    map! <Esc>[3;2~ <Delete>
+    map! <Esc>[2;5~ <Insert>
+    map! <Esc>[3;5~ <Delete>
+    map! <Esc>O2A <PageUp>
+    map! <Esc>O2B <PageDown>
+    map! <Esc>O2C <S-Right>
+    map! <Esc>O2D <S-Left>
+    map! <Esc>O5A <PageUp>
+    map! <Esc>O5B <PageDown>
+    map! <Esc>O5C <S-Right>
+    map! <Esc>O5D <S-Left>
     " KP_5 (NumLock off)
-    noremap! <Esc>OE <Insert>
+    map! <Esc>OE <Insert>
     " keys in normal mode
-    noremap <ESC>OH  0
-    noremap <ESC>OF  $
-    noremap <ESC>O2H  0
-    noremap <ESC>O2F  $
-    noremap <ESC>O5H  0
-    noremap <ESC>O5F  $
+    map <ESC>OH  0
+    map <ESC>OF  $
+    map <ESC>O2H  0
+    map <ESC>O2F  $
+    map <ESC>O5H  0
+    map <ESC>O5F  $
     " Cursor keys which works mostly
     " map <ESC>OA  k
     " map <ESC>OB  j
     " map <ESC>OD  h
     " map <ESC>OC  l
-    noremap <Esc>[2;2~ i
-    noremap <Esc>[3;2~ x
-    noremap <Esc>[2;5~ i
-    noremap <Esc>[3;5~ x
-    noremap <ESC>O2A  ^B
-    noremap <ESC>O2B  ^F
-    noremap <ESC>O2D  b
-    noremap <ESC>O2C  w
-    noremap <ESC>O5A  ^B
-    noremap <ESC>O5B  ^F
-    noremap <ESC>O5D  b
-    noremap <ESC>O5C  w
+    map <Esc>[2;2~ i
+    map <Esc>[3;2~ x
+    map <Esc>[2;5~ i
+    map <Esc>[3;5~ x
+    map <ESC>O2A  ^B
+    map <ESC>O2B  ^F
+    map <ESC>O2D  b
+    map <ESC>O2C  w
+    map <ESC>O5A  ^B
+    map <ESC>O5B  ^F
+    map <ESC>O5D  b
+    map <ESC>O5C  w
     " KP_5 (NumLock off)
-    noremap <ESC>OE  i
+    map <ESC>OE  i
 endif
 "}}}
+
 
 " tmux stuff:{{{
 " https://stackoverflow.com/questions/15445481/mapping-arrow-keys-when-running-tmux
@@ -332,33 +357,103 @@ endif
 
 if myterm == "linux"
     " keys in insert/command mode.
-    noremap! <Esc>[G  <Insert>
+    map! <Esc>[G  <Insert>
     " KP_5 (NumLock off)
     " keys in normal mode
     " KP_5 (NumLock off)
-    noremap <ESC>[G  i
+    map <ESC>[G  i
 endif
 
 " " This escape sequence is the well known ANSI sequence for
 " " Remove Character Under The Cursor (RCUTC[tm])
-" noremap! <Esc>[3~ <Delete>
-" noremap  <ESC>[3~    x
+" map! <Esc>[3~ <Delete>
+" map  <ESC>[3~    x
 
 
 "}}}
 let salut="coucou2"
 endif "@# fin de code désactivé #############################################]]]]
 
-" Leader
 if va3 == "oui" "@# début de code désactivé #############################################[[[[
-" La leader key: espace, au lieu de l'abscon et malpratique \: "{{{
+
+" Leader "{{{
+
+" La leader key: espace, au lieu de l'abscon et malpratique \: 
 nnoremap <Space> <Nop>
 let mapleader = " "         " map leader to Space
 let mapleader = "\<Space>"  "map leader to Space
+
+" => non, plutôt la touche Caps_Lock, mais uniquement en mode normal:
+" tentatives: {{{
+" let mapleader = "\<Caps_Lock>"
+" => ne fonctionne pas
+
+" Suggestion de ChatGPT:{{{
+" let mapleader = "\<Caps_Lock>"
+" augroup leader_capslock
+  " autocmd!
+  " autocmd InsertEnter * let leader_save = mapleader | let mapleader = "\<Nop>"
+  " autocmd InsertLeave * let mapleader = leader_save
+" augroup END
+" 
+" let g:leader_capslock_active = 0
+" 
+" function! ToggleLeaderCapslock()
+  " if g:leader_capslock_active
+    " let mapleader = "\<Nop>"
+  " else
+    " let mapleader = "\<Caps_Lock>"
+  " endif
+  " let g:leader_capslock_active = !g:leader_capslock_active
+  " echo "Leader CapsLock " . (g:leader_capslock_active ? "activated" : "deactivated")
+" endfunction
+" 
+" nnoremap <silent> <leader> :call ToggleLeaderCapslock()<CR>
+"}}}
+" => ne fonctionne pas
+
+" Suggestion de ChatGPT:{{{
+
+" augroup leader_capslock
+  " autocmd!
+  " autocmd InsertEnter * silent !toggle_caps_lock.sh
+  " autocmd InsertLeave * silent !toggle_caps_lock.sh
+" augroup END
+" 
+" let mapleader = "\<Leader>"
+
+
+"}}}
+" => ne fonctionne pas
+
+" Suggestion de ChatGPT:{{{
+
+" function! ToggleCapsLock()
+  " let caps_state = system('xset q | grep "Caps Lock:" | awk "{print $NF}"')
+  " if caps_state =~ "on"
+    " call feedkeys("\<Esc>:echo 'Caps on!'\<CR>", 'n')
+  " else
+    " call feedkeys("\<Esc>:echo 'Caps off!'\<CR>", 'n')
+  " endif
+" endfunction
+" 
+"}}}
+" nnoremap <Caps_Lock> :call ToggleCapsLock()<CR>
+"}}}
+" let mapleader = "\<Leader>"
+
+
+
+
+
+
+
+" test:
+nnoremap <Leader>b :echo "Hello, Caps_Lock!"<CR>
+
+
 set timeoutlen=500          " Set timeout length to 500 ms
 set showcmd "Vim, by default, shows no feedback for this timeout length. Add set showcmd to your vimrc and it will show your leader key in the bottom right corner for the duration of the timeout.
-
-
 
 " Nota Bene: pour highlighter les mots sous le curseur avec 123456789,
 " il faut faire <leader>m
@@ -616,6 +711,14 @@ if &diff
 endif
 
 "}}}
+
+" Toujours pour vimdiff, remappage des raccourcis pour Patcher des diffs et pour les Getter en allant, après, à la diff suivante:{{{
+
+nnoremap dp :diffput<cr>]c
+nnoremap dg :diffget<cr>]c
+
+"}}}
+
 
 
 " Remappage de touches diverses: "{{{
@@ -888,7 +991,9 @@ else
 
 " C'est à la ligne suivante que se situe le problème qui empêche de faire è en mode insertion ###
   " inoremap <M-h>              <esc>:Bonjour h<cr>i
-  inoremap <A-h>              <esc>:wincmd h<cr>i inoremap <A-j>              <esc>:wincmd j<cr>i inoremap <A-k>              <esc>:wincmd k<cr>i
+  inoremap <A-h>              <esc>:wincmd h<cr>i
+  inoremap <A-j>              <esc>:wincmd j<cr>i
+  inoremap <A-k>              <esc>:wincmd k<cr>i
   inoremap <A-l>              <esc>:wincmd l<cr>i
 
   inoremap <A-Left>           <esc>:wincmd h<cr>i
@@ -1312,17 +1417,25 @@ inoremap <> <Esc>:w<CR>a
 " => ça ne fonctionne point non plus...
 
 
-
 " Pour quitter "comme tout le monde" avec un Ctrl-Q, poil au...
 if empty($TMUX)
-	nnoremap <c-q>      :q<CR>
-	inoremap <c-q> <Esc>:q<CR>
-	nnoremap <>       :q<CR>
-	inoremap <>  <Esc>:q<CR>
+    nnoremap <c-q>      :q<CR>
+    inoremap <c-q> <Esc>:q<CR>
+    nnoremap <>       :q<CR>
+    inoremap <>  <Esc>:q<CR>
 " => ça ne fonctionne point non plus dans tmux...
 else
-	nnoremap          :q<CR>
-	inoremap          :q<CR>
+    nnoremap          :q<CR>
+    inoremap          :q<CR>
+endif
+
+" Pour tout sélectionner "comme tout le monde" avec un Ctrl-A:
+if empty($TMUX)
+    nnoremap <c-a>      :silent! mzggVG<Esc>`z
+    inoremap <c-a> <Esc>mzggVG<Esc>`zi
+    nnoremap <>       :silent! mzggVG<Esc>`z
+    inoremap <>  <Esc>mzggVG<Esc>`zi
+" => TODO ça ne donne pas toujours satisfaction: @#à peaufiner, au besoin
 endif
 
 
@@ -1349,6 +1462,69 @@ function! SaveCurrentParagraphToTmpCodeFile()
   " ...
 endfunction
 
+function! RunCurrentFile()
+  " Exécute le fichier qu'on est en train d'éditer
+  echo "Le fichier qu'on est en train d'éditer est" @%
+  " call DebugPauseWaitForKeyPress()
+  echo "Son chemin est" expand('%:p:h')
+  call DebugPauseWaitForKeyPress()
+  " let filetorun =  expand('%:p')
+  " call RunFile(filetorun)
+  call RunFile( expand('%:p'))
+endfunction
+
+" function! RunFile(file)
+  " " Exécute le féchier passé en argument
+  " let l:cmd = a:file
+  " echo "On va exécuter le féchier" a:file
+  " " call DebugPauseWaitForKeyPress()
+  " " exec 'call system("a:file")'
+  " let result = system(expand(a:file))
+  " " ! a:file
+  " echom "Voilà, c'est fait."
+  " call DebugPauseWaitForKeyPress()
+  " " ! l:cmd
+  " " __________***_JEANSUILA_***__________
+  " " ! expand(@file:p)
+  " " Non: {{{
+  " " Il faut séparer le cas d'un féchier qui a un chemin de défini
+  " "                 du cas d'un féchier sans chemin;
+  " " on va faire ça en bash, c'est plus simple:
+  " " :! bash -c "ls"
+  " "}}}
+" endfunction
+
+
+" function! RunFile(file)
+  " " Exécute le fichier passé en argument
+  " echo "On va exécuter le fichier" a:file
+  " call DebugPauseWaitForKeyPress()
+  " let result = system(a:file)
+  " call DebugPauseWaitForKeyPress()
+  " echom "Voilà, c'est fait."
+" endfunction
+
+" function! RunFile(file)
+  " " Exécute le fichier passé en argument
+  " let full_file_path = expand(a:file)
+  " echo "On va exécuter le fichier" full_file_path
+  " call DebugPauseWaitForKeyPress()
+  " let result = system(full_file_path)
+  " call DebugPauseWaitForKeyPress()
+  " echom "Voilà, c'est fait."
+" endfunction
+
+function! RunFile(file)
+  " Exécute le fichier passé en argument
+  let full_file_path = shellescape(expand(a:file))
+  echo "On va exécuter le fichier" full_file_path
+  " call DebugPauseWaitForKeyPress()
+  execute '!'.full_file_path
+  " call DebugPauseWaitForKeyPress()
+  echom "Voilà, c'est fait."
+endfunction
+
+
 function! RunTmpCodeFile()
   try
     execute 'wincmd ' . a:direction
@@ -1362,6 +1538,8 @@ function! PasteOutputFromRanTmpCodeFile()
   " ...
 endfunction
 
+
+
 "}}}
 
 
@@ -1369,7 +1547,8 @@ endfunction
 "to save and run the current file by rebol^W interpreter^W anything, as long as the shebang is correct:
 "noremap <F5> :w<cr> :!rebol -qs %<cr>
 " *** ENLEVÉ POUR VIMSPECTOR( ***
-noremap  <F5>      :w<cr> :!./%<cr>
+" noremap  <F5>      :w<cr> :!./%<cr>
+noremap  <F5>      :call RunCurrentFile()<cr>
 inoremap <F5> <esc>:w<cr> :!./%<cr>i
 " *** ENLEVÉ POUR VIMSPECTOR) ***
 "Utile pour un script Rebol existant, qu'on n'a nulle intention de modifier, et qui n'a aucun chieboum:
@@ -1420,8 +1599,11 @@ inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_bloc
 " pour faire tourner le paragraphe courant par bash et coller la sortie après:
 " noremap  <F8>          mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
 " inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
-nnoremap <C-F8>        mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z<cr>
-inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z<cr>i
+" nnoremap <C-F8>        mzvip:w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z
+nnoremap <C-F8>    mzyip:redir! > /tmp/tmp_vim_block<cr>:echo @0<cr>:redir END<cr>}A<cr># => {{{<cr><cr># }}}<cr><esc>kk:exec 'r!bash /tmp/tmp_vim_block'<cr>A<cr><esc>`z}j0
+" CETTE LIGNE CI-DESSUS FONCTIONNE TRÈS-TRÈS BIEN (enfin, presque; quand il y a des trucs interactifs, ça n'a pas l'air de trop le faire): TODO factoriser tout ça, et faire appel au code factorisé (fonction? commande?)
+
+inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr>A<cr># => {{{<esc>:exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a# }}}<cr><cr><esc>`z<cr>i
 
 
 " pour faire tourner la ligne courante par bash:
@@ -1429,8 +1611,8 @@ noremap  <S-F8>        mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_bloc
 inoremap <S-F8>   <esc>mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
 
 " pour faire tourner la ligne courante par bash et coller la sortie après:
-nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><esc>`z
-inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><esc>`zi
+inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`zi
+nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`z
 
 
 
@@ -1543,7 +1725,7 @@ noremap <S-F3> :vsplit<cr>#
 "
 "=> En fait, dès qu'on est dans un ssh quelconque, ou une console, ce réticule est giga-chiasseur: zou, je le zappe.
 
-"Voici une version plus discrète, et basculable par <leader>r (pour Réticule)
+"Voici une version plus discrète, et basculable par <jeader>r (pour Réticule)
 " hi CursorColumn cterm=NONE ctermbg=Grey guibg=Grey40
 " hi CursorColumn cterm=underline ctermfg=11
 hi CursorLine   cterm=NONE ctermbg=Grey
@@ -1552,8 +1734,8 @@ hi link CursorColumn CursorLine
 nnoremap <Leader>r        :set cursorline! cursorcolumn!<cr>
 inoremap <Leader>r <Esc>mz:set cursorline! cursorcolumn!<cr>`zi
 " Plutôt avec F2 (car le délai après Leader est bien trop court (dû à la modif pour avoir kj qui fasse Esc...)):
-nnoremap <F2>        :set cursorline! cursorcolumn!<cr>
-inoremap <F2> <Esc>mz:set cursorline! cursorcolumn!<cr>`zi
+nnoremap <F2>             :set cursorline! cursorcolumn!<cr>
+inoremap <F2>      <Esc>mz:set cursorline! cursorcolumn!<cr>`zi
 
 
 "}}}
@@ -1710,11 +1892,11 @@ nnoremap <leader>sop :source %<cr>
 
 
 
-"En suivant les conseils de https://riptutorial.com/ vim.pdf : "{{{
+"En suivant les conseils de https://riptutorial.com/ vim.pdf : {{{
 "2020_11_29__18_28_55
 
 " Automatically source .vimrc after saving
-" Add this to your $MYVIMRC : "{{{
+" Add this to your $MYVIMRC :{{{
 
 " Source vim configuration file whenever it is saved
 if has ('autocmd')         " Remain compatible with earlier versions
@@ -1824,8 +2006,9 @@ inoremap <silent> <Up><Left> <esc>
 vnoremap <silent> <Up><Left> <esc>
 
 " Mouais, il faut que ce soit VRAIMENT très rapide, pour être confortable:
-set timeoutlen=500
+set timeoutlen=50
 " FIXME chiotte, cela rend les combinaisons avec la touche <Leader> quasiment impossibles à faire...
+" set timeoutlen=500
 
 "}}}
 
@@ -2161,7 +2344,7 @@ let g:NERDTreeNotificationThreshold = 5000
 " Pour ouvrir avec le navigateur par défaut avec gx "{{{
 " let g:netrw_http_cmd  = "$BROWSER"
 " => ez, ça ne fonctionne pas, ça ouvre aussi un truc tmp
-nmap gx :!open <c-r><c-a><cr>
+" nmap gx :!open <c-r><c-a><cr>
 
 "}}}
 let salut="coucou17"
@@ -2171,8 +2354,8 @@ if va18 == "oui" "@# début de code désactivé ################################
 " Bonjour matinal: "{{{
 command! Bonjour :r !echo -e "________________________________________________________________________________\n$(date +\%d_\%m_\%Y__\%T | sed -e 's/\:/_/g')                    $HOSTNAME\n$(acpi -i)"
 nnoremap <c-b>      :Bonjour<cr>
-vnoremap <c-b>      :Bonjour<cr>
-cnoremap <c-b>      :Bonjour<cr>
+" vnoremap <c-b>      :Bonjour<cr>
+" cnoremap <c-b>      :Bonjour<cr>
 inoremap <c-b> <Esc>:Bonjour<cr>a
 
 "}}}
@@ -2213,8 +2396,21 @@ nnoremap _ :redo<cr>
 " Le paquet simple_highlighting.vim ne semble pas avoir ses raccourcis clavier qui fonctionnent: je les mets ici:
 " Ah non... en fait, ce n'est pas un paquet, mais un script; donc je le source, plutôt:
 source ~/.vim/pack/plugins/start/simple_highlighting/simple_highlighting.vim
+" Je refais un mappage moins ch!ant, avec un delay moindre pour éviter d'utiliser la touche Leader:
+nmap <A-!> :windo<C-U> exe "call HighlightAdd(".v:count.",'\\<".expand('<cword>')."\\>')"<CR>
 
 
+" 2024_02_14__12_07_30 
+" D'après https://vi.stackexchange.com/questions/20077/automatically-highlight-all-occurrences-of-the-selected-text-in-visual-mode :
+" highlight the visual selection after pressing enter.
+xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '\/'), "\n", '\\n', "g") <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
+" Give ctrl+c a job when it is otherwise being wasted!
+" Now it toggles `hlsearch` while in NORMAL mode:
+nnoremap <silent> <c-c> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<cr>
+" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
+" already do by pressing the <j> key, which is a waste of keys!
+" Be useful <enter> key!:
+nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
 
 
@@ -2231,6 +2427,7 @@ source ~/.vim/pack/plugins/start/simple_highlighting/simple_highlighting.vim
 " # let salut="coucou6"
 " # endif "@# fin de code désactivé #############################################]]]]
 
+
 " Terrain de jeu pour des essais: "{{{
 " https://loremipsum.io/generator/?n=5&t=p
 " set syLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Risus in hendrerit gravida rutrum quisque non tellus orci. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Mauris augue neque gravida in fermentum. Blandit libero volutpat sed cras ornare arcu dui vivamus arcu. Senectus et netus et malesuada. Proin gravida hendrerit lectus a. Dui ut ornare lectus sit amet est placerat in. Ut faucibus pulvinar elementum integer. Massa massa ultricies mi quis hendrerit dolor. Dui nunc mattis enim ut tellus elementum sagittis. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Cras semper auctor neque vitae tempus. Neque egestas congue quisque egestas diam in arcu cursus.
@@ -2242,7 +2439,10 @@ source ~/.vim/pack/plugins/start/simple_highlighting/simple_highlighting.vim
 "32
 "}}}
 
-set syntax=vim "Juste pour déboguer le présent féchier! Commenter dès que c'est fini.
+
+
+
+" set syntax=vim "Juste pour déboguer le présent féchier! Commenter dès que c'est fini.
 syntax on
 " _______________TODO__________________2023_10_03__21_53_23
 

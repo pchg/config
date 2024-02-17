@@ -4,18 +4,24 @@
 # tmux new-session -d 'travail' -n nnotes
 # tmux ls
 tmux new-session -d -s travail -n nnotes     "vi nnotes.txt"
-tmux new-window  -n archives   "vi aarchives_notes_2000_2xxx_perso_et_prof.txt"
+tmux new-window  -n archives   "less aarchives_notes_2000_2xxx_perso_et_prof.txt"
 tmux new-window  -n lanceur    "bash"
 tmux new-window  -n mc         "mc"
-tmux new-window  -n ROUTE      "su"
+tmux new-window  -n ROUTE      "su -"
 tmux new-window  -n taupe      "htop -d 50"
 tmux new-window  -n psql       "psql $CONNINFO"
 tmux new-window  -n mosaïque   "bash"
 tmux  split-window -v
 tmux  split-window -h
 tmux  split-window -h
+# tmux new-window  -n config   "cd $HOME/config; bash"
+tmux new-window  -n config   "vi -S session_vim_edit_config_tmux_xbindkeys_vim_nnotes_bashrc.vim"
+tmux  split-window -v
+tmux  split-window -h
+tmux new-window  -n python   "cd $HOME/mooc_python; bash"
+tmux select-window -t travail:0
 tmux -2 attach-session -t travail
-exit 0
+exit 0 ####################################################################
 
 
 

@@ -9,8 +9,7 @@ set -a
 
 affiche_presse_papiers() {
   echo -e "________ presse-papiers primaire: _________"
-  echo "$(xsel -po)"
-  # echo -e "\n"
+  xsel -po
   echo -e "________ presse-papiers secondaire: _______"
   xsel -so
   echo -e "________ presse-papiers clipboard: ________"

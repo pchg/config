@@ -46,6 +46,7 @@ while True: #; do
       # if error? try [ do load code ] [
       try:
           exec(code)# eval "$code"
+          # TODO mettre le retour de l'évaluation dans le presse-papiers (et le notifier)
       except:
           print("#### code not valid ###")
           print("#######################")

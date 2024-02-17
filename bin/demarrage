@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ~/.xinitrc
+
 setxkbmap -model pc105 -layout fr
 echo "Script de démarrage sur $HOSTNAME ..."
 if [ "$HOSTNAME" = "autan" ]; then
@@ -9,10 +11,9 @@ if [ "$HOSTNAME" = "autan" ]; then
 	vym /home/pierre/cequejefais.vym &
 	bluetoothctl &
 elif [ "$HOSTNAME" = "latitude" ]; then
-	salutation="rock'n roll latitude"
-	pidgin -f&
+	salutation="rock'n roll latitude" &
+	# pidgin -f & # Client de chat pidgin => 2024_01_28__19_34_43 jamais utilisé ou presque, donc zou, ça saute.
 	synergys -f --config .synergy.conf &
-	#synergyc --restart autan &
 	x_lat_full
 	blueman-applet &
 	# Pour tenter de rendre ce clavier de latitude un 
@@ -24,12 +25,18 @@ elif [ "$HOSTNAME" = "durandeux" ]; then
 	salutation="duran deux"
 	synergyc --restart latitude &
 fi
+
 echo $salutation
-espeak -v fr "$salutation"
+espeak -v fr "$salutation" &
 alarm-clock-applet &
 
+
+# Multiplexeur:
+: -<<DISABLED
+# screen:{{{
 if [ "$HOSTNAME" = "autan" ]; then
 	xterm -sl 100000 -geometry 77x15+478+355 -e "screen -a -fn -h 20000" &
+	xterm -sl 100000 -geometry 77x15+478+355 -e "[[ tmux ls ]] && tmux a || tmux_session_travail" &
 elif [ "$HOSTNAME" = "latitude" ]; then
 	xterm -sl 100000 -geometry 97x33+358+298 -e "screen -a -fn -h 20000" &
 #   -geometry 97x33+341-25
@@ -37,27 +44,41 @@ elif [ "$HOSTNAME" = "latitude" ]; then
 elif [ "$HOSTNAME" = "durandeux" ]; then
 	xterm -sl 100000 -geometry 97x33+358+298 -e "screen -a -fn -h 20000" &
 fi
+# }}}
+DISABLED
 
+# tmux:{{{
+tmux_session_travail &
+# }}}
+
+
+# Lancement de xbindkeys avant icewm, pour voir si ça capture mieux les raccourcis:
+# xbindkeys &
 #icewmbg &
-icewmbg -k gray -p &
-xterm   -T "dmesg" -geometry 80x10+0+-6 -e "dmesg -wH"&
+# Ah ben non... icew-session est lancé par le .xinitrc...
+# et xbindkeys_autostart y est lancé, avant.
+# On va retenter, tout de même:
+# xbindkeys_autostart &
 
-#xterm   -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 'echo _______________________ & xsel -po && echo _______________________ && xsel -so && xsel -bo'"&
+xterm   -T "dmesg" -geometry 80x10+0+-6 -e "dmesg -wH" &
+
+#xterm   -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 'echo _______________________ & xsel -po && echo _______________________ && xsel -so && xsel -bo'" &
 #cmd='echo "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"' && xterm -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 '$cmd'" &
-presse_papiers_visualiseur
+presse_papiers_visualiseur &
 
 
 
-xload    -geometry 208x134+578+-6&
-xosview -geometry 203x244+802+-6&
-#xeyes   -geometry 119x65+844+264&
-xeyes   -geometry 119x65-0-38&
+xload    -geometry 208x134+578+-6 &
+xosview -geometry 203x244+802+-6  &
+xeyes   -geometry 119x65-0-38     &
 
-#xterm   -T "disk free" -geometry 111x13+0+162 -e "watch -n 5 'df -khT -x tmpfs -x devtmpfs -x aufs'"&
-xterm   -T "disk free" -geometry 80x10+0+140 -e "watch -n 5 'df -khT -x tmpfs -x devtmpfs -x aufs'" &
+#xterm   -T "disk free" -geometry 111x13+0+162 -e "watch -n 5 'df -khT -x tmpfs -x devtmpfs -x aufs'" &
+xterm   -T "disk free" -geometry 80x17+0+140 -e "watch -d -n 0.5 'df -khT -x tmpfs -x devtmpfs -x aufs ; echo  \"\n\"; df -kT -x tmpfs -x devtmpfs -x aufs'" &
+xterm   -T "btaupe" -geometry 80x24+-1-63 -e "btop" &
 
-#xset r rate 200 100
-xset r rate 200  50
+
+xset r rate 200 100
+# xset r rate 200  50
 xinput set-prop 14 "libinput Accel Speed" 1
 synclient TapButton1=1
 imwheel
@@ -68,12 +89,12 @@ xscreensaver &
 #clipit &
 diodon & # Nouveau nom de clipit...
 orage -t &
-#xterm   -T "alsamixer" -geometry 50x20+0+-6 -e "alsamixer -c 0"&
+#xterm   -T "alsamixer" -geometry 50x20+0+-6 -e "alsamixer -c 0" &
 kdeconnect-indicator &
-syncthing &
-mattermost-desktop &
+# syncthing &
+# mattermost-desktop &
 flameshot &
-
+xcb &
 
 # Poubelle, pour dégager la vue:{{{
 
@@ -87,18 +108,18 @@ flameshot &
 	#emaux
 	#synergyc autan
 	#/opt/safeeyes/safeeyes &
-#xterm   -T "dmesg" -geometry 80x10+0+-6 -e "watch -n 1 'dmesg|tail -f'"&
-#       -geometry 1353x133+504-38&
-#       -geometry 617x133+508-25&
-#       -geometry 119x65+1481-93&
-#       -geometry 203x192--3+809&
+#xterm   -T "dmesg" -geometry 80x10+0+-6 -e "watch -n 1 'dmesg|tail -f'" &
+#       -geometry 1353x133+504-38 &
+#       -geometry 617x133+508-25 &
+#       -geometry 119x65+1481-93 &
+#       -geometry 203x192--3+809 &
 
-#xterm   -T "disk free" -geometry 97x11+0+162 -e "watch -n 10 'df --human-readable'"&
+#xterm   -T "disk free" -geometry 97x11+0+162 -e "watch -n 10 'df --human-readable'" &
 
 
-#xterm   -geometry 71x8+0+772    -e "tail -f /var/log/messages"&
+#xterm   -geometry 71x8+0+772    -e "tail -f /var/log/messages" &
 #gkrellm &
-#svgdisplay ~/heaume_pierre/lauburu.svg  -geometry 128x129-0+0&
+#svgdisplay ~/heaume_pierre/lauburu.svg  -geometry 128x129-0+0 &
 #xfce4-panel &
 #bluetooth-applet &
 #owncloud &
@@ -106,3 +127,6 @@ flameshot &
 #dropbox start -i
 
 #}}}
+
+# icewmbg -k gray -p
+

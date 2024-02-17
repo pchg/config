@@ -23,6 +23,8 @@ def scramble_text(text):
         else:
             textout.append(mott)
         textout.append(" ")
+    # FIXME boucler si jamais le mot mélangé est égal au mot initial
+    # FIXME si la fin du mot est une (ou plusieurs) ponctuation(s), la stocker, réduire le mot, traiter le mot, puis rajouter la(les) ponctuation(s)
 
     textsortie = ""
     for tmp in textout:

@@ -1,2 +1,2 @@
 #!/bin/sh
-find .  -name "*" -print0 | xargs -0 grep -l "$1" 2>/dev/null
+find .  -name "*" -print0 | xargs -0 grep -li "$1" 2>/dev/null

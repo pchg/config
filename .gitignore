@@ -6,8 +6,11 @@ rien
 # .vim/**
 .vim/.netrwhi*
 .vim/.netrwhist
+.vim/*.netrwhist
 .netrwhist
 .poubelle/
 .icewm/.session*
-.vim/pack/plugins/*
-
+# .vim/pack/plugins/*
+~/bin/**
+*__pycache__*
+.okz/**

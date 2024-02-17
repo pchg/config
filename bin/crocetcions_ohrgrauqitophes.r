@@ -41,6 +41,9 @@ foreach mot mots [
 	]
 ]
 
+;    # FIXME boucler si jamais le mot mélangé est égal au mot initial
+;    # FIXME si la fin du mot est une (ou plusieurs) ponctuation(s), la stocker, réduire le mot, traiter le mot, puis rajouter la(les) ponctuation(s)
+
 print textout
 ligne
 
