@@ -86,7 +86,8 @@ $endif
 
 # Selon https://www.youtube.com/watch?v=S_9D1ndaGwY&t=9s :
 # Complétion en ignorant la casse:
-set completion-ignore-case on
+set completion-ignore-case off
+# \_ oui, mais non.
 # Montrer tout de suite les possibilités de complétion (sans avoir à double-tabber); c'est assez ch!ant, à l'usage, donc non:
 # set show-all-if-ambiguous  on
 
