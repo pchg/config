@@ -29,3 +29,9 @@
 [core]
     pager = cat
 
+[sendemail]
+    smtpserver = smtp.googlemail.com
+    smtpencryption = tls
+    smtpserverport = 587
+    smtpuser = pierrechevaliergeol@gmail.com
+
