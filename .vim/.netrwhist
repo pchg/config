@@ -1,4 +1,4 @@
-let g:netrw_dirhistmax  =10
+let g:netrw_dirhistmax  =1000
 let g:netrw_dirhistcnt =1
 let g:netrw_dirhist_1='/etc/X11/app-defaults'
 let g:netrw_dirhist_0='/home/pierre/.config/mc/mcedit'

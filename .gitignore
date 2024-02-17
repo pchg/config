@@ -6,11 +6,14 @@ rien
 # .vim/**
 .vim/.netrwhi*
 .vim/.netrwhist
-.vim/*.netrwhist
+.vim/.netrwhist
 .netrwhist
 .poubelle/
 .icewm/.session*
 # .vim/pack/plugins/*
-~/bin/**
+# ~/bin/**
 *__pycache__*
 .okz/**
+.gitignore
+\.gitignore
+
