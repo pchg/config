@@ -1,0 +1,44 @@
+# 2024_02_05__23_05_25 galpé ceci depuis:
+# https://www.antixforum.com/forums/topic/howto-icewm-basic-configuration/
+
+OpaqueMove=0
+OpaqueResize=0
+SmartPlacement=1
+MenuMouseTracking=1
+ModSuperIsCtrlAlt=1
+UseMouseWheel=1
+QuickSwitch=1
+AutoReloadMenus=1
+ShowProgramsMenu=1
+ShowThemesMenu=1
+ShowHelp=1
+TerminalCommand="lxterminal"
+ShutdownCommand="sudo poweroff"
+RebootCommand="sudo reboot"
+WorkspaceNames=" 1 ", " 2 "
+
+TaskBarAutoHide=0
+TaskBarShowClock=1
+TaskBarShowAPMStatus=0
+TaskBarAtTop=0
+TaskBarShowAPMStatus=0
+TaskBarShowAPMTime=0
+TaskBarShowMailboxStatus=0
+TaskBarShowWindows=1
+TaskBarShowShowDesktopButton=0
+TaskBarShowTray=1
+TaskBarShowWindowIcons=0
+TaskBarShowCPUStatus=1
+TaskBarShowNetStatus=0
+TaskBarShowCollapseButton=1
+TaskBarWorkspacesLeft=1
+TimeFormat="%R"
+TaskBarShowShowDesktopButton=0
+TaskBarShowWindowListMenu=1
+TaskBarShowMailboxStatus=0
+TaskBarMailboxStatusBeepOnNewMail=0
+NormalTaskBarFontName="-*-sans-medium-r-*-*-*-100-*-*-*-*-*- *"
+NormalTaskBarFontNameXft="sans-serif:size=10"
+ActiveTaskBarFontName="-*-sans-r-*-*-*-100-*-*-*-*-*-*"
+ActiveTaskBarFontNameXft="sans-serif:size=10"
+HideTitleBarWhenMaximized=0
