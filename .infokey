@@ -1,0 +1,6 @@
+# 14.1 'infokey' format
+# =====================
+# 
+# Here is an example '.infokey' file which specifies the key bindings that
+# are activated by the '--vi-keys' option to Info (*note --vi-keys::).
+
