@@ -184,7 +184,175 @@
 # rm -f ${tmpfile}
 # }}}
 
-touch monQ.zip
+# touch monQ.zip
+
+# Pour annoncer la GROSSEUR du projet INABED DEBINA DEBANI:{{{
+
+cowthink "Rien à penser" > /dev/null 2>&1
+res=$?
+# echo "~~${res}"
+if [[ ${res} -ne 0 ]]; then
+  cmd="apt install -y cowsay"
+  msg="Hm, it seems that you don't have cowsay properly installed on your system?  "
+  msg+="How dare you...\n\n"
+  msg+="Allez, un petit 'sudo ${cmd}' (ou équivalent comme 'su -c \"${cmd}\"') et n'en parlons plus.\n"
+  msg+="On essaye de réparer cela (Entrée pour poursuivre sereinement, Ctrl-C pour *ne pas* réparer ce manquement majeur)?"
+  echo -e "${msg}" ; read
+  su -c "${cmd}"
+  res=$?
+  if [[ ${res} -ne 0 ]]; then
+  	echo -e "Something has mardoyed; fix things, and come back later.\nBye for now."
+	exit 32
+  fi
+fi
+elephsay "Rien à penser" > /dev/null 2>&1
+res=$?
+echo "~~${res}"
+if [[ ${res} -ne 0 ]]; then
+  msg="Hm, it seems that you don't have elephsay properly installed on your system?  "
+  msg=+="Vous auriez dû aller le chercher par là: https://github.com/pchg/config/blob/master/bin/elephsay et avoir un exécutable Red installé comme /usr/bin/redlang ; mais bon, pour le moment, passons outre et poursuivons."
+  elephsay() {
+  }
+# _______________ENCOURS_______________ 
 
 
+"Hm, it seems that ou don't have elephsay
+
+elephsay "Rien à dire" > /dev/null 2|| echo -e 
+
+ligne_paysage(){
+	ligne="---------------------------------------------------^^-^---------\n\n"
+	echo -e ${ligne}
+}
+cowthink -e vv "Hm, cela m'a l'air assez gros..."
+ligne_paysage
+cowsay -y "Oui, quand je dis gros, c'est GROS."
+ligne_paysage
+cowsay -b "Oui, je confirme, c'est assez GROS."
+ligne_paysage
+cowsay -w -T " U"  "... oui, vraiment GROS..."
+ligne_paysage
+cowsay -s -T "\\/"  "... vachement GROS!"
+ligne_paysage
+figlet "                GROS"
+
+Allez 
+
+
+
+
+elephsay "Même moi, je trouve ça sacrément GROS." 2>/dev/null | grep -v GTK
+ligne_paysage
+figlet "Oui, GROS!"
+echo -e "\n\n Un petit indice:"
+figlet "INABED"
+exit 0
+
+# => {{{
+
+ __________________________________
+( Hm, cela m'a l'air assez gros... )
+ ----------------------------------
+        o   ^__^
+         o  (vv)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+---------------------------------------------------^^-^---------
+
+
+ _____________________________________
+< Oui, quand je dis gros, c'est GROS. >
+ -------------------------------------
+        \   ^__^
+         \  (..)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+---------------------------------------------------^^-^---------
+
+
+ _____________________________________
+< Oui, je confirme, c'est assez GROS. >
+ -------------------------------------
+        \   ^__^
+         \  (==)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+---------------------------------------------------^^-^---------
+
+
+ ___________________________
+< ... oui, vraiment GROS... >
+ ---------------------------
+        \   ^__^
+         \  (OO)\_______
+            (__)\       )\/\
+              U ||----w |
+                ||     ||
+---------------------------------------------------^^-^---------
+
+
+ _____________________
+< ... vachement GROS! >
+ ---------------------
+        \   ^__^
+         \  (**)\_______
+            (__)\       )\/\
+             U  ||----w |
+                ||     ||
+---------------------------------------------------^^-^---------
+
+
+                  ____ ____   ___  ____  
+                 / ___|  _ \ / _ \/ ___| 
+                | |  _| |_) | | | \___ \ 
+                | |_| |  _ <| |_| |___) |
+                 \____|_| \_\\___/|____/ 
+                                         
+     ________________________________________
+    < Même moi, je trouve ça sacrément GROS. >
+     ----------------------------------------
+
+        \    __
+         \ /(  )\_---------_
+          { (°°) }          )\
+          { /()\ }          | \
+           / () \  |____\   |
+          /  !! |\ |     |  |\
+             J  [__|     [__||
+---------------------------------------------------^^-^---------
+
+
+  ___        _      ____ ____   ___  ____  _ 
+ / _ \ _   _(_)    / ___|  _ \ / _ \/ ___|| |
+| | | | | | | |   | |  _| |_) | | | \___ \| |
+| |_| | |_| | |_  | |_| |  _ <| |_| |___) |_|
+ \___/ \__,_|_( )  \____|_| \_\\___/|____/(_)
+              |/                             
+
+
+ Un petit indice:
+ ___ _   _    _    ____  _____ ____  
+|_ _| \ | |  / \  | __ )| ____|  _ \ 
+ | ||  \| | / _ \ |  _ \|  _| | | | |
+ | || |\  |/ ___ \| |_) | |___| |_| |
+|___|_| \_/_/   \_\____/|_____|____/ 
+                                     
+
+# }}}
+
+
+print reverse "INABED"
+DEBANI
+
+Et avec Dev1?...
+DEVUAN
+DANVUE
+UNADEV
+
+@#Prendre une photo de panneau de Dev1...
+
+# }}}
 
