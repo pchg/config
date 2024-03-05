@@ -187,6 +187,8 @@ alias gel_chromium='killall chromium -s 19'             #gel de chromium
 alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 
 
+
+
 # pour mettre un bon rythme au clavier (si on est dans un terminal X):
 #[ ! -t 0 ] && xset r rate 200 100
 [[ $DISPLAY ]] && xset r rate 200 100
@@ -821,7 +823,6 @@ export LD_LIBRARY_PATH=~/pkg/vim/usr/local/lib:$LD_LIBRARY_PATH
 # }}}
 
 
-alias cra='$BROWSER https://portside.laya.fr//index.php?new=1&id=manageDTemps'
 
 
 # 2023_10_14__11_05_33 REVENIR LÀ
@@ -831,5 +832,8 @@ alias cra='$BROWSER https://portside.laya.fr//index.php?new=1&id=manageDTemps'
 source ${HOME}/.bash_completion
 # }}}
 
-
+# Pour mettre un titre à un terminal:
 alias titre_xterm='icesh -w focus setWindowTitle '
+
+# Pour Red, pour ne pas avoir les messages irritants liés au GUI pas à jour de l'an neuf:
+# alias red='red 2>/dev/null'
