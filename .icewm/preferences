@@ -6,14 +6,43 @@
 # And retraficouilled much, much by MaPomme again.
 
 
+# Preferences générées par genpref, dans leur ordre généré, si elles ne sont pas entrées plus haut. C'est juste pour mémoire, en fait:{{{
 
-#  Allow to switch a window to fullscreen
+#  Use a 32-bit visual for alpha blending.
+# Alpha=0 # 0/1
+
+#  Enable event logging for debugging.
+# LogEvents=0 # 0/1
+
+#  Splash image on startup (IceWM.jpg)
+# Splash=""
+
+#  Synchronize X11 for debugging (slow)
+# Synchronize=0 # 0/1
+
+#  Enable tracing for the given modules.
+# Trace=""
+
+#  List of battery names (directories) in /proc/acpi/battery to ignore. Useful when more slots are built-in, but only one battery is used.
+# AcpiIgnoreBatteries=""
+
+#  Command to run for address bar entries.
+# AddressBarCommand=""
+
+#  Allow to switch a window to fullscreen.
 # Allow to switch a window to fullscreen.
+# AllowFullscreen=1 # 0/1
 AllowFullscreen=0 # 0/1
 # TODO tenter de passer ça à 1, pour voir.
 
+#  Automatically arrange windows when screen size changes.
+# ArrangeWindowsOnScreenSizeChange=1 # 0/1
+
+#  Delay in ms before task bar is hidden.
+# AutoHideDelay=300 # [0-5000]
 
 #  Auto raise windows after delay.
+# AutoRaise=0 # 0/1
 AutoRaise=1
 
 #  Delay in ms before windows are auto raised.
@@ -26,6 +55,45 @@ AutoRaiseDelay=500
 # AutoScrollDelay=60 # [0-5000]
 # AutoScrollDelay=
 AutoScrollDelay=0 # [0-5000]
+
+#  Auto scroll start delay in ms.
+# AutoScrollStartDelay=500 # [0-5000]
+
+#  Delay in ms before task bar is shown.
+# AutoShowDelay=500 # [0-5000]
+
+#  Delay between power status updates in seconds.
+# BatteryPollingPeriod=10 # [2-3600]
+
+#  Bitmask of buttons that raise the window when pressed.
+# ButtonRaiseMask=1 # [0-255]
+
+#  WM_CLASS to allow runonce for CPUStatusCommand.
+# CPUStatusClassHint="top.XTerm"
+
+#  Combine all CPUs to one.
+# CPUStatusCombine=1 # 0/1
+
+#  Command to run on CPU status.
+# CPUStatusCommand="x-terminal-emulator -T 'Process Status' -e top"
+
+#  Show ACPI temperature in CPU status tool tip.
+# CPUStatusShowAcpiTemp=1 # 0/1
+
+#  Show ACPI temperature in CPU status bar.
+# CPUStatusShowAcpiTempInGraph=0 # 0/1
+
+#  Show CPU frequency in CPU status tool tip.
+# CPUStatusShowCpuFreq=1 # 0/1
+
+#  Show RAM usage in CPU status tool tip.
+# CPUStatusShowRamUsage=1 # 0/1
+
+#  Show swap usage in CPU status tool tip.
+# CPUStatusShowSwapUsage=1 # 0/1
+
+#  Center large windows.
+# CenterLarge=0 # 0/1
 
 #  Center maximized windows which can't fit the screen (like terminals)
 # CenterMaximizedWindows=0 # 0/1
@@ -43,10 +111,16 @@ ClickMotionDelay=0 # [0-2000]
 #  Pointer motion distance before click gets interpreted as drag.
 # ClickMotionDistance=4 # [0-32]
 
-#  Focus windows by clicking
+#  Focus windows by clicking.
 ClickToFocus=0
 
-#  Command to run on clock
+#  Allow mouse actions on client windows (buggy with some programs)
+# ClientWindowMouseActions=1 # 0/1
+
+#  WM_CLASS to allow runonce for ClockCommand.
+# ClockClassHint="icewm.XClock"
+
+#  Command to run on clock.
 # ClockCommand="xclock -name icewm -title Clock"
 # ClockCommand="kcmshell --lang `basename $LANG .UTF-8` --caption \"`gettext kaddressbook 'Date & Time'`\" clock"
 # Note: This will only work if kaddressbook.mo exists and a translation is present, the --lang argument is needed or the fr version of the mo "kcmkclock.mo" will be used (rather than the corrected fr_FR version)
@@ -54,9 +128,28 @@ ClickToFocus=0
 ClockCommand="xclock"
 #ClockCommand="kcmshell --lang `basename $LANG .UTF-8` --caption \"`gettext kaddressbook 'Date & Time'`\" clock"
 
+
+#  Confirm logout.
+# ConfirmLogout=1 # 0/1
+
+#  Consider border frames when maximizing horizontally.
+# ConsiderHBorder=0 # 0/1
+
+#  Consider XSizeHints if frame is maximized.
+# ConsiderSizeHintsMaximized=1 # 0/1
+
+#  Consider border frames when maximizing vertically.
+# ConsiderVBorder=0 # 0/1
+
+#  Workspace switches continuously when moving mouse to screen edge.
+# ContinuousEdgeSwitch=1 # 0/1
+
 #  Clock Date format for tooltip (strftime format string)
 # DateFormat="%c"
 DateFormat="%c"
+
+#  Delay fuzziness in ms, to allow merging of multiple timer timeouts into one for notebook power saving.
+# DelayFuzziness=0 # [0-100]
 
 #  Delay pointer focusing when mouse moves.
 # DelayPointerFocus=1 # 0/1
@@ -67,37 +160,80 @@ DelayPointerFocus=1
 DesktopMenuButton=0 
 # (ça vient du EEEPC)
 
-#  Desktop mouse-button click to show the window list
+#  Desktop mouse-button click to show the window list.
 # DesktopWinListButton=2 # [0-20]
 DesktopWinListButton=0
 # (ça vient du EEEPC)
+
+#  Desktop mouse-button click to show the window list menu.
+# DesktopWinMenuButton=0 # [0-20]
+
+#  Support DockApps (right, left, center, down, high, above, below, desktop, or empty to disable). Control with Ctrl+Mouse.
+# DockApps="right high desktop"
+
+#  Don't rotate the cursor for popup menus.
+# DontRotateMenuPointer=1 # 0/1
+
+#  Use double buffering when redrawing the display.
+# DoubleBuffer=1 # 0/1
+
+#  Resistance in pixels when trying to move windows off the screen (10000 = infinite)
+# EdgeResistance=32 # [0-10000]
 
 #  Workspace switches by moving mouse to left/right screen edge.
 # EdgeSwitch=0 # 0/1
 EdgeSwitch=0
 
+
 #  Screen edge workspace switching delay in ms.
 # EdgeSwitchDelay=200 # [0-5000]
 EdgeSwitchDelay=200
 
-#  Enable address bar functionality in taskbar
+#  Enable address bar functionality in taskbar.
 # EnableAddressBar=1 # 0/1
 EnableAddressBar=0
 # (ça vient du EEEPC)
+
+
+
+#  Change to the workspace of newly focused windows.
+# FocusChangesWorkspace=0 # 0/1
+
+#  Move newly focused windows to current workspace.
+# FocusCurrentWorkspace=0 # 0/1
 
 #  Focus windows when application requests to raise.
 # FocusOnAppRaise=0 # 0/1
 FocusOnAppRaise=0 # 0/1
 
+#  Focus window when client area clicked.
+# FocusOnClickClient=1 # 0/1
+
+#  Focus normal window when initially mapped.
+# FocusOnMap=1 # 0/1
+
+#  Focus dialog window when initially mapped.
+# FocusOnMapTransient=0 # 0/1
+
+#  Focus dialog window when initially mapped only if parent frame focused.
+# FocusOnMapTransientActive=1 # 0/1
+
+#  Taskbar blink interval (ms) when requesting focus (0 = blinking disabled)
+# FocusRequestFlashInterval=250 # [0-30000]
+
+#  Number of seconds the taskbar app will blink when requesting focus (0 = forever)
+# FocusRequestFlashTime=0 # [0-86400]
+
 #  Span over all available screens if window goes into fullscreen.
 # FullscreenUseAllMonitors=0 # 0/1
 # FullscreenUseAllMonitors = 1
+
 # oups, non, c'est naze!
 FullscreenUseAllMonitors = 0
-
 #  Manage root window (EXPERIMENTAL - normally enabled!)
 # GrabRootWindow=0 # 0/1
-GrabRootWindow=0
+GrabRootWindow=1
+# TODO voir si ça change qq chose?
 
 #  Hide title bar when maximized.
 # HideTitleBarWhenMaximized=0 # 0/1
@@ -105,23 +241,227 @@ HideTitleBarWhenMaximized=0
 # 2024_02_05__23_05_25 galpé ceci depuis:
 # https://www.antixforum.com/forums/topic/howto-icewm-basic-configuration/
 
+#  Workspace switches by moving mouse to left/right screen edge.
+# HorizontalEdgeSwitch=0 # 0/1
 
 #  Icon search path (colon separated)
-IconPath=""
+# IconPath=""
+# IconPath="/usr/local/share/icons:/usr/local/share/pixmaps:/usr/share/icons:/usr/share/pixmaps:"
+
+#  Colon separated icon theme list with wildcard support. Minus prefix - can be used to exclude themes.
+# IconThemes="*:-HighContrast"
+
+#  Opens the address bar in the task bar where a command can be typed.
+# KeySysAddressBar="Alt+Ctrl+Space"
+
+#  Rearranges the windows.
+# KeySysArrange="Alt+Shift+F5"
+
+#  Rearranges the icons on the desktop, if MinimizeToDesktop is true.
+# KeySysArrangeIcons="Alt+Shift+F8"
+
+#  Makes a horizontal cascade of all windows which are maximized vertically.
+# KeySysCascade="Alt+Shift+F4"
+
+#  Toggles displaying the task bar.
+# KeySysCollapseTaskBar="Alt+Ctrl+h"
+
+#  Opens the IceWM system dialog in the center of the screen.
+# KeySysDialog="Alt+Ctrl+Del"
+
+#  Hides all windows.
+# KeySysHideAll="Alt+Shift+F11"
+
+#  Switch to the next keyboard layout in the KeyboardLayouts list.
+# KeySysKeyboardNext=""
 
 #  Activates the IceWM root menu in the lower left corner.
 # KeySysMenu="Ctrl+Esc"
-KeySysMenu=""
-# (ça vient du EEEPC)
+# KeySysMenu=""
+# # (ça vient du EEEPC)
+
+#  Minimizes all windows.
+# KeySysMinimizeAll="Alt+Shift+F9"
 
 #  Minimizes all windows to show the desktop.
 # KeySysShowDesktop="Alt+Ctrl+d"
 KeySysShowDesktop="Super_L"
 # (ça vient du EEEPC)
 
+#  Is like KeySysSwitchNext but only for windows with the same WM_CLASS property as the currently focused window.
+# KeySysSwitchClass="Alt+grave"
+
+#  Works like KeySysSwitchNext but moving in the opposite direction.
+# KeySysSwitchLast="Alt+Shift+Tab"
+
+#  Opens the QuickSwitch popup and/or moves the selector in the QuickSwitch popup.
+# KeySysSwitchNext="Alt+Tab"
+
+#  Tiles all windows from top to bottom maximized horizontally.
+# KeySysTileHorizontal="Alt+Shift+F3"
+
+#  Tiles all windows from left to right maximized vertically.
+# KeySysTileVertical="Alt+Shift+F2"
+
+#  Undoes arrangement.
+# KeySysUndoArrange="Alt+Shift+F7"
+
+#  Shows the window list menu.
+# KeySysWinListMenu=""
+
+#  Posts the system window menu.
+# KeySysWinMenu="Shift+Esc"
+
+#  Give focus to the next window and raise it.
+# KeySysWinNext="Alt+Esc"
+
+#  Give focus to the previous window and raise it.
+# KeySysWinPrev="Alt+Shift+Esc"
+
+#  Opens the IceWM system window list in the center of the screen.
+# KeySysWindowList="Alt+Ctrl+Esc"
+
+#  Goes to workspace 1.
+# KeySysWorkspace1="Alt+Ctrl+1"
+
+#  Goes to workspace 10.
+# KeySysWorkspace10="Alt+Ctrl+0"
+
+#  Takes the active window to workspace 10.
+# KeySysWorkspace10TakeWin="Alt+Ctrl+Shift+0"
+
+#  Goes to workspace 11.
+# KeySysWorkspace11="Alt+Ctrl+minus"
+
+#  Takes the active window to workspace 11.
+# KeySysWorkspace11TakeWin="Alt+Ctrl+Shift+minus"
+
+#  Goes to workspace 12.
+# KeySysWorkspace12="Alt+Ctrl+equal"
+
+#  Takes the active window to workspace 12.
+# KeySysWorkspace12TakeWin="Alt+Ctrl+Shift+equal"
+
+#  Takes the active window to workspace 1.
+# KeySysWorkspace1TakeWin="Alt+Ctrl+Shift+1"
+
+#  Goes to workspace 2.
+# KeySysWorkspace2="Alt+Ctrl+2"
+
+#  Takes the active window to workspace 2.
+# KeySysWorkspace2TakeWin="Alt+Ctrl+Shift+2"
+
+#  Goes to workspace 3.
+# KeySysWorkspace3="Alt+Ctrl+3"
+
+#  Takes the active window to workspace 3.
+# KeySysWorkspace3TakeWin="Alt+Ctrl+Shift+3"
+
+#  Goes to workspace 4.
+# KeySysWorkspace4="Alt+Ctrl+4"
+
+#  Takes the active window to workspace 4.
+# KeySysWorkspace4TakeWin="Alt+Ctrl+Shift+4"
+
+#  Goes to workspace 5.
+# KeySysWorkspace5="Alt+Ctrl+5"
+
+#  Takes the active window to workspace 5.
+# KeySysWorkspace5TakeWin="Alt+Ctrl+Shift+5"
+
+#  Goes to workspace 6.
+# KeySysWorkspace6="Alt+Ctrl+6"
+
+#  Takes the active window to workspace 6.
+# KeySysWorkspace6TakeWin="Alt+Ctrl+Shift+6"
+
+#  Goes to workspace 7.
+# KeySysWorkspace7="Alt+Ctrl+7"
+
+#  Takes the active window to workspace 7.
+# KeySysWorkspace7TakeWin="Alt+Ctrl+Shift+7"
+
+#  Goes to workspace 8.
+# KeySysWorkspace8="Alt+Ctrl+8"
+
+#  Takes the active window to workspace 8.
+# KeySysWorkspace8TakeWin="Alt+Ctrl+Shift+8"
+
+#  Goes to workspace 9.
+# KeySysWorkspace9="Alt+Ctrl+9"
+
+#  Takes the active window to workspace 9.
+# KeySysWorkspace9TakeWin="Alt+Ctrl+Shift+9"
+
+#  Goes to the previous workspace.
+# KeySysWorkspaceLast="Alt+Ctrl+Down"
+
+#  Takes the active window to the previous workspace.
+# KeySysWorkspaceLastTakeWin="Alt+Ctrl+Shift+Down"
+
+#  Goes one workspace to the right.
+# KeySysWorkspaceNext="Alt+Ctrl+Right"
+
+#  Takes the active window one workspace to the right.
+# KeySysWorkspaceNextTakeWin="Alt+Ctrl+Shift+Right"
+
+#  Goes one workspace to the left.
+# KeySysWorkspacePrev="Alt+Ctrl+Left"
+
+#  Takes the active window one workspace to the left.
+# KeySysWorkspacePrevTakeWin="Alt+Ctrl+Shift+Left"
+
+#  Move the Task Bar button of the current window right.
+# KeyTaskBarMoveNext=""
+
+#  Move the Task Bar button of the current window left.
+# KeyTaskBarMovePrev=""
+
+#  Switch to the next window in the Task Bar.
+# KeyTaskBarSwitchNext=""
+
+#  Switch to the previous window in the Task Bar.
+# KeyTaskBarSwitchPrev=""
+
+#  Moves the active window to the top middle of the screen.
+# KeyWinArrangeC="Ctrl+Alt+KP_Begin"
+
+#  Moves the active window to the middle right of the screen.
+# KeyWinArrangeE="Ctrl+Alt+KP_Right"
+
+#  Moves the active window to the top middle of the screen.
+# KeyWinArrangeN="Ctrl+Alt+KP_Up"
+
+#  Moves the active window to the top right of the screen.
+# KeyWinArrangeNE="Ctrl+Alt+KP_Prior"
+
+#  Moves the active window to the top left corner of the screen.
+# KeyWinArrangeNW="Ctrl+Alt+KP_Home"
+
+#  Moves the active window to the bottom middle of the screen.
+# KeyWinArrangeS="Ctrl+Alt+KP_Down"
+
+#  Moves the active window to the bottom right of the screen.
+# KeyWinArrangeSE="Ctrl+Alt+KP_Next"
+
+#  Moves the active window to the bottom left of the screen.
+# KeyWinArrangeSW="Ctrl+Alt+KP_End"
+
+#  Moves the active window to the middle left of the screen.
+# KeyWinArrangeW="Ctrl+Alt+KP_Left"
+
+#  Closes the active window.
+# KeyWinClose="Alt+F4"
+
 #  Maximizes the active window without borders.
 # KeyWinFullscreen="Alt+F11"
 KeyWinFullscreen="Alt+Enter"  #---> ah ben voilà, pourquoi ça marchait pas!
+
+#  Hides the active window.
+# KeyWinHide="Alt+Shift+F12"
+
+#  Lowers the window which currently has input focus.
+# KeyWinLower="Alt+F3"
 
 #  Maximizes the active window with borders.
 # KeyWinMaximize="Alt+F10"
@@ -167,6 +507,35 @@ KeyWinMaximizeVert="Ctrl+Alt+Enter"
 #  Smart place the active window.
 # KeyWinSmartPlace="Ctrl+Alt+Shift+KP_Begin"
 
+#  Let the active window occupy the bottom half of the screen.
+# KeyWinTileBottom=""
+
+#  Let the active window occupy the bottom left quarter of the screen.
+# KeyWinTileBottomLeft=""
+
+#  Let the active window occupy the bottom right quarter of the screen.
+# KeyWinTileBottomRight=""
+
+#  Let the active window occupy the center quarter of the screen.
+# KeyWinTileCenter=""
+
+#  Let the active window occupy the left half of the screen.
+# KeyWinTileLeft=""
+
+#  Let the active window occupy the right half of the screen.
+# KeyWinTileRight=""
+
+#  Let the active window occupy the top half of the screen.
+# KeyWinTileTop=""
+
+#  Let the active window occupy the top left quarter of the screen.
+# KeyWinTileTopLeft=""
+
+#  Let the active window occupy the top right quarter of the screen.
+# KeyWinTileTopRight=""
+
+#  Add a keyboard layout.
+# KeyboardLayouts=""
 
 #  Let the Dock layer limit the workspace (incompatible with GNOME Panel)
 # LimitByDockLayer=0 # 0/1
@@ -182,7 +551,8 @@ LimitPosition=0
 LimitSize=0 # 0/1
 
 #  Command to lock display/screensaver.
-LockCommand=""
+# LockCommand=""
+LockCommand="xscreensaver-command -lock"
 
 #  Command to cancel logout.
 # LogoutCancelCommand=""
@@ -192,35 +562,105 @@ LogoutCancelCommand=""
 # LogoutCommand=""
 LogoutCommand=""
 
+#  Lower the active window when clicked again.
+# LowerOnClickWhenRaised=0 # 0/1
+
+#  Colon separated paths of your mailboxes, otherwise $MAILPATH or $MAIL is used.
+# MailBoxPath=""
+
+#  Delay between new-mail checks in seconds.
+# MailCheckDelay=30 # [0-86400]
+
+#  WM_CLASS to allow runonce for MailCommand.
+# MailClassHint="mutt.XTerm"
+
 #  Command to run on mailbox.
-MailCommand=""
+# MailCommand="x-terminal-emulator -name mutt -e mutt"
+MailCommand="thunderbird"
 
 #  Windows initially placed manually by user.
 # ManualPlacement=0 # 0/1
 ManualPlacement=0
 
+#  Put new windows on top even if not focusing them.
+# MapInactiveOnTop=1 # 0/1
+
+#  Delay in ms before activating menu items.
+# MenuActivateDelay=40 # [0-5000]
+
+#  Maximal width of popup menus,  2/3 of the screen's width if set to zero.
+# MenuMaximalWidth=0 # [0-16384]
+
 #  Menus track mouse even with no mouse buttons held.
 MenuMouseTracking=1
+
+#  Place new mini-icons from bottom to top.
+# MiniIconsBottomToTop=0 # 0/1
+
+#  Place the mini-icons horizontal instead of vertical.
+# MiniIconsPlaceHorizontal=0 # 0/1
+
+#  Place new mini-icons from right to left.
+# MiniIconsRightToLeft=0 # 0/1
+
+#  Display mini-icons on desktop for minimized windows.
+# MinimizeToDesktop=0 # 0/1
+MinimizeToDesktop=0
+
 
 #  Treat the Super/Win key modifier as a synonym for the Ctrl+Alt modifier combination. The default key bindings have many occurrences of Ctrl+Alt.  If you enable this, then the Super modifier is an alternative way to activate them.
 # ModSuperIsCtrlAlt=0 # 0/1
 # ModSuperIsCtrlAlt=1 # 0/1
 # ModSuperIsCtrlAlt=1       # De antixforum
 
+#  Mouse binding to lower window.
+# MouseWinLower="Ctrl+Alt+Pointer_Button1"
 
-#  Display mini-icons on desktop for minimized windows.
-# MinimizeToDesktop=0 # 0/1
-MinimizeToDesktop=0
+#  Mouse binding for window move.
+# MouseWinMove="Alt+Pointer_Button1"
+
+#  Mouse binding to raise window.
+# MouseWinRaise="Ctrl+Alt+Pointer_Button1"
 
 #  Mouse binding for window resize.
 # MouseWinSize="Alt+Pointer_Button3"
 MouseWinSize=""
 # (ça vient du EEEPC)
 
+#  Mouse binding to create tabs.
+# MouseWinTabbing="Shift+Pointer_Button2"
+# TODO essayer!
+
+#  Preselect to Cancel (0) or the OK (1) button in message boxes.
+# MsgBoxDefaultAction=0 # [0-1]
+
+#  Overrides automatic multiple byte detection.
+# MultiByte=1 # 0/1
+
+#  Multiple click time in ms.
+# MultiClickTime=400 # [0-5000]
+
+#  Minimal number of themes after which the Themes menu becomes nested (0=disabled)
+# NestedThemeMenuMinNumber=21 # [0-1234]
+
+#  WM_CLASS to allow runonce for NetStatusCommand.
+# NetStatusClassHint="ss.XTerm"
+
+#  Command to run on Net status.
+# NetStatusCommand="x-terminal-emulator -T 'Network Status' -e /bin/sh /usr/share/icewm/netstat.sh"
+
+#  Show network status only for connected devices.
+# NetStatusShowOnlyRunning=0 # 0/1
+
+#  NET_WORKAREA behaviour: 0 (single/multimonitor with STRUT information, like metacity), 1 (always full desktop), 2 (singlemonitor with STRUT, multimonitor without STRUT)
+# NetWorkAreaBehaviour=0 # [0-2]
 
 #  Network device to show status for.
 # NetworkStatusDevice="ppp0 eth0"
 # NetworkStatusDevice="[ew]*"
+
+#  Command to run when new mail arrives.
+# NewMailCommand=""
 
 #  Opaque window move.
 # OpaqueMove=1 # 0/1
@@ -234,17 +674,32 @@ OpaqueResize=1
 # OpenCommand=""
 OpenCommand=""
 
+#  Draw border around workspace buttons (if PagerShowPreview=1)
+# PagerShowBorders=1 # 0/1
+
+#  Show workspace name label on workspace button (if PagerShowPreview=1)
+# PagerShowLabels=1 # 0/1
+
 #  Draw even minimized windows as unfilled rectangles (if PagerShowPreview=1)
+# PagerShowMinimized=1 # 0/1
 PagerShowMinimized=0 # 0/1
 
 #  Show number of workspace on workspace button (if PagerShowPreview=1)
 # PagerShowNumbers=0 # 0/1
 
 #  Show a mini desktop preview on each workspace button.
+# PagerShowPreview=1 # 0/1
 PagerShowPreview=0 # 0/1
 
 #  Draw window icons inside large enough preview windows on pager (if PagerShowPreview=1)
+# PagerShowWindowIcons=1 # 0/1
 PagerShowWindowIcons=0 # 0/1
+
+#  Pass focusing click on client area to client.
+# PassFirstClickToClient=1 # 0/1
+
+#  Timeout in seconds for applications to respond to _NET_WM_PING protocol.
+# PingTimeout=3 # [0-86400]
 
 #  Colormap focus follows pointer.
 # PointerColormap=1 # 0/1
@@ -479,10 +934,11 @@ TaskBarFullscreenAutoShow=1
 # TaskBarMEMSamples=20 # [2-1000]
 
 #  Beep when new mail arrives.
+# TaskBarMailboxStatusBeepOnNewMail=0 # 0/1
 TaskBarMailboxStatusBeepOnNewMail=1 # 0/1
 
 #  Count messages in mailbox.
-# TaskBarMailboxStatusCountMessages=1 # 0/1
+# TaskBarMailboxStatusCountMessages=0 # 0/1
 TaskBarMailboxStatusCountMessages=1
 
 #  Delay between Net Monitor samples in ms.
@@ -536,7 +992,7 @@ TaskBarShowMailboxStatus=1
 TaskBarShowNetStatus=1
 
 #  Show 'show desktop' button on taskbar (value of 2 to put after the clock)
-TaskBarShowShowDesktopButton=0 # [0-2]
+# TaskBarShowShowDesktopButton=1 # [0-2]
 TaskBarShowShowDesktopButton=0 # 0/1
 
 #  Show 'Start' menu on task bar.
@@ -593,6 +1049,7 @@ TaskBarShowWorkspaces=1
 TerminalCommand="xterm"
 
 #  Clock Time format (strftime format string)
+# TimeFormat="%X"
 TimeFormat="%R"
 
 #  Alternate Clock Time format for blinking effects.
@@ -636,8 +1093,8 @@ Win95Keys=0
 WinMenuItems="rnxc"
 
 #  Add a workspace.
-#WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
-#WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rezo","progsys","projetut","install","outils","BDD","shell","droit","zik", "réseau", "progsys", "projet_tut", "install", "outils" 
+# WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
+# WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rezo","progsys","projetut","install","outils","BDD","shell","droit","zik", "réseau", "progsys", "projet_tut", "install", "outils" 
 # WorkspaceNames="fch","emaux","net","root","data","bd","sig","op1","op2","op3","virtu","devel","zik"
 WorkspaceNames="fch", "emaux", "net", "root", "data", "bd", "sig", "op1", "op2", "op3", "virtu", "devel", "zik"
 
@@ -1262,450 +1719,4 @@ WindowListFontName=""
 
 
 ###################
-# Preferences générées par genpref, dans leur ordre généré, si elles ne sont pas entrées plus haut. C'est juste pour mémoire, en fait:{{{
-
-#  Use a 32-bit visual for alpha blending.
-# Alpha=0 # 0/1
-
-#  Enable event logging for debugging.
-# LogEvents=0 # 0/1
-
-#  Splash image on startup (IceWM.jpg)
-# Splash=""
-
-#  Synchronize X11 for debugging (slow)
-# Synchronize=0 # 0/1
-
-#  Enable tracing for the given modules.
-# Trace=""
-
-#  List of battery names (directories) in /proc/acpi/battery to ignore. Useful when more slots are built-in, but only one battery is used.
-# AcpiIgnoreBatteries=""
-
-#  Command to run for address bar entries.
-# AddressBarCommand=""
-
-#  Automatically arrange windows when screen size changes.
-# ArrangeWindowsOnScreenSizeChange=1 # 0/1
-
-#  Delay in ms before task bar is hidden.
-# AutoHideDelay=300 # [0-5000]
-
-#  Auto scroll start delay in ms.
-# AutoScrollStartDelay=500 # [0-5000]
-
-#  Delay in ms before task bar is shown.
-# AutoShowDelay=500 # [0-5000]
-
-#  Delay between power status updates in seconds.
-# BatteryPollingPeriod=10 # [2-3600]
-
-#  Bitmask of buttons that raise the window when pressed.
-# ButtonRaiseMask=1 # [0-255]
-
-#  WM_CLASS to allow runonce for CPUStatusCommand.
-# CPUStatusClassHint="top.XTerm"
-
-#  Combine all CPUs to one.
-# CPUStatusCombine=1 # 0/1
-
-#  Command to run on CPU status.
-# CPUStatusCommand="x-terminal-emulator -T 'Process Status' -e top"
-
-#  Show ACPI temperature in CPU status tool tip.
-# CPUStatusShowAcpiTemp=1 # 0/1
-
-#  Show ACPI temperature in CPU status bar.
-# CPUStatusShowAcpiTempInGraph=0 # 0/1
-
-#  Show CPU frequency in CPU status tool tip.
-# CPUStatusShowCpuFreq=1 # 0/1
-
-#  Show RAM usage in CPU status tool tip.
-# CPUStatusShowRamUsage=1 # 0/1
-
-#  Show swap usage in CPU status tool tip.
-# CPUStatusShowSwapUsage=1 # 0/1
-
-#  Center large windows.
-# CenterLarge=0 # 0/1
-
-#  Allow mouse actions on client windows (buggy with some programs)
-# ClientWindowMouseActions=1 # 0/1
-
-#  WM_CLASS to allow runonce for ClockCommand.
-# ClockClassHint="icewm.XClock"
-
-#  Confirm logout.
-# ConfirmLogout=1 # 0/1
-
-#  Consider border frames when maximizing horizontally.
-# ConsiderHBorder=0 # 0/1
-
-#  Consider XSizeHints if frame is maximized.
-# ConsiderSizeHintsMaximized=1 # 0/1
-
-#  Consider border frames when maximizing vertically.
-# ConsiderVBorder=0 # 0/1
-
-#  Workspace switches continuously when moving mouse to screen edge.
-# ContinuousEdgeSwitch=1 # 0/1
-
-#  Delay fuzziness in ms, to allow merging of multiple timer timeouts into one for notebook power saving.
-# DelayFuzziness=0 # [0-100]
-
-#  Desktop mouse-button click to show the window list menu.
-# DesktopWinMenuButton=0 # [0-20]
-
-#  Support DockApps (right, left, center, down, high, above, below, desktop, or empty to disable). Control with Ctrl+Mouse.
-# DockApps="right high desktop"
-
-#  Don't rotate the cursor for popup menus.
-# DontRotateMenuPointer=1 # 0/1
-
-#  Use double buffering when redrawing the display.
-# DoubleBuffer=1 # 0/1
-
-#  Resistance in pixels when trying to move windows off the screen (10000 = infinite)
-# EdgeResistance=32 # [0-10000]
-
-#  Change to the workspace of newly focused windows.
-# FocusChangesWorkspace=0 # 0/1
-
-#  Move newly focused windows to current workspace.
-# FocusCurrentWorkspace=0 # 0/1
-
-#  Focus window when client area clicked.
-# FocusOnClickClient=1 # 0/1
-
-#  Focus normal window when initially mapped.
-# FocusOnMap=1 # 0/1
-
-#  Focus dialog window when initially mapped.
-# FocusOnMapTransient=0 # 0/1
-
-#  Focus dialog window when initially mapped only if parent frame focused.
-# FocusOnMapTransientActive=1 # 0/1
-
-#  Taskbar blink interval (ms) when requesting focus (0 = blinking disabled)
-# FocusRequestFlashInterval=250 # [0-30000]
-
-#  Number of seconds the taskbar app will blink when requesting focus (0 = forever)
-# FocusRequestFlashTime=0 # [0-86400]
-
-#  Workspace switches by moving mouse to left/right screen edge.
-# HorizontalEdgeSwitch=0 # 0/1
-
-#  Colon separated icon theme list with wildcard support. Minus prefix - can be used to exclude themes.
-# IconThemes="*:-HighContrast"
-
-#  Opens the address bar in the task bar where a command can be typed.
-# KeySysAddressBar="Alt+Ctrl+Space"
-
-#  Rearranges the windows.
-# KeySysArrange="Alt+Shift+F5"
-
-#  Rearranges the icons on the desktop, if MinimizeToDesktop is true.
-# KeySysArrangeIcons="Alt+Shift+F8"
-
-#  Makes a horizontal cascade of all windows which are maximized vertically.
-# KeySysCascade="Alt+Shift+F4"
-
-#  Toggles displaying the task bar.
-# KeySysCollapseTaskBar="Alt+Ctrl+h"
-
-#  Opens the IceWM system dialog in the center of the screen.
-# KeySysDialog="Alt+Ctrl+Del"
-
-#  Hides all windows.
-# KeySysHideAll="Alt+Shift+F11"
-
-#  Switch to the next keyboard layout in the KeyboardLayouts list.
-# KeySysKeyboardNext=""
-
-#  Minimizes all windows.
-# KeySysMinimizeAll="Alt+Shift+F9"
-
-#  Is like KeySysSwitchNext but only for windows with the same WM_CLASS property as the currently focused window.
-# KeySysSwitchClass="Alt+grave"
-
-#  Works like KeySysSwitchNext but moving in the opposite direction.
-# KeySysSwitchLast="Alt+Shift+Tab"
-
-#  Opens the QuickSwitch popup and/or moves the selector in the QuickSwitch popup.
-# KeySysSwitchNext="Alt+Tab"
-
-#  Tiles all windows from top to bottom maximized horizontally.
-# KeySysTileHorizontal="Alt+Shift+F3"
-
-#  Tiles all windows from left to right maximized vertically.
-# KeySysTileVertical="Alt+Shift+F2"
-
-#  Undoes arrangement.
-# KeySysUndoArrange="Alt+Shift+F7"
-
-#  Shows the window list menu.
-# KeySysWinListMenu=""
-
-#  Posts the system window menu.
-# KeySysWinMenu="Shift+Esc"
-
-#  Give focus to the next window and raise it.
-# KeySysWinNext="Alt+Esc"
-
-#  Give focus to the previous window and raise it.
-# KeySysWinPrev="Alt+Shift+Esc"
-
-#  Opens the IceWM system window list in the center of the screen.
-# KeySysWindowList="Alt+Ctrl+Esc"
-
-#  Goes to workspace 1.
-# KeySysWorkspace1="Alt+Ctrl+1"
-
-#  Goes to workspace 10.
-# KeySysWorkspace10="Alt+Ctrl+0"
-
-#  Takes the active window to workspace 10.
-# KeySysWorkspace10TakeWin="Alt+Ctrl+Shift+0"
-
-#  Goes to workspace 11.
-# KeySysWorkspace11="Alt+Ctrl+minus"
-
-#  Takes the active window to workspace 11.
-# KeySysWorkspace11TakeWin="Alt+Ctrl+Shift+minus"
-
-#  Goes to workspace 12.
-# KeySysWorkspace12="Alt+Ctrl+equal"
-
-#  Takes the active window to workspace 12.
-# KeySysWorkspace12TakeWin="Alt+Ctrl+Shift+equal"
-
-#  Takes the active window to workspace 1.
-# KeySysWorkspace1TakeWin="Alt+Ctrl+Shift+1"
-
-#  Goes to workspace 2.
-# KeySysWorkspace2="Alt+Ctrl+2"
-
-#  Takes the active window to workspace 2.
-# KeySysWorkspace2TakeWin="Alt+Ctrl+Shift+2"
-
-#  Goes to workspace 3.
-# KeySysWorkspace3="Alt+Ctrl+3"
-
-#  Takes the active window to workspace 3.
-# KeySysWorkspace3TakeWin="Alt+Ctrl+Shift+3"
-
-#  Goes to workspace 4.
-# KeySysWorkspace4="Alt+Ctrl+4"
-
-#  Takes the active window to workspace 4.
-# KeySysWorkspace4TakeWin="Alt+Ctrl+Shift+4"
-
-#  Goes to workspace 5.
-# KeySysWorkspace5="Alt+Ctrl+5"
-
-#  Takes the active window to workspace 5.
-# KeySysWorkspace5TakeWin="Alt+Ctrl+Shift+5"
-
-#  Goes to workspace 6.
-# KeySysWorkspace6="Alt+Ctrl+6"
-
-#  Takes the active window to workspace 6.
-# KeySysWorkspace6TakeWin="Alt+Ctrl+Shift+6"
-
-#  Goes to workspace 7.
-# KeySysWorkspace7="Alt+Ctrl+7"
-
-#  Takes the active window to workspace 7.
-# KeySysWorkspace7TakeWin="Alt+Ctrl+Shift+7"
-
-#  Goes to workspace 8.
-# KeySysWorkspace8="Alt+Ctrl+8"
-
-#  Takes the active window to workspace 8.
-# KeySysWorkspace8TakeWin="Alt+Ctrl+Shift+8"
-
-#  Goes to workspace 9.
-# KeySysWorkspace9="Alt+Ctrl+9"
-
-#  Takes the active window to workspace 9.
-# KeySysWorkspace9TakeWin="Alt+Ctrl+Shift+9"
-
-#  Goes to the previous workspace.
-# KeySysWorkspaceLast="Alt+Ctrl+Down"
-
-#  Takes the active window to the previous workspace.
-# KeySysWorkspaceLastTakeWin="Alt+Ctrl+Shift+Down"
-
-#  Goes one workspace to the right.
-# KeySysWorkspaceNext="Alt+Ctrl+Right"
-
-#  Takes the active window one workspace to the right.
-# KeySysWorkspaceNextTakeWin="Alt+Ctrl+Shift+Right"
-
-#  Goes one workspace to the left.
-# KeySysWorkspacePrev="Alt+Ctrl+Left"
-
-#  Takes the active window one workspace to the left.
-# KeySysWorkspacePrevTakeWin="Alt+Ctrl+Shift+Left"
-
-#  Move the Task Bar button of the current window right.
-# KeyTaskBarMoveNext=""
-
-#  Move the Task Bar button of the current window left.
-# KeyTaskBarMovePrev=""
-
-#  Switch to the next window in the Task Bar.
-# KeyTaskBarSwitchNext=""
-
-#  Switch to the previous window in the Task Bar.
-# KeyTaskBarSwitchPrev=""
-
-#  Moves the active window to the top middle of the screen.
-# KeyWinArrangeC="Ctrl+Alt+KP_Begin"
-
-#  Moves the active window to the middle right of the screen.
-# KeyWinArrangeE="Ctrl+Alt+KP_Right"
-
-#  Moves the active window to the top middle of the screen.
-# KeyWinArrangeN="Ctrl+Alt+KP_Up"
-
-#  Moves the active window to the top right of the screen.
-# KeyWinArrangeNE="Ctrl+Alt+KP_Prior"
-
-#  Moves the active window to the top left corner of the screen.
-# KeyWinArrangeNW="Ctrl+Alt+KP_Home"
-
-#  Moves the active window to the bottom middle of the screen.
-# KeyWinArrangeS="Ctrl+Alt+KP_Down"
-
-#  Moves the active window to the bottom right of the screen.
-# KeyWinArrangeSE="Ctrl+Alt+KP_Next"
-
-#  Moves the active window to the bottom left of the screen.
-# KeyWinArrangeSW="Ctrl+Alt+KP_End"
-
-#  Moves the active window to the middle left of the screen.
-# KeyWinArrangeW="Ctrl+Alt+KP_Left"
-
-#  Closes the active window.
-# KeyWinClose="Alt+F4"
-
-#  Hides the active window.
-# KeyWinHide="Alt+Shift+F12"
-
-#  Lowers the window which currently has input focus.
-# KeyWinLower="Alt+F3"
-
-#  Let the active window occupy the bottom half of the screen.
-# KeyWinTileBottom=""
-
-#  Let the active window occupy the bottom left quarter of the screen.
-# KeyWinTileBottomLeft=""
-
-#  Let the active window occupy the bottom right quarter of the screen.
-# KeyWinTileBottomRight=""
-
-#  Let the active window occupy the center quarter of the screen.
-# KeyWinTileCenter=""
-
-#  Let the active window occupy the left half of the screen.
-# KeyWinTileLeft=""
-
-#  Let the active window occupy the right half of the screen.
-# KeyWinTileRight=""
-
-#  Let the active window occupy the top half of the screen.
-# KeyWinTileTop=""
-
-#  Let the active window occupy the top left quarter of the screen.
-# KeyWinTileTopLeft=""
-
-#  Let the active window occupy the top right quarter of the screen.
-# KeyWinTileTopRight=""
-
-#  Add a keyboard layout.
-# KeyboardLayouts=""
-
-#  Lower the active window when clicked again.
-# LowerOnClickWhenRaised=0 # 0/1
-
-#  Colon separated paths of your mailboxes, otherwise $MAILPATH or $MAIL is used.
-# MailBoxPath=""
-
-#  Delay between new-mail checks in seconds.
-# MailCheckDelay=30 # [0-86400]
-
-#  WM_CLASS to allow runonce for MailCommand.
-# MailClassHint="mutt.XTerm"
-
-#  Put new windows on top even if not focusing them.
-# MapInactiveOnTop=1 # 0/1
-
-#  Delay in ms before activating menu items.
-# MenuActivateDelay=40 # [0-5000]
-
-#  Maximal width of popup menus,  2/3 of the screen's width if set to zero.
-# MenuMaximalWidth=0 # [0-16384]
-
-#  Place new mini-icons from bottom to top.
-# MiniIconsBottomToTop=0 # 0/1
-
-#  Place the mini-icons horizontal instead of vertical.
-# MiniIconsPlaceHorizontal=0 # 0/1
-
-#  Place new mini-icons from right to left.
-# MiniIconsRightToLeft=0 # 0/1
-
-#  Mouse binding to lower window.
-# MouseWinLower="Ctrl+Alt+Pointer_Button1"
-
-#  Mouse binding for window move.
-# MouseWinMove="Alt+Pointer_Button1"
-
-#  Mouse binding to raise window.
-# MouseWinRaise="Ctrl+Alt+Pointer_Button1"
-
-#  Mouse binding to create tabs.
-# MouseWinTabbing="Shift+Pointer_Button2"
-
-#  Preselect to Cancel (0) or the OK (1) button in message boxes.
-# MsgBoxDefaultAction=0 # [0-1]
-
-#  Overrides automatic multiple byte detection.
-# MultiByte=1 # 0/1
-
-#  Multiple click time in ms.
-# MultiClickTime=400 # [0-5000]
-
-#  Minimal number of themes after which the Themes menu becomes nested (0=disabled)
-# NestedThemeMenuMinNumber=21 # [0-1234]
-
-#  WM_CLASS to allow runonce for NetStatusCommand.
-# NetStatusClassHint="ss.XTerm"
-
-#  Command to run on Net status.
-# NetStatusCommand="x-terminal-emulator -T 'Network Status' -e /bin/sh /usr/share/icewm/netstat.sh"
-
-#  Show network status only for connected devices.
-# NetStatusShowOnlyRunning=0 # 0/1
-
-#  NET_WORKAREA behaviour: 0 (single/multimonitor with STRUT information, like metacity), 1 (always full desktop), 2 (singlemonitor with STRUT, multimonitor without STRUT)
-# NetWorkAreaBehaviour=0 # [0-2]
-
-#  Command to run when new mail arrives.
-# NewMailCommand=""
-
-#  Draw border around workspace buttons (if PagerShowPreview=1)
-# PagerShowBorders=1 # 0/1
-
-#  Show workspace name label on workspace button (if PagerShowPreview=1)
-# PagerShowLabels=1 # 0/1
-
-#  Pass focusing click on client area to client.
-# PassFirstClickToClient=1 # 0/1
-
-#  Timeout in seconds for applications to respond to _NET_WM_PING protocol.
-# PingTimeout=3 # [0-86400]
-# }}}
 
