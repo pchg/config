@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ $(whoami) != "root" ]]; then
+  echo "coucou" ; 
+  echo "Errore: faut faire ça en route."
+  exit 1
+fi
+
+tomb open -f -k /home/pierre/pierre.tomb.key /home/pierre/pierre.tomb /home/pierre/cime_tiers
