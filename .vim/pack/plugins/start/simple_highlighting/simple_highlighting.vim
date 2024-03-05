@@ -114,7 +114,7 @@ function IncrementDefaultSlot()
     if g:hlDefaultNum >= s:TOTAL_HL_NUMBERS " Rotate through the list, if maximum slot number is reached:
        let g:hlDefaultNum = 1
     endif
-    echo "coucou"
+    " echo "coucou"
 endfunction
 
 function HighlightAdd(hlNum, pattern)
