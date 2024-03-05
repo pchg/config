@@ -1274,22 +1274,33 @@ inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g'<cr>A<space>
 
 
 " F11 - recherche d'étiquettes à faire, en cours, etc. "{{{
-"mapper F11 avec la recherche de la précédente occurrence de _______________ENCOURS_______________ ou @# ou _______________TODO__________________
-nnoremap <F11>          ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
-inoremap <F11>     <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
+"mapper F11 avec la recherche de la précédente occurrence de:
+"    _______________ENCOURS_______________ 
+" ou @# 
+" ou _______________TODO__________________
+nnoremap <F11>     :silent!      ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
+inoremap <F11>     :silent! <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
 
 "mapper Shift-F11 avec la même chose, dans l'autre sens:
-nnoremap <S-F11>        /\<_______________ENCOURS_______________\\|@#_______________TODO__________________<cr>
-inoremap <S-F11>   <Esc>/\<_______________ENCOURS_______________\\|@#_______________TODO__________________<cr>i
+nnoremap <S-F11>   :silent!      /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
+inoremap <S-F11>   :silent! <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
 
-" "mapper Ctrl-F11 avec la recherche de la précédente occurrence de @#
-" nnoremap <C-F11>        ?@#<cr>
-" inoremap <C-F11>   <Esc>?@#<cr>i
-"
-" "mapper Ctrl-Shift-F11 avec la même chose, dans l'autre sens:
-" nnoremap <C-S-F11>      /@#<cr>
-" inoremap <C-S-F11>   <Esc>/@#<cr>i
+
+
+" Aller au tag actue*l*, aller *L*à: mapper Ctrl-L pour aller *L*à:
+nnoremap   <C-l>   :silent!       /\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO$
+inoremap   <C-l>   :silent! <Esc> /\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
+
+" avec Maj enfoncée, dans *L*'autre sens:
+nnoremap  <S-C-l>   :silent!       ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO$
+inoremap  <S-C-l>   :silent! <Esc> ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
+" _______________TODO__________________ ajouter le message:
+" echo "=> on est Làààà"<cr>
+" nnoremap   <C-l>   :silent!      ?\<___?JEAN.*SUI.*L[AÀ]?___?<cr>zO :ec "=> on est Là"
+	" \_ le echo, ech, echom ne fonctionne point du tout.
+
 "}}}
+" __________***_JEANSUILA_***__________ <= tag n'existant QUE deux fois ####### ******** JEANSUILA_INSTANT_PRÉSENT ########################################################################################################################################
 
 
 " F12 - dernière macro invoquée: "{{{
@@ -1569,8 +1580,8 @@ noremap  <S-F8>        mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_bloc
 inoremap <S-F8>   <esc>mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
 
 " pour faire tourner la ligne courante par bash et coller la sortie après:
-inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`zi
-nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr> o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`z
+nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`z
+inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`zi
 
 
 
@@ -2371,6 +2382,15 @@ nnoremap <silent> <c-c> :if (&hlsearch == 1) \| set nohlsearch \| else \| set hl
 nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
 
+
+
+" Pour se déplacer verticalement dans un paragraphe wrappé:
+nnoremap <expr> k      (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j      (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> <Up>   (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> <Down> (v:count == 0 ? 'gj' : 'j')
+vnoremap <expr> <Up>   (v:count == 0 ? 'gk' : 'k')
+vnoremap <expr> <Down> (v:count == 0 ? 'gj' : 'j')
 
 
 " TODO FIXME !!
