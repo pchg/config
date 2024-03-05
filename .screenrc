@@ -23,13 +23,14 @@ scrollback 100000
 # STARTUP SCREENS{{{
 #------------------------------------------------------------------------------
 
-# screen -t postgres      7 bash
-# # screen -t psql_bdexplo 6 bash -c "psql -p 5432 -h localhost -d bdexplo"
-# screen -t psql_postgeol 6 bash -c "psql -p 5432 -h localhost -d postgeol"
-# screen -t taupe         5 htop -d 50
-# screen -t ROUTE         4 bash -c "su"
-# screen -t mc            3 mc
-# screen -t lanceur       2 bash
+screen -t stays         8 bash
+screen -t postgres      7 bash
+# screen -t psql_bdexplo 6 bash -c "psql -p 5432 -h localhost -d bdexplo"
+screen -t psql_postgeol 6 bash -c "psql -p 5432 -h localhost -d postgeol"
+screen -t taupe         5 htop -d 50
+screen -t ROUTE         4 bash -c "su"
+screen -t mc            3 mc
+screen -t lanceur       2 bash
 screen -t aarchives     1 bash
 screen -t nnotes        0 bash # -c "vi nnotes.txt"
 #screen -t mail 8 mutt
