@@ -107,10 +107,17 @@ Control+Alt+Shift+ E
 "lof /usr/bin/gvim"
 Control+Alt+ E
 
+# Mes notes dans vi:
+# "lof /usr/bin/gvim\ nnotes.txt"
+# "lof xterm\ -T\ \#\#NNOTES\#\#\ -e\ '/usr/bin/vim\ ~/notes/notes.txt'"
+"lof xterm -T \#\#NOTES\#\# -e 'bash -c -l -i /usr/bin/vim\ ~/notes/notes.txt'"
+Control+Alt+ N
+
 # Mes notes dans gvim:
 # "lof /usr/bin/gvim\ nnotes.txt"
 "lof /usr/bin/gvim\ notes/notes.txt"
-Control+Alt+ N
+Control+Alt+Shift+ N
+
 
 #}}}
 # Utilitaires divers:{{{
