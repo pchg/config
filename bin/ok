@@ -1,2 +1,3 @@
 #!/bin/bash
 echo "Ça roule..."
+cowsay -p "AU QUAI!"

@@ -11,7 +11,7 @@ if [ "$HOSTNAME" = "autan" ]; then
 	vym /home/pierre/cequejefais.vym &
 	bluetoothctl &
 elif [ "$HOSTNAME" = "latitude" ]; then
-	salutation="rock'n roll latitude" &
+	salutation="rock'n roll latitude"
 	# pidgin -f & # Client de chat pidgin => 2024_01_28__19_34_43 jamais utilisé ou presque, donc zou, ça saute.
 	synergys -f --config .synergy.conf &
 	x_lat_full
@@ -27,7 +27,7 @@ elif [ "$HOSTNAME" = "durandeux" ]; then
 fi
 
 echo $salutation
-espeak -v fr "$salutation" &
+espeak -v fr "$salutation"
 alarm-clock-applet &
 
 
@@ -60,15 +60,15 @@ tmux_session_travail &
 # On va retenter, tout de même:
 # xbindkeys_autostart &
 
-xterm   -T "dmesg" -geometry 80x10+0+-6 -e "dmesg -wH" &
+xterm   -T "dmesg" -geometry 80x10+0+-6 -e "dmesg -wHT" &
 
 #xterm   -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 'echo _______________________ & xsel -po && echo _______________________ && xsel -so && xsel -bo'" &
 #cmd='echo "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"' && xterm -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 '$cmd'" &
-presse_papiers_visualiseur &
+presse_papiers_visualiseur_dans_xterm &
 
 
 
-xload    -geometry 208x134+578+-6 &
+xload   -geometry 208x134+578+-6  &
 xosview -geometry 203x244+802+-6  &
 xeyes   -geometry 119x65-0-38     &
 
@@ -77,8 +77,8 @@ xterm   -T "disk free" -geometry 80x17+0+140 -e "watch -d -n 0.5 'df -khT -x tmp
 xterm   -T "btaupe" -geometry 80x24+-1-63 -e "btop" &
 
 
-xset r rate 200 100
 # xset r rate 200  50
+xset r rate 200 100
 xinput set-prop 14 "libinput Accel Speed" 1
 synclient TapButton1=1
 imwheel

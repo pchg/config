@@ -1,8 +1,12 @@
 #!/bin/bash
-#!/bin/sh
-# Un script pour lancer des choses vite faites.
 
-# Vieux trucs:{{{
+#!/usr/local/python/bin/python3
+#!/bin/sh
+# Un script pour lancer des choses vite faites / mal faites.
+
+: <<'BOFFENDOFCOMMENTEDOUTPART'
+# : '  # COMMENTED OUT: #{{{
+# Vieux trucs:#{{{
 #input coucou
 #mv /mnt/bab-nas/photos/.toutes/* /mnt/bab-nas/photos/.toutes/vu_lien_cree/
 #mv ./* /mnt/bab-nas/photos/.toutes/
@@ -64,7 +68,7 @@
 #}}}
 #}}}
 
-# Tentative de retrouver des répertoires nouvellement créés:{{{
+# Tentative de retrouver des répertoires nouvellement créés:#{{{
 # touch toutou
 # ls -l toutou
 # sleep 0.5
@@ -124,9 +128,9 @@
 # 
 # exit 0
 # 
-# }}}
+# #}}}
 
-# Tests pour envoyer un courriel, depuis precidoc.fr:{{{
+# Tests pour envoyer un courriel, depuis precidoc.fr:#{{{
 # fichiers_telecharges="SENTINEL2B_20220617-110851-711_L2A_T30TXQ_D.zip SENTINEL2B_20220803-105918-160_L2A_T31TCH_D.zip"
 # destinataires="pierrechevaliergeol@gmail.com"
 # destinataires="pascal.herman@wanadoo.fr"
@@ -182,7 +186,454 @@
 #      $destinataires < ${tmpfile}
 # 
 # rm -f ${tmpfile}
+# #}}}
+
+# Des trucs pour le MnC:#{{{
+# read -r -d '' list_VMs <<BOF
+# VM-NH-PORTAL
+# VM-NH-IDP
+# VM-NH-SUPERVISION
+# VM-NH-LOG-MANAGER
+# VM-NH-LOG-COLLECTOR
+# VM-NH-CCF-COMMANDING
+# VM-NH-CCF-SIM
+# BOF
+# for vm in $list_VMs; do echo $vm; done
+#
+# # titi="zou"
+# # export TOTO="zozo"
+#
+#
+# # a=101; b=7; c=0; d=0; components="EEMC_FWK Egnos-elan-mc-server-portal EEMC_CFG EEMC_CMD EEMC_MON EEMC_SYS EEMC_ACC EEMC-CCF-SIMULATOR"; for i in $components; do echo "$i"; xterm -T "### $i ###" -geometry $ax$b-c+d &; d=$(( $d + 121 )); done
+# alias eemc_lance_plein_de_xterms_pour_les_components=$(a=140; b=7; c=0; d=0; components="EEMC_FWK Egnos-elan-mc-server-portal EEMC_CFG EEMC_CMD EEMC_MON EEMC_SYS EEMC_ACC EEMC-CCF-SIMULATOR"; for i in ${components}; do echo "$i"; cd "$HOME/git/$i"; cmd="xterm -T \"###$i###\" -geometry ${a}x${b}-${c}+${d}"; echo $cmd; eval $cmd & disown; d=$(( $d + 121 )); done)
+# alias | grep eemc
+#
+#
+# # vi git/EEMC_FWK/check_and_install_all_mnc.sh git/EEMC_FWK/install_eemc_component.sh git/EEMC_FWK/check_target.sh -o
+# #
+# # export exec_dir=$(dirname $0)
+# # echo $exec_dir
+#
+# export coucou=${coucou:='salut'}
+# export var=${var:=0}
+# echo "###"
+# echo $coucou
+# echo $var
+# [[ $var == 0 ]] && echo "youpi"
+# export CONFIG_ROOT_DIR=${CONFIG_ROOT_DIR:="/etc/conf"}
+# echo $CONFIG_ROOT_DIR
+# export toto=${toto:=coucou}
+# echo $toto
+#
+# export branch=${3:-"develop"}
+# echo $branch
+# ' # /COMMENTED OUT
+#
+# # xterm -T "Comparaison des horloges" -e "watch -n 0.2 \"ssh root@VM-NH-CCF-COMMANDING 'echo VM-NH-CCF-COMMANDING:..$(date --rfc-3339=seconds)' ; ssh root@VM-NH-CCF-SIM 'echo VM-NH-CCF-SIM:.........$(date --rfc-3339=seconds)'\"" &
+# bash -eli eemc_verif_horloges_simu_commanding
+# xterm -T "VM-NH-CCF-COMMANDING messages" -e "ssh -t root@VM-NH-CCF-COMMANDING 'tail -f /var/log/messages'" &
+# # xterm -T "VM-NH-CCF-COMMANDING démarrage agent avec prints" -e "ssh -t root@VM-NH-CCF-COMMANDING 'systemctl stop eemc_cmd_cagt; source /etc/conf/elan_mc_env; bash -c -l -s \"EEMC_PYTHON_PATH/python3 -m eemc_cmd_cagt\" &'"
+# ssh -t root@VM-NH-CCF-COMMANDING 'systemctl stop eemc_cmd_cagt; source /etc/conf/elan_mc_env; bash -c -l -s \"EEMC_PYTHON_PATH/python3 -m eemc_cmd_cagt\" &'"
+# #}}}
+
+# echo Commented out # COMMENTED_OUT:{ {{  #####################################
+pwd
+
+# 2023_06_23__11_45_52
+# fichiers="nnotes.txt git/MnC/Article/documentation_mnc_esxi.md git/EEMC_FWK/check_and_install_all_mnc.sh git/EEMC_FWK/install_eemc_subcomponent.sh git/EEMC_FWK/EEMC_FWK_CMMN/conf/CONFIG_ROOT_DIR/elan_mc_env" ; gvim -o $fichiers &  vi -o $fichiers
+# 2023_06_29__08_32_34
+
+
+# cd fichiers_de_travail_courants
+# vi -o *
+#
+# fontchiers="nnotes.txt  $HOME/notes/no*txt $HOME/git/EEMC_FWK/check_and_install_all_mnc.sh $HOME/git/EEMC_FWK/install_eemc_subcomponent.sh $HOME/git/EEMC_FWK/EEMC_FWK_CMMN/conf/CONFIG_ROOT_DIR/elan_mc_env"
+# gvim -p $fontchiers
+# vim  -t $fontchiers
+
+# toto="tutu"
+# test $toto == "tuutu" &&
+# echo "ok" ||
+# echo "non"
+# exit 0
+
+
+rep1="~/git/EEMC_FWK"
+rep2="~/git/EEMC_FWK_ASOF_FIN_VMDEV_ORDIGRIS"
+rep3="~/git/EEMC_FWK_ASOF_DÉCÈS_ORDINOIR"
+fileconf="EEMC_FWK_CMMN/conf/CONFIG_ROOT_DIR/elan_mc_env"
+vi -c "e        $rep1/check_and_install_all_mnc.sh  | vsplit $rep2/check_and_install_all_mnc.sh | vsplit $rep3/check_and_install_all_mnc.sh \
+      | tabedit $rep1/install_eemc_subcomponent.sh  | vsplit $rep2/install_eemc_subcomponent.sh | vsplit $rep3/install_eemc_subcomponent.sh \
+      | tabedit $rep1/common.sh                     | vsplit $rep2/common.sh                    | vsplit $rep3/common.sh                    \
+      | tabedit $rep1/$fileconf                     | vsplit $rep2/$fileconf                    | vsplit $rep3/$fileconf"
+
+
+# vi -c "e       $rep1/check_and_install_all_mnc.sh  | split $rep2/check_and_install_all_mnc.sh | split $rep3/check_and_install_all_mnc.sh | tabedit $rep1/install_eemc_subcomponent.sh  | split $rep2/install_eemc_subcomponent.sh | split $rep3/install_eemc_subcomponent.sh | tabedit $rep1/common.sh                     | split $rep2/common.sh                    | split $rep3/common.sh                    | tabedit $rep1/$fileconf                     | split $rep2/$fileconf                    | split $rep3/$fileconf"
+
+
+
+
+
+source $HOME/git/EEMC_FWK/common.sh && echo ok
+log_info "coucou"
+subcomponent="EEMC_ACC_WEBP"
+set -x
+set -v
+echo "/tmp/${subcomponent}"
+install_subcomponent $subcomponent
+set +x
+set +v
+exit
+log_debug "caca"
+source rien.sh
+toto
+debug_break_wait_enter "zou!"
+log_info $(date)
+
+log_error "cucu"
+
+confirm 0 "c'est sûr?" ; echo "Retour: $?"
+confirm 1 "ah?"        ; echo "Retour: $?"
+
+confirm 1 "coucou"
+
+
+
+read -r -d '' toto <<-BOF
+				ls /tmp/z* | tail -20
+					BOF
+echo $toto
+${toto}
+exit 0
+
+
+
+# Vu avec Driss_El_Maalem: il est normal qu'il n'y ait pas de sec pour le 0 => je corrige:#{{{
+
+output=""
+output="| Username | Password | Description |\n"
+output+="| :------- |:--------:| ----------|\n"
+letters="a b c"
+sec_ornot="'' 'sec'"
+for num in $(seq 0 3); do
+  for sec in ${sec_ornot}; do
+    for letter in ${letters}; do
+      username="op_sl${num}"
+      password="Opsl${num}"
+      tmp="${sec//\'/}"
+      if [[ $num -ne 0 ]]; then
+        if [[ "${tmp}" == "sec" ]]; then
+          username+="_${tmp}"
+          password+="${tmp}"
+        else
+          continue
+        fi
+      fi
+      username+="_$letter"
+      password+=$letter
+      password+="!"
+      output+="| ${username} | ${password}     |       |\n"
+    done
+  done
+done
+# output=$(echo ${output} | grep -v "sl0.*sec")
+# output="toto"
+# echo -e "PORTAL web users: usernames and passwords:\n"
+# echo -e "${output}" | column -s "|" -t | grep -v ":--"
+# echo -e "\nMarkdown:"
+echo -e "\n\n## Portal\n\nUsernames/passwords:\n"
+echo -e "${output}"
+
+# #}}}
+
+# #{{{
+
+output=""
+output="| Username | Password | Description |\n"
+output+="| :------- |:--------:| ----------|\n"
+letters="a b c"
+sec_ornot="'' 'sec'"
+for num in $(seq 0 3); do
+  for sec in ${sec_ornot}; do
+    for letter in ${letters}; do
+      username="op_sl${num}"
+      password="Opsl${num}"
+      tmp="${sec//\'/}"
+      if [[ "${tmp}" == "sec" ]]; then
+        username+="_${tmp}"
+        password+="${tmp}"
+      fi
+      username+="_$letter"
+      password+=$letter
+      password+="!"
+      output+="| ${username} | ${password}     |       |\n"
+    done
+  done
+done
+output=$(echo -e "${output}" | grep -v "sl0_sec")
+echo $output
+echo -e "PORTAL web users: usernames and passwords:\n"
+echo -e "${output}" | column -s "|" -t | grep -v ":--"
+echo -e "\nMarkdown:"
+echo -e "\n\n## Portal\n\nUsernames/passwords:\n"
+echo -e "${output}"
+
+# #}}}
+
+
+# De la bricole:{{{
+# clear
+set -a; unset elan_mc_env__sourced; source /etc/conf/elan_mc_env
+# cd ~/git/EEMC_FWK;
+cd ~/git/scripts_bash_check_and_install_mnc/
+unset common__sourced; source common.sh
+# send_public_ssh_keys_to_all_vms deploy
+# test_all_vms_ping
+# ./check_and_install_all_mnc.sh
+echo "### $(script_path) ###"
+pwd
+read
+coucou() {
+  echo "coucou"
+  stacktrace
+}
+coucou
+echo "rien"
+stacktrace
+
+
+
+echo "~~~~~~~~~~~~~~~~"
+set +u
+echo $(caller)
+caller_name
+echo $line_deco
+echo $failed_vms
+date_of_log
+caller_name() {
+  if caller; then
+    echo ""
+  else
+    caller | cut -d ' ' -f2
+  fi
+}
+
+caller_line() {
+  if caller; then
+    echo ""
+  else
+    caller | cut -d ' ' -f1
+  fi
+echo "##$(caller_line)##"
+}
+caller_name
+caller_line
+stacktrace
+unset common__sourced; source common.sh; trap - ERR
+echo $line_deco
+echo $line_deco
+
+DEV_HOST=""
+define_common_variables
+echo $DEV_HOST
+echo "##$(script_name)##"
+echo $DEV_DIRECTORY
+failed_vms="toto"
+log_error "TEST_ALL_VMS_PING"
+test_all_vms_ping
+echo "" >> $VERBOSE_LOG_FILE
+sleep 1
+log_error "TEST_ALL_VMS_PING2"
+test_all_vms_ping2
+sleep 1
+read
+
+#}}}
+
+
+
+
+# 2023_12_18__16_10_15 bricolage pour avoir un code d'erreur de sftp:{{{
+# sftp_with_error_code() {
+#
+#
+# }
+
+echo "zz"
+echo "zz"
+user="deploy"
+host="GENE-MnC-PORTAL-VM"
+filename="toto"
+destination_directory="/tmp"
+# sftp_output=$(sftp ${user}@${host} <<< "put ${filename} ${destination_directory}" 2>&1)
+# sftp_output=$(sftp -b - ${user}@${host} <<< "put ${filename} ${destination_directory}" 2>&1)
+# echo "put ${filename} ${destination_directory}" | sftp -b -
+
+# sftp -b - ${user}@${host} <<BOF 2>&1 | tee /tmp/sftp.log
+# put ${filename} ${destination_directory}
+# BOF
+sftp -b - ${user}@${host} <<< "put ${filename} ${destination_directory}" 2>&1
+return_code=${PIPESTATUS[0]}
+echo -e "\n## Return code from sftp: ${return_code} ##"
+
+# echo $sftp_output
+# re='.*ermission denied.*'
+# # echo $re;
+# if [[ ${sftp_output} =~ ${re} ]]; then
+  # exit 1
+# fi
+# echo $?
+
+
+
+
+
+
+
+# Une démo isolée:{{{
+
+user="deploy"
+host="GENE-MnC-PORTAL-VM"
+filename="/tmp/toto"
+destination_directory="/tmp/"
+sftp_output=$(sftp -b - ${user}@${host} <<<"put ${filename} ${destination_directory}" 1> /dev/null)
+return_code=${PIPESTATUS[0]}
+if [[ ${return_code} -ne 0 ]]; then
+  echo -e "Error (return code ${return_code}) when trying to transfer file ${filename} by sftp to host ${host} as user ${user}:\n${sftp_output}"
+fi
+echo -e "\n## Return code from sftp: ${return_code} ##"
+
 # }}}
+# }}}
+
+
+
+# 2023_12_19__14_16_27
+# cloud bricolage:{{{
+# pwd
+# echo "coucou"
+
+
+# cloud_init_base_files=*_files.tar.gz
+# echo "# cloud_init_base_files: ${cloud_init_base_files}"
+#
+# for filename in $cloud_init_base_files; do
+#   # Je ne fais que les LOG*:
+#   if [[ ! ${filename} =~ LOG.* ]]; then continue; fi
+#   # 2023_12_19__15_13_56
+#   # Purée, les noms courts ne sont pas ceux dont on avait convenus!!!
+#   echo $filename
+#   host="${filename%%_*}"
+#   case ${host} in
+#     ("BAST") target_host="PAM"     ;;
+#     (*)      target_host="${host}" ;;
+#   esac
+#   # Ça va, ça n'était que pour BAST PAM
+#
+#   ping "\${$target_host}" # | ping
+#   echo $target_host
+#
+#   cmd="scp_deploy \"./${filename}\" ${target_user_deploy:-\"deploy\"} ${target_host} /tmp/"
+#   echo $cmd
+#   # echo "###"
+#   # echo $cmd_ssh
+#   # echo "###"
+#   # eval ${cmd_ssh}
+#   # echo $?
+#   # rest="${filename#*_}"
+#   # cmd="tar -zxvf ${filename} -C /"
+#   # if [[ "${filename}" =~ .*security.* ]]; then
+#     # cmd+=" --strip-components=2"
+#   # fi
+#   # echo $target_host
+#   # # echo $rest
+#   # echo "###"
+#   # echo $cmd
+#   # # target=$(echo $i | cut -d "_" -f 1)
+#   # # rest="$(echo $i |cut -d "_" -f 2)
+#   echo -e "###\n"
+# done
+
+echo ""
+echo ""
+install_cloud_init_targz_files
+# }}}
+
+
+toto="a"
+echo "##$toto##"
+
+if   [[ ${toto} -eq "taoto" ]]; then
+  echo "toto est bien toto"
+elif [[ ${tutu} == "tutu" ]]; then
+  echo "alors là, c'est tutu qui est tutu"
+else
+  echo "eh bé on sait pas"
+fi
+
+flag="10"
+if [[ ${flag} -eq "10" ]]; then
+  echo "youpi"
+else
+  echo "mince"
+fi
+
+unset common__sourced; unset elan_mc_env__sourced; source elan_mc_env; source common.sh; trap - ERR; set +u; set -a
+
+
+
+
+
+
+
+
+
+
+# CICD infernalement efficace:
+cd /home/MnC_dev/git/MnC/Article/Procedures/Installations
+# watch -d -n 5 'if [[ $(git diff) -ne "" ]]; then git commit -am "Corrections again" ; git push; fi'
+watch -n 5 'if [[ "$(git diff | wc -l)" -ne "" ]]; then git commit -am "Corrections again, automatic commit and push" ; git push; cp mnc_installation_procedure.md ~/u_pch/Q/; fi'
+
+
+
+
+
+cd $HOME/git/
+watch -d -n 0.5 "components=$(for c in *; do if [[ -d $c ]]; then echo $c | grep -viE 'NO*N' | grep -vi 'niet' | grep -v '_202._' | grep -vi okz | grep -vi achtung | grep -vi qq | grep -vi asof; fi; done); echo $components"
+# components=$(for c in E*; if [[ -d $c ]]; then do echo $c | grep -vi 'NON' | grep -vi 'niet'; done; done); echo $components"
+exit 0
+
+
+BOFFENDOFCOMMENTEDOUTPART
+# echo End of commented out part # #}}} PAS COMMENTED_OUT ######################
+
+
+
+
+
+echo "######################"
+echo "### Activité A1976 ###"
+# cd ~/git/EEMC*/*/*/*ilt
+# cd tmp_toutes_sources
+source ~/.virtualenvs/environnt_pch/bin/activate
+cd ~/1976
+# 1976/archives/tmp_toutes_sources/travail_fp.sh
+# Some environment variables: TODO to be put into a configuration file:
+set -a
+# CONFIG_ROOT_DIR="${HOME}/git/EEMC_CMD/EEMC_CMD_PILT/src/eemc_cmd_pilt/test_data/etc"
+# CONFIG_BACKUP_DIR="${HOME}/git/EEMC_CMD/EEMC_CMD_PILT/src/eemc_cmd_pilt/test_data/data/operational_conf"
+# CONFIG_ROOT_DIR="~/git/EEMC_CMD/EEMC_CMD_PILT/tests/resources/synchro_configuration_input_files"
+# CONFIG_BACKUP_DIR="${HOME}/git/EEMC_CMD/EEMC_CMD_PILT/src/eemc_cmd_pilt/test_data/data/operational_conf"
+# CONFIG_BACKUP_DIR="$(mktemp -d)"
+# echo $CONFIG_BACKUP_DIR
+# echo "Langement du script test_backup.py"
+echo "Langement du script ${script_test}"
+cd /home/MnC_dev/git/EEMC_CMD/EEMC_CMD_PILT/tests/src
+script_test="test_synchro_configuration_manager.py"
+python ${script_test}
+
+#}}}
+
 
 # touch monQ.zip
 

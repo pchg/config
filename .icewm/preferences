@@ -624,8 +624,10 @@ MinimizeToDesktop=0
 
 #  Mouse binding for window resize.
 # MouseWinSize="Alt+Pointer_Button3"
-MouseWinSize=""
+# MouseWinSize=""
 # (ça vient du EEEPC)
+##### (et c'est TRÈS NAZE, car ça empêche de retailler les fenêtres)
+
 
 #  Mouse binding to create tabs.
 # MouseWinTabbing="Shift+Pointer_Button2"
@@ -1096,7 +1098,8 @@ WinMenuItems="rnxc"
 # WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rpt2","rpt3","virtu","devel","zik"
 # WorkspaceNames="fch","emaux","net","root","data","bd","sig","rat-porc1","rezo","progsys","projetut","install","outils","BDD","shell","droit","zik", "réseau", "progsys", "projet_tut", "install", "outils" 
 # WorkspaceNames="fch","emaux","net","root","data","bd","sig","op1","op2","op3","virtu","devel","zik"
-WorkspaceNames="fch", "emaux", "net", "root", "data", "bd", "sig", "op1", "op2", "op3", "virtu", "devel", "zik"
+WorkspaceNames="fch", "emaux", "net", "root", "data", "bd", "sig", "op1", "op2", "op3", "virtu", "devel", "doc", "config", "taff", "geneal", "pol", "zik"
+
 
 #  Time before workspace status window is hidden in ms.
 # WorkspaceStatusTime=2500 # [0-2500]

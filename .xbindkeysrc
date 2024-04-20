@@ -281,9 +281,14 @@ Alt+Control+ Home
 
 
 # Midnight Commander:
-"lof xterm -e 'bash -c -l -i /usr/bin/mc'"
+# "lof xterm -e '/usr/bin/mc / /tmp'"
+# "lof xterm -e bash -lic '/usr/bin/mc $HOME /tmp'"
+"lof xterm -e '/usr/bin/mc ~ /tmp'"
 Control+Alt+ M
 
+# Test:
+"echo "\\n#######################\\n\\atest de xbindkeys!\\n#######################\\a""
+Control+Alt+ T
 
 # Courrielleur:
 "lof /usr/bin/thunderbird"

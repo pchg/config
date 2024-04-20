@@ -111,8 +111,12 @@ endfunction
 
 function IncrementDefaultSlot()
     let g:hlDefaultNum += 1
+    echo 'Highlight number: 'g:hlDefaultNum
     if g:hlDefaultNum >= s:TOTAL_HL_NUMBERS " Rotate through the list, if maximum slot number is reached:
        let g:hlDefaultNum = 1
+       echo 'Highlight number: 'g:hlDefaultNum
+	   " Also lowlight (un-high-light) the currently highlighted word:
+	   HighlightClear(g:hlDefaultNum)
     endif
     " echo "coucou"
 endfunction

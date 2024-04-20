@@ -1,4 +1,8 @@
 #!/bin/sh
+# # aa=`tempfile`
+# # bb=`tempfile`
+# aa=`mktemp`
+# bb=`mktemp`
 aa=$(mktemp)
 bb=$(mktemp)
 echo "1st file, finish with Ctrl-D:  =========="

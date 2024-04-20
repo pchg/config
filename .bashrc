@@ -129,11 +129,11 @@ alias lg='ls -la | grep'
 function der_fichier() {
   # echo $(ls --group-directories-first -Ht | head -1)
   # Tentatives de mieux faire (vaines):{{{
-	#   echo $(
-	#     find . -maxdepth 1 -type f -exec ls -1 {}\;
-	#     \ --group-directories-first\ -Htr\ '{}'\ \;
-	#      | tail -1)
-	# }}}
+  #   echo $(
+  #     find . -maxdepth 1 -type f -exec ls -1 {}\;
+  #     \ --group-directories-first\ -Htr\ '{}'\ \;
+  #      | tail -1)
+  # }}}
   ls -trlha | tail -1
 
 }
@@ -197,7 +197,7 @@ alias degel_chromium='killall chromium -s 18'           #dégel de chromium
 #
 # Set some generic aliases
 #
-#alias o='less -AS'	#-A marche pas sur le less de la debian
+#alias o='less -AS'  #-A marche pas sur le less de la debian
 alias o='less -SiN'
 alias v='less -SiNFX'   #pareil, mais le V est plus à main pour la gauche, avec la droite à la souris; “less -X” if your screen clears when you quit less and you want to avoid that.  -F or --quit-if-one-screen: Causes less to automatically exit if the entire file can be displayed on the first screen.
 
@@ -248,11 +248,11 @@ export PILOTRATE=115200
 
 
 if [[ "$(whoami)" == "root" ]] ; then
-	PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
-	echo "Je suis en route!"
+  PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/bin
+  echo "Je suis en route!"
 else
-	PATH=$PATH:$HOME/bin
-	PATH=$PATH:$HOME/.local/bin
+  PATH=$PATH:$HOME/bin
+  PATH=$PATH:$HOME/.local/bin
 fi
 export PATH
 
@@ -422,20 +422,26 @@ colour_txtrst='\e[0m'    # Text Reset
 # }}}
 
 # Je redécoupe la construction du PS1:{{{
+
 # - en partant de rien:
 PS1=""
+
 # - une ligne vide d'abord, pour espacer:
 # PS1+="\n " # => PAS
+
 # - et une espace pour ne pas que ça arrive dans un historique:
 PS1+=" "
+
 # - l'utilisateur, avec une couleur rouge ou verte, selon qu'il soit root ou pas, avec un # pour innocenter la ligne de prompt:
 if [[ "$(whoami)" == "root" ]] ; then
   PS1+="${colour_bldred}# \u@"
 else
   PS1+="${colour_txtgrn}# \u@"
 fi
+
 # - le nom d'hôte:
 PS1+="\h"
+
 # - changer le prompt si on est dans un chroot:
 # if [ "$(stat -c %d:%i / 2> /dev/null)" != "$(stat -c %d:%i /proc/1/root/. 2> /dev/null)" ]; then
 # if [[ $(awk 'BEGIN{exit_code=1} $2 == "/" {exit_code=0} END{exit exit_code}' /proc/mounts) ]]; then
@@ -448,10 +454,13 @@ else
   # echo "Business as usual"
   PS1+="${colour_txtrst}"
 fi
+
 # - le répertoire courant:
 PS1+=": \w"
+
 # - l'horodatage:
 PS1+=" < ${colour_txtpur}\D{%Y_%m_%d__%H_%M_%S}${colour_txtrst} > [bashpid_${BASHPID}${colour_bldblu} \#${colour_txtrst}]"
+
 # - et plein de git:
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \[\033h[38;5;63m\]["; fi)\[\033[38;5;202m\]'
 #PS1+='$(if git rev-parse --git-dir > /dev/null 2>&1; then echo " \e[\033[38;5;63m\]["; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "]"; fi)'
@@ -480,10 +489,13 @@ if [[ -f ${tt} ]]; then
   # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
   PS1+='$(__git_ps1 " (%s)")'
 fi
+
 # -on revient au noir:
 PS1+="${colour_txtrst}"
+
 # et on passe à la ligne, finaloumen:
 PS1+="\n"
+
 # }}}
 
 # }}}
@@ -519,13 +531,13 @@ export GST_V4L2_USE_LIBV4L2=1
 # 2022_05_10__15_37_19 ça ralentit notablement mon démarrage de bash; je mets ça dans une condition si on est dans un répertoire où il y a kylibre:
 re='.*kylib.*'
 if [[ $(pwd) =~ $re ]]; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	eval "$(rbenv init -)"
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
 
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-	export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 fi
 # }}}
 
@@ -700,7 +712,7 @@ alias cpt='cptimestampedarchive'
 # backup_mv_
 # cpt_mv_timestampedarchives_to_backup() {
   # for i in .*; do
-	# regex="_[0-9]
+  # regex="_[0-9]
     # if [[ "$i" =~ ^.*_[0-9]4_
 #
 # ]]]
@@ -750,8 +762,11 @@ shopt -s direxpand
 
 
 # Pour remettre le clavier à bonne vitesse:
-alias clavier_rapide='xset r rate 200 100 && xinput set-prop $(xinput | grep "Microsoft Microsoft IntelliMouse" | cut -f 2 | cut -d "=" -f 2) "libinput Accel Speed" 1'
+export KEYBOARD_SPEED=100
+alias clavier_rapide='xset r rate 200 ${KEYBOARD_SPEED} && xinput set-prop $(xinput | grep "Microsoft Microsoft IntelliMouse" | cut -f 2 | cut -d "=" -f 2) "libinput Accel Speed" 1'
 
+alias clavier_plus_rapide='(( KEYBOARD_SPEED += 10)) ; echo "Vitesse de rebond du clavier: $KEYBOARD_SPEED"; xset r rate 200 ${KEYBOARD_SPEED}'
+alias clavier_moins_rapide='(( KEYBOARD_SPEED -= 10)) ; echo "Vitesse de rebond du clavier: $KEYBOARD_SPEED"; xset r rate 200 ${KEYBOARD_SPEED}'
 
 : <<BOF # COMMENTAIRE
 # Le format de date par défaut:
@@ -837,3 +852,10 @@ alias titre_xterm='icesh -w focus setWindowTitle '
 
 # Pour Red, pour ne pas avoir les messages irritants liés au GUI pas à jour de l'an neuf:
 # alias red='red 2>/dev/null'
+
+
+# 2024_04_17__22_04_28 
+# Inclusion de autojump:
+source /usr/share/autojump/autojump.sh
+
+

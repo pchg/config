@@ -1,38 +1,44 @@
 #!/bin/bash
 
+# Lance Ou donne le Focus
 DEBUG=0
 DEBUG=1
 
 # prog_name="$1"
 # => ça fonctione bien mieux ainsi:
 prog_name="$*"
-[[ $DEBUG == "1" ]] && echo "$prog_name"
+[[ ${DEBUG} == "1" ]] && echo "${prog_name}"
 
 # trouver le pid du process du programme
 # -f inclus l'ensemble des détails du process, y compris arguments et options
 prog_pid="$(pgrep -f "^${prog_name}$")"
-[[ $DEBUG == "1" ]] && echo "$prog_pid"
+[[ ${DEBUG} == "1" ]] && echo "${prog_pid}"
 
 
 # Si le programme ne tourne pas, on le démarre;
 # sinon, on lui donne le focus:
-if [[ -z "$prog_pid" ]]; then
- $prog_name &
+if [[ -z "${prog_pid}" ]]; then
+ if [[ ${DEBUG} == "1" ]]; then
+  echo "##############################"
+  echo "${prog_name}"
+  echo "##############################"
+ fi
+ ${prog_name} &
 else
   # à partir du pid, on cherche l'id de fenêtre, et on lui donne le focus:
-  #window_id=$(wmctrl -lp | grep "$prog_pid" | awk '{print $1}')
+  #window_id=$(wmctrl -lp | grep "${prog_pid}" | awk '{print $1}')
   # petite préférence pour cut, sans importance aucune:
-  window_id=$(wmctrl -lp | grep "$prog_pid" | cut -d " " -f 1)
+  window_id=$(wmctrl -lp | grep "${prog_pid}" | cut -d " " -f 1)
 
   ## On récupère aussi le bureau, pour s'y rendre:
-  #[[ $DEBUG == "1" ]] && echo "$window_id"
-  #desktop_id=$(wmctrl -lp | grep "$prog_pid" | cut -d " " -f 3)
-  #[[ $DEBUG == "1" ]] && echo "$desktop_id"
+  #[[ ${DEBUG} == "1" ]] && echo "${window_id}"
+  #desktop_id=$(wmctrl -lp | grep "${prog_pid}" | cut -d " " -f 3)
+  #[[ ${DEBUG} == "1" ]] && echo "${desktop_id}"
   # => non, inutile
 
   # wmctrl -R prend la fenêtre et la met dans le bureau courant, en lui passant le focus:
-  #wmctrl -iR "$window_id"
+  #wmctrl -iR "${window_id}"
   # Non: plutôt on va d'abord dans le bureau de la fenêtre visée:
-  wmctrl -ia "$window_id"
+  wmctrl -ia "${window_id}"
 fi
 

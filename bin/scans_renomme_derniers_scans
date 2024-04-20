@@ -15,7 +15,7 @@ cd ~/scans_multifonction_brother
 for i in BRN* ; do
  echo "$i"
  echo "Affichage de $i avec evince..."
- evince "$i"
+ evince "$i" &
  echo "Entrer un nom de féchier à ajouter à la fin de $i: "
  read -r nom
  nouveau_nom=${i/\.pdf/_${nom// /_}\.pdf}
@@ -26,4 +26,4 @@ for i in BRN* ; do
  mv "$i" "$nouveau_nom"
  ls -l "$nouveau_nom"
 done
-
+thunar . &

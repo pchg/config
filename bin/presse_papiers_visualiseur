@@ -10,9 +10,9 @@ set -a
 affiche_presse_papiers() {
   echo -e "________ presse-papiers primaire: _________"
   xsel -po
-  echo -e "________ presse-papiers secondaire: _______"
+  echo -e "\n________ presse-papiers secondaire: _______"
   xsel -so
-  echo -e "________ presse-papiers clipboard: ________"
+  echo -e "\n________ presse-papiers clipboard: ________"
   xsel -bo
 }
  
@@ -23,4 +23,13 @@ if [[ -z "${flag_xterm}" ]]; then
   # Dans le cas contraire, rien à faire, on a simplement exporté 
   # la fonction affiche_presse_papiers
 fi
+
+
+# Version de chez sp:
+# #!/bin/sh
+# icesh -window focus setWindowTitle "Presse-papiers"
+# # cmd='echo "_______ presse-papiers primaire: __________\n `xsel -po`\n_______ presse-papiers secondaire: ________\n `xsel -so`\n_______ presse-papiers clipboard: _________\n `xsel -bo`"'
+# cmd='echo -e "_______ presse-papiers primaire: __________\n `xclip -o -selection primary`\n_______ presse-papiers secondaire: ________\n `xclip -o -selection secondary`\n_______ presse-papiers clipboard: _________\n `xclip -o -selection clipboard`"'
+# # xterm -T "presse-papiers" -geometry 43x16+1059+0 -e "watch -n 0.2 '$cmd'" &
+# watch -d -n 0.2 $cmd
 

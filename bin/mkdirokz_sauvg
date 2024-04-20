@@ -1,39 +1,64 @@
+#!/bin/bash
 #!/usr/bin/rebol -qsw
-rebol []
+# rebol []
 
-rep_okz: to-file ".okz"
-;print pwd
-change-dir system/options/path  ; lassant, de devoir faire ça...
-;print pwd
-;print exists? rep_okz 
+# rep_okz: to-file ".okz"
+rep_okz=".okz"
+# ;print pwd
+# change-dir system/options/path  ; lassant, de devoir faire ça...
+# ;print pwd
+# ;print exists? rep_okz 
 
-unless ( exists? rep_okz ) [
-	prin "Création du répertoire de sauvegarde au cas où: " print rep_okz 
-	make-dir rep_okz 
-]
-change-dir rep_okz
-rep_aujourdhui: to-file replace/all (left to-iso-date now 10) "-" "_"
-print rep_aujourdhui
-unless ( exists? rep_aujourdhui ) [
-	prin "Création du répertoire de sauvegarde du jour: " print rep_aujourdhui 
-	make-dir rep_aujourdhui
-]
-change-dir rep_aujourdhui
-print pwd
+# unless ( exists? rep_okz ) [
+if [[ ! -d ${rep_okz} ]]; then
+  # prin "Création du répertoire de sauvegarde au cas où: " print rep_okz 
+  echo "Création du répertoire de sauvegarde au cas où: ${rep_okz}"
+  # make-dir rep_okz 
+  mkdir ${rep_okz}
+# ]
+fi
 
-repertoires_du_jour: read %.
-print repertoires_du_jour
-either repertoires_du_jour = [] [
-	num_courant: 1	
-] [
-	;print length? repertoires_du_jour
-	;print repertoires_du_jour
-	sort repertoires_du_jour
-	num_courant: 1 + to-integer replace to-string (last repertoires_du_jour) "/" ""
-	;print num_courant
-]
-make-dir to-file num_courant
+# change-dir rep_okz
+cd ${rep_okz}
 
-; lassé.
-; à finir, un beau jour...
+# rep_aujourdhui: to-file replace/all (left to-iso-date now 10) "-" "_"
+rep_aujourdhui=$(date +\%Y_\%m_\%d)
+
+# print rep_aujourdhui
+# unless ( exists? rep_aujourdhui ) [
+if [[ ! -d ${rep_aujourdhui} ]]; then
+  # prin "Création du répertoire de sauvegarde du jour: " print rep_aujourdhui 
+  echo "Création du répertoire de sauvegarde du jour: ${rep_aujourdhui}"
+  # make-dir rep_aujourdhui
+  mkdir ${rep_aujourdhui}
+# ]
+fi
+# change-dir rep_aujourdhui
+cd ${rep_aujourdhui}
+# print pwd
+pwd
+
+# repertoires_du_jour: read %.
+# print repertoires_du_jour
+# either repertoires_du_jour = [] [
+repertoires_du_jour=$(ls | sort -n)
+if [[ -z $repertoires_du_jour ]]; then
+  # num_courant: 1	
+  num_courant=1
+# ] [
+else
+  # ;print length? repertoires_du_jour
+  # ;print repertoires_du_jour
+  # sort repertoires_du_jour
+  # num_courant: 1 + to-integer replace to-string (last repertoires_du_jour) "/" ""
+  # ;print num_courant
+  num_courant=$(ls | sort -n | tail -1)
+  (( num_courant += 1 ))
+# ]
+fi
+# make-dir to-file num_courant
+mkdir $num_courant
+
+# ; lassé.
+# ; à finir, un beau jour...
 

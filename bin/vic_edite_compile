@@ -1,4 +1,6 @@
 #!/bin/bash
+# Édite (avec vi) et compile un programme C, vite et bien.
+# Edits (with vi) and compiles a C program, simply, quickly.
 echo " ### Édition     ###"
 vi "$1"
 echo " ### Code: {{{   ###"

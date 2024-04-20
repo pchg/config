@@ -1,4 +1,10 @@
 #!/bin/sh
+# # aa=`tempfile`
+# # bb=`tempfile`
+# # cc=`tempfile`
+# aa=`mktemp`
+# bb=`mktemp`
+# cc=`mktemp`
 aa=$(mktemp)
 bb=$(mktemp)
 cc=$(mktemp)

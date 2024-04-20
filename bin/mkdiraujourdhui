@@ -1,14 +1,20 @@
 #!/bin/sh
 #date +%Y_%m_%d | xargs mkdir
 
+# echo "Make directory with current date YYYY_MM_DD"
+# #, and change current directory there."
+# # i=`date +%Y_%m_%d`
+# i=$(date +%Y_%m_%d)
+# mkdir $i  &&  ls -trlh | tail -1
+# 
+# #? le cd marche pas: on cd, mais ça revient au répertoire 
+# #  où le script était lancé après avoir quitté le script.
+# cd $i
+# ls
 
-echo "Make directory with current date YYYY_MM_DD"
-#, and change current directory there."
-i=`date +%Y_%m_%d`
-mkdir $i  &&  ls -trlh | tail -1
-
-#? le cd marche pas: on cd, mais ça revient au répertoire 
-#  où le script était lancé après avoir quitté le script.
-cd $i
-ls
+ 
+# 2023_04_03__11_06_21 autre version:
+tt=$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')
+echo $tt
+mkdir $tt
 
