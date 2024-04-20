@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Commit message:"
+read msg
+install_eemc_subcomponent.sh
+tt=$(mktemp)
+
+echo "ça marche pas... reprendre un beau jour..." ; exit 1 ##########
+git commit -am "$msg" && git push -f | tee $tt
+if [[ $? -eq 0 ]]; then
+  $BROWSER $(cat $tt | grep -A 2 "Visit the existing pull req" | tail -1)
+fi
+
+
+
+# Debugs:
+echo $msg
+echo $tt
+cat $tt
+

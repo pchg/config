@@ -1,0 +1,107 @@
+#!/bin/bash
+
+# Mise en sommeil de l'ordi
+
+# Ancienne version, datant du 4 mai 2009:
+# sudo hibernate --force -F /etc/hibernate/ram.conf
+
+DEBUG=1
+DEBUG=0
+VERBOSE=1
+VERBOSE=0
+
+usage() {
+  msg="\nUsage:\n "
+  msg+="- pour mettre l'ordi en sommeil léger:\n  "
+  msg+="dodo\n "
+  msg+="- pour mettre l'ordi en sommeil profond:\n  "
+  msg+="dodo -p\n ou:\n  dodo --profond"
+  echo -e "${msg}"
+  exit 1
+}
+
+# Par défaut, on part pour une siestounette tranquille, sommeil léger:
+cmd="pm-suspend"
+
+# Parsons l'option éventuelle; on n'en attend qu'une ou zéro option:"
+# -p --profond pour partir dans un sommeil profond, ou bien rien.
+SHORT="p"
+LONG="profond"
+if ! OPTION=$(getopt --o ${SHORT} --long ${LONG} -- "$@") ; then
+  usage
+fi
+
+if [[ ${DEBUG} == 1 ]]; then
+  echo "###${OPTION}###"
+fi
+
+eval set -- "${OPTION}"
+while true; do
+  case "$1" in
+    -p | --profond )
+      adverbe="PROFONDÉMENT"
+      cmd="pm-suspend-hybrid"
+      shift 1 ;;
+    -- ) 
+      shift 1
+      break ;;
+    * )
+      usage ;;
+  esac
+done
+
+if [[ ${DEBUG} == 1 ]]; then
+  echo "${adverbe}"
+  echo "${cmd}"
+  # echo "Entrée pour continuer..."
+  # read
+  echo -e ""
+fi
+
+# On prend la date avant de s'endormir:
+endormissement_epoch=$(date +%s)
+endormissement_human=$(date)
+echo -e "Je m'endors ${adverbe} à ce moment:\n ${endormissement_human} ..."
+
+if [[ ${DEBUG} == 1 ]]; then
+  msg="    On est en mode DEBUG ${DEBUG}, on se met donc en sommeil pour de "
+  msg+="faux...\n    Si ça n'était pas pour du beurre, on lancerait ça:\n"
+  msg+="      ${cmd}"
+  msg+="    (dodo...)"
+  msg+="    Entrée pour se réveiller..."
+  echo -e "${msg}"
+  read -r
+else 
+  if [[ ${VERBOSE} == 1 ]]; then
+    echo -e "Pas de mode DEBUG, on se met en sommeil pour de vrai..."
+  else
+    echo -e "On se met en sommeil..."
+  fi
+  echo -e "    (dodo...)"
+  ${cmd}
+  # Période de sommeil...
+  ret=$?
+fi
+
+# On prend la date une fois qu'on est réveillé:
+reveil_epoch=$(date +%s)
+reveil_human=$(date)
+echo -e "... je m'éveille à ce moment:\n ${reveil_human}"
+
+temps_sommeil_s=$(( reveil_epoch - endormissement_epoch ))
+temps_sommeil_h=$(( temps_sommeil_s / 3600 ))
+
+msg="Cela m'a fait ${temps_sommeil_s} seconde"
+if [[ ${temps_sommeil_s} -gt 1 ]]; then msg+="s"; fi
+msg+=" de sommeil, ou encore ${temps_sommeil_h} heure"
+if [[ ${temps_sommeil_h} -gt 1 ]]; then msg+="s"; fi
+msg+=".\n"
+echo -e "${msg}"
+
+if [[ ${ret} -ne 0 ]]; then
+  msg="\aAttention! Mon endormissement et/ou mon sommeil n'a pas été bon, "
+  msg+="numéro d'erreur renvoyé par ${cmd}: ${ret}"
+  echo -e "${msg}"
+fi
+exit "${ret}"
+

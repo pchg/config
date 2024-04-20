@@ -1,0 +1,2 @@
+xterm -T "SCREEN" -e "screen -a -d -r"
+

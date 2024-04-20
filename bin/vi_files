@@ -1,0 +1,1 @@
+vi -o $(find . -name "$1" | grep -v ".tox" | grep -v ".vscode" | grep -v ".virtualen" | grep -v ".okz" | grep -v ".poubelle")

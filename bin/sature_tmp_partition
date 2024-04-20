@@ -1,0 +1,13 @@
+dftmp() {
+  df /tmp --output=avail | grep -v Avai
+}
+dftmp
+for i in $(seq 100); do cat /etc/passwd >> /tmp/GROSFÉCHIER; done
+while [[ $(dftmp) -gt 1024 ]]; do
+  for i in $(seq 100); do cat /tmp/GROSFÉCHIER >> /tmp/GROSFÉCHIERPLUSGROS; done
+done
+echo -e "Et voilà, /tmp doit être saturé...\nCtrl-C pour le laisser saturé ainsi, Entrée pour libérer l'espace qui vient d'être gaspillé"
+read
+rm /tmp/GROSFÉCHIERPLUSGROS
+rm /tmp/GROSFÉCHIER
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Mise en sommeil profond de l'ordi
+
+# Ancienne version, datant du 16 janv. 2009:
+# sudo hibernate --force
+# #su -c "hibernate --force"
+# #su -c "hibernate"
+
+# Appel à dodo --profond
+dodo --profond

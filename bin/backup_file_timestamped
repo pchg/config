@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[[ ! $# -eq 1 ]] && exit 1
+if [[ ! -f "$1" ]] && [[ ! -d "$1" ]]; then
+ echo "$1 not found"
+ echo "cannot stat '$1': No such file or directory"
+ exit 2
+fi
+
+# dest="${1}_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')"
+dest="${1}_$(date +\%Y_%m_%d__%H_%M_%S)"
+cp -r -L "$1" $dest && echo "$1 copied as $dest"
+echo -e "# To check differences:\ndiff -r $1 ${dest}"
+
