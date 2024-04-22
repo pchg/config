@@ -1571,13 +1571,15 @@ inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g'<cr>A<space>
 " ou @# 
 " ou _______________TODO__________________
 " nnoremap <F11>     :silent!      ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
-nnoremap <F11>                   ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>zO
 " inoremap <F11>     :silent! <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
-inoremap <F11>              <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>i
+nnoremap <F11>                   ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO
+inoremap <F11>              <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>i
 
 "mapper Shift-F11 avec la même chose, dans l'autre sens:
-nnoremap <S-F11>   :silent!      /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
-inoremap <S-F11>   :silent! <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
+" nnoremap <S-F11>   :silent!      /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
+" inoremap <S-F11>   :silent! <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
+nnoremap <S-F11>                 /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO
+inoremap <S-F11>            <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>i
 
 
 
@@ -3033,35 +3035,37 @@ syntax enable
 " à réordonner où il convient:{{{
 
 " Un raccourci pratique pour basculer la maximisation d'une fenêtre en hauteur:{{{
-if va18 == "zb" "@# début de code désactivé #############################################[[[[
-" Première solution:{{{
-" https://vim.fandom.com/wiki/Maximize_window_and_return_to_previous_split_structure
 
-" nnoremap <C-W>O :call MaximizeToggle()<CR>
-" nnoremap <C-W>o :call MaximizeToggle()<CR>
-" nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
-" \_ quelque chose de plus ergonomique:
-" nnoremap <A-_> <C-W>_
-nnoremap <A-_> :call MaximizeToggle()<CR>
+" if va18 == "zb" "@# début de code désactivé #############################################[[[[
+" " Première solution:{{{
+" " https://vim.fandom.com/wiki/Maximize_window_and_return_to_previous_split_structure
+" 
+" " nnoremap <C-W>O :call MaximizeToggle()<CR>
+" " nnoremap <C-W>o :call MaximizeToggle()<CR>
+" " nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+" " \_ quelque chose de plus ergonomique:
+" " nnoremap <A-_> <C-W>_
+" nnoremap <A-_> :call MaximizeToggle()<CR>
+" 
+" function! MaximizeToggle()
+  " if exists("s:maximize_session")
+    " exec "source " . s:maximize_session
+    " call delete(s:maximize_session)
+    " unlet s:maximize_session
+    " let &hidden=s:maximize_hidden_save
+    " unlet s:maximize_hidden_save
+  " else
+    " let s:maximize_hidden_save = &hidden
+    " let s:maximize_session = tempname()
+    " set hidden
+    " exec "mksession! " . s:maximize_session
+    " only
+  " endif
+" endfunction
+" 
+" " }}}
+" endif "@# fin de code désactivé #############################################]]]]
 
-function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
-endfunction
-
-" }}}
-endif "@# fin de code désactivé #############################################]]]]
 " Seconde solution:{{{
 
 function! ToggleZoom(zoom, vertical)
@@ -3080,14 +3084,14 @@ function! ToggleZoom(zoom, vertical)
 endfunction
 
 augroup restorezoom
-    au WinEnter * silent! :call ToggleZoom(v:false)
+    au WinEnter * silent! :call ToggleZoom(v:false, v:false)
 augroup END
 
 " Raccourci initial:
 " nnoremap <silent> <Leader>+ :call ToggleZoom(v:true)<CR>
 " Raccourcis pour maximiser verticalement par défaut, et en tous sens avec shift:
-nnoremap <A-_> :call ToggleZoom(v:true,  v:true)<CR>
-inoremap <A-_> :call ToggleZoom(v:true,  v:true)<CR>
+nnoremap <A-_>      :call ToggleZoom(v:true,  v:true)<CR>
+inoremap <A-_> <Esc>:call ToggleZoom(v:true,  v:true)<CR>i
 
 nnoremap <A-8> :call ToggleZoom(v:true, v:false)<CR>
 inoremap <A-8> :call ToggleZoom(v:true, v:false)<CR>
