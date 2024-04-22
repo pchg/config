@@ -826,7 +826,7 @@ nnoremap <A-PageDown> [c
 
 " Pour coller rapidement en passant par xclip, au lieu d'avoir des caractères à la noix quand on colle: {{{
 nnoremap <C-Insert>         :r !xclip -o<cr>
-inoremap <C-Insert>  <Esc>mz:r !xclip -o<cr>`zi
+inoremap <C-Insert>  <Esc>mz:r !xclip -o<cr>`za
 " vnoremap <C-Insert>        x:r !xclip -o<cr>
 " non, ce dernier est stupide, dans la mesure où la sélection (chez un vim
 " bien élevé) est déjà dans le presse-papiers de X...
@@ -902,7 +902,7 @@ inoremap <C-Insert>  <Esc>mz:r !xclip -o<cr>`zi
   " " J'ajoute les raccourcis C-Insert et autres:
   " " <C-Insert>
   " vnoremap <silent>[2;5~    y: call ClipboardYank()<CR>
-  " inoremap <silent>[2;5~    y: call ClipboardYank()<CR>
+  " inoremap <silent>[2;5~    y: call ClipboardYank()<CR>a
   " " _______________ENCOURS_______________QUELQUECHOSE
 " 
   " " Annulation de tout!
@@ -949,10 +949,10 @@ if va4 == "oui" "@# début de code désactivé #################################
 " nnoremap <> <C-k>
 nnoremap <C-j>      ddp
 noremap  <C-j>      ddp
-inoremap <C-j> <Esc>ddpi
+inoremap <C-j> <Esc>ddpa
 nnoremap <C-k>      ddkP
 noremap  <C-k>      ddkP
-inoremap <C-k> <Esc>ddkPi
+inoremap <C-k> <Esc>ddkPa
 
 if empty($TMUX)
   " nnoremap <A-j> :echo "Pas dans TMUX!"<cr>
@@ -968,8 +968,8 @@ endif
 " Idem, de 2023 dans vimrc_spi: {{{
 " map <C-j> ddp
 " map <C-k> ddkP
-" inoremap <C-j> <Esc>ddpi
-" inoremap <C-k> <Esc>ddkPi
+" inoremap <C-j> <Esc>ddpa
+" inoremap <C-k> <Esc>ddkPa
 " }}}
 
 "map   ddp
@@ -980,8 +980,8 @@ endif
 "nnoremap <C-Up> ddkp <CR>    "DONE marche pas => si, ainsi:
 "map <C-Up> ddkP
 "map <C-Down> ddp
-"inoremap <C-Up>   <Esc>ddkPi
-"inoremap <C-Down> <Esc>ddpi
+"inoremap <C-Up>   <Esc>ddkPa
+"inoremap <C-Down> <Esc>ddpa
 
 " Autre version, trouvée dans http://www.billodom.com/talks/vim-key-mapping.pdf: plus efficace, marche avec des sélections, en les gardant:
 "nnoremap <silent> <C-Up> :move -2<CR>
@@ -997,17 +997,17 @@ endif
 "nnoremap <C-Up> ddkp <CR>    "DONE marche pas => si, ainsi:
 "map <C-Up> ddkP
 "map <C-Down> ddp
-"inoremap <C-Up>   <Esc>ddkPi
-"inoremap <C-Down> <Esc>ddpi
+"inoremap <C-Up>   <Esc>ddkPa
+"inoremap <C-Down> <Esc>ddpa
 
 nnoremap <silent> <C-Up>        ddkP
-inoremap <silent> <C-Up>   <Esc>ddkPi
-snoremap <silent> <C-Up>   <Esc>ddkPi
+inoremap <silent> <C-Up>   <Esc>ddkPa
+snoremap <silent> <C-Up>   <Esc>ddkPa
 " _______________JEANSUILÀ_____________ c'est quoi, snoremap?
 xnoremap <silent> <C-Up>        :move '<-2<CR>gv
 nnoremap <silent> <C-Down>      ddp
-inoremap <silent> <C-Down> <Esc>ddpi
-snoremap <silent> <C-Down> <Esc>ddpi
+inoremap <silent> <C-Down> <Esc>ddpa
+snoremap <silent> <C-Down> <Esc>ddpa
 xnoremap <silent> <C-Down>      :move '>+<CR>gv
 
 " }}}
@@ -1018,15 +1018,15 @@ xnoremap <silent> <C-Down>      :move '>+<CR>gv
 " Shift-Ctrl-flèches et Shift-Ctrl-jk pour défiler: {{{
 " Shift-Ctrl-flèches pour défiler (scroller) de 10 lignes (passé de 5 à 7 à 10):
 noremap  <S-C-Up>        10<C-y>
-inoremap <S-C-Up>   <Esc>10<C-y>i
+inoremap <S-C-Up>   <Esc>10<C-y>a
 noremap  <S-C-Down>      10<C-e>
-inoremap <S-C-Down> <Esc>10<C-e>i
+inoremap <S-C-Down> <Esc>10<C-e>a
 
 " Shift-Ctrl-jk pour défiler (scroller) de 10 lignes (passé de 3 à 5 à 10):
 noremap  <S-C-k>        10<C-y>
-inoremap <S-C-k>   <Esc>10<C-y>i
+inoremap <S-C-k>   <Esc>10<C-y>a
 noremap  <S-C-j>        10<C-e>
-inoremap <S-C-j>   <Esc>10<C-e>i
+inoremap <S-C-j>   <Esc>10<C-e>a
 
 " }}}
 let salut="coucou4"
@@ -1044,20 +1044,20 @@ if va5 == "oui" "@# début de code désactivé #################################
 " noremap  <A-Down>       :wincmd j<cr>
 " noremap  <A-Left>       :wincmd h<cr>
 " noremap  <A-Right>      :wincmd l<cr>
-" inoremap <A-Up>    <esc>:wincmd k<cr>i
-" inoremap <A-Down>  <esc>:wincmd j<cr>i
-" inoremap <A-Left>  <esc>:wincmd h<cr>i
-" inoremap <A-Right> <esc>:wincmd l<cr>i
+" inoremap <A-Up>    <esc>:wincmd k<cr>a
+" inoremap <A-Down>  <esc>:wincmd j<cr>a
+" inoremap <A-Left>  <esc>:wincmd h<cr>a
+" inoremap <A-Right> <esc>:wincmd l<cr>a
 "
 " "Alt-hjkl pour naviguer de même:
 " noremap <A-k>           :wincmd k<cr>
 " noremap <A-j>           :wincmd j<cr>
 " noremap <A-h>           :wincmd h<cr>
 " noremap <A-l>           :wincmd l<cr>
-" " inoremap <A-k>   <Esc>mz:wincmd k<cr>`zi
-" " inoremap <A-j>   <Esc>mz:wincmd j<cr>`zi
-" " inoremap <A-h>   <Esc>mz:wincmd h<cr>`zi
-" " inoremap <A-l>   <Esc>mz:wincmd l<cr>`zi
+" " inoremap <A-k>   <Esc>mz:wincmd k<cr>`za
+" " inoremap <A-j>   <Esc>mz:wincmd j<cr>`za
+" " inoremap <A-h>   <Esc>mz:wincmd h<cr>`za
+" " inoremap <A-l>   <Esc>mz:wincmd l<cr>`za
 " " => annulé les 4 derni:wincmd h
 " " res lignes, car voilà ce qu'elles induisaient, m:wincmd j
 " " me si l'on n'était pas dans un screen...
@@ -1086,19 +1086,19 @@ if va5 == "oui" "@# début de code désactivé #################################
 "     noremap  <A-Down>       :TmuxNavigateDown<cr>
 "     noremap  <A-Left>       :TmuxNavigateLeft<cr>
 "     noremap  <A-Right>      :TmuxNavigateRight<cr>
-"     inoremap <A-Up>    <esc>:TmuxNavigateUp<cr>i
-"     inoremap <A-Down>  <esc>:TmuxNavigateDown<cr>i
-"     inoremap <A-Left>  <esc>:TmuxNavigateLeft<cr>i
-"     inoremap <A-Right> <esc>:TmuxNavigateRight<cr>i
+"     inoremap <A-Up>    <esc>:TmuxNavigateUp<cr>a
+"     inoremap <A-Down>  <esc>:TmuxNavigateDown<cr>a
+"     inoremap <A-Left>  <esc>:TmuxNavigateLeft<cr>a
+"     inoremap <A-Right> <esc>:TmuxNavigateRight<cr>a
 "     "Alt-hjkl pour naviguer de même:
 "     noremap  <A-k>          :TmuxNavigateUp<cr>
 "     noremap  <A-j>          :TmuxNavigateDown<cr>
 "     noremap  <A-h>          :TmuxNavigateLeft<cr>
 "     noremap  <A-l>          :TmuxNavigateRight<cr>
-"     inoremap <A-k>   <Esc>mz:TmuxNavigateUp<cr>`zi
-"     inoremap <A-j>   <Esc>mz:TmuxNavigateDown<cr>`zi
-"     inoremap <A-h>   <Esc>mz:TmuxNavigateLeft<cr>`zi
-"     inoremap <A-l>   <Esc>mz:TmuxNavigateRight<cr>`zi
+"     inoremap <A-k>   <Esc>mz:TmuxNavigateUp<cr>`za
+"     inoremap <A-j>   <Esc>mz:TmuxNavigateDown<cr>`za
+"     inoremap <A-h>   <Esc>mz:TmuxNavigateLeft<cr>`za
+"     inoremap <A-l>   <Esc>mz:TmuxNavigateRight<cr>`za
 " else
 "     " Touches capturées dans vim dans tmux avec C-V:
 "     " k
@@ -1116,19 +1116,19 @@ if va5 == "oui" "@# début de code désactivé #################################
 "     noremap  j          :TmuxNavigateDown<cr>
 "     noremap  h          :TmuxNavigateLeft<cr>
 "     noremap  l          :TmuxNavigateRight<cr>
-"     inoremap k     <esc>:TmuxNavigateUp<cr>i
-"     inoremap j     <esc>:TmuxNavigateDown<cr>i
-"     inoremap h     <esc>:TmuxNavigateLeft<cr>i
-"     inoremap l     <esc>:TmuxNavigateRight<cr>i
+"     inoremap k     <esc>:TmuxNavigateUp<cr>a
+"     inoremap j     <esc>:TmuxNavigateDown<cr>a
+"     inoremap h     <esc>:TmuxNavigateLeft<cr>a
+"     inoremap l     <esc>:TmuxNavigateRight<cr>a
 "     "Alt-hjkl pour naviguer de même:
 "     noremap  k          :TmuxNavigateUp<cr>
 "     noremap  j          :TmuxNavigateDown<cr>
 "     noremap  h          :TmuxNavigateLeft<cr>
 "     noremap  l          :TmuxNavigateRight<cr>
-"     inoremap k   <Esc>mz:TmuxNavigateUp<cr>`zi
-"     inoremap j   <Esc>mz:TmuxNavigateDown<cr>`zi
-"     inoremap h   <Esc>mz:TmuxNavigateLeft<cr>`zi
-"     inoremap l   <Esc>mz:TmuxNavigateRight<cr>`zi
+"     inoremap k   <Esc>mz:TmuxNavigateUp<cr>`za
+"     inoremap j   <Esc>mz:TmuxNavigateDown<cr>`za
+"     inoremap h   <Esc>mz:TmuxNavigateLeft<cr>`za
+"     inoremap l   <Esc>mz:TmuxNavigateRight<cr>`za
 "     "Alt-hjkl pour naviguer de même, avec l'autre mappage dans tmux (??), SANS le mode insertion:
 "     noremap  ê            :TmuxNavigateUp<cr>
 "     noremap  ë            :TmuxNavigateDown<cr>
@@ -1179,9 +1179,10 @@ if exists('$TMUX')
   nnoremap <silent> <A-l>          :call TmuxOrSplitSwitch('l', 'R')<cr>
 
 " C'est à la ligne suivante que se situe le problème qui empêche de faire è en mode insertion ###
-  inoremap <silent> <A-h>     <esc>:call TmuxOrSplitSwitch('h', 'L')<cr>i
-  inoremap <silent> <A-j>     <esc>:call TmuxOrSplitSwitch('j', 'D')<cr>i inoremap <silent> <A-k>     <esc>:call TmuxOrSplitSwitch('k', 'U')<cr>i
-  inoremap <silent> <A-l>     <esc>:call TmuxOrSplitSwitch('l', 'R')<cr>i
+  inoremap <silent> <A-h>     <esc>:call TmuxOrSplitSwitch('h', 'L')<cr>a
+  inoremap <silent> <A-j>     <esc>:call TmuxOrSplitSwitch('j', 'D')<cr>a
+  inoremap <silent> <A-k>     <esc>:call TmuxOrSplitSwitch('k', 'U')<cr>a
+  inoremap <silent> <A-l>     <esc>:call TmuxOrSplitSwitch('l', 'R')<cr>a
 
 
   nnoremap <silent> <A-Left>       :call TmuxOrSplitSwitch('h', 'L')<cr>
@@ -1189,10 +1190,10 @@ if exists('$TMUX')
   nnoremap <silent> <A-Up>         :call TmuxOrSplitSwitch('k', 'U')<cr>
   nnoremap <silent> <A-Right>      :call TmuxOrSplitSwitch('l', 'R')<cr>
 
-  inoremap <silent> <A-Left>  <esc>:call TmuxOrSplitSwitch('h', 'L')<cr>i
-  inoremap <silent> <A-Down>  <esc>:call TmuxOrSplitSwitch('j', 'D')<cr>i
-  inoremap <silent> <A-Up>    <esc>:call TmuxOrSplitSwitch('k', 'U')<cr>i
-  inoremap <silent> <A-Right> <esc>:call TmuxOrSplitSwitch('l', 'R')<cr>i
+  inoremap <silent> <A-Left>  <esc>:call TmuxOrSplitSwitch('h', 'L')<cr>a
+  inoremap <silent> <A-Down>  <esc>:call TmuxOrSplitSwitch('j', 'D')<cr>a
+  inoremap <silent> <A-Up>    <esc>:call TmuxOrSplitSwitch('k', 'U')<cr>a
+  inoremap <silent> <A-Right> <esc>:call TmuxOrSplitSwitch('l', 'R')<cr>a
 
 else
   "2023_12_16__19_47_21 
@@ -1211,16 +1212,16 @@ else
 
 
 " C'est à la ligne suivante que se situe le problème qui empêche de faire è en mode insertion ###
-  " inoremap <M-h>              <esc>:Bonjour h<cr>i
-  inoremap <A-h>              <esc>:wincmd h<cr>i
-  inoremap <A-j>              <esc>:wincmd j<cr>i
-  inoremap <A-k>              <esc>:wincmd k<cr>i
-  inoremap <A-l>              <esc>:wincmd l<cr>i
+  " inoremap <M-h>              <esc>:Bonjour h<cr>a
+  inoremap <A-h>              <esc>:wincmd h<cr>a
+  inoremap <A-j>              <esc>:wincmd j<cr>a
+  inoremap <A-k>              <esc>:wincmd k<cr>a
+  inoremap <A-l>              <esc>:wincmd l<cr>a
 
-  inoremap <A-Left>           <esc>:wincmd h<cr>i
-  inoremap <A-Down>           <esc>:wincmd j<cr>i
-  inoremap <A-Up>             <esc>:wincmd k<cr>i
-  inoremap <A-Right>          <esc>:wincmd l<cr>i
+  inoremap <A-Left>           <esc>:wincmd h<cr>a
+  inoremap <A-Down>           <esc>:wincmd j<cr>a
+  inoremap <A-Up>             <esc>:wincmd k<cr>a
+  inoremap <A-Right>          <esc>:wincmd l<cr>a
 
 " source $HOME/.vim/vimrc_else.vim
 endif
@@ -1304,8 +1305,8 @@ if va7 == "oui" "@# début de code désactivé #################################
 " "And restart vim.
 " "Done.
 " " Pareil, pour le mode insertion (c'est quand même commode):
-" inoremap <F13> <Esc><C-w><C-w>i
-" inoremap <F14> <Esc><C-w><S-w>i
+" inoremap <F13> <Esc><C-w><C-w>a
+" inoremap <F14> <Esc><C-w><S-w>a
 
 " }}}
 let salut="coucou7"
@@ -1319,8 +1320,8 @@ noremap      <C-tab>            :tabnext<cr>
 noremap      <C-S-tab>          :tabprevious<cr>
 "noremap     <C-tab>            :tabnext<cr>
 """map       <C-w>              :tabclose<cr> "Surtout pas! Quand on commence à jouer avec les fenêtres, ça interfère, mal!
-inoremap     <C-S-tab>  <ESC>   :tabprevious<cr>i
-inoremap     <C-tab>    <ESC>   :tabnext<cr>i
+inoremap     <C-S-tab>  <ESC>   :tabprevious<cr>a
+inoremap     <C-tab>    <ESC>   :tabnext<cr>a
 
 if empty($TMUX)
 " Ceci ne fonctionne pas dans tmux, ça dit que "E73: La pile des marqueurs est vide"
@@ -1337,12 +1338,12 @@ endif
 " noremap      <C-tab>            :tabnext<cr>
 " nmap     <C-tab>            :tabnext<cr>
 " nnoremap <C-tab>            :tabnext<cr>
-" inoremap <C-tab> <ESC>      :tabnext<cr>i
-" imap     <C-tab> <ESC>      :tabnext<cr>i
+" inoremap <C-tab> <ESC>      :tabnext<cr>a
+" imap     <C-tab> <ESC>      :tabnext<cr>a
 " map      <C-S-tab>          :tabprevious<cr>
 " nmap     <C-S-tab>          :tabprevious<cr>
 " nnoremap <C-S-tab> <ESC>    :tabprevious<cr>
-" inoremap <C-S-tab> <ESC>    :tabprevious<cr>i
+" inoremap <C-S-tab> <ESC>    :tabprevious<cr>a
 " }}}
 
 " Idem, de 2023 dans vimrc_spi: {{{
@@ -1353,14 +1354,14 @@ endif
 " map      [27;5;9~         :tabnext<cr>
 " nmap     [27;5;9~         :tabnext<cr>
 " nnoremap [27;5;9~         :tabnext<cr>
-" inoremap [27;5;9~         :tabnext<cr>i
-" imap     [27;5;9~  <ESC>  :tabnext<cr>i
+" inoremap [27;5;9~         :tabnext<cr>a
+" imap     [27;5;9~  <ESC>  :tabnext<cr>a
 " " Et voilà ce que donne Shift-Ctrl-Tab dans vim:
 " " [27;6;9~
 " map      [27;6;9~  <ESC>  :tabprevious<cr>
 " nmap     [27;6;9~  <ESC>  :tabprevious<cr>
 " nnoremap [27;6;9~  <ESC>  :tabprevious<cr>
-" inoremap [27;6;9~  <ESC>  :tabprevious<cr>i
+" inoremap [27;6;9~  <ESC>  :tabprevious<cr>a
 
 " }}}
 " 2024_03_25__14_01_26
@@ -1379,9 +1380,9 @@ nnoremap  <A--> :vertical resize -5<cr>
 " Bof: je préfère naviguer dans les onglets avec Ctrl-PgUp/Dn: => 2022_03_25__21_10_28 marde, ça ne fonctionne pas.
 if empty($TMUX)
     nnoremap     <C-PageUp>         :tabprevious<cr>
-    inoremap     <C-PageUp>    <ESC>:tabprevious<cr>i
+    inoremap     <C-PageUp>    <ESC>:tabprevious<cr>a
     nnoremap     <C-PageDown>       :tabnext<cr>
-    inoremap     <C-PageDown>  <ESC>:tabnext<cr>i
+    inoremap     <C-PageDown>  <ESC>:tabnext<cr>a
 else
     " Dans vim dans tmux, C-V donne ça:
     " Ctrl-PgDn:
@@ -1393,22 +1394,22 @@ else
     " Maj-Ctrl-Tab:
     " 	
     nnoremap  [5;5~       :tabprevious<cr>
-    inoremap  [5;5~  <ESC>:tabprevious<cr>i
+    inoremap  [5;5~  <ESC>:tabprevious<cr>a
     nnoremap  [6;5~       :tabnext<cr>
-    inoremap  [6;5~  <ESC>:tabnext<cr>i
+    inoremap  [6;5~  <ESC>:tabnext<cr>a
 endif
 
 if empty($TMUX)
   " Navigation entre les onglets en mode vimesque:
   nnoremap <S-A-l>         :tabnext<cr>
-  inoremap <S-A-l>  mz<Esc>:tabnext<cr>`zi
+  inoremap <S-A-l>  mz<Esc>:tabnext<cr>`za
   nnoremap <S-A-h>         :tabprevious<cr>
-  inoremap <S-A-h>  mz<Esc>:tabprevious<cr>`zi
+  inoremap <S-A-h>  mz<Esc>:tabprevious<cr>`za
 else
   nnoremap Ì               :tabnext<cr>
-  inoremap Ì        mz<Esc>:tabnext<cr>`zi
+  inoremap Ì        mz<Esc>:tabnext<cr>`za
   nnoremap È               :tabprevious<cr>
-  inoremap È        mz<Esc>:tabprevious<cr>`zi
+  inoremap È        mz<Esc>:tabprevious<cr>`za
 endif
 
 
@@ -1571,47 +1572,47 @@ inoremap <F7> <Esc>:r !date +\%Y_\%m_\%d__\%T \| sed -e 's/\:/_/g'<cr>A<space>
 " ou @# 
 " ou _______________TODO__________________
 " nnoremap <F11>     :silent!      ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
-" inoremap <F11>     :silent! <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
+" inoremap <F11>     :silent! <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>a
 nnoremap <F11>                   ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO
-inoremap <F11>              <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>i
+inoremap <F11>              <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>a
 
 "mapper Shift-F11 avec la même chose, dans l'autre sens:
 " nnoremap <S-F11>   :silent!      /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>
-" inoremap <S-F11>   :silent! <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>i
+" inoremap <S-F11>   :silent! <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________<cr>a
 nnoremap <S-F11>                 /\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO
-inoremap <S-F11>            <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>i
+inoremap <S-F11>            <Esc>/\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________\\|\<__.*JEAN.*SUI.*L[AÀ].*__<cr>a
 
 
 
 " Idem, de 2023 dans vimrc_spi: {{{
 " "mapper F11 avec la recherche de la précédente occurrence de _______________ENCOURS_______________ et autres étiquettes usuelles
 " " nnoremap <F11>          ?\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>
-" " inoremap <F11>     <Esc>?\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>i
+" " inoremap <F11>     <Esc>?\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>a
 " nnoremap <F11>          ?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>zO
-" inoremap <F11>     <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>i
+" inoremap <F11>     <Esc>?\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>a
 " 
 " 
 " "mapper Shift-F11 avec la même chose, dans l'autre sens:
 " " nnoremap <S-F11>        /\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>
-" " inoremap <S-F11>   <Esc>/\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>i
+" " inoremap <S-F11>   <Esc>/\<_______________ENCOURS_______________\\|@#\\|TODO\\|FIXME<cr>a
 " nnoremap <S-F11>      \<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>zO
-" inoremap <S-F11> <Esc>\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>i
+" inoremap <S-F11> <Esc>\<_______________ENCOURS_______________\\|@#\\|_______________TODO__________________\\|_______________JEANSUILÀ_____________<cr>a
 " 
 " 
 " ""mapper Ctrl-F11 avec la recherche de la précédente occurrence de @#
 " "nnoremap <C-F11>        ?@#<cr>
-" "inoremap <C-F11>   <Esc>?@#<cr>i
+" "inoremap <C-F11>   <Esc>?@#<cr>a
 " "
 " ""mapper Ctrl-Shift-F11 avec la même chose, dans l'autre sens:
 " "nnoremap <C-S-F11>        /@#<cr>
-" "inoremap <C-S-F11>   <Esc>/@#<cr>i
+" "inoremap <C-S-F11>   <Esc>/@#<cr>a
 " " => inutile, F11 fait ça tout seul
 " " => plutôt, on va mapper pour chercher les TODO et FIXME (F11 est plus confortable pour seulement les encours et @#)
 " nnoremap <C-F11>        ?@#\\|TODO\\|FIXME<cr>
-" inoremap <C-F11>   <Esc>?@#\\|TODO\\|FIXME<cr>i
+" inoremap <C-F11>   <Esc>?@#\\|TODO\\|FIXME<cr>a
 " " et dans l'autre sens:
 " nnoremap <C-S-F11>      /@#\\|TODO\\|FIXME<cr>
-" inoremap <C-S-F11> <Esc>/@#\\|TODO\\|FIXME<cr>i
+" inoremap <C-S-F11> <Esc>/@#\\|TODO\\|FIXME<cr>a
 " 
 " 
 " "mapper Alt-F11 avec 32 fois souligner, pour annuler un tag _______________ENCOURS_______________truc ou _______________TODO__________________machin, juste après avoir fait un F11 pour y arriver:
@@ -1623,11 +1624,11 @@ inoremap <S-F11>            <Esc>/\<_______________ENCOURS_______________\\|@#\\
 
 " Aller au tag actue*l*, aller *L*à: mapper Ctrl-L pour aller *L*à:
 nnoremap   <C-l>   :silent!       /\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO$
-inoremap   <C-l>   :silent! <Esc> /\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
+inoremap   <C-l>   :silent! <Esc> /\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$a
 
 " avec Maj enfoncée, dans *L*'autre sens:
 nnoremap  <S-C-l>   :silent!       ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>zO$
-inoremap  <S-C-l>   :silent! <Esc> ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
+inoremap  <S-C-l>   :silent! <Esc> ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$a
 " _______________TODO__________________ ajouter le message:
 " echo "=> on est Làààà"<cr>
 " nnoremap   <C-l>   :silent!      ?\<___?JEAN.*SUI.*L[AÀ]?___?<cr>zO :ec "=> on est Là"
@@ -1635,7 +1636,7 @@ inoremap  <S-C-l>   :silent! <Esc> ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
 
 " Idem, de 2023 dans vimrc_spi: {{{
 " nnoremap <C-L>      \<_______________JEANSUILÀ_____________<cr>zO
-" inoremap <C-L> <Esc>\<_______________JEANSUILÀ_____________<cr>i
+" inoremap <C-L> <Esc>\<_______________JEANSUILÀ_____________<cr>a
 " }}}
 " }}}
 
@@ -1643,7 +1644,7 @@ inoremap  <S-C-l>   :silent! <Esc> ?\<__.*JEAN.*SUI.*L[AÀ].*__<cr>$i
 " F12 - dernière macro invoquée: {{{
 "mapper F12 avec la dernière macro:
 noremap  <F12>      @@
-inoremap <F12> <ESC>@@i
+inoremap <F12> <ESC>@@a
 " }}}
 
 
@@ -1831,9 +1832,9 @@ endif
 " Pour tout sélectionner "comme tout le monde" avec un Ctrl-A:
 if empty($TMUX)
     nnoremap <c-a>      :silent! mzggVG<Esc>`z
-    inoremap <c-a> <Esc>mzggVG<Esc>`zi
+    inoremap <c-a> <Esc>mzggVG<Esc>`za
     nnoremap <>       :silent! mzggVG<Esc>`z
-    inoremap <>  <Esc>mzggVG<Esc>`zi
+    inoremap <>  <Esc>mzggVG<Esc>`za
 " => TODO ça ne donne pas toujours satisfaction: @#à peaufiner, au besoin
 endif
 
@@ -1906,7 +1907,7 @@ endfunction
 " *** ENLEVÉ POUR VIMSPECTOR( ***
 " noremap  <F5>      :w<cr> :!./%<cr>
 noremap  <F5>      :call RunCurrentFile()<cr>
-inoremap <F5> <esc>:w<cr> :!./%<cr>i
+inoremap <F5> <esc>:w<cr> :!./%<cr>a
 " *** ENLEVÉ POUR VIMSPECTOR) ***
 "Utile pour un script Rebol existant, qu'on n'a nulle intention de modifier, et qui n'a aucun chieboum:
 noremap <s-F5>     :!rebol -qs %<cr>
@@ -1922,7 +1923,7 @@ noremap <s-F5>     :!rebol -qs %<cr>
 "pour faire tourner le paragraphe courant par rebol:
 "to interpret the current paragraph by rebol interpreter:
 noremap <F6>        mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>"         {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
-inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>"         {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`zi
+inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>"         {;==== Rebol code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`za
 "(des vieilleries:) {{{
 " noremap  <F6>       mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp_vim_block.rr && echo 'prin rejoin [newline "=>" newline {;======== code evaluation output: ========= }] ' >> /tmp/tmp_vim_block.rr && echo 'print "{{{"' >> /tmp/tmp_vim_block.rr && cat /tmp/tmp_vim_block.rr /tmp/tmp_vim_block > /tmp/tmp_vim_block.r && echo 'prin {;==========================================}' >> /tmp/tmp_vim_block.r && echo 'print " }}}" wait 0.1 print rejoin [newline {... Entrée pour continuer}] input' >> /tmp/tmp_vim_block.r && rebol -qs /tmp/tmp_vim_block.r<cr>`z
 "map <F6> vip :w! tmp_vim_block<cr> :!echo "rebol []" > tmp_vim_block.rr && cat tmp_vim_block.rr tmp_vim_block > tmp_vim_block.r && rebol -qs tmp_vim_block.r && rm tmp_vim_block.rr tmp_vim_block.r tmp_vim_block<cr>
@@ -1936,40 +1937,40 @@ inoremap <F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo "rebol []" > /tmp/tmp
 
 " Pour faire à la mode, et faire du javascript (à reculons...), faire tourner le paragraphe courant par javascript:
 nnoremap <s-F6>       mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`z
-inoremap <s-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`zi
+inoremap <s-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:! js /tmp/tmp_vim_block && echo "Entrée pour poursuivre..." && read<cr>`za
 
 
 " Pour faire tourner le paragraphe courant par python3:
 nnoremap <c-F6>       mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== Python code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`z
-inoremap <c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== Python code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`zi
+inoremap <c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block<cr>:!echo 'print("\n=>\n\# ======== Python code evaluation output: ========= {{{")' > /tmp/tmp_vim_block.pyy && cat /tmp/tmp_vim_block.pyy /tmp/tmp_vim_block > /tmp/tmp_vim_block.py && echo 'print("\# ========================================== }}}\n... Entrée pour continuer")' >> /tmp/tmp_vim_block.py && echo 'input()' >> /tmp/tmp_vim_block.py && python3 /tmp/tmp_vim_block.py\|\|read<cr>`za
 
 "Pour faire tourner le paragraphe courant par un compilateur C:
 " FIXME logique des raccourcis pourrie. Plutôt demander quel langage au début, en gardant le même pour faire, par exemple: F6 P (pour python) Entrée, et après F6 Entrée Entrée. À réfléchir, puis refaire les raccourcis de manière logique, en faisant tourner ligne, paragraphe, en collant ou pas la sortie après.
 noremap  <s-c-F6>       mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block > /tmp/tmp_vim_block.ccc   ; echo "... Entrée pour continuer" && read<cr>`z
-inoremap <s-c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block ; echo "... Entrée pour continuer" && read<cr>`zi
+inoremap <s-c-F6> <ESC> mzvip :w! /tmp/tmp_vim_block.c<cr>: !gcc -g -Wall -std=c99 /tmp/tmp_vim_block.c -o /tmp/tmp_vim_block && /tmp/tmp_vim_block ; echo "... Entrée pour continuer" && read<cr>`za
 
 
 " pour faire tourner le paragraphe courant par bash:
 noremap  <F8>          mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && echo "... Entrée pour continuer" && read <cr>`z
-inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && echo "... Entrée pour continuer" && read <cr>`zi
+inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && echo "... Entrée pour continuer" && read <cr>`za
 
 " pour faire tourner le paragraphe courant par bash et coller la sortie après:
 " noremap  <F8>          mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
-" inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
+" inoremap <F8>     <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`za
 " nnoremap <C-F8>        mzvip:w! /tmp/tmp_vim_block<cr> A<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>i<cr># }}}<cr><cr><esc>`z
 nnoremap <C-F8>    mzyip:redir! > /tmp/tmp_vim_block<cr>:echo @0<cr>:redir END<cr>}A<cr># => {{{<cr><cr># }}}<cr><esc>kk:exec 'r!bash /tmp/tmp_vim_block'<cr>A<cr><esc>`z}j0
 " CETTE LIGNE CI-DESSUS FONCTIONNE TRÈS-TRÈS BIEN (enfin, presque; quand il y a des trucs interactifs, ça n'a pas l'air de trop le faire): TODO factoriser tout ça, et faire appel au code factorisé (fonction? commande?)
 
-inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr>A<cr># => {{{<esc>:exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a# }}}<cr><cr><esc>`z<cr>i
+inoremap <C-F8>   <esc>mzvip :w! /tmp/tmp_vim_block<cr>A<cr># => {{{<esc>:exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a# }}}<cr><cr><esc>`z<cr>a
 
 
 " pour faire tourner la ligne courante par bash:
 noremap  <S-F8>        mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
-inoremap <S-F8>   <esc>mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
+inoremap <S-F8>   <esc>mzV   :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`za
 
 " pour faire tourner la ligne courante par bash et coller la sortie après:
 nnoremap <C-S-F8>      mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`z
-inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`zi
+inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exec 'r!bash /tmp/tmp_vim_block'<cr><cr>a<cr># }}}<cr><esc>`za
 
 
 
@@ -1981,14 +1982,14 @@ inoremap <C-S-F8> <esc>mzV   :w! /tmp/tmp_vim_block<cr>} o<cr># => {{{<esc> :exe
 " Pareil, mais pour dans tmux:
 " pour faire tourner le paragraphe courant par bash:
 noremap  <[19~>      mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
-inoremap <[19~> <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
+inoremap <[19~> <esc>mzvip :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`za
 
 " Flûte, S-F8 ne semble pas non plus compris dans tmux:
 " Voilà ce que donne le C-V:
 " [19;2~
 " pour faire tourner la ligne courante par bash:
 noremap  <[19;2~>      mzV :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`z
-inoremap <[19;2~> <esc>mzV :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`zi
+inoremap <[19;2~> <esc>mzV :w! /tmp/tmp_vim_block<cr> :!bash /tmp/tmp_vim_block && read <cr>`za
 
 
 
@@ -2013,9 +2014,9 @@ noremap  § vip
 
 " pour ouvrir l'URL (la phrase) sous le curseur par le navigateur: {{{
 "noremap  <C-F8>       mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`z
-"inoremap <C-F8> <esc> mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`zi
+"inoremap <C-F8> <esc> mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`za
 "noremap  <C-F8>       mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`z
-"inoremap <C-F8> <esc> mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`zi
+"inoremap <C-F8> <esc> mzvis :w! /tmp/tmp_vim_block<cr> :!$BROWSER /tmp/tmp_vim_block && read <cr>`za
 " Meuh non, bien plus simple: simplement gx et ça ouvre le navigateur défini ainsi:
 let g:netrw_browsex_viewer= "$BROWSER"
 "let g:netrw_browsex_viewer= "xdg-open"
@@ -2063,7 +2064,7 @@ nnoremap <4-LeftMouse> vip
 "donc je fais avec F3, et vers le haut, c'est plus commode, avec #:
 noremap <F3>      :split<cr>#
 " Pareil, en mode insertion aussi:
-inoremap <F3> <Esc>:split<cr>#i
+inoremap <F3> <Esc>:split<cr>#a
 "Pareil, en faisant une division verticale:
 noremap <S-F3> :vsplit<cr>#
 "=> ne fonctionne pas... 2023_08_04__11_54_09 => si, ça refonctionne (hors screen...)
@@ -2092,15 +2093,15 @@ hi link CursorColumn CursorLine
 " inoremap <Leader>r <Esc>mz:set cursorline! cursorcolumn!<cr>`zi
 " Plutôt avec F2 (car le délai après Leader est bien trop court (dû à la modif pour avoir kj qui fasse Esc...)):
 nnoremap <S-F2>             :Windo set cursorline! cursorcolumn!<cr>
-inoremap <S-F2>      <Esc>mz:Windo set cursorline! cursorcolumn!<cr>`zi
+inoremap <S-F2>      <Esc>mz:Windo set cursorline! cursorcolumn!<cr>`za
 
 nnoremap <F2>             :set cursorline! cursorcolumn!<cr>
-inoremap <F2>      <Esc>mz:set cursorline! cursorcolumn!<cr>`zi
+inoremap <F2>      <Esc>mz:set cursorline! cursorcolumn!<cr>`za
 
 " " Idem, de 2023 dans vimrc_spi: {{{
 " " Un mapping pour switcher le réticule:
 " noremap  <F2>        :set cursorcolumn!<bar>set cursorline!<CR>
-" inoremap <F2> <Esc>mz:set cursorcolumn!<bar>set cursorline!<CR>`zi
+" inoremap <F2> <Esc>mz:set cursorcolumn!<bar>set cursorline!<CR>`za
 " 
 " }}}
 " }}}
@@ -2140,8 +2141,8 @@ inoremap <A-q> <C-x>
 " sed -n l
 nnoremap á      <C-a>
 nnoremap ñ      <C-x>
-inoremap á <Esc><C-a>i
-inoremap ñ <Esc><C-x>i
+inoremap á <Esc><C-a>a
+inoremap ñ <Esc><C-x>a
 
 " Idem, de 2023 dans vimrc_spi: {{{
 " Sur Suse:
@@ -2454,33 +2455,33 @@ set listchars=tab:²²
 
 " Bascule le retour à la ligne visuel (wrap) avec le raccourci Alt-Z (comme vsc...): {{{
 noremap  <A-z>           :set invwrap<cr>
-inoremap <A-z> <Esc>mz   :set invwrap<cr>`zi
+inoremap <A-z> <Esc>mz   :set invwrap<cr>`za
 
 " Avec majuscule en plus: ça le fait dans toutes les fenêtres:
 noremap  <S-A-z>         :Windofast set invwrap<cr>
-inoremap <S-A-z>    <Esc>:Windofast set invwrap<cr>i
+inoremap <S-A-z>    <Esc>:Windofast set invwrap<cr>a
 
 " Idem, de 2023 dans vimrc_spi: {{{
 
 " Retour à la ligne comme chez vsc:
 "nnoremap z      mz:windo set wrap!<cr>`z
-"inoremap z <esc>mz:windo set wrap!<cr>`zi
+"inoremap z <esc>mz:windo set wrap!<cr>`za
 "" Idem, dans gvim:
 "nnoremap ú        mz:windo set wrap!<cr>`z
-"inoremap ú   <esc>mz:windo set wrap!<cr>`zi
+"inoremap ú   <esc>mz:windo set wrap!<cr>`za
 "
 "=> plutôt, sans windo:
 " Retour à la ligne comme chez vsc:
 nnoremap z      mz:set wrap!<cr>`z
-inoremap z <esc>mz:set wrap!<cr>`zi
+inoremap z <esc>mz:set wrap!<cr>`za
 " Idem, dans gvim:
 nnoremap ú        mz:set wrap!<cr>`z
-inoremap ú   <esc>mz:set wrap!<cr>`zi
+inoremap ú   <esc>mz:set wrap!<cr>`za
 
 
 " Plutôt avec <leader> W (pour Wrapper:
 nnoremap <leader>w      :windo set wrap!<cr>
-inoremap <leader>w <esc>:windo set wrap!<cr>i
+inoremap <leader>w <esc>:windo set wrap!<cr>a
 
 
 " }}}
@@ -2712,8 +2713,8 @@ vnoremap ` <esc>`>a`<esc>`<i`<esc>
 
 " 2023_12_24__13_34_53 mince, pas vu...
 " Refait, de tête:
-nnoremap <C-F12>      /\$[A-Za-z]<cr> i{<esc>ea}<esc>
-inoremap <C-F12> <esc>/\$[A-Za-z]<cr> i{<esc>ea}<esc>
+nnoremap <C-F12>        /\$[A-Za-z]<cr> i{<esc>ea}<esc>
+inoremap <C-F12> <esc>mz/\$[A-Za-z]<cr> i{<esc>ea}<esc>'za
 
 " Idem, de 2023 dans vimrc_spi: {{{
 " TODO voir le .vimrc chez Spie, où ça fonctionne correctement
@@ -2951,7 +2952,7 @@ function! DiffLineWithNext()
   windo set nocursorline
 endfunction
 nnoremap <F4>      mz:call DiffLineWithNext()<cr>`z
-inoremap <F4> <Esc>mz:call DiffLineWithNext()<cr>`zi
+inoremap <F4> <Esc>mz:call DiffLineWithNext()<cr>`za
 " }}}
 
 " Pour mettre des espaces en indentant, et non point des tabulations:
@@ -3091,10 +3092,10 @@ augroup END
 " nnoremap <silent> <Leader>+ :call ToggleZoom(v:true)<CR>
 " Raccourcis pour maximiser verticalement par défaut, et en tous sens avec shift:
 nnoremap <A-_>      :call ToggleZoom(v:true,  v:true)<CR>
-inoremap <A-_> <Esc>:call ToggleZoom(v:true,  v:true)<CR>i
+inoremap <A-_> <Esc>:call ToggleZoom(v:true,  v:true)<CR>a
 
 nnoremap <A-8> :call ToggleZoom(v:true, v:false)<CR>
-inoremap <A-8> :call ToggleZoom(v:true, v:false)<CR>
+inoremap <A-8> :call ToggleZoom(v:true, v:false)<CR>a
 
 " }}}
 " }}}
