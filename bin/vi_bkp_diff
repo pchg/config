@@ -1,10 +1,6 @@
 #!/bin/bash
-# cp "$1" /tmp
-# cp -r "$1{,_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')}
-# fichier_sauvg_horodatage="$1_$(date +\%Y_\%m_\%d__\%T | sed -e 's/\:/_/g')"
 fichier_sauvg_horodatage="$1_$(date +\%Y_\%m_\%d__\%H_\%M_\%S)"
 cp -r -L "$1" "$fichier_sauvg_horodatage"
 vi "$1"
-# diff /tmp/ "$1"
-diff "$1" "$fichier_sauvg_horodatage"
+diff "$fichier_sauvg_horodatage" "$1"
 
